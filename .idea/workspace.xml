@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="calendar_api:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="108fdcc3-8238-4bae-87b0-e06e39f6ceb1" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2bFuwWVAsoSsWFaQErzooxNmjPk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/MyJob/calendar_api",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.34252873",
+    "service.view.auto.scroll.from.source": "true",
+    "service.view.auto.scroll.to.source": "true",
+    "settings.editor.selected.configurable": "File.Encoding",
+    "spring.configuration.checksum": "5a35020ffa3a559eeca59e5f7c64406d"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\MyJob\calendar_api" />
+      <recent name="E:\MyJob\calendar_api\src" />
+      <recent name="E:\MyJob\calendar_api\src\main\resources\templates" />
+      <recent name="E:\MyJob\calendar_api\src\main\java\com\example" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\MyJob\calendar_api\src\main\resources\templates\input_page" />
+      <recent name="E:\MyJob\calendar_api\src\main\resources\templates\result_calendar" />
+      <recent name="E:\MyJob\calendar_api\src\main\resources\templates" />
+      <recent name="E:\MyJob\calendar_api\src\main\resources\static" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ru.tomsknipineft.services" />
+      <recent name="ru.tomsknipineft.controllers" />
+      <recent name="com.example.model" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Main">
+    <configuration name="BackfillWellGroupCalendarServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="calendar_api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.tomsknipineft.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.tomsknipineft" />
+      <option name="MAIN_CLASS_NAME" value="ru.tomsknipineft.BackfillWellGroupCalendarServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalendarServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="calendar_api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.tomsknipineft.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.tomsknipineft" />
+      <option name="MAIN_CLASS_NAME" value="ru.tomsknipineft.CalendarServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalendarServiceTest.testGetResourcesWorkDoc" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="calendar_api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.tomsknipineft.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.tomsknipineft" />
+      <option name="MAIN_CLASS_NAME" value="ru.tomsknipineft.CalendarServiceTest" />
+      <option name="METHOD_NAME" value="testGetResourcesWorkDoc" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LinearPipelineGroupCalendarServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="calendar_api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.tomsknipineft.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.tomsknipineft" />
+      <option name="MAIN_CLASS_NAME" value="ru.tomsknipineft.LinearPipelineGroupCalendarServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LinearPipelineGroupCalendarServiceImplTest.testListActiveEntityProject_Line" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="calendar_api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.tomsknipineft.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.tomsknipineft" />
+      <option name="MAIN_CLASS_NAME" value="ru.tomsknipineft.LinearPipelineGroupCalendarServiceImplTest" />
+      <option name="METHOD_NAME" value="testListActiveEntityProject_Line" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" />
+      <module name="calendar_api" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="ru.tomsknipineft.Main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.CalendarServiceTest.testGetResourcesWorkDoc" />
+        <item itemvalue="JUnit.CalendarServiceTest" />
+        <item itemvalue="JUnit.LinearPipelineGroupCalendarServiceImplTest.testListActiveEntityProject_Line" />
+        <item itemvalue="JUnit.LinearPipelineGroupCalendarServiceImplTest" />
+        <item itemvalue="JUnit.BackfillWellGroupCalendarServiceImplTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="108fdcc3-8238-4bae-87b0-e06e39f6ceb1" name="Changes" comment="" />
+      <created>1705823386506</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1705823386506</updated>
+      <workItem from="1705823387744" duration="29000" />
+      <workItem from="1706333986659" duration="8000" />
+      <workItem from="1708877528778" duration="6601000" />
+      <workItem from="1709050482728" duration="27000" />
+      <workItem from="1709050544191" duration="70342000" />
+      <workItem from="1709644843168" duration="14571000" />
+      <workItem from="1709875447307" duration="28207000" />
+      <workItem from="1711169395273" duration="43760000" />
+      <workItem from="1711380548927" duration="829000" />
+      <workItem from="1711543119971" duration="12880000" />
+      <workItem from="1711793573972" duration="183568000" />
+      <workItem from="1713607613196" duration="5384000" />
+      <workItem from="1713712057689" duration="41000" />
+      <workItem from="1713798000648" duration="10771000" />
+      <workItem from="1713969920218" duration="21833000" />
+      <workItem from="1714272244070" duration="35907000" />
+      <workItem from="1714531586907" duration="46652000" />
+      <workItem from="1714871626857" duration="248000" />
+      <workItem from="1714871990633" duration="588000" />
+      <workItem from="1714894903093" duration="38107000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
