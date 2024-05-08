@@ -17,4 +17,4 @@ services:
       POSTGRES_USER: bestuser
       POSTGRES_PASSWORD: bestuser
     volumes:
-      - ./dbdata:/var/lib/postgresql/data/
+      - ./dbdata:/var/lib/postgresql/data 700

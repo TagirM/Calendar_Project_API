@@ -170,19 +170,15 @@ public class CalendarService {
 
                 // Дата окончания полевых ИИ текущего этапа
                 calendarDayFinishEngSurvey = dateService.recalculationResourcesInCalendarDate(resourcesForEngSurveyWithHumanFactor, startContract);
-                logger.info("Начало работ по этапу " + stageNumber + " - " + startContract);
-                logger.info("Окончание полевых ИИ по текущему этапу " + calendarDayFinishEngSurvey);
+
                 // Дата окончания ЛИ текущего этапа
                 calendarDayFinishLabResearch = dateService.recalculationResourcesInCalendarDate(resourcesForLabResearchWithHumanFactor, calendarDayFinishEngSurvey);
-                logger.info("Окончание лаборатории по текущему этапу " + calendarDayFinishLabResearch);
+
                 // проверка условия пересечения начала выполнения отчета ИИ (соответствует окончанию этапа ЛИ) текущего этапа строительства с
                 // выполнением отчета ИИ предыдущего этапа, если пересечение есть, то срок сместить, чтобы отчетов ИИ шли последовательно
                 if (i > 0 && calendarDayFinishLabResearch.isBefore(calendarDayFinishEngSurveyReport)) {
-                    logger.info("Окончание лаборатории по текущему этапу " + calendarDayFinishLabResearch);
-                    logger.info("Окончание отчета ИИ по предыдущему этапу " + calendarDayFinishEngSurveyReport);
                     // количество дней смещения выполнения отчета ИИ текущего этапа
                     stageOffsetII = (int) DAYS.between(calendarDayFinishLabResearch, calendarDayFinishEngSurveyReport);
-                    logger.info("Этап строительства " + stageNumber + ", смещение отчета - " + stageOffsetII);
                 }
             } else {
                 calendarDayFinishEngSurvey = startContract;
@@ -196,7 +192,6 @@ public class CalendarService {
                 // дата окончания разработки отчета ИИ текущего этапа строительства с учетом смещения
                 calendarDayFinishEngSurveyReport = dateService.recalculationResourcesInCalendarDate(resourcesForEngSurveyReportWithHumanFactor,
                         calendarDayFinishLabResearch.plusDays(stageOffsetII));
-                logger.info("Окончание отчета ИИ по текущему этапу " + calendarDayFinishEngSurveyReport);
 
                 // дата окончания согласования отчета ИИ текущего этапа строительства
                 finishAgreementEngineeringSurveyReport = dateService.workDay(calendarDayFinishEngSurveyReport.plusDays(AGREEMENT_ENGINEERING_SURVEY_REPORT_DURATION));
