@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.tomsknipineft.entities.areaObjects.BackfillSite;
 import ru.tomsknipineft.entities.linearObjects.CableRack;
+import ru.tomsknipineft.entities.oilPad.BackfillWell;
 import ru.tomsknipineft.repositories.CableRackRepository;
 import ru.tomsknipineft.utils.exceptions.NoSuchEntityException;
 
@@ -13,6 +14,8 @@ public class CableRackService implements EntityProjectService{
 
     private final CableRackRepository cableRackRepository;
 
+    private CableRack findCableRackFromRequest;
+
     /**
      * Поиск в БД количества ресурса необходимого для выполнения полевых ИИ
      * @param cableRack Инженерная подготовка площадки
@@ -20,8 +23,9 @@ public class CableRackService implements EntityProjectService{
      */
     public Integer getResourceForEngSurveyCableRack(CableRack cableRack){
         if (cableRack.isActive()){
-            return cableRackRepository.findFirstByLengthGreaterThanEqual(cableRack.getLength()).orElseThrow(()->
-                    new NoSuchEntityException("Введено некорректное значение длины кабельной эстакады " + cableRack.getLength())).getResourceForEngSurvey();
+            this.findCableRackFromRequest = cableRackRepository.findFirstByLengthGreaterThanEqual(cableRack.getLength()).orElseThrow(()->
+                    new NoSuchEntityException("Введено некорректное значение длины кабельной эстакады " + cableRack.getLength()));
+            return findCableRackFromRequest.getResourceForEngSurvey();
         }
         return 0;
     }
@@ -33,8 +37,11 @@ public class CableRackService implements EntityProjectService{
      */
     public Integer getResourceForLabResearchCableRack(CableRack cableRack){
         if (cableRack.isActive()){
-            return cableRackRepository.findFirstByLengthGreaterThanEqual(cableRack.getLength()).orElseThrow(()->
-                    new NoSuchEntityException("Введено некорректное значение длины кабельной эстакады " + cableRack.getLength())).getResourceForLabResearch();
+            if (findCableRackFromRequest == null){
+                this.findCableRackFromRequest = cableRackRepository.findFirstByLengthGreaterThanEqual(cableRack.getLength()).orElseThrow(()->
+                        new NoSuchEntityException("Введено некорректное значение длины кабельной эстакады " + cableRack.getLength()));
+            }
+            return findCableRackFromRequest.getResourceForLabResearch();
         }
         return 0;
     }
@@ -46,8 +53,11 @@ public class CableRackService implements EntityProjectService{
      */
     public Integer getResourceForEngSurveyReportCableRack(CableRack cableRack){
         if (cableRack.isActive()){
-            return cableRackRepository.findFirstByLengthGreaterThanEqual(cableRack.getLength()).orElseThrow(()->
-                    new NoSuchEntityException("Введено некорректное значение длины кабельной эстакады " + cableRack.getLength())).getResourceForEngSurveyReport();
+            if (findCableRackFromRequest == null){
+                this.findCableRackFromRequest = cableRackRepository.findFirstByLengthGreaterThanEqual(cableRack.getLength()).orElseThrow(()->
+                        new NoSuchEntityException("Введено некорректное значение длины кабельной эстакады " + cableRack.getLength()));
+            }
+            return findCableRackFromRequest.getResourceForEngSurveyReport();
         }
         return 0;
     }
@@ -59,8 +69,11 @@ public class CableRackService implements EntityProjectService{
      */
     public Integer getResourceForWorkDocCableRack(CableRack cableRack){
         if (cableRack.isActive()){
-            return cableRackRepository.findFirstByLengthGreaterThanEqual(cableRack.getLength()).orElseThrow(()->
-                    new NoSuchEntityException("Введено некорректное значение длины кабельной эстакады " + cableRack.getLength())).getResourceForWorkDoc();
+            if (findCableRackFromRequest == null){
+                this.findCableRackFromRequest = cableRackRepository.findFirstByLengthGreaterThanEqual(cableRack.getLength()).orElseThrow(()->
+                        new NoSuchEntityException("Введено некорректное значение длины кабельной эстакады " + cableRack.getLength()));
+            }
+            return findCableRackFromRequest.getResourceForWorkDoc();
         }
         return 0;
     }
@@ -72,8 +85,7 @@ public class CableRackService implements EntityProjectService{
      */
     public Integer getResourceForProjDocCableRack(CableRack cableRack){
         if (cableRack.isActive()){
-            return cableRackRepository.findFirstByLengthGreaterThanEqual(cableRack.getLength()).orElseThrow(()->
-                    new NoSuchEntityException("Введено некорректное значение длины кабельной эстакады " + cableRack.getLength())).getResourceForProjDoc();
+            return findCableRackFromRequest.getResourceForProjDoc();
         }
         return 0;
     }
@@ -85,8 +97,7 @@ public class CableRackService implements EntityProjectService{
      */
     public Integer getResourceForEstDocCableRack(CableRack cableRack){
         if (cableRack.isActive()){
-            return cableRackRepository.findFirstByLengthGreaterThanEqual(cableRack.getLength()).orElseThrow(()->
-                    new NoSuchEntityException("Введено некорректное значение длины кабельной эстакады " + cableRack.getLength())).getResourceForEstDoc();
+            return findCableRackFromRequest.getResourceForEstDoc();
         }
         return 0;
     }

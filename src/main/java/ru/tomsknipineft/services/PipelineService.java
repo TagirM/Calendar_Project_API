@@ -2,7 +2,7 @@ package ru.tomsknipineft.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.tomsknipineft.entities.linearObjects.CableRack;
+import ru.tomsknipineft.entities.linearObjects.Line;
 import ru.tomsknipineft.entities.linearObjects.Pipeline;
 import ru.tomsknipineft.repositories.PipelineRepository;
 import ru.tomsknipineft.utils.exceptions.NoSuchEntityException;
@@ -13,6 +13,8 @@ public class PipelineService {
 
     private final PipelineRepository pipelineRepository;
 
+    private Pipeline findPipelineFromRequest;
+
     /**
      * Поиск в БД количества ресурса необходимого для выполнения полевых ИИ
      * @param pipeline Инженерная подготовка площадки
@@ -20,11 +22,12 @@ public class PipelineService {
      */
     public Integer getResourceForEngSurveyPipeline(Pipeline pipeline){
         if (pipeline.isActive()){
-            return pipelineRepository.findFirstByPipelineLayingMethodAndUnitsValveAndUnitsSODAndLengthGreaterThanEqual
+            this.findPipelineFromRequest = pipelineRepository.findFirstByPipelineLayingMethodAndUnitsValveGreaterThanEqualAndUnitsSODGreaterThanEqualAndLengthGreaterThanEqual
                             (pipeline.getPipelineLayingMethod(), pipeline.getUnitsValve(), pipeline.getUnitsSOD(), pipeline.getLength())
                     .orElseThrow(()-> new NoSuchEntityException("Введены некорректные значения параметров линейного трубопровода "
                             + ", количество УЗА - " + pipeline.getUnitsValve() + ", количество узлов СОД - " + pipeline.getUnitsSOD()
-                            + ", длина - " + pipeline.getLength())).getResourceForEngSurvey();
+                            + ", длина - " + pipeline.getLength()));
+            return findPipelineFromRequest.getResourceForEngSurvey();
         }
         return 0;
     }
@@ -36,11 +39,14 @@ public class PipelineService {
      */
     public Integer getResourceForLabResearchPipeline(Pipeline pipeline){
         if (pipeline.isActive()){
-            return pipelineRepository.findFirstByPipelineLayingMethodAndUnitsValveAndUnitsSODAndLengthGreaterThanEqual
-                            (pipeline.getPipelineLayingMethod(), pipeline.getUnitsValve(), pipeline.getUnitsSOD(), pipeline.getLength())
-                    .orElseThrow(()-> new NoSuchEntityException("Введены некорректные значения параметров линейного трубопровода "
-                            + ", количество УЗА - " + pipeline.getUnitsValve() + ", количество узлов СОД - " + pipeline.getUnitsSOD()
-                            + ", длина - " + pipeline.getLength())).getResourceForLabResearch();
+            if (findPipelineFromRequest == null){
+                this.findPipelineFromRequest = pipelineRepository.findFirstByPipelineLayingMethodAndUnitsValveGreaterThanEqualAndUnitsSODGreaterThanEqualAndLengthGreaterThanEqual
+                                (pipeline.getPipelineLayingMethod(), pipeline.getUnitsValve(), pipeline.getUnitsSOD(), pipeline.getLength())
+                        .orElseThrow(()-> new NoSuchEntityException("Введены некорректные значения параметров линейного трубопровода "
+                                + ", количество УЗА - " + pipeline.getUnitsValve() + ", количество узлов СОД - " + pipeline.getUnitsSOD()
+                                + ", длина - " + pipeline.getLength()));
+            }
+            return findPipelineFromRequest.getResourceForLabResearch();
         }
         return 0;
     }
@@ -52,11 +58,14 @@ public class PipelineService {
      */
     public Integer getResourceForEngSurveyReportPipeline(Pipeline pipeline){
         if (pipeline.isActive()){
-            return pipelineRepository.findFirstByPipelineLayingMethodAndUnitsValveAndUnitsSODAndLengthGreaterThanEqual
-                            (pipeline.getPipelineLayingMethod(), pipeline.getUnitsValve(), pipeline.getUnitsSOD(), pipeline.getLength())
-                    .orElseThrow(()-> new NoSuchEntityException("Введены некорректные значения параметров линейного трубопровода "
-                            + ", количество УЗА - " + pipeline.getUnitsValve() + ", количество узлов СОД - " + pipeline.getUnitsSOD()
-                            + ", длина - " + pipeline.getLength())).getResourceForEngSurveyReport();
+            if (findPipelineFromRequest == null){
+                this.findPipelineFromRequest = pipelineRepository.findFirstByPipelineLayingMethodAndUnitsValveGreaterThanEqualAndUnitsSODGreaterThanEqualAndLengthGreaterThanEqual
+                                (pipeline.getPipelineLayingMethod(), pipeline.getUnitsValve(), pipeline.getUnitsSOD(), pipeline.getLength())
+                        .orElseThrow(()-> new NoSuchEntityException("Введены некорректные значения параметров линейного трубопровода "
+                                + ", количество УЗА - " + pipeline.getUnitsValve() + ", количество узлов СОД - " + pipeline.getUnitsSOD()
+                                + ", длина - " + pipeline.getLength()));
+            }
+            return findPipelineFromRequest.getResourceForEngSurveyReport();
         }
         return 0;
     }
@@ -68,11 +77,14 @@ public class PipelineService {
      */
     public Integer getResourceForWorkDocPipeline(Pipeline pipeline){
         if (pipeline.isActive()){
-            return pipelineRepository.findFirstByPipelineLayingMethodAndUnitsValveAndUnitsSODAndLengthGreaterThanEqual
-                            (pipeline.getPipelineLayingMethod(), pipeline.getUnitsValve(), pipeline.getUnitsSOD(), pipeline.getLength())
-                    .orElseThrow(()-> new NoSuchEntityException("Введены некорректные значения параметров линейного трубопровода "
-                            + ", количество УЗА - " + pipeline.getUnitsValve() + ", количество узлов СОД - " + pipeline.getUnitsSOD()
-                            + ", длина - " + pipeline.getLength())).getResourceForWorkDoc();
+            if (findPipelineFromRequest == null){
+                this.findPipelineFromRequest = pipelineRepository.findFirstByPipelineLayingMethodAndUnitsValveGreaterThanEqualAndUnitsSODGreaterThanEqualAndLengthGreaterThanEqual
+                                (pipeline.getPipelineLayingMethod(), pipeline.getUnitsValve(), pipeline.getUnitsSOD(), pipeline.getLength())
+                        .orElseThrow(()-> new NoSuchEntityException("Введены некорректные значения параметров линейного трубопровода "
+                                + ", количество УЗА - " + pipeline.getUnitsValve() + ", количество узлов СОД - " + pipeline.getUnitsSOD()
+                                + ", длина - " + pipeline.getLength()));
+            }
+            return findPipelineFromRequest.getResourceForWorkDoc();
         }
         return 0;
     }
@@ -84,11 +96,7 @@ public class PipelineService {
      */
     public Integer getResourceForProjDocPipeline(Pipeline pipeline){
         if (pipeline.isActive()){
-            return pipelineRepository.findFirstByPipelineLayingMethodAndUnitsValveAndUnitsSODAndLengthGreaterThanEqual
-                            (pipeline.getPipelineLayingMethod(), pipeline.getUnitsValve(), pipeline.getUnitsSOD(), pipeline.getLength())
-                    .orElseThrow(()-> new NoSuchEntityException("Введены некорректные значения параметров линейного трубопровода "
-                            + ", количество УЗА - " + pipeline.getUnitsValve() + ", количество узлов СОД - " + pipeline.getUnitsSOD()
-                            + ", длина - " + pipeline.getLength())).getResourceForProjDoc();
+            return findPipelineFromRequest.getResourceForProjDoc();
         }
         return 0;
     }
@@ -100,11 +108,7 @@ public class PipelineService {
      */
     public Integer getResourceForEstDocPipeline(Pipeline pipeline){
         if (pipeline.isActive()){
-            return pipelineRepository.findFirstByPipelineLayingMethodAndUnitsValveAndUnitsSODAndLengthGreaterThanEqual
-                            (pipeline.getPipelineLayingMethod(), pipeline.getUnitsValve(), pipeline.getUnitsSOD(), pipeline.getLength())
-                    .orElseThrow(()-> new NoSuchEntityException("Введены некорректные значения параметров линейного трубопровода "
-                            + ", количество УЗА - " + pipeline.getUnitsValve() + ", количество узлов СОД - " + pipeline.getUnitsSOD()
-                            + ", длина - " + pipeline.getLength())).getResourceForEstDoc();
+            return findPipelineFromRequest.getResourceForEstDoc();
         }
         return 0;
     }

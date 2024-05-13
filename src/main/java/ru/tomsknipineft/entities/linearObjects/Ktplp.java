@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.group.GroupSequenceProvider;
 import ru.tomsknipineft.entities.EntityProject;
+import ru.tomsknipineft.entities.enumEntities.KtplpType;
 import ru.tomsknipineft.entities.enumEntities.ObjectType;
 import ru.tomsknipineft.entities.oilPad.OilPad;
 import ru.tomsknipineft.utils.entityValidator.KtplpGroupSequenceProvider;
@@ -26,7 +27,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "ktplp")
+@Table(name = "ktplps")
 public class Ktplp  implements OilPad, EntityProject, Serializable {
 
     @Id
@@ -40,19 +41,41 @@ public class Ktplp  implements OilPad, EntityProject, Serializable {
     private ObjectType objectType;
 
     //    Параметры КТПЛП
-    @NotNull(message = "Мощность не заполнена", groups = OnActiveCheck.class)
-    @Positive(message = "Сan not be 0 or less than 0", groups = OnActiveCheck.class)
-    private Integer power;
+    @NotNull(message = "Вид КТПЛП не выбран", groups = OnActiveCheck.class)
+    @Column(name = "ktplp_type")
+    @Enumerated(EnumType.STRING)
+    private KtplpType ktplpType;
 
     //    Количество КТПЛП, км
-    @NotNull(message = "Длина не заполнена", groups = OnActiveCheck.class)
-    @Positive(message = "Сan not be 0 or less than 0", groups = OnActiveCheck.class)
+    @NotNull(message = "Количество не заполнено", groups = OnActiveCheck.class)
+    @Positive(message = "Не может быть меньше 0", groups = OnActiveCheck.class)
     private Integer count;
 
     //    этап строительства
-    @Min(value = 1, message = "Сan not be less than 1", groups = OnActiveCheck.class)
+    @Min(value = 1, message = "Не может быть меньше 1", groups = OnActiveCheck.class)
     private Integer stage;
 
-    //    необходимые ресурсы, чел/дней
-    private Integer resource;
+    //    необходимые ресурсы для выполнения полевых ИИ, чел/дней
+    @Column(name = "resource_for_eng_survey")
+    private Integer resourceForEngSurvey;
+
+    //    необходимые ресурсы для выполнения ЛИ, чел/дней
+    @Column(name = "resource_for_lab_research")
+    private Integer resourceForLabResearch;
+
+    //    необходимые ресурсы для выполнения отчета ИИ, чел/дней
+    @Column(name = "resource_for_eng_survey_report")
+    private Integer resourceForEngSurveyReport;
+
+    //    необходимые ресурсы для разработки РД, чел/дней
+    @Column(name = "resource_for_work_doc")
+    private Integer resourceForWorkDoc;
+
+    //    необходимые ресурсы для разработки ПД, чел/дней
+    @Column(name = "resource_for_proj_doc")
+    private Integer resourceForProjDoc;
+
+    //    необходимые ресурсы для разработки СД, чел/дней
+    @Column(name = "resource_for_est_doc")
+    private Integer resourceForEstDoc;
 }

@@ -2,6 +2,7 @@ package ru.tomsknipineft.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.tomsknipineft.entities.areaObjects.BackfillSite;
 import ru.tomsknipineft.entities.oilPad.BackfillWell;
 import ru.tomsknipineft.repositories.BackfillWellRepository;
 import ru.tomsknipineft.utils.exceptions.NoSuchEntityException;
@@ -12,6 +13,8 @@ public class BackfillWellService implements EntityProjectService{
 
     private final BackfillWellRepository backfillWellRepository;
 
+    private BackfillWell findBackfillWellFromRequest;
+
     /**
      * Поиск в БД количества ресурса необходимого для выполнения полевых ИИ
      * @param backfillWell Инженерная подготовка куста
@@ -19,8 +22,9 @@ public class BackfillWellService implements EntityProjectService{
      */
     public Integer getResourceForEngSurveyBackfillWell(BackfillWell backfillWell){
         if (backfillWell.isActive()){
-            return backfillWellRepository.findFirstByWellGreaterThanEqual(backfillWell.getWell()).orElseThrow(()->
-                    new NoSuchEntityException("Введено некорректное значение количества скважин " + backfillWell.getWell())).getResourceForEngSurvey();
+            this.findBackfillWellFromRequest = backfillWellRepository.findFirstByWellGreaterThanEqual(backfillWell.getWell()).orElseThrow(()->
+                    new NoSuchEntityException("Введено некорректное значение количества скважин " + backfillWell.getWell()));
+            return findBackfillWellFromRequest.getResourceForEngSurvey();
         }
         return 0;
     }
@@ -32,8 +36,11 @@ public class BackfillWellService implements EntityProjectService{
      */
     public Integer getResourceForLabResearchBackfillWell(BackfillWell backfillWell){
         if (backfillWell.isActive()){
-            return backfillWellRepository.findFirstByWellGreaterThanEqual(backfillWell.getWell()).orElseThrow(()->
-                    new NoSuchEntityException("Введено некорректное значение количества скважин " + backfillWell.getWell())).getResourceForLabResearch();
+            if (findBackfillWellFromRequest == null){
+                this.findBackfillWellFromRequest = backfillWellRepository.findFirstByWellGreaterThanEqual(backfillWell.getWell()).orElseThrow(()->
+                        new NoSuchEntityException("Введено некорректное значение количества скважин " + backfillWell.getWell()));
+            }
+            return findBackfillWellFromRequest.getResourceForLabResearch();
         }
         return 0;
     }
@@ -45,8 +52,11 @@ public class BackfillWellService implements EntityProjectService{
      */
     public Integer getResourceForEngSurveyReportBackfillWell(BackfillWell backfillWell){
         if (backfillWell.isActive()){
-            return backfillWellRepository.findFirstByWellGreaterThanEqual(backfillWell.getWell()).orElseThrow(()->
-                    new NoSuchEntityException("Введено некорректное значение количества скважин " + backfillWell.getWell())).getResourceForEngSurveyReport();
+            if (findBackfillWellFromRequest == null){
+                this.findBackfillWellFromRequest = backfillWellRepository.findFirstByWellGreaterThanEqual(backfillWell.getWell()).orElseThrow(()->
+                        new NoSuchEntityException("Введено некорректное значение количества скважин " + backfillWell.getWell()));
+            }
+            return findBackfillWellFromRequest.getResourceForEngSurveyReport();
         }
         return 0;
     }
@@ -58,8 +68,11 @@ public class BackfillWellService implements EntityProjectService{
      */
     public Integer getResourceForWorkDocBackfillWell(BackfillWell backfillWell){
         if (backfillWell.isActive()){
-            return backfillWellRepository.findFirstByWellGreaterThanEqual(backfillWell.getWell()).orElseThrow(()->
-                    new NoSuchEntityException("Введено некорректное значение количества скважин " + backfillWell.getWell())).getResourceForWorkDoc();
+            if (findBackfillWellFromRequest == null){
+                this.findBackfillWellFromRequest = backfillWellRepository.findFirstByWellGreaterThanEqual(backfillWell.getWell()).orElseThrow(()->
+                        new NoSuchEntityException("Введено некорректное значение количества скважин " + backfillWell.getWell()));
+            }
+            return findBackfillWellFromRequest.getResourceForWorkDoc();
         }
         return 0;
     }
@@ -71,8 +84,7 @@ public class BackfillWellService implements EntityProjectService{
      */
     public Integer getResourceForProjDocBackfillWell(BackfillWell backfillWell){
         if (backfillWell.isActive()){
-            return backfillWellRepository.findFirstByWellGreaterThanEqual(backfillWell.getWell()).orElseThrow(()->
-                    new NoSuchEntityException("Введено некорректное значение количества скважин " + backfillWell.getWell())).getResourceForProjDoc();
+            return findBackfillWellFromRequest.getResourceForProjDoc();
         }
         return 0;
     }
@@ -84,8 +96,7 @@ public class BackfillWellService implements EntityProjectService{
      */
     public Integer getResourceForEstDocBackfillWell(BackfillWell backfillWell){
         if (backfillWell.isActive()){
-            return backfillWellRepository.findFirstByWellGreaterThanEqual(backfillWell.getWell()).orElseThrow(()->
-                    new NoSuchEntityException("Введено некорректное значение количества скважин " + backfillWell.getWell())).getResourceForEstDoc();
+            return findBackfillWellFromRequest.getResourceForEstDoc();
         }
         return 0;
     }

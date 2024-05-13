@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.tomsknipineft.entities.Calendar;
@@ -68,6 +69,7 @@ public class StartCalendarController {
      * @param codeContract искомый шифр договора для вывода календаря
      * @return перенаправление на страницу вывода календарного плана договора
      */
+    @Transactional
     @GetMapping("/codeContract")
     public String outputCalendar(@RequestParam String codeContract, HttpServletRequest request){
         List<Calendar> calendars = calendarService.getCalendarByCode(codeContract);

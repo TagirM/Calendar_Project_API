@@ -26,7 +26,7 @@ public class ExcelCreatedService {
 
     private String filename;
 
-    private String pathFile = "DownloadsCalendar/";
+//    private String pathFile = "DownloadsCalendar/";
 
     /**
      * Метод создания файла Excel
@@ -38,7 +38,8 @@ public class ExcelCreatedService {
         createCells(workbook, sheet);
         filename = "Calendar_" + calendars.get(0).getCodeContract() + ".xlsx";
 
-        try (FileOutputStream outputStream = new FileOutputStream(pathFile + filename)) {
+        try (FileOutputStream outputStream = new FileOutputStream(filename)) {
+//      try (FileOutputStream outputStream = new FileOutputStream(pathFile + filename)) {
             workbook.write(outputStream);
             workbook.close();
         } catch (IOException e) {
@@ -52,7 +53,8 @@ public class ExcelCreatedService {
      */
     public ByteArrayResource resource() {
         ByteArrayResource resource;
-        File file = new File(pathFile + filename);
+//        File file = new File(pathFile + filename);
+        File file = new File(filename);
         try (FileInputStream fileInputStream = new FileInputStream(file)) {
             resource = new ByteArrayResource(fileInputStream.readAllBytes());
         } catch (IOException e) {

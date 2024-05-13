@@ -40,7 +40,7 @@ public class Pipeline  implements OilPad, EntityProject, Serializable {
     @Enumerated(EnumType.STRING)
     private ObjectType objectType;
 
-//    способ прокладки трубопровода
+    // способ прокладки трубопровода
     @NotNull(message = "Способ прокладки не указан", groups = OnActiveCheck.class)
     @Column(name = "pipeline_laying_method")
     @Enumerated(EnumType.STRING)
@@ -51,7 +51,7 @@ public class Pipeline  implements OilPad, EntityProject, Serializable {
     @Positive(message = "Длина не может быть 0 или отрицательной", groups = OnActiveCheck.class)
     private Double length;
 
-//    сложность геологии
+    //    сложность геологии
     @NotNull(message = "Сложность прокладки не указана", groups = OnActiveCheck.class)
     @Column(name = "complexity_of_geology")
     @Enumerated(EnumType.STRING)
@@ -59,11 +59,13 @@ public class Pipeline  implements OilPad, EntityProject, Serializable {
 
     // Количество узлов запорной арматуры
     @Min(value = 0, message = "Не может быть меньше 0", groups = OnActiveCheck.class)
+    @NotNull(message = "Количество узлов запорной арматуры не указано", groups = OnActiveCheck.class)
     @Column(name = "units_valve")
     private Integer unitsValve;
 
     // Количество узлов средств очистки и диагностики (СОД)
     @Min(value = 0, message = "Не может быть меньше 0", groups = OnActiveCheck.class)
+    @NotNull(message = "Количество узлов средств очистки и диагностики не указано", groups = OnActiveCheck.class)
     @Column(name = "units_SOD")
     private Integer unitsSOD;
 

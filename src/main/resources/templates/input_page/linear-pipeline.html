@@ -156,28 +156,42 @@
                               th:errors="*{line.stage}">Well error</span><br><br>
                     </div>
                 </div>
-<!--                <div id="mupnClass" class="container">-->
-<!--                    <h3> Мобильная установка подготовки нефти</h3>-->
-<!--                    <div class="form-group">-->
-<!--                        <label for="activeMupn">Наличие: </label>-->
-<!--                        <input type="checkbox" class="form-check-input" th:field="*{backfillSites[0].active}"-->
-<!--                               id="activeMupn"/><br><br>-->
-<!--                    </div>-->
-<!--                    <div class="form-group">-->
-<!--                        <label for="squareMupn">Площадь отсыпки, га (0,1 - 6,0): </label>-->
-<!--                        <input type="number" step="any" class="form-control" th:field="*{backfillSites[0].square}"-->
-<!--                               id="squareMupn"/>-->
-<!--                        <span class="text-danger" th:if="${#fields.hasErrors('backfillSites[0].square')}"-->
-<!--                              th:errors="*{backfillSites[0].square}">Well error</span><br>-->
-<!--                    </div>-->
-<!--                    <div class="form-group">-->
-<!--                        <label for="stageMupn">Этап строительства: </label>-->
-<!--                        <input type="number" step="any" class="form-control" th:field="*{backfillSites[0].stage}"-->
-<!--                               id="stageMupn"/>-->
-<!--                        <span class="text-danger" th:if="${#fields.hasErrors('backfillSites[0].stage')}"-->
-<!--                              th:errors="*{backfillSites[0].stage}">Well error</span><br><br>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div id="ktplpClass" class="container">
+                    <h3> Комплектная трасформаторная подстанция линейного типа</h3>
+                    <div class="form-group">
+                        <label for="activeKtplp">Наличие: </label>
+                        <input type="checkbox" class="form-check-input" th:field="*{Ktplp.active}"
+                               id="activeKtplp"/><br><br>
+                    </div>
+                    <div class="form-group">
+                        <label>Вид КТПЛП:</label><br>
+                        <input type="radio" class="form-check-input me-1" step="any" th:field="*{ktplp.ktplpType}"
+                               id="ktplpType1" value="KTPLP6_04" checked>
+                        <label class="form-check-label" for="ktplpType1">6/0,4 кВ</label><br>
+                        <input type="radio" class="form-check-input me-1" step="any" th:field="*{ktplp.ktplpType}"
+                               id="ktplpType2" value="KTPLP10_04">
+                        <label class="form-check-label" for="ktplpType2">10/0,4 кВ</label><br>
+                        <input type="radio" class="form-check-input me-1" step="any" th:field="*{ktplp.ktplpType}"
+                               id="ktplpType3" value="KTPLP35_04">
+                        <label class="form-check-label" for="ktplpType3">35/0,4 кВ</label><br>
+                        <span class="text-danger" th:if="${#fields.hasErrors('ktplp.ktplpType')}"
+                              th:errors="*{ktplp.ktplpType3}">Ktplp error</span><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="ktplpCount">Количество КТПЛП, шт:</label>
+                        <input type="number" step="any" class="form-control" th:field="*{ktplp.count}"
+                               id="ktplpCount">
+                        <span class="text-danger" th:if="${#fields.hasErrors('ktplp.count')}"
+                              th:errors="*{ktplp.count}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="stageKtplp">Этап строительства: </label>
+                        <input type="number" step="any" class="form-control" th:field="*{Ktplp.stage}"
+                               id="stageKtplp"/>
+                        <span class="text-danger" th:if="${#fields.hasErrors('Ktplp.stage')}"
+                              th:errors="*{Ktplp.stage}">Ktplp error</span><br><br>
+                    </div>
+                </div>
 <!--                <div id="vecClass" class="container">-->
 <!--                    <h3> Площадка под временный энергоцентр</h3>-->
 <!--                    <div class="form-group">-->
@@ -316,8 +330,7 @@
                 <div id="humanFactor" class="container">
                     <div class="form-group">
                         <label for="humanFactorId" class="fst-italic fw-bolder">Укажите человеческий фактор при
-                            формировании сроков календарного
-                            плана, %:</label>
+                            формировании сроков календарного плана, % (не более 50):</label>
                         <input type="text" class="form-control" th:field="*{humanFactor}" id="humanFactorId"/>
                         <span class="text-danger" th:if="${#fields.hasErrors('humanFactor')}"
                               th:errors="*{humanFactor}">humanFactor error</span><br><br>

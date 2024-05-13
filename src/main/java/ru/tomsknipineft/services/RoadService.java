@@ -2,6 +2,7 @@ package ru.tomsknipineft.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.tomsknipineft.entities.linearObjects.Pipeline;
 import ru.tomsknipineft.entities.linearObjects.Road;
 import ru.tomsknipineft.repositories.RoadRepository;
 import ru.tomsknipineft.utils.exceptions.NoSuchEntityException;
@@ -12,6 +13,8 @@ public class RoadService implements EntityProjectService{
 
     private final RoadRepository roadRepository;
 
+    private Road findRoadFromRequest;
+
     /**
      * Поиск в БД количества ресурса необходимого для выполнения полевых ИИ
      * @param road Инженерная подготовка площадки
@@ -19,9 +22,10 @@ public class RoadService implements EntityProjectService{
      */
     public Integer getResourceForEngSurveyRoad(Road road){
         if (road.isActive()){
-            Integer durationRoad = roadRepository.findFirstByCategoryAndLengthGreaterThanEqual(road.getCategory(),
+            this.findRoadFromRequest = roadRepository.findFirstByCategoryAndLengthGreaterThanEqual(road.getCategory(),
                     road.getLength()).orElseThrow(()-> new NoSuchEntityException("Введены некорректные значения параметров автодороги " +
-                    road.getCategory() + " и " + road.getLength())).getResourceForEngSurvey();
+                    road.getCategory() + " и " + road.getLength()));
+            Integer durationRoad = findRoadFromRequest.getResourceForEngSurvey();
             if (road.isBridgeExist()){
                 return durationRoad + road.getResourceBridge();
             }
@@ -37,9 +41,12 @@ public class RoadService implements EntityProjectService{
      */
     public Integer getResourceForLabResearchRoad(Road road){
         if (road.isActive()){
-            Integer durationRoad = roadRepository.findFirstByCategoryAndLengthGreaterThanEqual(road.getCategory(),
-                    road.getLength()).orElseThrow(()-> new NoSuchEntityException("Введены некорректные значения параметров автодороги " +
-                    road.getCategory() + " и " + road.getLength())).getResourceForLabResearch();
+            if (findRoadFromRequest == null){
+                this.findRoadFromRequest = roadRepository.findFirstByCategoryAndLengthGreaterThanEqual(road.getCategory(),
+                        road.getLength()).orElseThrow(()-> new NoSuchEntityException("Введены некорректные значения параметров автодороги " +
+                        road.getCategory() + " и " + road.getLength()));
+            }
+            Integer durationRoad = findRoadFromRequest.getResourceForLabResearch();
             if (road.isBridgeExist()){
                 return durationRoad + road.getResourceBridge();
             }
@@ -55,9 +62,12 @@ public class RoadService implements EntityProjectService{
      */
     public Integer getResourceForEngSurveyReportRoad(Road road){
         if (road.isActive()){
-            Integer durationRoad = roadRepository.findFirstByCategoryAndLengthGreaterThanEqual(road.getCategory(),
-                    road.getLength()).orElseThrow(()-> new NoSuchEntityException("Введены некорректные значения параметров автодороги " +
-                    road.getCategory() + " и " + road.getLength())).getResourceForEngSurveyReport();
+            if (findRoadFromRequest == null){
+                this.findRoadFromRequest = roadRepository.findFirstByCategoryAndLengthGreaterThanEqual(road.getCategory(),
+                        road.getLength()).orElseThrow(()-> new NoSuchEntityException("Введены некорректные значения параметров автодороги " +
+                        road.getCategory() + " и " + road.getLength()));
+            }
+            Integer durationRoad = findRoadFromRequest.getResourceForEngSurveyReport();
             if (road.isBridgeExist()){
                 return durationRoad + road.getResourceBridge();
             }
@@ -73,9 +83,12 @@ public class RoadService implements EntityProjectService{
      */
     public Integer getResourceForWorkDocRoad(Road road){
         if (road.isActive()){
-            Integer durationRoad = roadRepository.findFirstByCategoryAndLengthGreaterThanEqual(road.getCategory(),
-                    road.getLength()).orElseThrow(()-> new NoSuchEntityException("Введены некорректные значения параметров автодороги " +
-                    road.getCategory() + " и " + road.getLength())).getResourceForWorkDoc();
+            if (findRoadFromRequest == null){
+                this.findRoadFromRequest = roadRepository.findFirstByCategoryAndLengthGreaterThanEqual(road.getCategory(),
+                        road.getLength()).orElseThrow(()-> new NoSuchEntityException("Введены некорректные значения параметров автодороги " +
+                        road.getCategory() + " и " + road.getLength()));
+            }
+            Integer durationRoad = findRoadFromRequest.getResourceForWorkDoc();
             if (road.isBridgeExist()){
                 return durationRoad + road.getResourceBridge();
             }
@@ -91,9 +104,7 @@ public class RoadService implements EntityProjectService{
      */
     public Integer getResourceForProjDocRoad(Road road){
         if (road.isActive()){
-            Integer durationRoad = roadRepository.findFirstByCategoryAndLengthGreaterThanEqual(road.getCategory(),
-                    road.getLength()).orElseThrow(()-> new NoSuchEntityException("Введены некорректные значения параметров автодороги " +
-                    road.getCategory() + " и " + road.getLength())).getResourceForProjDoc();
+            Integer durationRoad = findRoadFromRequest.getResourceForProjDoc();
             if (road.isBridgeExist()){
                 return durationRoad + road.getResourceBridge();
             }
@@ -109,9 +120,7 @@ public class RoadService implements EntityProjectService{
      */
     public Integer getResourceForEstDocRoad(Road road){
         if (road.isActive()){
-            Integer durationRoad = roadRepository.findFirstByCategoryAndLengthGreaterThanEqual(road.getCategory(),
-                    road.getLength()).orElseThrow(()-> new NoSuchEntityException("Введены некорректные значения параметров автодороги " +
-                    road.getCategory() + " и " + road.getLength())).getResourceForEstDoc();
+            Integer durationRoad = findRoadFromRequest.getResourceForEstDoc();
             if (road.isBridgeExist()){
                 return durationRoad + road.getResourceBridge();
             }

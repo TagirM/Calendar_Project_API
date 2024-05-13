@@ -7,6 +7,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import ru.tomsknipineft.entities.Calendar;
 import ru.tomsknipineft.services.CalendarService;
@@ -30,6 +31,7 @@ public class CalendarRestController {
      * @param codeContract шифр договора
      * @return http-ответ
      */
+    @Transactional
     @GetMapping("/calendar/to_desktop")
     public ResponseEntity<Resource> uploadingCalendar(@RequestParam("codeContract") String codeContract){
         List<Calendar> calendars = calendarService.getCalendarByCode(codeContract);

@@ -259,7 +259,7 @@
                 <div id="humanFactor" class="container">
                     <div class="form-group">
                         <label for="humanFactorId"  class="fst-italic fw-bolder">Укажите человеческий фактор при формировании сроков календарного
-                            плана, %:</label>
+                            плана, % (не более 50):</label>
                         <input type="text" class="form-control" th:field="*{humanFactor}" id="humanFactorId"/>
                         <span class="text-danger" th:if="${#fields.hasErrors('humanFactor')}"
                               th:errors="*{humanFactor}">humanFactor error</span><br><br>

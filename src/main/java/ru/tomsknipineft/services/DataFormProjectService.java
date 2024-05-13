@@ -13,8 +13,8 @@ import java.io.*;
 @RequiredArgsConstructor
 public class DataFormProjectService {
 
-    private final String filePathSave = "dataFormProjectSave/save.ser";
-    private final String filePathRecover = "dataFormProjectSave/recover.ser";
+    private final String filePathSave = "save.ser";
+    private final String filePathRecover = "recover.ser";
 
     /**
      * Метод сохранения в файл данных проекта

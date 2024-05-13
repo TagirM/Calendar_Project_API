@@ -66,6 +66,6 @@ public class DataFormOilPad implements DataFormProject, Serializable {
 
     @NotNull(message = "Заполните человеческий фактор")
     @Min(value = 0, message = "Человеческий фактор не может быть меньше 0")
-    @Max(value = 100, message = "Человеческий фактор не должен быть больше 100")
+    @Max(value = 50, message = "Человеческий фактор не должен быть больше 50")
     private Integer humanFactor;
 }

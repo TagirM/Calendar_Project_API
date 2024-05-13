@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.tomsknipineft.entities.Calendar;
 import ru.tomsknipineft.entities.DataFormProject;
 import ru.tomsknipineft.entities.EntityProject;
@@ -67,6 +68,7 @@ public class CalendarService {
      * @param calendars календарь проекта
      * @return данные проекта
      */
+    @Transactional
     public DataFormProject getDataFormProject(List<Calendar> calendars) {
         DataFormProject dataFormProject;
         try {
@@ -88,6 +90,7 @@ public class CalendarService {
      * @param dataFormProject       исходные данные объекта (проекта)
      * @return список календарных планов по всем этапам строительства
      */
+    @Transactional
     public List<Calendar> createCalendar(List<EntityProject> objects, GroupObjectCalendarService objectCalendarService, DataFormProject dataFormProject) {
         List<Calendar> calendars = new ArrayList<>();
 

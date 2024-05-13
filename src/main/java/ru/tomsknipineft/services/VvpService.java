@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.tomsknipineft.entities.areaObjects.Vvp;
 import ru.tomsknipineft.entities.linearObjects.CableRack;
+import ru.tomsknipineft.entities.linearObjects.Road;
 import ru.tomsknipineft.repositories.VvpRepository;
 import ru.tomsknipineft.utils.exceptions.NoSuchEntityException;
 
@@ -13,6 +14,8 @@ public class VvpService implements EntityProjectService{
 
     private final VvpRepository vvpRepository;
 
+    private Vvp findVvpFromRequest;
+
     /**
      * Поиск в БД количества ресурса необходимого для выполнения полевых ИИ
      * @param vvp Инженерная подготовка площадки
@@ -20,10 +23,11 @@ public class VvpService implements EntityProjectService{
      */
     public Integer getResourceForEngSurveyVvp(Vvp vvp){
         if (vvp.isActive()){
-            return vvpRepository.findFirstBySquareGreaterThanEqualAndHelicopterModel(vvp.getSquare(),
+            this.findVvpFromRequest = vvpRepository.findFirstBySquareGreaterThanEqualAndHelicopterModel(vvp.getSquare(),
                     vvp.getHelicopterModel()).orElseThrow(()->
                     new NoSuchEntityException("Введено некорректное значение площади " + vvp.getSquare() +
-                            " и/или модель вертолета " + vvp.getHelicopterModel())).getResourceForEngSurvey();
+                            " и/или модель вертолета " + vvp.getHelicopterModel()));
+            return findVvpFromRequest.getResourceForEngSurvey();
         }
         return 0;
     }
@@ -35,10 +39,13 @@ public class VvpService implements EntityProjectService{
      */
     public Integer getResourceForLabResearchVvp(Vvp vvp){
         if (vvp.isActive()){
-            return vvpRepository.findFirstBySquareGreaterThanEqualAndHelicopterModel(vvp.getSquare(),
-                    vvp.getHelicopterModel()).orElseThrow(()->
-                    new NoSuchEntityException("Введено некорректное значение площади " + vvp.getSquare() +
-                            " и/или модель вертолета " + vvp.getHelicopterModel())).getResourceForLabResearch();
+            if (findVvpFromRequest == null){
+                this.findVvpFromRequest = vvpRepository.findFirstBySquareGreaterThanEqualAndHelicopterModel(vvp.getSquare(),
+                        vvp.getHelicopterModel()).orElseThrow(()->
+                        new NoSuchEntityException("Введено некорректное значение площади " + vvp.getSquare() +
+                                " и/или модель вертолета " + vvp.getHelicopterModel()));
+            }
+            return findVvpFromRequest.getResourceForLabResearch();
         }
         return 0;
     }
@@ -50,10 +57,13 @@ public class VvpService implements EntityProjectService{
      */
     public Integer getResourceForEngSurveyReportVvp(Vvp vvp){
         if (vvp.isActive()){
-            return vvpRepository.findFirstBySquareGreaterThanEqualAndHelicopterModel(vvp.getSquare(),
-                    vvp.getHelicopterModel()).orElseThrow(()->
-                    new NoSuchEntityException("Введено некорректное значение площади " + vvp.getSquare() +
-                            " и/или модель вертолета " + vvp.getHelicopterModel())).getResourceForEngSurveyReport();
+            if (findVvpFromRequest == null){
+                this.findVvpFromRequest = vvpRepository.findFirstBySquareGreaterThanEqualAndHelicopterModel(vvp.getSquare(),
+                        vvp.getHelicopterModel()).orElseThrow(()->
+                        new NoSuchEntityException("Введено некорректное значение площади " + vvp.getSquare() +
+                                " и/или модель вертолета " + vvp.getHelicopterModel()));
+            }
+            return findVvpFromRequest.getResourceForEngSurveyReport();
         }
         return 0;
     }
@@ -65,10 +75,13 @@ public class VvpService implements EntityProjectService{
      */
     public Integer getResourceForWorkDocVvp(Vvp vvp){
         if (vvp.isActive()){
-            return vvpRepository.findFirstBySquareGreaterThanEqualAndHelicopterModel(vvp.getSquare(),
-                    vvp.getHelicopterModel()).orElseThrow(()->
-                    new NoSuchEntityException("Введено некорректное значение площади " + vvp.getSquare() +
-                            " и/или модель вертолета " + vvp.getHelicopterModel())).getResourceForWorkDoc();
+            if (findVvpFromRequest == null){
+                this.findVvpFromRequest = vvpRepository.findFirstBySquareGreaterThanEqualAndHelicopterModel(vvp.getSquare(),
+                        vvp.getHelicopterModel()).orElseThrow(()->
+                        new NoSuchEntityException("Введено некорректное значение площади " + vvp.getSquare() +
+                                " и/или модель вертолета " + vvp.getHelicopterModel()));
+            }
+            return findVvpFromRequest.getResourceForWorkDoc();
         }
         return 0;
     }
@@ -80,10 +93,7 @@ public class VvpService implements EntityProjectService{
      */
     public Integer getResourceForProjDocVvp(Vvp vvp){
         if (vvp.isActive()){
-            return vvpRepository.findFirstBySquareGreaterThanEqualAndHelicopterModel(vvp.getSquare(),
-                    vvp.getHelicopterModel()).orElseThrow(()->
-                    new NoSuchEntityException("Введено некорректное значение площади " + vvp.getSquare() +
-                            " и/или модель вертолета " + vvp.getHelicopterModel())).getResourceForProjDoc();
+            return findVvpFromRequest.getResourceForProjDoc();
         }
         return 0;
     }
@@ -95,10 +105,7 @@ public class VvpService implements EntityProjectService{
      */
     public Integer getResourceForEstDocVvp(Vvp vvp){
         if (vvp.isActive()){
-            return vvpRepository.findFirstBySquareGreaterThanEqualAndHelicopterModel(vvp.getSquare(),
-                    vvp.getHelicopterModel()).orElseThrow(()->
-                    new NoSuchEntityException("Введено некорректное значение площади " + vvp.getSquare() +
-                            " и/или модель вертолета " + vvp.getHelicopterModel())).getResourceForEstDoc();
+            return findVvpFromRequest.getResourceForEstDoc();
         }
         return 0;
     }

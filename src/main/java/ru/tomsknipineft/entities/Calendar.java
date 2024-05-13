@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -73,14 +74,21 @@ public class Calendar {
     // человеческий фактор, %
     private Integer humanFactor;
 
+
     // сохранение в виде файла данных о проекте
     @Lob
-    @Column(name = "bytes_data_project", columnDefinition = "LONGBLOB")
+//    @Column(name = "bytes_data_project", columnDefinition = "LONGBLOB") // Для БД H2
+    @Column(name = "bytes_data_project") // Для БД PostgresSQL
     private byte[] bytesDataProject;
 
     @PrePersist
     private void init(){
         dateOfCreated = LocalDateTime.now();
+    }
+
+    @Transactional
+    public byte[] getBytesDataProject() {
+        return bytesDataProject;
     }
 
 }

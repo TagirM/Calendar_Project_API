@@ -5,10 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
 import ru.tomsknipineft.entities.EntityProject;
 import ru.tomsknipineft.entities.areaObjects.Vvp;
-import ru.tomsknipineft.entities.linearObjects.CableRack;
-import ru.tomsknipineft.entities.linearObjects.Line;
-import ru.tomsknipineft.entities.linearObjects.Pipeline;
-import ru.tomsknipineft.entities.linearObjects.Road;
+import ru.tomsknipineft.entities.linearObjects.*;
 import ru.tomsknipineft.services.*;
 
 import java.util.ArrayList;
@@ -26,7 +23,8 @@ public class LinearPipelineGroupCalendarServiceImplTest {
     RoadService roadService = mock(RoadService.class);
     LineService lineService = mock(LineService.class);
     CableRackService cableRackService = mock(CableRackService.class);
-    LinearPipelineGroupCalendarServiceImpl service = new LinearPipelineGroupCalendarServiceImpl(pipelineService, vvpService, roadService, lineService, cableRackService);
+    KtplpService ktplpService = mock(KtplpService.class);
+    LinearPipelineGroupCalendarServiceImpl service = new LinearPipelineGroupCalendarServiceImpl(pipelineService, vvpService, roadService, lineService, cableRackService, ktplpService);
 
     @Test
     public void testResourceForEngSurveyStage_Pipeline() {
@@ -68,6 +66,17 @@ public class LinearPipelineGroupCalendarServiceImplTest {
 
         int expected = 3;
         int actual = service.resourceForWorkDocStage(cableRack);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testResourceForProjDocStage_Ktplp() {
+        Ktplp ktplp = new Ktplp();
+        when(ktplpService.getResourceForWorkDocKtplp(ktplp)).thenReturn(3);
+
+        int expected = 3;
+        int actual = service.resourceForWorkDocStage(ktplp);
 
         assertEquals(expected, actual);
     }

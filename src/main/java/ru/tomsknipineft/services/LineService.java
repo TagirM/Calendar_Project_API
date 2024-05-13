@@ -13,6 +13,8 @@ public class LineService implements EntityProjectService{
 
     private final LineRepository lineRepository;
 
+    private Line findLineFromRequest;
+
     /**
      * Поиск в БД количества ресурса необходимого для выполнения полевых ИИ
      * @param line Инженерная подготовка площадки
@@ -20,8 +22,9 @@ public class LineService implements EntityProjectService{
      */
     public Integer getResourceForEngSurveyLine(Line line){
         if (line.isActive()){
-            return lineRepository.findFirstByPowerAndLengthGreaterThanEqual(line.getPower(), line.getLength()).orElseThrow(()->
-                    new NoSuchEntityException("Введены некорректные значения параметров ВЛ " + line.getPower() + " и " + line.getLength())).getResourceForEngSurvey();
+            this.findLineFromRequest = lineRepository.findFirstByPowerAndLengthGreaterThanEqual(line.getPower(), line.getLength()).orElseThrow(()->
+                    new NoSuchEntityException("Введены некорректные значения параметров ВЛ " + line.getPower() + " и " + line.getLength()));
+            return findLineFromRequest.getResourceForEngSurvey();
         }
         return 0;
     }
@@ -33,8 +36,11 @@ public class LineService implements EntityProjectService{
      */
     public Integer getResourceForLabResearchLine(Line line){
         if (line.isActive()){
-            return lineRepository.findFirstByPowerAndLengthGreaterThanEqual(line.getPower(), line.getLength()).orElseThrow(()->
-                    new NoSuchEntityException("Введены некорректные значения параметров ВЛ " + line.getPower() + " и " + line.getLength())).getResourceForLabResearch();
+            if (findLineFromRequest == null){
+                this.findLineFromRequest = lineRepository.findFirstByPowerAndLengthGreaterThanEqual(line.getPower(), line.getLength()).orElseThrow(()->
+                        new NoSuchEntityException("Введены некорректные значения параметров ВЛ " + line.getPower() + " и " + line.getLength()));
+            }
+            return findLineFromRequest.getResourceForLabResearch();
         }
         return 0;
     }
@@ -46,8 +52,11 @@ public class LineService implements EntityProjectService{
      */
     public Integer getResourceForEngSurveyReportLine(Line line){
         if (line.isActive()){
-            return lineRepository.findFirstByPowerAndLengthGreaterThanEqual(line.getPower(), line.getLength()).orElseThrow(()->
-                    new NoSuchEntityException("Введены некорректные значения параметров ВЛ " + line.getPower() + " и " + line.getLength())).getResourceForEngSurveyReport();
+            if (findLineFromRequest == null){
+                this.findLineFromRequest = lineRepository.findFirstByPowerAndLengthGreaterThanEqual(line.getPower(), line.getLength()).orElseThrow(()->
+                        new NoSuchEntityException("Введены некорректные значения параметров ВЛ " + line.getPower() + " и " + line.getLength()));
+            }
+            return findLineFromRequest.getResourceForEngSurveyReport();
         }
         return 0;
     }
@@ -59,8 +68,11 @@ public class LineService implements EntityProjectService{
      */
     public Integer getResourceForWorkDocLine(Line line){
         if (line.isActive()){
-            return lineRepository.findFirstByPowerAndLengthGreaterThanEqual(line.getPower(), line.getLength()).orElseThrow(()->
-                    new NoSuchEntityException("Введены некорректные значения параметров ВЛ " + line.getPower() + " и " + line.getLength())).getResourceForWorkDoc();
+            if (findLineFromRequest == null){
+                this.findLineFromRequest = lineRepository.findFirstByPowerAndLengthGreaterThanEqual(line.getPower(), line.getLength()).orElseThrow(()->
+                        new NoSuchEntityException("Введены некорректные значения параметров ВЛ " + line.getPower() + " и " + line.getLength()));
+            }
+            return findLineFromRequest.getResourceForWorkDoc();
         }
 
         return 0;
@@ -73,8 +85,7 @@ public class LineService implements EntityProjectService{
      */
     public Integer getResourceForProjDocLine(Line line){
         if (line.isActive()){
-            return lineRepository.findFirstByPowerAndLengthGreaterThanEqual(line.getPower(), line.getLength()).orElseThrow(()->
-                    new NoSuchEntityException("Введены некорректные значения параметров ВЛ " + line.getPower() + " и " + line.getLength())).getResourceForProjDoc();
+            return findLineFromRequest.getResourceForProjDoc();
         }
         return 0;
     }
@@ -86,8 +97,7 @@ public class LineService implements EntityProjectService{
      */
     public Integer getResourceForEstDocLine(Line line){
         if (line.isActive()){
-            return lineRepository.findFirstByPowerAndLengthGreaterThanEqual(line.getPower(), line.getLength()).orElseThrow(()->
-                    new NoSuchEntityException("Введены некорректные значения параметров ВЛ " + line.getPower() + " и " + line.getLength())).getResourceForEstDoc();
+            return findLineFromRequest.getResourceForEstDoc();
         }
         return 0;
     }

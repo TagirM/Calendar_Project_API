@@ -1,0 +1,27 @@
+version: '3.5'
+services:
+  postgres:
+    container_name: postgres_container
+    image: postgres:14.8-alpine3.18
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 4G
+    environment:
+      POSTGRES_DB: calendarAPI
+      POSTGRES_USER: bestuser
+      POSTGRES_PASSWORD: bestuser
+    volumes:
+      - ./dbdata:/var/lib/postgresql/data 700
+
+  calendar-api:
+    restart: on-failure
+    container_name: calendar-api
+    build:
+      context: ./
+    ports:
+      - "8080:8080"
