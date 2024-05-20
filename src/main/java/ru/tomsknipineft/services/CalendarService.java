@@ -3,13 +3,19 @@ package ru.tomsknipineft.services;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.tomsknipineft.entities.Calendar;
 import ru.tomsknipineft.entities.DataFormProject;
 import ru.tomsknipineft.entities.EntityProject;
 import ru.tomsknipineft.entities.enumEntities.ObjectType;
+import ru.tomsknipineft.entities.linearObjects.DataFormLinearObjects;
+import ru.tomsknipineft.entities.oilPad.DataFormOilPad;
 import ru.tomsknipineft.repositories.CalendarRepository;
+import ru.tomsknipineft.services.utilService.DataFormProjectService;
+import ru.tomsknipineft.services.utilService.DateService;
 import ru.tomsknipineft.utils.exceptions.NoSuchCalendarException;
 
 import java.io.FileOutputStream;
@@ -26,30 +32,31 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 @Service
 @RequiredArgsConstructor
+@CacheConfig(cacheNames = "calendarsCache")
 public class CalendarService {
 
     private final CalendarRepository calendarRepository;
 
-    private final DateService dateService;
+//    private final DateService dateService;
 
-    private final DataFormProjectService dataFormProjectService;
+//    private final DataFormProjectService dataFormProjectService;
 
     private static final Logger logger = LogManager.getLogger(BackfillWellGroupCalendarServiceImpl.class);
 
     // Константа с количеством дней необходимых проектному офису для сбора и передачи документации заказчику с учетом всех процедур
-    final int PROJECT_OFFICE_DAYS = 2;
+    final static int PROJECT_OFFICE_DAYS = 2;
     // Константа с количеством календарных дней необходимых для согласования отчета ИИ
-    final int AGREEMENT_ENGINEERING_SURVEY_REPORT_DURATION = 60;
+    final static int AGREEMENT_ENGINEERING_SURVEY_REPORT_DURATION = 60;
     // Константа с количеством календарных дней необходимых для согласования РД
-    final int AGREEMENT_WORK_DOC_DURATION = 60;
+    final static int AGREEMENT_WORK_DOC_DURATION = 60;
     // Константа с количеством календарных дней необходимых для согласования ПД
-    final int AGREEMENT_PROJECT_DOC_DURATION = 60;
+    final static int AGREEMENT_PROJECT_DOC_DURATION = 60;
     // Константа с количеством календарных дней необходимых для согласования СД
-    final int AGREEMENT_ESTIMATES_DOC_DURATION = 60;
+    final static int AGREEMENT_ESTIMATES_DOC_DURATION = 60;
     // Константа с количеством календарных дней необходимых для ГГЭ ПД
-    final int EXAMINATION_PROJECT_DOC_DURATION = 120;
+    final static int EXAMINATION_PROJECT_DOC_DURATION = 120;
     // Константа с количеством календарных дней необходимых для разработки ЗУР
-    final int LAND_DURATION = 120;
+    final static int LAND_DURATION = 120;
 
     /**
      * Получение всего списка календарных планов (различных этапов строительства) по шифру договора
@@ -57,7 +64,9 @@ public class CalendarService {
      * @param code шифр договора
      * @return список календарных планов по различным этапам строительства
      */
+    @Cacheable(key = "#code")
     public List<Calendar> getCalendarByCode(String code) {
+        logger.info("Произошло обращение к методу getCalendarByCode");
         return calendarRepository.findCalendarByCodeContract(code)
                 .orElseThrow(() -> new NoSuchCalendarException("Календарь по указанному шифру " + code + " отсутствует в базе данных"));
     }
@@ -70,6 +79,7 @@ public class CalendarService {
      */
     @Transactional
     public DataFormProject getDataFormProject(List<Calendar> calendars) {
+        DataFormProjectService dataFormProjectService = new DataFormProjectService();
         DataFormProject dataFormProject;
         try {
             FileOutputStream f = new FileOutputStream(dataFormProjectService.getFilePathRecover());
@@ -92,10 +102,15 @@ public class CalendarService {
      */
     @Transactional
     public List<Calendar> createCalendar(List<EntityProject> objects, GroupObjectCalendarService objectCalendarService, DataFormProject dataFormProject) {
-        List<Calendar> calendars = new ArrayList<>();
+        if (dataFormProject.isFieldEngineeringSurvey()) {
+            dataFormProject.setEngineeringSurveyReport(true);
+        }
 
+        List<Calendar> calendars = new ArrayList<>();
+        DateService dateService = new DateService();
+        DataFormProjectService dataFormProjectService = new DataFormProjectService();
         //  Запись в файл данных о проекте
-        this.dataFormProjectService.dataFormProjectSave(dataFormProject);
+        dataFormProjectService.dataFormProjectSave(dataFormProject);
 
         // Переменные и даты метода        
         // Инициализация переменной, хранящей количество календарных дней смещения начала отчета ИИ
@@ -152,10 +167,11 @@ public class CalendarService {
         Map<Integer, Integer> resourcesEstDoc = getResourcesEstDoc(activeObjects, objectCalendarService);
 
         // Цикл, проходящий каждый этап строительства объекта проектирования
+        int stageNumber = 1;
         for (int i = 0; i < resourcesWorkDoc.size(); i++) {
 
             // определяем номер этапа строительства, если идут не по порядку или не с 1го
-            int stageNumber = i + 1;
+//            int stageNumber = i + 1;
             while (resourcesWorkDoc.get(stageNumber) == null) {
                 stageNumber++;
             }
@@ -165,17 +181,20 @@ public class CalendarService {
             int resourcesForEngSurveyWithHumanFactor;
             int resourcesForLabResearchWithHumanFactor;
             if (resourcesEngSurvey != null && resourcesLabResearch != null) {
-                resourcesForEngSurveyWithHumanFactor = ((resourcesEngSurvey.get(stageNumber) / dataFormProject.getDrillingRig()) * (humanFactor + 100)) / 100;
+
+                resourcesForEngSurveyWithHumanFactor = ((int) ((resourcesEngSurvey.get(stageNumber) / drillingCorrectionFactor(dataFormProject))) *
+                        (humanFactor + 100)) / 100;
                 resourcesForLabResearchWithHumanFactor = (resourcesLabResearch.get(stageNumber) * (humanFactor + 100)) / 100;
 
-                // расчет дат окончания этапов работ договора, с учетом пересчета ресурса в календарные дни в каждом этапе строительства с учетом праздничных и выходных дней
-                // (в нормальном режиме, без учета сжатых сроков проектирования) с помощью метода recalculationResourcesInCalendarDate
+                // расчет дат окончания этапов работ договора, с учетом пересчета ресурса в календарные дни в каждом этапе строительства с учетом праздничных и
+                // выходных дней (в нормальном режиме, без учета сжатых сроков проектирования) с помощью метода recalculationResourcesInCalendarDate
 
                 // Дата окончания полевых ИИ текущего этапа
                 calendarDayFinishEngSurvey = dateService.recalculationResourcesInCalendarDate(resourcesForEngSurveyWithHumanFactor, startContract);
 
                 // Дата окончания ЛИ текущего этапа
-                calendarDayFinishLabResearch = dateService.recalculationResourcesInCalendarDate(resourcesForLabResearchWithHumanFactor, calendarDayFinishEngSurvey);
+                calendarDayFinishLabResearch = dateService.recalculationResourcesInCalendarDate(resourcesForLabResearchWithHumanFactor,
+                        calendarDayFinishEngSurvey);
 
                 // проверка условия пересечения начала выполнения отчета ИИ (соответствует окончанию этапа ЛИ) текущего этапа строительства с
                 // выполнением отчета ИИ предыдущего этапа, если пересечение есть, то срок сместить, чтобы отчетов ИИ шли последовательно
@@ -197,7 +216,8 @@ public class CalendarService {
                         calendarDayFinishLabResearch.plusDays(stageOffsetII));
 
                 // дата окончания согласования отчета ИИ текущего этапа строительства
-                finishAgreementEngineeringSurveyReport = dateService.workDay(calendarDayFinishEngSurveyReport.plusDays(AGREEMENT_ENGINEERING_SURVEY_REPORT_DURATION));
+                finishAgreementEngineeringSurveyReport = dateService.workDay(calendarDayFinishEngSurveyReport.plusDays
+                        (AGREEMENT_ENGINEERING_SURVEY_REPORT_DURATION));
             } else {
                 calendarDayFinishEngSurveyReport = calendarDayFinishLabResearch;
                 finishAgreementEngineeringSurveyReport = calendarDayFinishEngSurveyReport;
@@ -221,13 +241,15 @@ public class CalendarService {
                 stageOffsetPSD = (int) DAYS.between(startWorking, calendarDayFinishWorkDoc);
             }
             // дата окончания РД текущего этапа строительства  с учетом смещения = дате начала разработки смет и дате начала проектной документации текущего этапа
-            calendarDayFinishWorkDoc = dateService.recalculationResourcesInCalendarDate(resourcesForWorkDocWithHumanFactor, calendarDayFinishEngSurveyReport.plusDays(stageOffsetPSD));
+            calendarDayFinishWorkDoc = dateService.recalculationResourcesInCalendarDate(resourcesForWorkDocWithHumanFactor,
+                    calendarDayFinishEngSurveyReport.plusDays(stageOffsetPSD));
 
             // дата окончания согласования РД текущего этапа строительства
             LocalDate agreementWorkingFinish = dateService.workDay(calendarDayFinishWorkDoc.plusDays(AGREEMENT_WORK_DOC_DURATION));
 
             // дата окончания разработки ПД текущего этапа строительства
-            LocalDate calendarDayFinishProjDoc = dateService.recalculationResourcesInCalendarDate(resourcesForProjDocWithHumanFactor, calendarDayFinishWorkDoc);
+            LocalDate calendarDayFinishProjDoc = dateService.recalculationResourcesInCalendarDate(resourcesForProjDocWithHumanFactor,
+                    calendarDayFinishWorkDoc);
 
             // дата окончания согласования ПД текущего этапа строительства
             LocalDate agreementProjectFinish = dateService.workDay(calendarDayFinishProjDoc.plusDays(AGREEMENT_PROJECT_DOC_DURATION));
@@ -288,12 +310,31 @@ public class CalendarService {
             // обнуления количества дней смещения отчета ИИ и РД за счет наложения этапов, для следующего этапа строительства
             stageOffsetII = 0;
             stageOffsetPSD = 0;
+            // переход на следующий этап строительства
+            stageNumber++;
         }
         return calendars;
     }
 
     /**
-     * Получение map с ресурсами необходиммыми для полевых ИИ по каждому этапу строительства (ключ - этап строительства, значение - необходимый ресурс в ч/дн)
+     * Метод рассчитывающий корректирующий коэффициент на полевые ИИ с учетом количества буровых машин
+     *
+     * @param dataFormProject тип объекта проектирования
+     * @return корректирующий коэффициент на полевые ИИ
+     */
+    private double drillingCorrectionFactor(DataFormProject dataFormProject) {
+        double drillingRig = 0;
+        if (dataFormProject.getClass() == DataFormOilPad.class) {
+            drillingRig = dataFormProject.getDrillingRig() * 0.85;
+        } else if (dataFormProject.getClass() == DataFormLinearObjects.class) {
+            drillingRig = dataFormProject.getDrillingRig() * 0.7;
+        }
+        return drillingRig;
+    }
+
+    /**
+     * Получение map с ресурсами необходиммыми для полевых ИИ по каждому этапу строительства (ключ - этап строительства, значение -
+     * необходимый ресурс в ч/дн)
      *
      * @param activeObjects         список активных сооружений объекта проектирования
      * @param objectCalendarService класс-сервис объекта проектирования
@@ -337,7 +378,8 @@ public class CalendarService {
     }
 
     /**
-     * Получение map с ресурсами необходиммыми для отчета ИИ по каждому этапу строительства (ключ - этап строительства, значение - необходимый ресурс в ч/дн)
+     * Получение map с ресурсами необходиммыми для отчета ИИ по каждому этапу строительства (ключ - этап строительства, значение -
+     * необходимый ресурс в ч/дн)
      *
      * @param activeObjects         список активных сооружений объекта проектирования
      * @param objectCalendarService класс-сервис объекта проектирования

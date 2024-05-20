@@ -7,6 +7,7 @@ import ru.tomsknipineft.entities.EntityProject;
 import ru.tomsknipineft.entities.areaObjects.Vvp;
 import ru.tomsknipineft.entities.linearObjects.*;
 import ru.tomsknipineft.services.*;
+import ru.tomsknipineft.services.entityService.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,9 @@ public class LinearPipelineGroupCalendarServiceImplTest {
     LineService lineService = mock(LineService.class);
     CableRackService cableRackService = mock(CableRackService.class);
     KtplpService ktplpService = mock(KtplpService.class);
-    LinearPipelineGroupCalendarServiceImpl service = new LinearPipelineGroupCalendarServiceImpl(pipelineService, vvpService, roadService, lineService, cableRackService, ktplpService);
+
+    SiknService siknService = mock(SiknService.class);
+    LinearPipelineGroupCalendarServiceImpl service = new LinearPipelineGroupCalendarServiceImpl(pipelineService, vvpService, roadService, lineService, cableRackService, ktplpService, siknService);
 
     @Test
     public void testResourceForEngSurveyStage_Pipeline() {

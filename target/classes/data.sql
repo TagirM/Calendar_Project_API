@@ -11,36 +11,66 @@ INSERT INTO backfill_wells (id, active, object_type, well, stage, resource_for_e
                             resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
 VALUES (4, 'true', 'AREA', 24, 1, 16, 16, 10, 20, 21, 21);
 
-INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, stage, resource_for_eng_survey,
+INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, count, stage, resource_for_eng_survey,
                    resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
-VALUES (1, 'true', 'LINEAR', 'false', 0, 0, 4, 1, 1, 10, 10, 10, 10, 21, 21);
-INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, stage, resource_for_eng_survey,
+VALUES (1, 'true', 'LINEAR', 'false', 0, 0, 4, 1, 1, 1, 10, 10, 10, 10, 21, 21);
+INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, count, stage, resource_for_eng_survey,
                    resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
-VALUES (2, 'true', 'LINEAR', 'false', 0, 0, 4, 5, 1, 12, 12, 10, 12, 21, 21);
-INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, stage, resource_for_eng_survey,
+VALUES (2, 'true', 'LINEAR', 'false', 0, 0, 4, 5, 1, 1, 12, 12, 10, 12, 21, 21);
+INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, count, stage, resource_for_eng_survey,
                    resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
-VALUES (3, 'true', 'LINEAR', 'false', 0, 0, 4, 10, 1, 14, 14, 12, 14, 21, 21);
-INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, stage, resource_for_eng_survey,
+VALUES (3, 'true', 'LINEAR', 'false', 0, 0, 4, 10, 1, 1, 14, 14, 12, 14, 21, 21);
+INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, count, stage, resource_for_eng_survey,
                    resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
-VALUES (4, 'true', 'LINEAR', 'false', 0, 0, 4, 15, 1, 16, 16, 12, 16, 21, 21);
-INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, stage, resource_for_eng_survey,
+VALUES (4, 'true', 'LINEAR', 'false', 0, 0, 4, 15, 1, 1, 16, 16, 12, 16, 21, 21);
+INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, count, stage, resource_for_eng_survey,
                    resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
-VALUES (5, 'true', 'LINEAR', 'false', 0, 0, 4, 20, 1, 18, 18, 12, 18, 21, 21);
-INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, stage, resource_for_eng_survey,
+VALUES (5, 'true', 'LINEAR', 'false', 0, 0, 4, 20, 1, 1, 18, 18, 12, 18, 21, 21);
+INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, count, stage, resource_for_eng_survey,
                    resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
-VALUES (6, 'true', 'LINEAR', 'false', 0, 0, 3, 1, 1, 10, 10, 10, 12, 21, 21);
-INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, stage, resource_for_eng_survey,
+VALUES (6, 'true', 'LINEAR', 'false', 0, 0, 3, 1, 1, 1, 10, 10, 10, 12, 21, 21);
+INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, count, stage, resource_for_eng_survey,
                    resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
-VALUES (7, 'true', 'LINEAR', 'false', 0, 0, 3, 5, 1, 12, 12, 10, 14, 21, 21);
-INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, stage, resource_for_eng_survey,
+VALUES (7, 'true', 'LINEAR', 'false', 0, 0, 3, 5, 1, 1, 12, 12, 10, 14, 21, 21);
+INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, count, stage, resource_for_eng_survey,
                    resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
-VALUES (8, 'true', 'LINEAR', 'false', 0, 0, 3, 10, 1, 14, 14, 12, 17, 21, 21);
-INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, stage, resource_for_eng_survey,
+VALUES (8, 'true', 'LINEAR', 'false', 0, 0, 3, 10, 1, 1, 14, 14, 12, 17, 21, 21);
+INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, count, stage, resource_for_eng_survey,
                    resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
-VALUES (9, 'true', 'LINEAR', 'false', 0, 0, 3, 15, 1, 16, 16, 12, 20, 21, 21);
-INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, stage, resource_for_eng_survey,
+VALUES (9, 'true', 'LINEAR', 'false', 0, 0, 3, 15, 1, 1, 16, 16, 12, 20, 21, 21);
+INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, count, stage, resource_for_eng_survey,
                    resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
-VALUES (10, 'true', 'LINEAR', 'false', 0, 0, 3, 20, 1, 18, 18, 12, 23, 21, 21);
+VALUES (10, 'true', 'LINEAR', 'false', 0, 0, 3, 20, 1, 1, 18, 18, 12, 23, 21, 21);
+INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, count, stage, resource_for_eng_survey,
+                   resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (11, 'true', 'LINEAR', 'false', 0, 0, 4, 1, 4, 1, 20, 20, 12, 10, 21, 21);
+INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, count, stage, resource_for_eng_survey,
+                   resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (12, 'true', 'LINEAR', 'false', 0, 0, 4, 5, 4, 1, 22, 22, 12, 12, 21, 21);
+INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, count, stage, resource_for_eng_survey,
+                   resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (13, 'true', 'LINEAR', 'false', 0, 0, 4, 10, 4, 1, 24, 24, 14, 14, 21, 21);
+INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, count, stage, resource_for_eng_survey,
+                   resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (14, 'true', 'LINEAR', 'false', 0, 0, 4, 15, 4, 1, 26, 26, 14, 16, 21, 21);
+INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, count, stage, resource_for_eng_survey,
+                   resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (15, 'true', 'LINEAR', 'false', 0, 0, 4, 20, 4, 1, 28, 28, 14, 18, 21, 21);
+INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, count, stage, resource_for_eng_survey,
+                   resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (16, 'true', 'LINEAR', 'false', 0, 0, 3, 1, 4, 1, 20, 20, 12, 12, 21, 21);
+INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, count, stage, resource_for_eng_survey,
+                   resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (17, 'true', 'LINEAR', 'false', 0, 0, 3, 5, 4, 1, 22, 22, 12, 14, 21, 21);
+INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, count, stage, resource_for_eng_survey,
+                   resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (18, 'true', 'LINEAR', 'false', 0, 0, 3, 10, 4, 1, 24, 24, 14, 17, 21, 21);
+INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, count, stage, resource_for_eng_survey,
+                   resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (19, 'true', 'LINEAR', 'false', 0, 0, 3, 15, 4, 1, 26, 26, 14, 20, 21, 21);
+INSERT INTO roads (id, active, object_type, bridge_exist, bridge_road_count, bridge_road_length, category, length, count, stage, resource_for_eng_survey,
+                   resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (20, 'true', 'LINEAR', 'false', 0, 0, 3, 20, 4, 1, 28, 28, 14, 23, 21, 21);
 
 INSERT INTO lines (id, active, object_type, power, length, complexity_of_geology, stage, resource_for_eng_survey,
                    resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
@@ -222,4 +252,61 @@ VALUES (2, 'true', 'AREA', 'KTPLP10_04', 1, 1, 3, 1, 3, 11, 15, 10);
 INSERT INTO ktplps (id, active, object_type, ktplp_type, count, stage, resource_for_eng_survey, resource_for_lab_research, resource_for_eng_survey_report,
                     resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
 VALUES (3, 'true', 'AREA', 'KTPLP35_04', 1, 1, 3, 1, 3, 12, 15, 10);
+INSERT INTO ktplps (id, active, object_type, ktplp_type, count, stage, resource_for_eng_survey, resource_for_lab_research, resource_for_eng_survey_report,
+                    resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (4, 'true', 'AREA', 'KTPLP6_04', 2, 1, 4, 2, 3, 13, 15, 12);
+INSERT INTO ktplps (id, active, object_type, ktplp_type, count, stage, resource_for_eng_survey, resource_for_lab_research, resource_for_eng_survey_report,
+                    resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (5, 'true', 'AREA', 'KTPLP10_04', 2, 1, 4, 2, 3, 14, 15, 12);
+INSERT INTO ktplps (id, active, object_type, ktplp_type, count, stage, resource_for_eng_survey, resource_for_lab_research, resource_for_eng_survey_report,
+                    resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (6, 'true', 'AREA', 'KTPLP35_04', 2, 1, 4, 2, 3, 15, 15, 12);
+INSERT INTO ktplps (id, active, object_type, ktplp_type, count, stage, resource_for_eng_survey, resource_for_lab_research, resource_for_eng_survey_report,
+                    resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (7, 'true', 'AREA', 'KTPLP6_04', 3, 1, 5, 3, 4, 16, 16, 14);
+INSERT INTO ktplps (id, active, object_type, ktplp_type, count, stage, resource_for_eng_survey, resource_for_lab_research, resource_for_eng_survey_report,
+                    resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (8, 'true', 'AREA', 'KTPLP10_04', 3, 1, 5, 3, 4, 17, 16, 14);
+INSERT INTO ktplps (id, active, object_type, ktplp_type, count, stage, resource_for_eng_survey, resource_for_lab_research, resource_for_eng_survey_report,
+                    resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (9, 'true', 'AREA', 'KTPLP35_04', 3, 1, 5, 3, 4, 18, 16, 14);
+INSERT INTO ktplps (id, active, object_type, ktplp_type, count, stage, resource_for_eng_survey, resource_for_lab_research, resource_for_eng_survey_report,
+                    resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (10, 'true', 'AREA', 'KTPLP6_04', 4, 1, 7, 4, 4, 19, 16, 16);
+INSERT INTO ktplps (id, active, object_type, ktplp_type, count, stage, resource_for_eng_survey, resource_for_lab_research, resource_for_eng_survey_report,
+                    resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (11, 'true', 'AREA', 'KTPLP10_04', 4, 1, 7, 4, 4, 20, 16, 16);
+INSERT INTO ktplps (id, active, object_type, ktplp_type, count, stage, resource_for_eng_survey, resource_for_lab_research, resource_for_eng_survey_report,
+                    resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (12, 'true', 'AREA', 'KTPLP35_04', 4, 1, 7, 4, 4, 21, 16, 16);
 
+INSERT INTO sikns (id, active, object_type, sikn_type, capacity, stage, resource_for_eng_survey, resource_for_lab_research, resource_for_eng_survey_report,
+                    resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (1, 'true', 'AREA', 'OPERATIONAL', 7, 1, 3, 1, 3, 10, 15, 6);
+INSERT INTO sikns (id, active, object_type, sikn_type, capacity, stage, resource_for_eng_survey, resource_for_lab_research, resource_for_eng_survey_report,
+                   resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (2, 'true', 'AREA', 'OPERATIONAL', 28, 1, 3, 1, 3, 12, 15, 6);
+INSERT INTO sikns (id, active, object_type, sikn_type, capacity, stage, resource_for_eng_survey, resource_for_lab_research, resource_for_eng_survey_report,
+                   resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (3, 'true', 'AREA', 'OPERATIONAL', 88, 1, 3, 1, 3, 12, 15, 6);
+INSERT INTO sikns (id, active, object_type, sikn_type, capacity, stage, resource_for_eng_survey, resource_for_lab_research, resource_for_eng_survey_report,
+                   resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (4, 'true', 'AREA', 'OPERATIONAL', 273, 1, 3, 1, 3, 14, 15, 6);
+INSERT INTO sikns (id, active, object_type, sikn_type, capacity, stage, resource_for_eng_survey, resource_for_lab_research, resource_for_eng_survey_report,
+                   resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (5, 'true', 'AREA', 'OPERATIONAL', 550, 1, 3, 1, 3, 14, 15, 6);
+INSERT INTO sikns (id, active, object_type, sikn_type, capacity, stage, resource_for_eng_survey, resource_for_lab_research, resource_for_eng_survey_report,
+                   resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (6, 'true', 'AREA', 'COMMERCIAL', 7, 1, 9, 1, 3, 12, 15, 8);
+INSERT INTO sikns (id, active, object_type, sikn_type, capacity, stage, resource_for_eng_survey, resource_for_lab_research, resource_for_eng_survey_report,
+                   resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (7, 'true', 'AREA', 'COMMERCIAL', 28, 1, 9, 1, 3, 14, 15, 8);
+INSERT INTO sikns (id, active, object_type, sikn_type, capacity, stage, resource_for_eng_survey, resource_for_lab_research, resource_for_eng_survey_report,
+                   resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (8, 'true', 'AREA', 'COMMERCIAL', 88, 1, 9, 1, 3, 14, 15, 8);
+INSERT INTO sikns (id, active, object_type, sikn_type, capacity, stage, resource_for_eng_survey, resource_for_lab_research, resource_for_eng_survey_report,
+                   resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (9, 'true', 'AREA', 'COMMERCIAL', 273, 1, 9, 1, 3, 16, 15, 8);
+INSERT INTO sikns (id, active, object_type, sikn_type, capacity, stage, resource_for_eng_survey, resource_for_lab_research, resource_for_eng_survey_report,
+                   resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
+VALUES (10, 'true', 'AREA', 'COMMERCIAL', 550, 1, 9, 1, 3, 16, 15, 8);

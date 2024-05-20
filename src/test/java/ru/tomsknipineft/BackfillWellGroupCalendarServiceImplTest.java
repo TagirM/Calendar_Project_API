@@ -9,6 +9,7 @@ import ru.tomsknipineft.entities.linearObjects.Line;
 import ru.tomsknipineft.entities.linearObjects.Road;
 import ru.tomsknipineft.entities.oilPad.BackfillWell;
 import ru.tomsknipineft.services.*;
+import ru.tomsknipineft.services.entityService.*;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -72,23 +72,30 @@
                 </div>
 
                 <div id="roadClass" class="container">
-                    <h3>Автомобильная дорога</h3>
+                    <h3>Автомобильные дороги</h3>
                     <div class="form-group">
                         <label for="activeRoad">Наличие:</label>
                         <input type="checkbox" class="form-check-input" th:field="*{road.active}"
                                id="activeRoad"><br><br>
                     </div>
                     <div class="form-group">
-                        <label for="category">Категория дороги (3 или 4):</label>
+                        <label for="category">Категория дорог (3 или 4):</label>
                         <input type="number" class="form-control" th:field="*{road.category}" id="category">
                         <span class="text-danger" th:if="${#fields.hasErrors('road.category')}"
                               th:errors="*{road.category}"></span><br>
                     </div>
                     <div class="form-group">
-                        <label for="lengthRoad">Протяженность дорог, км:</label>
+                        <label for="lengthRoad">Общая протяженность дорог, км:</label>
                         <input type="number" step="any" class="form-control" th:field="*{road.length}" id="lengthRoad">
                         <span class="text-danger" th:if="${#fields.hasErrors('road.length')}"
                               th:errors="*{road.length}"></span><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="countRoad">Общее количество автодорог, шт:</label>
+                        <input type="number" step="any" class="form-control" th:field="*{road.count}"
+                               id="countRoad">
+                        <span class="text-danger" th:if="${#fields.hasErrors('road.count')}"
+                              th:errors="*{road.count}"></span>
                     </div>
                     <div class="form-group">
                         <label for="bridgeExistRoad">Наличие дорожного моста:</label>
@@ -117,7 +124,7 @@
                     </div>
                 </div>
                 <div id="lineClass" class="container">
-                    <h3> Линия электропередач </h3>
+                    <h3> Линии электропередач </h3>
                     <div class="form-group">
                         <label for="activeLine">Наличие: </label>
                         <input type="checkbox" class="form-check-input" th:field="*{line.active}"
@@ -157,10 +164,10 @@
                     </div>
                 </div>
                 <div id="ktplpClass" class="container">
-                    <h3> Комплектная трасформаторная подстанция линейного типа</h3>
+                    <h3> Комплектные трасформаторные подстанции линейного типа (КТПЛП)</h3>
                     <div class="form-group">
                         <label for="activeKtplp">Наличие: </label>
-                        <input type="checkbox" class="form-check-input" th:field="*{Ktplp.active}"
+                        <input type="checkbox" class="form-check-input" th:field="*{ktplp.active}"
                                id="activeKtplp"/><br><br>
                     </div>
                     <div class="form-group">
@@ -186,10 +193,43 @@
                     </div>
                     <div class="form-group">
                         <label for="stageKtplp">Этап строительства: </label>
-                        <input type="number" step="any" class="form-control" th:field="*{Ktplp.stage}"
+                        <input type="number" step="any" class="form-control" th:field="*{ktplp.stage}"
                                id="stageKtplp"/>
-                        <span class="text-danger" th:if="${#fields.hasErrors('Ktplp.stage')}"
-                              th:errors="*{Ktplp.stage}">Ktplp error</span><br><br>
+                        <span class="text-danger" th:if="${#fields.hasErrors('ktplp.stage')}"
+                              th:errors="*{ktplp.stage}">Ktplp error</span><br><br>
+                    </div>
+                </div>
+                <div id="siknClass" class="container">
+                    <h3> Система измерения количества и качества нефти (СИКН)</h3>
+                    <div class="form-group">
+                        <label for="activeSikn">Наличие: </label>
+                        <input type="checkbox" class="form-check-input" th:field="*{sikn.active}"
+                               id="activeSikn"/><br><br>
+                    </div>
+                    <div class="form-group">
+                        <label>Тип СИКН:</label><br>
+                        <input type="radio" class="form-check-input me-1" step="any" th:field="*{sikn.siknType}"
+                               id="siknType1" value="OPERATIONAL" checked>
+                        <label class="form-check-label" for="siknType1">Оперативного учета</label><br>
+                        <input type="radio" class="form-check-input me-1" step="any" th:field="*{sikn.siknType}"
+                               id="siknType2" value="COMMERCIAL">
+                        <label class="form-check-label" for="siknType2">Коммерческого учета</label><br>
+                        <span class="text-danger" th:if="${#fields.hasErrors('sikn.siknType')}"
+                              th:errors="*{sikn.siknType3}">Sikn error</span><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="siknСapacity">Производительность СИКН, тонн/час:</label>
+                        <input type="number" step="any" class="form-control" th:field="*{sikn.capacity}"
+                               id="siknСapacity">
+                        <span class="text-danger" th:if="${#fields.hasErrors('sikn.capacity')}"
+                              th:errors="*{sikn.capacity}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="stageSikn">Этап строительства: </label>
+                        <input type="number" step="any" class="form-control" th:field="*{sikn.stage}"
+                               id="stageSikn"/>
+                        <span class="text-danger" th:if="${#fields.hasErrors('sikn.stage')}"
+                              th:errors="*{sikn.stage}">Sikn error</span><br><br>
                     </div>
                 </div>
 <!--                <div id="vecClass" class="container">-->
@@ -247,7 +287,7 @@
                     </div>
                 </div>
                 <div id="cableRackClass" class="container">
-                    <h3> Кабельная эстакада </h3>
+                    <h3> Кабельные эстакады </h3>
                     <div class="form-group">
                         <label for="activeCableRack">Наличие: </label>
                         <input type="checkbox" class="form-check-input" th:field="*{cableRack.active}"

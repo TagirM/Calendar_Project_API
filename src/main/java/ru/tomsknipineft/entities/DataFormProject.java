@@ -15,6 +15,8 @@ public interface DataFormProject {
 
     boolean isEngineeringSurveyReport();
 
+    void setEngineeringSurveyReport(boolean flag);
+
     Integer getDrillingRig();
 
     Integer getHumanFactor();

@@ -11,6 +11,7 @@ import ru.tomsknipineft.entities.linearObjects.CableRack;
 import ru.tomsknipineft.entities.linearObjects.Line;
 import ru.tomsknipineft.entities.linearObjects.Road;
 import ru.tomsknipineft.entities.oilPad.BackfillWell;
+import ru.tomsknipineft.services.entityService.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,13 +36,17 @@ public class BackfillWellGroupCalendarServiceImpl implements GroupObjectCalendar
 
     private final CableRackService cableRackService;
 
-//    private static final Logger logger = LogManager.getLogger(BackfillWellGroupCalendarServiceImpl.class);
+    private static final Logger logger = LogManager.getLogger(BackfillWellGroupCalendarServiceImpl.class);
 
     @Override
     public Integer resourceForEngSurveyStage(EntityProject entityProjectBackfillWell) {
         int resourceForStage = 0;
         if (entityProjectBackfillWell.getClass() == BackfillWell.class) {
-            resourceForStage += backfillWellService.getResourceForEngSurveyBackfillWell((BackfillWell) entityProjectBackfillWell);
+            long startTime = System.currentTimeMillis();
+            resourceForStage += backfillWellService.getFindBackfillWellFromRequest((BackfillWell) entityProjectBackfillWell).getResourceForEngSurvey();
+            long executionTime = System.currentTimeMillis() - startTime;
+            logger.info("Получение сущности заняло время " + executionTime);
+//                    getResourceForEngSurveyBackfillWell((BackfillWell) entityProjectBackfillWell);
         } else if (entityProjectBackfillWell.getClass() == Road.class) {
             resourceForStage += roadService.getResourceForEngSurveyRoad((Road) entityProjectBackfillWell);
         } else if (entityProjectBackfillWell.getClass() == Line.class) {
@@ -60,7 +65,11 @@ public class BackfillWellGroupCalendarServiceImpl implements GroupObjectCalendar
     public Integer resourceForLabResearchStage(EntityProject entityProjectBackfillWell) {
         int resourceForStage = 0;
         if (entityProjectBackfillWell.getClass() == BackfillWell.class) {
-            resourceForStage += backfillWellService.getResourceForLabResearchBackfillWell((BackfillWell) entityProjectBackfillWell);
+            long startTime = System.currentTimeMillis();
+            resourceForStage += backfillWellService.getFindBackfillWellFromRequest((BackfillWell) entityProjectBackfillWell).getResourceForLabResearch();
+            long executionTime = System.currentTimeMillis() - startTime;
+            logger.info("Получение сущности заняло время " + executionTime);
+//                    .getResourceForLabResearchBackfillWell((BackfillWell) entityProjectBackfillWell);
         } else if (entityProjectBackfillWell.getClass() == Road.class) {
             resourceForStage += roadService.getResourceForLabResearchRoad((Road) entityProjectBackfillWell);
         } else if (entityProjectBackfillWell.getClass() == Line.class) {
@@ -79,7 +88,11 @@ public class BackfillWellGroupCalendarServiceImpl implements GroupObjectCalendar
     public Integer resourceForEngSurveyReportStage(EntityProject entityProjectBackfillWell) {
         int resourceForStage = 0;
         if (entityProjectBackfillWell.getClass() == BackfillWell.class) {
-            resourceForStage += backfillWellService.getResourceForEngSurveyReportBackfillWell((BackfillWell) entityProjectBackfillWell);
+            long startTime = System.currentTimeMillis();
+            resourceForStage += backfillWellService.getFindBackfillWellFromRequest((BackfillWell) entityProjectBackfillWell).getResourceForEngSurveyReport();
+            long executionTime = System.currentTimeMillis() - startTime;
+            logger.info("Получение сущности заняло время " + executionTime);
+//                    .getResourceForEngSurveyReportBackfillWell((BackfillWell) entityProjectBackfillWell);
         } else if (entityProjectBackfillWell.getClass() == Road.class) {
             resourceForStage += roadService.getResourceForEngSurveyReportRoad((Road) entityProjectBackfillWell);
         } else if (entityProjectBackfillWell.getClass() == Line.class) {
@@ -98,7 +111,8 @@ public class BackfillWellGroupCalendarServiceImpl implements GroupObjectCalendar
     public Integer resourceForWorkDocStage(EntityProject entityProjectBackfillWell) {
         int resourceForStage = 0;
         if (entityProjectBackfillWell.getClass() == BackfillWell.class) {
-            resourceForStage += backfillWellService.getResourceForWorkDocBackfillWell((BackfillWell) entityProjectBackfillWell);
+            resourceForStage += backfillWellService.getFindBackfillWellFromRequest((BackfillWell) entityProjectBackfillWell).getResourceForWorkDoc();
+//                    .getResourceForWorkDocBackfillWell((BackfillWell) entityProjectBackfillWell);
         } else if (entityProjectBackfillWell.getClass() == Road.class) {
             resourceForStage += roadService.getResourceForWorkDocRoad((Road) entityProjectBackfillWell);
         } else if (entityProjectBackfillWell.getClass() == Line.class) {
@@ -117,7 +131,8 @@ public class BackfillWellGroupCalendarServiceImpl implements GroupObjectCalendar
     public Integer resourceForProjDocStage(EntityProject entityProjectBackfillWell) {
         int resourceForStage = 0;
         if (entityProjectBackfillWell.getClass() == BackfillWell.class) {
-            resourceForStage += backfillWellService.getResourceForProjDocBackfillWell((BackfillWell) entityProjectBackfillWell);
+            resourceForStage += backfillWellService.getFindBackfillWellFromRequest((BackfillWell) entityProjectBackfillWell).getResourceForProjDoc();
+//                    .getResourceForProjDocBackfillWell((BackfillWell) entityProjectBackfillWell);
         } else if (entityProjectBackfillWell.getClass() == Road.class) {
             resourceForStage += roadService.getResourceForProjDocRoad((Road) entityProjectBackfillWell);
         } else if (entityProjectBackfillWell.getClass() == Line.class) {
@@ -136,7 +151,8 @@ public class BackfillWellGroupCalendarServiceImpl implements GroupObjectCalendar
     public Integer resourceForEstDocStage(EntityProject entityProjectBackfillWell) {
         int resourceForStage = 0;
         if (entityProjectBackfillWell.getClass() == BackfillWell.class) {
-            resourceForStage += backfillWellService.getResourceForEstDocBackfillWell((BackfillWell) entityProjectBackfillWell);
+            resourceForStage += backfillWellService.getFindBackfillWellFromRequest((BackfillWell) entityProjectBackfillWell).getResourceForEstDoc();
+//                    .getResourceForEstDocBackfillWell((BackfillWell) entityProjectBackfillWell);
         } else if (entityProjectBackfillWell.getClass() == Road.class) {
             resourceForStage += roadService.getResourceForEstDocRoad((Road) entityProjectBackfillWell);
         } else if (entityProjectBackfillWell.getClass() == Line.class) {

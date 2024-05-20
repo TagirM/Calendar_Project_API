@@ -23,6 +23,7 @@ create table roads (
     bridge_road_length integer,
     category integer,
     length double precision,
+    count integer,
     stage integer,
     resource_for_eng_survey integer,
     resource_for_lab_research integer,
@@ -87,7 +88,7 @@ create table cable_rack (
     id SERIAL PRIMARY KEY,
     active boolean,
     object_type VARCHAR(255),
-    length double precision,
+    length integer,
     complexity_of_geology VARCHAR(255),
     stage integer,
     resource_for_eng_survey integer,
@@ -124,6 +125,22 @@ create table ktplps (
     object_type VARCHAR(255),
     ktplp_type VARCHAR(255),
     count integer,
+    stage integer,
+    resource_for_eng_survey integer,
+    resource_for_lab_research integer,
+    resource_for_eng_survey_report integer,
+    resource_for_work_doc integer,
+    resource_for_proj_doc integer,
+    resource_for_est_doc integer
+);
+
+drop table if exists sikns;
+create table sikns (
+    id SERIAL PRIMARY KEY,
+    active boolean,
+    object_type VARCHAR(255),
+    sikn_type VARCHAR(255),
+    capacity double precision,
     stage integer,
     resource_for_eng_survey integer,
     resource_for_lab_research integer,

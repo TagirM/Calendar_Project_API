@@ -10,8 +10,8 @@ import java.util.Optional;
 @Repository
 public interface KtplpRepository extends JpaRepository<Ktplp, Long> {
     /**
-     Поиск сущности с видом, соответствующих заданным или ближайшими большими
+     Поиск сущности с указанным типом и количеством, соответствующим заданному или ближайшим большим
      */
-    Optional<Ktplp> findByKtplpType(KtplpType ktplpType);
+    Optional<Ktplp> findFirstByKtplpTypeAndCount(KtplpType ktplpType, Integer count);
 
 }

@@ -1,0 +1,1126 @@
+2024-05-19T18:22:27.040+0700 INFO info message
+2024-05-19T18:22:27.040+0700 ERROR info message
+2024-05-19T18:22:27.133+0700 INFO info message
+2024-05-19T18:22:27.133+0700 ERROR info message
+2024-05-19T18:22:27.352+0700 INFO HV000001: Hibernate Validator 8.0.1.Final
+2024-05-19T18:22:27.398+0700 INFO Starting Main using Java 19.0.1 with PID 8636 (E:\MyJob\calendar_api\target\classes started by Тагир in E:\MyJob\calendar_api)
+2024-05-19T18:22:27.398+0700 INFO No active profile set, falling back to 1 default profile: "default"
+2024-05-19T18:22:27.643+0700 INFO Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-05-19T18:22:27.643+0700 INFO For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-05-19T18:22:28.171+0700 INFO Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-19T18:22:28.250+0700 INFO Finished Spring Data repository scanning in 67 ms. Found 12 JPA repository interfaces.
+2024-05-19T18:22:28.671+0700 INFO Tomcat initialized with port 8080 (http)
+2024-05-19T18:22:28.671+0700 INFO Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:22:28.671+0700 INFO Starting service [Tomcat]
+2024-05-19T18:22:28.671+0700 INFO Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-05-19T18:22:28.718+0700 INFO Initializing Spring embedded WebApplicationContext
+2024-05-19T18:22:28.718+0700 INFO Root WebApplicationContext: initialization completed in 1075 ms
+2024-05-19T18:22:28.750+0700 INFO HikariPool-1 - Starting...
+2024-05-19T18:22:28.843+0700 INFO HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-05-19T18:22:28.843+0700 INFO HikariPool-1 - Start completed.
+2024-05-19T18:22:28.843+0700 INFO H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-05-19T18:22:28.941+0700 INFO HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-19T18:22:28.988+0700 INFO HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-05-19T18:22:29.004+0700 INFO HHH000026: Second-level cache disabled
+2024-05-19T18:22:29.160+0700 INFO No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-19T18:22:29.191+0700 WARN HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-19T18:22:30.121+0700 INFO HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-19T18:22:30.223+0700 INFO Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:22:31.104+0700 WARN spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-19T18:22:31.120+0700 INFO Adding welcome page template: index
+2024-05-19T18:22:31.474+0700 INFO LiveReload server is running on port 35729
+2024-05-19T18:22:31.490+0700 INFO Starting ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:22:31.502+0700 INFO Tomcat started on port 8080 (http) with context path ''
+2024-05-19T18:22:31.503+0700 INFO Started Main in 4.37 seconds (process running for 5.32)
+2024-05-19T18:22:33.780+0700 INFO Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-19T18:22:33.780+0700 INFO Initializing Servlet 'dispatcherServlet'
+2024-05-19T18:22:33.781+0700 INFO Completed initialization in 1 ms
+2024-05-19T18:22:33.816+0700 WARN Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-05-19T18:22:35.418+0700 INFO Получение сущности из БД BackfillWell(id=1, active=true, objectType=AREA, well=6, stage=1, resourceForEngSurvey=10, resourceForLabResearch=10, resourceForEngSurveyReport=10, resourceForWorkDoc=10, resourceForProjDoc=21, resourceForEstDoc=21)
+2024-05-19T18:22:35.418+0700 INFO Зашли в метод кэша
+2024-05-19T18:22:35.418+0700 INFO Отработал cacheManager org.springframework.cache.concurrent.ConcurrentMapCacheManager@5c69a162
+2024-05-19T18:22:35.418+0700 INFO Отработал wrapper null
+2024-05-19T18:22:35.418+0700 WARN Resolved [java.lang.NullPointerException: Cannot invoke "org.springframework.cache.Cache$ValueWrapper.get()" because "wrapper" is null]
+2024-05-19T18:22:35.439+0700 WARN Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-05-19T18:31:35.725+0700 INFO Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-05-19T18:31:35.725+0700 INFO Stopping ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:31:35.741+0700 INFO Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:31:35.741+0700 WARN Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-05-19T18:31:35.741+0700 INFO HikariPool-1 - Shutdown initiated...
+2024-05-19T18:31:35.741+0700 INFO HikariPool-1 - Shutdown completed.
+2024-05-19T18:31:35.788+0700 INFO info message
+2024-05-19T18:31:35.788+0700 ERROR info message
+2024-05-19T18:31:35.835+0700 INFO Starting Main using Java 19.0.1 with PID 8636 (E:\MyJob\calendar_api\target\classes started by Тагир in E:\MyJob\calendar_api)
+2024-05-19T18:31:35.835+0700 INFO No active profile set, falling back to 1 default profile: "default"
+2024-05-19T18:31:36.014+0700 INFO Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-19T18:31:36.045+0700 INFO Finished Spring Data repository scanning in 25 ms. Found 12 JPA repository interfaces.
+2024-05-19T18:31:36.139+0700 INFO Tomcat initialized with port 8080 (http)
+2024-05-19T18:31:36.139+0700 INFO Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:31:36.155+0700 INFO Starting service [Tomcat]
+2024-05-19T18:31:36.155+0700 INFO Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-05-19T18:31:36.155+0700 INFO Initializing Spring embedded WebApplicationContext
+2024-05-19T18:31:36.155+0700 INFO Root WebApplicationContext: initialization completed in 320 ms
+2024-05-19T18:31:36.170+0700 INFO HikariPool-2 - Starting...
+2024-05-19T18:31:36.170+0700 INFO HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:testdb user=SA
+2024-05-19T18:31:36.170+0700 INFO HikariPool-2 - Start completed.
+2024-05-19T18:31:36.170+0700 INFO H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-05-19T18:31:36.201+0700 INFO HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-19T18:31:36.201+0700 INFO HHH000026: Second-level cache disabled
+2024-05-19T18:31:36.217+0700 INFO No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-19T18:31:36.217+0700 WARN HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-19T18:31:36.436+0700 INFO HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-19T18:31:36.451+0700 INFO Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:31:36.467+0700 WARN Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'backfillWellCalendarController' defined in file [E:\MyJob\calendar_api\target\classes\ru\tomsknipineft\controllers\BackfillWellCalendarController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@6eec7b72] failed
+2024-05-19T18:31:36.467+0700 INFO Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:31:36.467+0700 WARN Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-05-19T18:31:36.467+0700 INFO HikariPool-2 - Shutdown initiated...
+2024-05-19T18:31:36.467+0700 INFO HikariPool-2 - Shutdown completed.
+2024-05-19T18:31:36.467+0700 INFO Stopping service [Tomcat]
+2024-05-19T18:31:36.483+0700 INFO 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-05-19T18:31:36.514+0700 ERROR Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'backfillWellCalendarController' defined in file [E:\MyJob\calendar_api\target\classes\ru\tomsknipineft\controllers\BackfillWellCalendarController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@6eec7b72] failed
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1354) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:959) ~[spring-context-6.1.3.jar:6.1.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.3.jar:6.1.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) [spring-boot-3.2.2.jar:3.2.2]
+	at ru.tomsknipineft.Main.main(Main.java:20) [classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.2.2.jar:3.2.2]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@6eec7b72] failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:383) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more
+Caused by: java.lang.NoClassDefFoundError: ru/tomsknipineft/services/entityService/BackfillWellService
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3429) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2608) ~[?:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:378) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more
+Caused by: java.lang.ClassNotFoundException: ru.tomsknipineft.services.entityService.BackfillWellService
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[?:?]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[?:?]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521) ~[?:?]
+	at java.base/java.lang.Class.forName0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.forName(Class.java:495) ~[?:?]
+	at java.base/java.lang.Class.forName(Class.java:474) ~[?:?]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.2.2.jar:3.2.2]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3429) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2608) ~[?:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:378) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more
+2024-05-19T18:31:38.961+0700 INFO info message
+2024-05-19T18:31:38.961+0700 ERROR info message
+2024-05-19T18:31:38.992+0700 INFO Starting Main using Java 19.0.1 with PID 8636 (E:\MyJob\calendar_api\target\classes started by Тагир in E:\MyJob\calendar_api)
+2024-05-19T18:31:38.992+0700 INFO No active profile set, falling back to 1 default profile: "default"
+2024-05-19T18:31:39.212+0700 INFO Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-19T18:31:39.262+0700 INFO Finished Spring Data repository scanning in 48 ms. Found 12 JPA repository interfaces.
+2024-05-19T18:31:39.426+0700 INFO Tomcat initialized with port 8080 (http)
+2024-05-19T18:31:39.426+0700 INFO Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:31:39.426+0700 INFO Starting service [Tomcat]
+2024-05-19T18:31:39.426+0700 INFO Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-05-19T18:31:39.442+0700 INFO Initializing Spring embedded WebApplicationContext
+2024-05-19T18:31:39.442+0700 INFO Root WebApplicationContext: initialization completed in 450 ms
+2024-05-19T18:31:39.473+0700 INFO HikariPool-3 - Starting...
+2024-05-19T18:31:39.473+0700 INFO HikariPool-3 - Added connection conn20: url=jdbc:h2:mem:testdb user=SA
+2024-05-19T18:31:39.473+0700 INFO HikariPool-3 - Start completed.
+2024-05-19T18:31:39.473+0700 INFO H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-05-19T18:31:39.504+0700 INFO HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-19T18:31:39.520+0700 INFO HHH000026: Second-level cache disabled
+2024-05-19T18:31:39.520+0700 INFO No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-19T18:31:39.520+0700 WARN HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-19T18:31:39.835+0700 INFO HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-19T18:31:39.835+0700 INFO Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:31:40.389+0700 WARN spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-19T18:31:40.420+0700 INFO Adding welcome page template: index
+2024-05-19T18:31:40.671+0700 INFO LiveReload server is running on port 35729
+2024-05-19T18:31:40.687+0700 INFO Starting ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:31:40.702+0700 INFO Tomcat started on port 8080 (http) with context path ''
+2024-05-19T18:31:40.702+0700 INFO Started Main in 1.741 seconds (process running for 554.521)
+2024-05-19T18:31:40.702+0700 INFO Condition evaluation unchanged
+2024-05-19T18:32:03.504+0700 INFO Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-05-19T18:32:03.504+0700 INFO Stopping ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:32:03.504+0700 INFO Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:32:03.504+0700 WARN Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-05-19T18:32:03.504+0700 INFO HikariPool-3 - Shutdown initiated...
+2024-05-19T18:32:03.504+0700 INFO HikariPool-3 - Shutdown completed.
+2024-05-19T18:32:03.567+0700 INFO info message
+2024-05-19T18:32:03.567+0700 ERROR info message
+2024-05-19T18:32:03.598+0700 INFO Starting Main using Java 19.0.1 with PID 8636 (E:\MyJob\calendar_api\target\classes started by Тагир in E:\MyJob\calendar_api)
+2024-05-19T18:32:03.598+0700 INFO No active profile set, falling back to 1 default profile: "default"
+2024-05-19T18:32:03.768+0700 INFO Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-19T18:32:03.800+0700 INFO Finished Spring Data repository scanning in 29 ms. Found 12 JPA repository interfaces.
+2024-05-19T18:32:03.889+0700 INFO Tomcat initialized with port 8080 (http)
+2024-05-19T18:32:03.891+0700 INFO Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:32:03.891+0700 INFO Starting service [Tomcat]
+2024-05-19T18:32:03.891+0700 INFO Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-05-19T18:32:03.891+0700 INFO Initializing Spring embedded WebApplicationContext
+2024-05-19T18:32:03.905+0700 INFO Root WebApplicationContext: initialization completed in 307 ms
+2024-05-19T18:32:03.908+0700 INFO HikariPool-4 - Starting...
+2024-05-19T18:32:03.924+0700 INFO HikariPool-4 - Added connection conn30: url=jdbc:h2:mem:testdb user=SA
+2024-05-19T18:32:03.925+0700 INFO HikariPool-4 - Start completed.
+2024-05-19T18:32:03.925+0700 INFO H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-05-19T18:32:03.958+0700 INFO HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-19T18:32:03.958+0700 INFO HHH000026: Second-level cache disabled
+2024-05-19T18:32:03.958+0700 INFO No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-19T18:32:03.958+0700 WARN HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-19T18:32:04.218+0700 INFO HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-19T18:32:04.233+0700 INFO Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:32:04.233+0700 WARN Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'backfillWellCalendarController' defined in file [E:\MyJob\calendar_api\target\classes\ru\tomsknipineft\controllers\BackfillWellCalendarController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@b1b6ebf] failed
+2024-05-19T18:32:04.233+0700 INFO Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:32:04.249+0700 WARN Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-05-19T18:32:04.249+0700 INFO HikariPool-4 - Shutdown initiated...
+2024-05-19T18:32:04.249+0700 INFO HikariPool-4 - Shutdown completed.
+2024-05-19T18:32:04.249+0700 INFO Stopping service [Tomcat]
+2024-05-19T18:32:04.249+0700 INFO 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-05-19T18:32:04.249+0700 ERROR Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'backfillWellCalendarController' defined in file [E:\MyJob\calendar_api\target\classes\ru\tomsknipineft\controllers\BackfillWellCalendarController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@b1b6ebf] failed
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1354) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:959) ~[spring-context-6.1.3.jar:6.1.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.3.jar:6.1.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) [spring-boot-3.2.2.jar:3.2.2]
+	at ru.tomsknipineft.Main.main(Main.java:20) [classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.2.2.jar:3.2.2]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@b1b6ebf] failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:383) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more
+Caused by: java.lang.NoClassDefFoundError: ru/tomsknipineft/services/entityService/BackfillWellService
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3429) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2608) ~[?:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:378) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more
+Caused by: java.lang.ClassNotFoundException: ru.tomsknipineft.services.entityService.BackfillWellService
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[?:?]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[?:?]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521) ~[?:?]
+	at java.base/java.lang.Class.forName0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.forName(Class.java:495) ~[?:?]
+	at java.base/java.lang.Class.forName(Class.java:474) ~[?:?]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.2.2.jar:3.2.2]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3429) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2608) ~[?:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:378) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more
+2024-05-19T18:32:06.707+0700 INFO info message
+2024-05-19T18:32:06.708+0700 ERROR info message
+2024-05-19T18:32:06.784+0700 INFO Starting Main using Java 19.0.1 with PID 8636 (E:\MyJob\calendar_api\target\classes started by Тагир in E:\MyJob\calendar_api)
+2024-05-19T18:32:06.784+0700 INFO No active profile set, falling back to 1 default profile: "default"
+2024-05-19T18:32:07.215+0700 INFO Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-19T18:32:07.275+0700 INFO Finished Spring Data repository scanning in 60 ms. Found 12 JPA repository interfaces.
+2024-05-19T18:32:07.415+0700 INFO Tomcat initialized with port 8080 (http)
+2024-05-19T18:32:07.415+0700 INFO Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:32:07.415+0700 INFO Starting service [Tomcat]
+2024-05-19T18:32:07.415+0700 INFO Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-05-19T18:32:07.446+0700 INFO Initializing Spring embedded WebApplicationContext
+2024-05-19T18:32:07.446+0700 INFO Root WebApplicationContext: initialization completed in 646 ms
+2024-05-19T18:32:07.466+0700 INFO HikariPool-5 - Starting...
+2024-05-19T18:32:07.467+0700 INFO HikariPool-5 - Added connection conn40: url=jdbc:h2:mem:testdb user=SA
+2024-05-19T18:32:07.467+0700 INFO HikariPool-5 - Start completed.
+2024-05-19T18:32:07.468+0700 INFO H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-05-19T18:32:07.501+0700 INFO HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-19T18:32:07.503+0700 INFO HHH000026: Second-level cache disabled
+2024-05-19T18:32:07.508+0700 INFO No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-19T18:32:07.509+0700 WARN HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-19T18:32:07.841+0700 INFO HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-19T18:32:07.841+0700 INFO Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:32:08.439+0700 WARN spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-19T18:32:08.455+0700 INFO Adding welcome page template: index
+2024-05-19T18:32:08.683+0700 INFO LiveReload server is running on port 35729
+2024-05-19T18:32:08.698+0700 INFO Starting ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:32:08.698+0700 INFO Tomcat started on port 8080 (http) with context path ''
+2024-05-19T18:32:08.714+0700 INFO Started Main in 1.998 seconds (process running for 582.527)
+2024-05-19T18:32:08.714+0700 INFO Condition evaluation unchanged
+2024-05-19T18:33:01.182+0700 INFO Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-05-19T18:33:01.182+0700 INFO Stopping ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:33:01.182+0700 INFO Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:33:01.182+0700 WARN Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-05-19T18:33:01.182+0700 INFO HikariPool-5 - Shutdown initiated...
+2024-05-19T18:33:01.182+0700 INFO HikariPool-5 - Shutdown completed.
+2024-05-19T18:33:01.229+0700 INFO info message
+2024-05-19T18:33:01.229+0700 ERROR info message
+2024-05-19T18:33:01.260+0700 INFO Starting Main using Java 19.0.1 with PID 8636 (E:\MyJob\calendar_api\target\classes started by Тагир in E:\MyJob\calendar_api)
+2024-05-19T18:33:01.260+0700 INFO No active profile set, falling back to 1 default profile: "default"
+2024-05-19T18:33:01.388+0700 INFO Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-19T18:33:01.419+0700 INFO Finished Spring Data repository scanning in 24 ms. Found 12 JPA repository interfaces.
+2024-05-19T18:33:01.497+0700 INFO Tomcat initialized with port 8080 (http)
+2024-05-19T18:33:01.497+0700 INFO Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:33:01.497+0700 INFO Starting service [Tomcat]
+2024-05-19T18:33:01.497+0700 INFO Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-05-19T18:33:01.513+0700 INFO Initializing Spring embedded WebApplicationContext
+2024-05-19T18:33:01.513+0700 INFO Root WebApplicationContext: initialization completed in 253 ms
+2024-05-19T18:33:01.528+0700 INFO HikariPool-6 - Starting...
+2024-05-19T18:33:01.528+0700 INFO HikariPool-6 - Added connection conn50: url=jdbc:h2:mem:testdb user=SA
+2024-05-19T18:33:01.528+0700 INFO HikariPool-6 - Start completed.
+2024-05-19T18:33:01.528+0700 INFO H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-05-19T18:33:01.544+0700 INFO HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-19T18:33:01.544+0700 INFO HHH000026: Second-level cache disabled
+2024-05-19T18:33:01.560+0700 INFO No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-19T18:33:01.560+0700 WARN HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-19T18:33:01.716+0700 INFO HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-19T18:33:01.716+0700 INFO Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:33:01.732+0700 WARN Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'backfillWellCalendarController' defined in file [E:\MyJob\calendar_api\target\classes\ru\tomsknipineft\controllers\BackfillWellCalendarController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@2e3a21fc] failed
+2024-05-19T18:33:01.732+0700 INFO Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:33:01.732+0700 WARN Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-05-19T18:33:01.732+0700 INFO HikariPool-6 - Shutdown initiated...
+2024-05-19T18:33:01.747+0700 INFO HikariPool-6 - Shutdown completed.
+2024-05-19T18:33:01.747+0700 INFO Stopping service [Tomcat]
+2024-05-19T18:33:01.747+0700 INFO 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-05-19T18:33:01.747+0700 ERROR Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'backfillWellCalendarController' defined in file [E:\MyJob\calendar_api\target\classes\ru\tomsknipineft\controllers\BackfillWellCalendarController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@2e3a21fc] failed
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1354) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:959) ~[spring-context-6.1.3.jar:6.1.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.3.jar:6.1.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) [spring-boot-3.2.2.jar:3.2.2]
+	at ru.tomsknipineft.Main.main(Main.java:20) [classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.2.2.jar:3.2.2]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@2e3a21fc] failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:383) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more
+Caused by: java.lang.NoClassDefFoundError: ru/tomsknipineft/services/entityService/BackfillWellService
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3429) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2608) ~[?:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:378) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more
+Caused by: java.lang.ClassNotFoundException: ru.tomsknipineft.services.entityService.BackfillWellService
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[?:?]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[?:?]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521) ~[?:?]
+	at java.base/java.lang.Class.forName0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.forName(Class.java:495) ~[?:?]
+	at java.base/java.lang.Class.forName(Class.java:474) ~[?:?]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.2.2.jar:3.2.2]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3429) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2608) ~[?:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:378) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more
+2024-05-19T18:33:04.187+0700 INFO info message
+2024-05-19T18:33:04.187+0700 ERROR info message
+2024-05-19T18:33:04.218+0700 INFO Starting Main using Java 19.0.1 with PID 8636 (E:\MyJob\calendar_api\target\classes started by Тагир in E:\MyJob\calendar_api)
+2024-05-19T18:33:04.218+0700 INFO No active profile set, falling back to 1 default profile: "default"
+2024-05-19T18:33:04.426+0700 INFO Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-19T18:33:04.457+0700 INFO Finished Spring Data repository scanning in 30 ms. Found 12 JPA repository interfaces.
+2024-05-19T18:33:04.582+0700 INFO Tomcat initialized with port 8080 (http)
+2024-05-19T18:33:04.582+0700 INFO Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:33:04.582+0700 INFO Starting service [Tomcat]
+2024-05-19T18:33:04.582+0700 INFO Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-05-19T18:33:04.598+0700 INFO Initializing Spring embedded WebApplicationContext
+2024-05-19T18:33:04.598+0700 INFO Root WebApplicationContext: initialization completed in 380 ms
+2024-05-19T18:33:04.613+0700 INFO HikariPool-7 - Starting...
+2024-05-19T18:33:04.613+0700 INFO HikariPool-7 - Added connection conn58: url=jdbc:h2:mem:testdb user=SA
+2024-05-19T18:33:04.613+0700 INFO HikariPool-7 - Start completed.
+2024-05-19T18:33:04.613+0700 INFO H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-05-19T18:33:04.645+0700 INFO HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-19T18:33:04.645+0700 INFO HHH000026: Second-level cache disabled
+2024-05-19T18:33:04.645+0700 INFO No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-19T18:33:04.645+0700 WARN HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-19T18:33:04.880+0700 INFO HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-19T18:33:04.880+0700 INFO Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:33:05.177+0700 WARN spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-19T18:33:05.193+0700 INFO Adding welcome page template: index
+2024-05-19T18:33:05.460+0700 INFO LiveReload server is running on port 35729
+2024-05-19T18:33:05.491+0700 INFO Starting ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:33:05.491+0700 INFO Tomcat started on port 8080 (http) with context path ''
+2024-05-19T18:33:05.491+0700 INFO Started Main in 1.304 seconds (process running for 639.317)
+2024-05-19T18:33:05.507+0700 INFO Condition evaluation unchanged
+2024-05-19T18:33:12.548+0700 INFO Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-19T18:33:12.548+0700 INFO Initializing Servlet 'dispatcherServlet'
+2024-05-19T18:33:12.548+0700 INFO Completed initialization in 0 ms
+2024-05-19T18:33:12.548+0700 WARN Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-05-19T18:33:13.895+0700 INFO Получение сущности из БД BackfillWell(id=1, active=true, objectType=AREA, well=6, stage=1, resourceForEngSurvey=10, resourceForLabResearch=10, resourceForEngSurveyReport=10, resourceForWorkDoc=10, resourceForProjDoc=21, resourceForEstDoc=21)
+2024-05-19T18:33:13.895+0700 INFO Зашли в метод кэша
+2024-05-19T18:33:13.895+0700 INFO Отработал cacheManager org.springframework.cache.concurrent.ConcurrentMapCacheManager@25e09017
+2024-05-19T18:33:13.895+0700 INFO Отработал wrapper null
+2024-05-19T18:33:13.895+0700 WARN Resolved [java.lang.NullPointerException: Cannot invoke "org.springframework.cache.Cache$ValueWrapper.get()" because "wrapper" is null]
+2024-05-19T18:33:13.924+0700 WARN Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-05-19T18:38:10.128+0700 INFO Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-05-19T18:38:10.131+0700 INFO Stopping ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:38:10.134+0700 INFO Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:38:10.144+0700 WARN Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-05-19T18:38:10.144+0700 INFO HikariPool-7 - Shutdown initiated...
+2024-05-19T18:38:10.144+0700 INFO HikariPool-7 - Shutdown completed.
+2024-05-19T18:38:10.196+0700 INFO info message
+2024-05-19T18:38:10.197+0700 ERROR info message
+2024-05-19T18:38:10.249+0700 INFO Starting Main using Java 19.0.1 with PID 8636 (E:\MyJob\calendar_api\target\classes started by Тагир in E:\MyJob\calendar_api)
+2024-05-19T18:38:10.250+0700 INFO No active profile set, falling back to 1 default profile: "default"
+2024-05-19T18:38:10.461+0700 INFO Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-19T18:38:10.495+0700 INFO Finished Spring Data repository scanning in 32 ms. Found 12 JPA repository interfaces.
+2024-05-19T18:38:10.628+0700 INFO Tomcat initialized with port 8080 (http)
+2024-05-19T18:38:10.628+0700 INFO Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:38:10.628+0700 INFO Starting service [Tomcat]
+2024-05-19T18:38:10.628+0700 INFO Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-05-19T18:38:10.650+0700 INFO Initializing Spring embedded WebApplicationContext
+2024-05-19T18:38:10.650+0700 INFO Root WebApplicationContext: initialization completed in 390 ms
+2024-05-19T18:38:10.660+0700 INFO HikariPool-8 - Starting...
+2024-05-19T18:38:10.660+0700 INFO HikariPool-8 - Added connection conn68: url=jdbc:h2:mem:testdb user=SA
+2024-05-19T18:38:10.660+0700 INFO HikariPool-8 - Start completed.
+2024-05-19T18:38:10.660+0700 INFO H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-05-19T18:38:10.694+0700 INFO HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-19T18:38:10.694+0700 INFO HHH000026: Second-level cache disabled
+2024-05-19T18:38:10.694+0700 INFO No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-19T18:38:10.694+0700 WARN HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-19T18:38:10.902+0700 INFO HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-19T18:38:10.910+0700 INFO Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:38:10.910+0700 WARN Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'backfillWellCalendarController' defined in file [E:\MyJob\calendar_api\target\classes\ru\tomsknipineft\controllers\BackfillWellCalendarController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@6c7f1055] failed
+2024-05-19T18:38:10.910+0700 INFO Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:38:10.928+0700 WARN Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-05-19T18:38:10.928+0700 INFO HikariPool-8 - Shutdown initiated...
+2024-05-19T18:38:10.929+0700 INFO HikariPool-8 - Shutdown completed.
+2024-05-19T18:38:10.930+0700 INFO Stopping service [Tomcat]
+2024-05-19T18:38:10.935+0700 INFO 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-05-19T18:38:10.935+0700 ERROR Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'backfillWellCalendarController' defined in file [E:\MyJob\calendar_api\target\classes\ru\tomsknipineft\controllers\BackfillWellCalendarController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@6c7f1055] failed
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1354) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:959) ~[spring-context-6.1.3.jar:6.1.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.3.jar:6.1.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) [spring-boot-3.2.2.jar:3.2.2]
+	at ru.tomsknipineft.Main.main(Main.java:20) [classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.2.2.jar:3.2.2]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@6c7f1055] failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:383) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more
+Caused by: java.lang.NoClassDefFoundError: ru/tomsknipineft/services/entityService/BackfillWellService
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3429) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2608) ~[?:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:378) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more
+Caused by: java.lang.ClassNotFoundException: ru.tomsknipineft.services.entityService.BackfillWellService
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[?:?]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[?:?]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521) ~[?:?]
+	at java.base/java.lang.Class.forName0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.forName(Class.java:495) ~[?:?]
+	at java.base/java.lang.Class.forName(Class.java:474) ~[?:?]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.2.2.jar:3.2.2]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3429) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2608) ~[?:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:378) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more
+2024-05-19T18:38:12.377+0700 INFO info message
+2024-05-19T18:38:12.377+0700 ERROR info message
+2024-05-19T18:38:12.410+0700 INFO Starting Main using Java 19.0.1 with PID 8636 (E:\MyJob\calendar_api\target\classes started by Тагир in E:\MyJob\calendar_api)
+2024-05-19T18:38:12.410+0700 INFO No active profile set, falling back to 1 default profile: "default"
+2024-05-19T18:38:12.693+0700 INFO Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-19T18:38:12.730+0700 INFO Finished Spring Data repository scanning in 36 ms. Found 12 JPA repository interfaces.
+2024-05-19T18:38:12.927+0700 INFO Tomcat initialized with port 8080 (http)
+2024-05-19T18:38:12.927+0700 INFO Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:38:12.927+0700 INFO Starting service [Tomcat]
+2024-05-19T18:38:12.927+0700 INFO Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-05-19T18:38:12.964+0700 INFO Initializing Spring embedded WebApplicationContext
+2024-05-19T18:38:12.964+0700 INFO Root WebApplicationContext: initialization completed in 537 ms
+2024-05-19T18:38:13.002+0700 INFO HikariPool-9 - Starting...
+2024-05-19T18:38:13.006+0700 INFO HikariPool-9 - Added connection conn78: url=jdbc:h2:mem:testdb user=SA
+2024-05-19T18:38:13.006+0700 INFO HikariPool-9 - Start completed.
+2024-05-19T18:38:13.006+0700 INFO H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-05-19T18:38:13.067+0700 INFO HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-19T18:38:13.072+0700 INFO HHH000026: Second-level cache disabled
+2024-05-19T18:38:13.079+0700 INFO No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-19T18:38:13.081+0700 WARN HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-19T18:38:13.581+0700 INFO HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-19T18:38:13.581+0700 INFO Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:38:14.310+0700 WARN spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-19T18:38:14.343+0700 INFO Adding welcome page template: index
+2024-05-19T18:38:14.617+0700 INFO LiveReload server is running on port 35729
+2024-05-19T18:38:14.633+0700 INFO Starting ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:38:14.637+0700 INFO Tomcat started on port 8080 (http) with context path ''
+2024-05-19T18:38:14.644+0700 INFO Started Main in 2.266 seconds (process running for 948.456)
+2024-05-19T18:38:14.645+0700 INFO Condition evaluation unchanged
+2024-05-19T18:39:43.777+0700 INFO Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-05-19T18:39:43.793+0700 INFO Stopping ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:39:43.808+0700 INFO Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:39:43.808+0700 WARN Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-05-19T18:39:43.808+0700 INFO HikariPool-9 - Shutdown initiated...
+2024-05-19T18:39:43.808+0700 INFO HikariPool-9 - Shutdown completed.
+2024-05-19T18:39:43.871+0700 INFO info message
+2024-05-19T18:39:43.871+0700 ERROR info message
+2024-05-19T18:39:43.902+0700 INFO Starting Main using Java 19.0.1 with PID 8636 (E:\MyJob\calendar_api\target\classes started by Тагир in E:\MyJob\calendar_api)
+2024-05-19T18:39:43.902+0700 INFO No active profile set, falling back to 1 default profile: "default"
+2024-05-19T18:39:44.073+0700 INFO Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-19T18:39:44.104+0700 INFO Finished Spring Data repository scanning in 25 ms. Found 12 JPA repository interfaces.
+2024-05-19T18:39:44.167+0700 INFO Tomcat initialized with port 8080 (http)
+2024-05-19T18:39:44.167+0700 INFO Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:39:44.167+0700 INFO Starting service [Tomcat]
+2024-05-19T18:39:44.167+0700 INFO Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-05-19T18:39:44.182+0700 INFO Initializing Spring embedded WebApplicationContext
+2024-05-19T18:39:44.182+0700 INFO Root WebApplicationContext: initialization completed in 280 ms
+2024-05-19T18:39:44.182+0700 INFO HikariPool-10 - Starting...
+2024-05-19T18:39:44.182+0700 INFO HikariPool-10 - Added connection conn88: url=jdbc:h2:mem:testdb user=SA
+2024-05-19T18:39:44.182+0700 INFO HikariPool-10 - Start completed.
+2024-05-19T18:39:44.182+0700 INFO H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-05-19T18:39:44.198+0700 INFO HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-19T18:39:44.198+0700 INFO HHH000026: Second-level cache disabled
+2024-05-19T18:39:44.198+0700 INFO No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-19T18:39:44.213+0700 WARN HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-19T18:39:44.345+0700 INFO HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-19T18:39:44.360+0700 INFO Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:39:44.360+0700 WARN Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'backfillWellCalendarController' defined in file [E:\MyJob\calendar_api\target\classes\ru\tomsknipineft\controllers\BackfillWellCalendarController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@1c5a68b4] failed
+2024-05-19T18:39:44.360+0700 INFO Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:39:44.360+0700 WARN Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-05-19T18:39:44.360+0700 INFO HikariPool-10 - Shutdown initiated...
+2024-05-19T18:39:44.376+0700 INFO HikariPool-10 - Shutdown completed.
+2024-05-19T18:39:44.376+0700 INFO Stopping service [Tomcat]
+2024-05-19T18:39:44.376+0700 INFO 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-05-19T18:39:44.376+0700 ERROR Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'backfillWellCalendarController' defined in file [E:\MyJob\calendar_api\target\classes\ru\tomsknipineft\controllers\BackfillWellCalendarController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@1c5a68b4] failed
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1354) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:959) ~[spring-context-6.1.3.jar:6.1.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.3.jar:6.1.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) [spring-boot-3.2.2.jar:3.2.2]
+	at ru.tomsknipineft.Main.main(Main.java:20) [classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.2.2.jar:3.2.2]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@1c5a68b4] failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:383) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more
+Caused by: java.lang.NoClassDefFoundError: ru/tomsknipineft/services/entityService/BackfillWellService
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3429) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2608) ~[?:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:378) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more
+Caused by: java.lang.ClassNotFoundException: ru.tomsknipineft.services.entityService.BackfillWellService
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[?:?]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[?:?]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521) ~[?:?]
+	at java.base/java.lang.Class.forName0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.forName(Class.java:495) ~[?:?]
+	at java.base/java.lang.Class.forName(Class.java:474) ~[?:?]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.2.2.jar:3.2.2]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3429) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2608) ~[?:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:378) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more
+2024-05-19T18:39:45.799+0700 INFO info message
+2024-05-19T18:39:45.799+0700 ERROR info message
+2024-05-19T18:39:45.831+0700 INFO Starting Main using Java 19.0.1 with PID 8636 (E:\MyJob\calendar_api\target\classes started by Тагир in E:\MyJob\calendar_api)
+2024-05-19T18:39:45.831+0700 INFO No active profile set, falling back to 1 default profile: "default"
+2024-05-19T18:39:46.002+0700 INFO Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-19T18:39:46.033+0700 INFO Finished Spring Data repository scanning in 32 ms. Found 12 JPA repository interfaces.
+2024-05-19T18:39:46.127+0700 INFO Tomcat initialized with port 8080 (http)
+2024-05-19T18:39:46.127+0700 INFO Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:39:46.127+0700 INFO Starting service [Tomcat]
+2024-05-19T18:39:46.127+0700 INFO Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-05-19T18:39:46.143+0700 INFO Initializing Spring embedded WebApplicationContext
+2024-05-19T18:39:46.143+0700 INFO Root WebApplicationContext: initialization completed in 312 ms
+2024-05-19T18:39:46.158+0700 INFO HikariPool-11 - Starting...
+2024-05-19T18:39:46.158+0700 INFO HikariPool-11 - Added connection conn94: url=jdbc:h2:mem:testdb user=SA
+2024-05-19T18:39:46.158+0700 INFO HikariPool-11 - Start completed.
+2024-05-19T18:39:46.158+0700 INFO H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-05-19T18:39:46.193+0700 INFO HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-19T18:39:46.193+0700 INFO HHH000026: Second-level cache disabled
+2024-05-19T18:39:46.193+0700 INFO No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-19T18:39:46.193+0700 WARN HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-19T18:39:46.423+0700 INFO HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-19T18:39:46.423+0700 INFO Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:39:46.704+0700 WARN spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-19T18:39:46.704+0700 INFO Adding welcome page template: index
+2024-05-19T18:39:46.804+0700 INFO LiveReload server is running on port 35729
+2024-05-19T18:39:46.804+0700 INFO Starting ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:39:46.820+0700 INFO Tomcat started on port 8080 (http) with context path ''
+2024-05-19T18:39:46.820+0700 INFO Started Main in 1.021 seconds (process running for 1040.637)
+2024-05-19T18:39:46.820+0700 INFO Condition evaluation unchanged
+2024-05-19T18:39:52.229+0700 INFO Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-19T18:39:52.229+0700 INFO Initializing Servlet 'dispatcherServlet'
+2024-05-19T18:39:52.229+0700 INFO Completed initialization in 0 ms
+2024-05-19T18:39:52.229+0700 WARN Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-05-19T18:39:53.245+0700 INFO Получение сущности из БД BackfillWell(id=1, active=true, objectType=AREA, well=6, stage=1, resourceForEngSurvey=10, resourceForLabResearch=10, resourceForEngSurveyReport=10, resourceForWorkDoc=10, resourceForProjDoc=21, resourceForEstDoc=21)
+2024-05-19T18:39:53.245+0700 INFO Отработал wrapper null
+2024-05-19T18:39:53.245+0700 WARN Resolved [java.lang.NullPointerException: Cannot invoke "org.springframework.cache.Cache$ValueWrapper.get()" because "wrapper" is null]
+2024-05-19T18:39:53.274+0700 WARN Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-05-19T18:41:26.206+0700 INFO Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-05-19T18:41:26.206+0700 INFO Stopping ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:41:26.206+0700 INFO Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:41:26.206+0700 WARN Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-05-19T18:41:26.206+0700 INFO HikariPool-11 - Shutdown initiated...
+2024-05-19T18:41:26.206+0700 INFO HikariPool-11 - Shutdown completed.
+2024-05-19T18:41:26.299+0700 INFO info message
+2024-05-19T18:41:26.299+0700 ERROR info message
+2024-05-19T18:41:26.331+0700 INFO Starting Main using Java 19.0.1 with PID 8636 (E:\MyJob\calendar_api\target\classes started by Тагир in E:\MyJob\calendar_api)
+2024-05-19T18:41:26.331+0700 INFO No active profile set, falling back to 1 default profile: "default"
+2024-05-19T18:41:26.500+0700 INFO Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-19T18:41:26.531+0700 INFO Finished Spring Data repository scanning in 26 ms. Found 12 JPA repository interfaces.
+2024-05-19T18:41:26.609+0700 INFO Tomcat initialized with port 8080 (http)
+2024-05-19T18:41:26.609+0700 INFO Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:41:26.609+0700 INFO Starting service [Tomcat]
+2024-05-19T18:41:26.625+0700 INFO Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-05-19T18:41:26.625+0700 INFO Initializing Spring embedded WebApplicationContext
+2024-05-19T18:41:26.625+0700 INFO Root WebApplicationContext: initialization completed in 294 ms
+2024-05-19T18:41:26.641+0700 INFO HikariPool-12 - Starting...
+2024-05-19T18:41:26.641+0700 INFO HikariPool-12 - Added connection conn104: url=jdbc:h2:mem:testdb user=SA
+2024-05-19T18:41:26.641+0700 INFO HikariPool-12 - Start completed.
+2024-05-19T18:41:26.641+0700 INFO H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-05-19T18:41:26.656+0700 INFO HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-19T18:41:26.672+0700 INFO HHH000026: Second-level cache disabled
+2024-05-19T18:41:26.672+0700 INFO No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-19T18:41:26.672+0700 WARN HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-19T18:41:26.797+0700 INFO HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-19T18:41:26.797+0700 INFO Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:41:26.828+0700 WARN Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'backfillWellCalendarController' defined in file [E:\MyJob\calendar_api\target\classes\ru\tomsknipineft\controllers\BackfillWellCalendarController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@992f496] failed
+2024-05-19T18:41:26.828+0700 INFO Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:41:26.828+0700 WARN Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-05-19T18:41:26.828+0700 INFO HikariPool-12 - Shutdown initiated...
+2024-05-19T18:41:26.847+0700 INFO HikariPool-12 - Shutdown completed.
+2024-05-19T18:41:26.847+0700 INFO Stopping service [Tomcat]
+2024-05-19T18:41:26.847+0700 INFO 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-05-19T18:41:26.847+0700 ERROR Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'backfillWellCalendarController' defined in file [E:\MyJob\calendar_api\target\classes\ru\tomsknipineft\controllers\BackfillWellCalendarController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@992f496] failed
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1354) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:959) ~[spring-context-6.1.3.jar:6.1.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.3.jar:6.1.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) [spring-boot-3.2.2.jar:3.2.2]
+	at ru.tomsknipineft.Main.main(Main.java:20) [classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.2.2.jar:3.2.2]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@992f496] failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:383) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more
+Caused by: java.lang.NoClassDefFoundError: ru/tomsknipineft/services/entityService/BackfillWellService
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3429) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2608) ~[?:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:378) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more
+Caused by: java.lang.ClassNotFoundException: ru.tomsknipineft.services.entityService.BackfillWellService
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[?:?]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[?:?]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521) ~[?:?]
+	at java.base/java.lang.Class.forName0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.forName(Class.java:495) ~[?:?]
+	at java.base/java.lang.Class.forName(Class.java:474) ~[?:?]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.2.2.jar:3.2.2]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3429) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2608) ~[?:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:378) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more
+2024-05-19T18:41:28.277+0700 INFO info message
+2024-05-19T18:41:28.277+0700 ERROR info message
+2024-05-19T18:41:28.292+0700 INFO Starting Main using Java 19.0.1 with PID 8636 (E:\MyJob\calendar_api\target\classes started by Тагир in E:\MyJob\calendar_api)
+2024-05-19T18:41:28.292+0700 INFO No active profile set, falling back to 1 default profile: "default"
+2024-05-19T18:41:28.426+0700 INFO Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-19T18:41:28.458+0700 INFO Finished Spring Data repository scanning in 27 ms. Found 12 JPA repository interfaces.
+2024-05-19T18:41:28.555+0700 INFO Tomcat initialized with port 8080 (http)
+2024-05-19T18:41:28.555+0700 INFO Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:41:28.555+0700 INFO Starting service [Tomcat]
+2024-05-19T18:41:28.555+0700 INFO Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-05-19T18:41:28.571+0700 INFO Initializing Spring embedded WebApplicationContext
+2024-05-19T18:41:28.571+0700 INFO Root WebApplicationContext: initialization completed in 279 ms
+2024-05-19T18:41:28.586+0700 INFO HikariPool-13 - Starting...
+2024-05-19T18:41:28.586+0700 INFO HikariPool-13 - Added connection conn111: url=jdbc:h2:mem:testdb user=SA
+2024-05-19T18:41:28.586+0700 INFO HikariPool-13 - Start completed.
+2024-05-19T18:41:28.586+0700 INFO H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-05-19T18:41:28.621+0700 INFO HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-19T18:41:28.621+0700 INFO HHH000026: Second-level cache disabled
+2024-05-19T18:41:28.621+0700 INFO No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-19T18:41:28.637+0700 WARN HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-19T18:41:28.855+0700 INFO HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-19T18:41:28.871+0700 INFO Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:41:29.269+0700 WARN spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-19T18:41:29.285+0700 INFO Adding welcome page template: index
+2024-05-19T18:41:29.441+0700 INFO LiveReload server is running on port 35729
+2024-05-19T18:41:29.441+0700 INFO Starting ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:41:29.441+0700 INFO Tomcat started on port 8080 (http) with context path ''
+2024-05-19T18:41:29.457+0700 INFO Started Main in 1.18 seconds (process running for 1143.273)
+2024-05-19T18:41:29.457+0700 INFO Condition evaluation unchanged
+2024-05-19T18:41:33.896+0700 INFO Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-19T18:41:33.896+0700 INFO Initializing Servlet 'dispatcherServlet'
+2024-05-19T18:41:33.896+0700 INFO Completed initialization in 0 ms
+2024-05-19T18:41:33.896+0700 WARN Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-05-19T18:41:34.910+0700 INFO Получение сущности из БД BackfillWell(id=1, active=true, objectType=AREA, well=6, stage=1, resourceForEngSurvey=10, resourceForLabResearch=10, resourceForEngSurveyReport=10, resourceForWorkDoc=10, resourceForProjDoc=21, resourceForEstDoc=21)
+2024-05-19T18:41:34.926+0700 INFO Отработал wrapper null
+2024-05-19T18:41:34.928+0700 WARN Resolved [java.lang.NullPointerException: Cannot invoke "org.springframework.cache.Cache$ValueWrapper.get()" because "wrapper" is null]
+2024-05-19T18:41:34.948+0700 WARN Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-05-19T18:47:19.975+0700 INFO Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-05-19T18:47:19.975+0700 INFO Stopping ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:47:19.975+0700 INFO Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:47:19.975+0700 WARN Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-05-19T18:47:19.975+0700 INFO HikariPool-13 - Shutdown initiated...
+2024-05-19T18:47:19.991+0700 INFO HikariPool-13 - Shutdown completed.
+2024-05-19T18:47:20.037+0700 INFO info message
+2024-05-19T18:47:20.037+0700 ERROR info message
+2024-05-19T18:47:20.069+0700 INFO Starting Main using Java 19.0.1 with PID 8636 (E:\MyJob\calendar_api\target\classes started by Тагир in E:\MyJob\calendar_api)
+2024-05-19T18:47:20.069+0700 INFO No active profile set, falling back to 1 default profile: "default"
+2024-05-19T18:47:20.268+0700 INFO Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-19T18:47:20.300+0700 INFO Finished Spring Data repository scanning in 26 ms. Found 12 JPA repository interfaces.
+2024-05-19T18:47:20.409+0700 INFO Tomcat initialized with port 8080 (http)
+2024-05-19T18:47:20.409+0700 INFO Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-19T18:47:20.409+0700 INFO Starting service [Tomcat]
+2024-05-19T18:47:20.409+0700 INFO Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-05-19T18:47:20.425+0700 INFO Initializing Spring embedded WebApplicationContext
+2024-05-19T18:47:20.425+0700 INFO Root WebApplicationContext: initialization completed in 341 ms
+2024-05-19T18:47:20.444+0700 INFO HikariPool-14 - Starting...
+2024-05-19T18:47:20.445+0700 INFO HikariPool-14 - Added connection conn121: url=jdbc:h2:mem:testdb user=SA
+2024-05-19T18:47:20.445+0700 INFO HikariPool-14 - Start completed.
+2024-05-19T18:47:20.445+0700 INFO H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-05-19T18:47:20.470+0700 INFO HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-19T18:47:20.470+0700 INFO HHH000026: Second-level cache disabled
+2024-05-19T18:47:20.484+0700 INFO No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-19T18:47:20.486+0700 WARN HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-19T18:47:20.670+0700 INFO HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-19T18:47:20.670+0700 INFO Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:47:20.686+0700 WARN Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'backfillWellCalendarController' defined in file [E:\MyJob\calendar_api\target\classes\ru\tomsknipineft\controllers\BackfillWellCalendarController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@70c47714] failed
+2024-05-19T18:47:20.686+0700 INFO Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-19T18:47:20.686+0700 WARN Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-05-19T18:47:20.686+0700 INFO HikariPool-14 - Shutdown initiated...
+2024-05-19T18:47:20.701+0700 INFO HikariPool-14 - Shutdown completed.
+2024-05-19T18:47:20.702+0700 INFO Stopping service [Tomcat]
+2024-05-19T18:47:20.704+0700 INFO 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-05-19T18:47:20.704+0700 ERROR Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'backfillWellCalendarController' defined in file [E:\MyJob\calendar_api\target\classes\ru\tomsknipineft\controllers\BackfillWellCalendarController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@70c47714] failed
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1354) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:959) ~[spring-context-6.1.3.jar:6.1.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.3.jar:6.1.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) [spring-boot-3.2.2.jar:3.2.2]
+	at ru.tomsknipineft.Main.main(Main.java:20) [classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.2.2.jar:3.2.2]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'backfillWellGroupCalendarServiceImpl': Resolution of declared constructors on bean Class [ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@70c47714] failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:383) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more
+Caused by: java.lang.NoClassDefFoundError: ru/tomsknipineft/services/entityService/BackfillWellService
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3429) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2608) ~[?:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:378) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more
+Caused by: java.lang.ClassNotFoundException: ru.tomsknipineft.services.entityService.BackfillWellService
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[?:?]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[?:?]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521) ~[?:?]
+	at java.base/java.lang.Class.forName0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.forName(Class.java:495) ~[?:?]
+	at java.base/java.lang.Class.forName(Class.java:474) ~[?:?]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.2.2.jar:3.2.2]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3429) ~[?:?]
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2608) ~[?:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:378) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1293) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:907) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:785) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 22 more

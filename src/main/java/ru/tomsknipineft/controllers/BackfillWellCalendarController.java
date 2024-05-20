@@ -1,18 +1,16 @@
 package ru.tomsknipineft.controllers;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.tomsknipineft.entities.Calendar;
 import ru.tomsknipineft.entities.EntityProject;
 import ru.tomsknipineft.entities.oilPad.DataFormOilPad;
@@ -31,12 +29,12 @@ public class BackfillWellCalendarController {
 
     private final CalendarService calendarService;
 
-    private String codeContract;
+//    private String codeContract;
 
-    private DataFormOilPad dataFormOilPad;
+//    private DataFormOilPad dataFormOilPad;
 
 
-    protected List<Calendar> calendars;
+//    protected List<Calendar> calendars;
 
     private static final Logger logger = LogManager.getLogger(BackfillWellCalendarController.class);
 
@@ -45,7 +43,7 @@ public class BackfillWellCalendarController {
      */
     @GetMapping
     public String backfillWellPage(Model model) {
-        calendars = null;
+//        calendars = null;
         model.addAttribute("dataFormOilPad", new DataFormOilPad());
         return "input_page/backfill-well";
     }
@@ -57,22 +55,22 @@ public class BackfillWellCalendarController {
      * @return перенаправление на страницу вывода календарного плана договора
      */
     @PostMapping("/create")
-    public String createCalendar(@Valid @ModelAttribute("dataFormOilPad") DataFormOilPad dataFormOilPad, BindingResult bindingResult) {
+    public String createCalendar(@Valid @ModelAttribute("dataFormOilPad") DataFormOilPad dataFormOilPad, BindingResult bindingResult,
+                                 HttpSession session) {
         if (bindingResult.hasErrors()) {
             return "input_page/backfill-well";
         }
-        List<EntityProject> entityProjects = new ArrayList<>(List.of(dataFormOilPad.getBackfillWell(), dataFormOilPad.getRoad(), dataFormOilPad.getLine(),
-                dataFormOilPad.getVvp(), dataFormOilPad.getCableRack()));
+        List<EntityProject> entityProjects = new ArrayList<>(List.of(dataFormOilPad.getBackfillWell(), dataFormOilPad.getRoad(),
+                dataFormOilPad.getLine(), dataFormOilPad.getVvp(), dataFormOilPad.getCableRack()));
         entityProjects.addAll(dataFormOilPad.getBackfillSites());
 
-        if (dataFormOilPad.isFieldEngineeringSurvey()) {
-            dataFormOilPad.setEngineeringSurveyReport(true);
-        }
-        this.codeContract = dataFormOilPad.getCodeContract();
-        this.dataFormOilPad = dataFormOilPad;
-
-        calendars = calendarService.createCalendar(entityProjects, backFillWellCalendarServiceImpl, dataFormOilPad);
-
+        String codeContract = dataFormOilPad.getCodeContract();
+        session.setAttribute("codeContract", codeContract);
+//        this.dataFormOilPad = dataFormOilPad;
+        long startTime = System.currentTimeMillis();
+        calendarService.createCalendar(entityProjects, backFillWellCalendarServiceImpl, dataFormOilPad);
+        long executionTime = System.currentTimeMillis() - startTime;
+        logger.info("Создание календаря заняло время " + executionTime);
         return "redirect:/oil_pad_object/backfill_well/calendar";
     }
 
@@ -80,13 +78,17 @@ public class BackfillWellCalendarController {
      * Страница с выводом календарного плана договора
      */
     @GetMapping("/calendar")
-    public String resultCalendar(Model model, HttpServletRequest request) {
-        String codeFromRequest = (String) request.getAttribute("codeContract");
-        if (codeFromRequest != null) {
-            codeContract = codeFromRequest;
-            calendars = calendarService.getCalendarByCode(codeContract);
-            dataFormOilPad = (DataFormOilPad) calendarService.getDataFormProject(calendars);
-        }
+    public String resultCalendar(Model model, HttpSession session) {
+        String codeContract = (String) session.getAttribute("codeContract");
+//        logger.info("Календарь по шифру " + codeContract);
+//        if (codeFromRequest != null) {
+//            String codeContract = codeFromRequest;
+        long startTime = System.currentTimeMillis();
+        List<Calendar> calendars = calendarService.getCalendarByCode(codeContract);
+        long executionTime = System.currentTimeMillis() - startTime;
+        logger.info("Получение календаря из БД заняло время " + executionTime);
+        DataFormOilPad dataFormOilPad = (DataFormOilPad) calendarService.getDataFormProject(calendars);
+//        }
         logger.info("Календарь по шифру " + codeContract + " выведен - " + calendars);
         model.addAttribute("calendars", calendars);
         model.addAttribute("codeContract", codeContract);

@@ -9,8 +9,8 @@ import ru.tomsknipineft.entities.EntityProject;
 import ru.tomsknipineft.entities.enumEntities.ObjectType;
 import ru.tomsknipineft.repositories.CalendarRepository;
 import ru.tomsknipineft.services.CalendarService;
-import ru.tomsknipineft.services.DataFormProjectService;
-import ru.tomsknipineft.services.DateService;
+import ru.tomsknipineft.services.utilService.DataFormProjectService;
+import ru.tomsknipineft.services.utilService.DateService;
 import ru.tomsknipineft.services.GroupObjectCalendarService;
 
 import java.util.*;

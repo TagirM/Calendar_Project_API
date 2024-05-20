@@ -30,22 +30,29 @@
                 </div>
 
                 <div id="roadClass" class="container">
-                    <h3>Автомобильная дорога</h3>
+                    <h3>Автомобильные дороги</h3>
                     <div class="form-group">
                         <label for="activeRoad">Наличие:</label>
                         <input type="checkbox" class="form-check-input" th:field="*{road.active}" id="activeRoad"><br><br>
                     </div>
                     <div class="form-group">
-                        <label for="category">Категория дороги (3 или 4):</label>
+                        <label for="category">Категория дорог (3 или 4):</label>
                         <input type="number" class="form-control" th:field="*{road.category}" id="category">
                         <span class="text-danger" th:if="${#fields.hasErrors('road.category')}"
                               th:errors="*{road.category}"></span><br>
                     </div>
                     <div class="form-group">
-                        <label for="lengthRoad">Протяженность дорог, км (не более 20):</label>
+                        <label for="lengthRoad">Общая протяженность автодорог, км (не более 20):</label>
                         <input type="number" step="any" class="form-control" th:field="*{road.length}" id="lengthRoad">
                         <span class="text-danger" th:if="${#fields.hasErrors('road.length')}"
                               th:errors="*{road.length}"></span><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="countRoad">Общее количество автодорог, шт:</label>
+                        <input type="number" step="any" class="form-control" th:field="*{road.count}"
+                               id="countRoad">
+                        <span class="text-danger" th:if="${#fields.hasErrors('road.count')}"
+                              th:errors="*{road.count}"></span>
                     </div>
                     <div class="form-group">
                         <label for="bridgeExistRoad">Наличие дорожного моста:</label>
@@ -74,7 +81,7 @@
                     </div>
                 </div>
                 <div id="lineClass" class="container">
-                    <h3> Линия электропередач </h3>
+                    <h3> Линии электропередач </h3>
                     <div class="form-group">
                         <label for="activeLine">Наличие: </label>
                         <input type="checkbox" class="form-check-input" th:field="*{line.active}" id="activeLine"/><br><br>
@@ -182,7 +189,7 @@
                     </div>
                 </div>
                 <div id="cableRackClass" class="container">
-                    <h3> Кабельная эстакада </h3>
+                    <h3> Кабельные эстакады </h3>
                     <div class="form-group">
                         <label for="activeCableRack">Наличие: </label>
                         <input type="checkbox" class="form-check-input" th:field="*{cableRack.active}"

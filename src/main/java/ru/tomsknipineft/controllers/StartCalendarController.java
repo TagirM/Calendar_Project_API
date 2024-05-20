@@ -1,6 +1,7 @@
 package ru.tomsknipineft.controllers;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -71,17 +72,20 @@ public class StartCalendarController {
      */
     @Transactional
     @GetMapping("/codeContract")
-    public String outputCalendar(@RequestParam String codeContract, HttpServletRequest request){
+    public String outputCalendar(@RequestParam String codeContract, HttpSession session){
+        long startTime = System.currentTimeMillis();
         List<Calendar> calendars = calendarService.getCalendarByCode(codeContract);
+        long executionTime = System.currentTimeMillis() - startTime;
+        logger.info("Получение календаря из БД заняло время " + executionTime);
         if (calendars.size() == 0){
             throw new  NoSuchCalendarException("Календарь по указанному шифру " + codeContract + " отсутствует в базе данных");
         }
-        request.setAttribute("codeContract", codeContract);
+        session.setAttribute("codeContract", codeContract);
         if (calendarService.getDataFormProject(calendars).getClass() == DataFormOilPad.class){
-            return "forward:/oil_pad_object/backfill_well/calendar";
+            return "redirect:/oil_pad_object/backfill_well/calendar";
         }
         else if (calendarService.getDataFormProject(calendars).getClass() == DataFormLinearObjects.class){
-            return "forward:/linear_object/linear_pipeline/calendar";
+            return "redirect:/linear_object/linear_pipeline/calendar";
         }
         return null;
     }

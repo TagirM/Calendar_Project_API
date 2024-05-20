@@ -58,21 +58,28 @@ public class Bridge implements OilPad, EntityProject, Serializable {
     @Min(value = 1, message = "Не может быть меньше 1", groups = OnActiveCheck.class)
     private Integer stage;
 
-//    //    необходимые ресурсы для выполнения полевых ИИ, чел/дней
-//    private Integer resourceForEngSurvey;
-//
-//    //    необходимые ресурсы для выполнения ЛИ, чел/дней
-//    private Integer resourceForLabResearch;
-//
-//    //    необходимые ресурсы для выполнения отчета ИИ, чел/дней
-//    private Integer resourceForEngSurveyReport;
-    @Column(name = "resource_for_work_doc")
+    //    необходимые ресурсы для выполнения полевых ИИ, чел/дней
+    @Column(name = "resource_for_eng_survey")
+    private Integer resourceForEngSurvey;
+
+    //    необходимые ресурсы для выполнения ЛИ, чел/дней
+    @Column(name = "resource_for_lab_research")
+    private Integer resourceForLabResearch;
+
+    //    необходимые ресурсы для выполнения отчета ИИ, чел/дней
+    @Column(name = "resource_for_eng_survey_report")
+    private Integer resourceForEngSurveyReport;
+
     //    необходимые ресурсы для разработки РД, чел/дней
+    @Column(name = "resource_for_work_doc")
     private Integer resourceForWorkDoc;
 
-//    //    необходимые ресурсы для разработки ПД, чел/дней
-//    private Integer resourceForProjDoc;
-//
-//    //    необходимые ресурсы для разработки СД, чел/дней
-//    private Integer resourceForEstDoc;
+    //    необходимые ресурсы для разработки ПД, чел/дней
+    @Column(name = "resource_for_proj_doc")
+    private Integer resourceForProjDoc;
+
+    //    необходимые ресурсы для разработки СД, чел/дней
+    @Column(name = "resource_for_est_doc")
+    private Integer resourceForEstDoc;
 }
+

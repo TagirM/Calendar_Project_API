@@ -21,14 +21,14 @@ import ru.tomsknipineft.utils.entityValidator.SiknGroupSequenceProvider;
 import java.io.Serializable;
 
 /**
- * Площадка системы изменрения количества и качества нефти
+ * Площадка системы измерения количества и качества нефти
  */
 @GroupSequenceProvider(SiknGroupSequenceProvider.class)
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "sikn")
+@Table(name = "sikns")
 public class Sikn implements OilPad, EntityProject, Serializable {
 
     @Id
@@ -41,21 +41,42 @@ public class Sikn implements OilPad, EntityProject, Serializable {
     @Enumerated(EnumType.STRING)
     private ObjectType objectType;
 
-    // производительность СИКН, тонн/час
-    @NotNull(message = "Производительность не заполнена", groups = OnActiveCheck.class)
-    @Positive(message = "Длина не может быть 0 или отрицательной", groups = OnActiveCheck.class)
-    private Double capacity;
-
     // тип СИКН
     @NotNull(message = "Тип не заполнен", groups = OnActiveCheck.class)
     @Column(name = "sikn_type")
     @Enumerated(EnumType.STRING)
     private SiknType siknType;
 
+    // производительность СИКН, тонн/час
+    @NotNull(message = "Производительность не заполнена", groups = OnActiveCheck.class)
+    @Positive(message = "Длина не может быть 0 или отрицательной", groups = OnActiveCheck.class)
+    private Double capacity;
+
     //    этап строительства
     @Min(value = 1, message = "Не может быть меньше 1", groups = OnActiveCheck.class)
     private Integer stage;
 
-    //    необходимые ресурсы, чел/дней
-    private Integer resource;
+    //    необходимые ресурсы для выполнения полевых ИИ, чел/дней
+    @Column(name = "resource_for_eng_survey")
+    private Integer resourceForEngSurvey;
+
+    //    необходимые ресурсы для выполнения ЛИ, чел/дней
+    @Column(name = "resource_for_lab_research")
+    private Integer resourceForLabResearch;
+
+    //    необходимые ресурсы для выполнения отчета ИИ, чел/дней
+    @Column(name = "resource_for_eng_survey_report")
+    private Integer resourceForEngSurveyReport;
+
+    //    необходимые ресурсы для разработки РД, чел/дней
+    @Column(name = "resource_for_work_doc")
+    private Integer resourceForWorkDoc;
+
+    //    необходимые ресурсы для разработки ПД, чел/дней
+    @Column(name = "resource_for_proj_doc")
+    private Integer resourceForProjDoc;
+
+    //    необходимые ресурсы для разработки СД, чел/дней
+    @Column(name = "resource_for_est_doc")
+    private Integer resourceForEstDoc;
 }

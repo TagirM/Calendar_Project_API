@@ -1,6 +1,7 @@
 package ru.tomsknipineft.controllers;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
@@ -27,11 +28,11 @@ public class LinearPipelineCalendarController {
 
     private final LinearPipelineGroupCalendarServiceImpl linearObjectGroupCalendarService;
     private final CalendarService calendarService;
-    private String codeContract;
+//    private String codeContract;
 
-    private DataFormLinearObjects dataFormLinearObjects;
+//    private DataFormLinearObjects dataFormLinearObjects;
 
-    protected List<Calendar> calendars;
+//    protected List<Calendar> calendars;
 
     private static final Logger logger = LogManager.getLogger(BackfillWellCalendarController.class);
 
@@ -40,7 +41,7 @@ public class LinearPipelineCalendarController {
      */
     @GetMapping
     public String linearPipelinePage(Model model){
-        calendars = null;
+//        calendars = null;
         model.addAttribute("dataFormLinearObjects", new DataFormLinearObjects());
         return "input_page/linear-pipeline";
     }
@@ -51,7 +52,8 @@ public class LinearPipelineCalendarController {
      * @return перенаправление на страницу вывода календарного плана договора
      */
     @PostMapping("/create")
-    public String createCalendar(@Valid @ModelAttribute("dataFormLinearObjects") DataFormLinearObjects dataFormLinearObjects, BindingResult bindingResult){
+    public String createCalendar(@Valid @ModelAttribute("dataFormLinearObjects") DataFormLinearObjects dataFormLinearObjects,
+                                 BindingResult bindingResult, HttpSession session){
         if (bindingResult.hasErrors()){
             return "input_page/linear-pipeline";
         }
@@ -60,13 +62,12 @@ public class LinearPipelineCalendarController {
                 dataFormLinearObjects.getSikn(), dataFormLinearObjects.getMps(), dataFormLinearObjects.getKtplp(),
                 dataFormLinearObjects.getVvp(), dataFormLinearObjects.getCableRack());
 
-        if (dataFormLinearObjects.isFieldEngineeringSurvey()){
-            dataFormLinearObjects.setEngineeringSurveyReport(true);
-        }
-        this.codeContract = dataFormLinearObjects.getCodeContract();
-        this.dataFormLinearObjects = dataFormLinearObjects;
+        String codeContract = dataFormLinearObjects.getCodeContract();
+        session.setAttribute("codeContract", codeContract);
 
-        calendars = calendarService.createCalendar(entityProjects, linearObjectGroupCalendarService, dataFormLinearObjects);
+//        this.dataFormLinearObjects = dataFormLinearObjects;
+
+        calendarService.createCalendar(entityProjects, linearObjectGroupCalendarService, dataFormLinearObjects);
 
         return "redirect:/linear_object/linear_pipeline/calendar";
     }
@@ -75,13 +76,13 @@ public class LinearPipelineCalendarController {
      * Страница с выводом календарного плана договора
      */
     @GetMapping("/calendar")
-    public String resultCalendar(Model model, HttpServletRequest request){
-        String codeFromRequest = (String) request.getAttribute("codeContract");
-        if (codeFromRequest != null){
-            codeContract = codeFromRequest;
-            calendars = calendarService.getCalendarByCode(codeContract);
-            dataFormLinearObjects = (DataFormLinearObjects) calendarService.getDataFormProject(calendars);
-        }
+    public String resultCalendar(Model model, HttpSession session){
+        String codeContract = (String) session.getAttribute("codeContract");
+//        if (codeFromRequest != null){
+//            codeContract = codeFromRequest;
+        List<Calendar> calendars = calendarService.getCalendarByCode(codeContract);
+        DataFormLinearObjects dataFormLinearObjects = (DataFormLinearObjects) calendarService.getDataFormProject(calendars);
+//        }
         logger.info("Календарь по шифру " + codeContract + " выведен - " + calendars);
         model.addAttribute("calendars", calendars);
         model.addAttribute("codeContract", codeContract);

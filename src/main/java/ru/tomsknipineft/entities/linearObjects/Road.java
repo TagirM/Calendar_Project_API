@@ -52,17 +52,23 @@ public class Road implements OilPad, EntityProject, Serializable {
     @Positive(message = "Длина моста не может быть 0 или отрицательной", groups = OnActiveBridgeRoad.class)
     private Integer bridgeRoadLength;
 
-    //    категория дороги
+    //    категория дорог
     @NotNull(message = "Категория не заполнена", groups = OnActiveCheck.class)
     @Min(value = 3, message = "Неверно указана категория", groups = OnActiveCheck.class)
     @Max(value = 4, message = "Неверно указана категория", groups = OnActiveCheck.class)
     private Integer category;
 
-    //    протяженность дороги, км
+    //    общая протяженность дорог, км
     @NotNull(message = "Длина не заполнена", groups = OnActiveCheck.class)
     @Positive(message = "Длина не может быть 0 или отрицательной", groups = OnActiveCheck.class)
     @Max(value = 20, message = "Не может быть больше 20", groups = OnActiveCheck.class)
     private Double length;
+
+    //    общее количество дорог, км
+    @NotNull(message = "Количество не заполнено", groups = OnActiveCheck.class)
+    @Positive(message = "Количество не может быть 0 или отрицательным", groups = OnActiveCheck.class)
+    @Max(value = 10, message = "Не может быть больше 10", groups = OnActiveCheck.class)
+    private Integer count;
 
     //    этап строительства
     @Min(value = 1, message = "Не может быть меньше 1", groups = OnActiveCheck.class)

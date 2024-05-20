@@ -1,12 +1,12 @@
 package ru.tomsknipineft.services;
 
 import lombok.RequiredArgsConstructor;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 import ru.tomsknipineft.entities.EntityProject;
+import ru.tomsknipineft.entities.areaObjects.Sikn;
 import ru.tomsknipineft.entities.areaObjects.Vvp;
 import ru.tomsknipineft.entities.linearObjects.*;
+import ru.tomsknipineft.services.entityService.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +27,8 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
 
     private final KtplpService ktplpService;
 
+    private final SiknService siknService;
+
 //    private static final Logger logger = LogManager.getLogger(LinearPipelineGroupCalendarServiceImpl.class);
 
     @Override
@@ -44,6 +46,8 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
             resourceForStage += cableRackService.getResourceForEngSurveyCableRack((CableRack) entityProjectLinearPipeline);
         } else if (entityProjectLinearPipeline.getClass() == Ktplp.class) {
             resourceForStage += ktplpService.getResourceForEngSurveyKtplp((Ktplp) entityProjectLinearPipeline);
+        } else if (entityProjectLinearPipeline.getClass() == Sikn.class) {
+            resourceForStage += siknService.getResourceForEngSurveySikn((Sikn) entityProjectLinearPipeline);
         }
         return resourceForStage;
     }
@@ -63,6 +67,8 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
             resourceForStage += cableRackService.getResourceForLabResearchCableRack((CableRack) entityProjectLinearPipeline);
         } else if (entityProjectLinearPipeline.getClass() == Ktplp.class) {
             resourceForStage += ktplpService.getResourceForLabResearchKtplp((Ktplp) entityProjectLinearPipeline);
+        } else if (entityProjectLinearPipeline.getClass() == Sikn.class) {
+            resourceForStage += siknService.getResourceForLabResearchSikn((Sikn) entityProjectLinearPipeline);
         }
         return resourceForStage;
     }
@@ -82,6 +88,8 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
             resourceForStage += cableRackService.getResourceForEngSurveyReportCableRack((CableRack) entityProjectLinearPipeline);
         } else if (entityProjectLinearPipeline.getClass() == Ktplp.class) {
             resourceForStage += ktplpService.getResourceForEngSurveyReportKtplp((Ktplp) entityProjectLinearPipeline);
+        } else if (entityProjectLinearPipeline.getClass() == Sikn.class) {
+            resourceForStage += siknService.getResourceForEngSurveyReportSikn((Sikn) entityProjectLinearPipeline);
         }
         return resourceForStage;
     }
@@ -101,6 +109,8 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
             resourceForStage += cableRackService.getResourceForWorkDocCableRack((CableRack) entityProjectLinearPipeline);
         } else if (entityProjectLinearPipeline.getClass() == Ktplp.class) {
             resourceForStage += ktplpService.getResourceForWorkDocKtplp((Ktplp) entityProjectLinearPipeline);
+        } else if (entityProjectLinearPipeline.getClass() == Sikn.class) {
+            resourceForStage += siknService.getResourceForWorkDocSikn((Sikn) entityProjectLinearPipeline);
         }
         return resourceForStage;
     }
@@ -120,6 +130,8 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
             resourceForStage += cableRackService.getResourceForProjDocCableRack((CableRack) entityProjectLinearPipeline);
         } else if (entityProjectLinearPipeline.getClass() == Ktplp.class) {
             resourceForStage += ktplpService.getResourceForProjDocKtplp((Ktplp) entityProjectLinearPipeline);
+        } else if (entityProjectLinearPipeline.getClass() == Sikn.class) {
+            resourceForStage += siknService.getResourceForProjDocSikn((Sikn) entityProjectLinearPipeline);
         }
         return resourceForStage;
     }
@@ -139,6 +151,8 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
             resourceForStage += cableRackService.getResourceForEstDocCableRack((CableRack) entityProjectLinearPipeline);
         } else if (entityProjectLinearPipeline.getClass() == Ktplp.class) {
             resourceForStage += ktplpService.getResourceForEstDocKtplp((Ktplp) entityProjectLinearPipeline);
+        } else if (entityProjectLinearPipeline.getClass() == Sikn.class) {
+            resourceForStage += siknService.getResourceForEstDocSikn((Sikn) entityProjectLinearPipeline);
         }
         return resourceForStage;
     }
@@ -169,6 +183,9 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
                     objects.add(entity);
                 } else if (entity.getClass() == Ktplp.class) {
                     entity.setObjectType(ktplpService.getFirst().getObjectType());
+                    objects.add(entity);
+                } else if (entity.getClass() == Sikn.class) {
+                    entity.setObjectType(siknService.getFirst().getObjectType());
                     objects.add(entity);
                 }
             }

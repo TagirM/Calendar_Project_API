@@ -14,9 +14,9 @@
             <p class="fst-italic" th:if="${!engineeringSurveyReport}">Камеральные инженерные изыскания: Нет</p>
             <p class="fst-italic">Количество скважин для инженерной подготовки:
                 [[${dataFormOilPad.backfillWell.well}]] - [[${dataFormOilPad.backfillWell.stage}]] этап</p>
-            <p class="fst-italic" th:if="${dataFormOilPad.road.active}">Автомобильная дорога категории
-                [[${dataFormOilPad.road.category}]]
-                протяженностью [[${dataFormOilPad.road.length}]] км - [[${dataFormOilPad.road.stage}]] этап</p>
+            <p class="fst-italic" th:if="${dataFormOilPad.road.active}">Автомобильные дороги категории
+                [[${dataFormOilPad.road.category}]] общей протяженностью [[${dataFormOilPad.road.length}]] км
+                в количестве [[${dataFormOilPad.road.count}]] шт. - [[${dataFormOilPad.road.stage}]] этап</p>
             <p class="fst-italic" th:if="${dataFormOilPad.road.bridgeExist}">Дорожные мосты в количестве:
                 [[${dataFormOilPad.road.bridgeRoadCount}]] шт.,
                 общей протяженностью [[${dataFormOilPad.road.bridgeRoadLength}]] м - [[${dataFormOilPad.road.stage}]] этап</p>
@@ -27,9 +27,9 @@
                 [[${dataFormOilPad.backfillSites[0].square}]] га - [[${dataFormOilPad.backfillSites[0].stage}]] этап</p>
             <p class="fst-italic" th:if="${dataFormOilPad.backfillSites[1].active}">Площадка под ВЭЦ площадью
                 [[${dataFormOilPad.backfillSites[1].square}]] га - [[${dataFormOilPad.backfillSites[1].stage}]] этап</p>
-            <p class="fst-italic" th:if="${dataFormOilPad.cableRack.active}">Кабельная эстакада протяженностью
-                [[${dataFormOilPad.cableRack.length}]] м, [[${dataFormOilPad.line.complexityOfGeology.title}]] в месте прокладки ВЛ
-                - [[${dataFormOilPad.cableRack.stage}]] этап</p>
+            <p class="fst-italic" th:if="${dataFormOilPad.cableRack.active}">Кабельные эстакады общей протяженностью
+                [[${dataFormOilPad.cableRack.length}]] м, [[${dataFormOilPad.cableRack.complexityOfGeology.title}]] в
+                месте прокладки кабельных эстакад - [[${dataFormOilPad.cableRack.stage}]] этап</p>
             <p class="fst-italic" th:if="${dataFormOilPad.backfillSites[2].active}">Площадка под ВЖК площадью
                 [[${dataFormOilPad.backfillSites[2].square}]] га - [[${dataFormOilPad.backfillSites[2].stage}]] этап</p>
             <p class="fst-italic" th:if="${dataFormOilPad.backfillSites[3].active}">Площадка под модульную подстанцию
