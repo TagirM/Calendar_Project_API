@@ -1,111 +1,38 @@
 package ru.tomsknipineft.services.entityService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import ru.tomsknipineft.entities.areaObjects.BackfillSite;
 import ru.tomsknipineft.entities.areaObjects.Vvp;
 import ru.tomsknipineft.repositories.VvpRepository;
 import ru.tomsknipineft.utils.exceptions.NoSuchEntityException;
 
 @Service
 @RequiredArgsConstructor
+@CacheConfig(cacheNames = "vvpCache")
 public class VvpService implements EntityProjectService {
 
     private final VvpRepository vvpRepository;
 
-    private Vvp findVvpFromRequest;
-
     /**
-     * Поиск в БД количества ресурса необходимого для выполнения полевых ИИ
-     * @param vvp Инженерная подготовка площадки
-     * @return количество необходимого ресурса
+     * Поиск сущности в базе данных по введенным параметрам сущности из представления
+     *
+     * @param vvpFromRequest сущность с введенными параметрами из представления
+     * @return искомая в базе данных сущность
      */
-    public Integer getResourceForEngSurveyVvp(Vvp vvp){
-        if (vvp.isActive()){
-            this.findVvpFromRequest = vvpRepository.findFirstBySquareGreaterThanEqualAndHelicopterModel(vvp.getSquare(),
-                    vvp.getHelicopterModel()).orElseThrow(()->
-                    new NoSuchEntityException("Введено некорректное значение площади " + vvp.getSquare() +
-                            " и/или модель вертолета " + vvp.getHelicopterModel()));
-            return findVvpFromRequest.getResourceForEngSurvey();
+    @Cacheable(key = "new org.springframework.cache.interceptor.SimpleKey(#vvpFromRequest.square, #vvpFromRequest.helicopterModel)")
+    public Vvp getFindVvpFromRequest(Vvp vvpFromRequest) {
+        if (vvpFromRequest.getHelicopterModel().equals("МИ-8")){
+            vvpFromRequest.setSquare(1.0);
+        } else if (vvpFromRequest.getHelicopterModel().equals("МИ-26")) {
+            vvpFromRequest.setSquare(2.0);
         }
-        return 0;
-    }
-
-    /**
-     * Поиск в БД количества ресурса необходимого для выполнения ЛИ
-     * @param vvp Инженерная подготовка площадки
-     * @return количество необходимого ресурса
-     */
-    public Integer getResourceForLabResearchVvp(Vvp vvp){
-        if (vvp.isActive()){
-            if (findVvpFromRequest == null){
-                this.findVvpFromRequest = vvpRepository.findFirstBySquareGreaterThanEqualAndHelicopterModel(vvp.getSquare(),
-                        vvp.getHelicopterModel()).orElseThrow(()->
-                        new NoSuchEntityException("Введено некорректное значение площади " + vvp.getSquare() +
-                                " и/или модель вертолета " + vvp.getHelicopterModel()));
-            }
-            return findVvpFromRequest.getResourceForLabResearch();
-        }
-        return 0;
-    }
-
-    /**
-     * Поиск в БД количества ресурса необходимого для выполнения отчета ИИ
-     * @param vvp Инженерная подготовка площадки
-     * @return количество необходимого ресурса
-     */
-    public Integer getResourceForEngSurveyReportVvp(Vvp vvp){
-        if (vvp.isActive()){
-            if (findVvpFromRequest == null){
-                this.findVvpFromRequest = vvpRepository.findFirstBySquareGreaterThanEqualAndHelicopterModel(vvp.getSquare(),
-                        vvp.getHelicopterModel()).orElseThrow(()->
-                        new NoSuchEntityException("Введено некорректное значение площади " + vvp.getSquare() +
-                                " и/или модель вертолета " + vvp.getHelicopterModel()));
-            }
-            return findVvpFromRequest.getResourceForEngSurveyReport();
-        }
-        return 0;
-    }
-
-    /**
-     * Поиск в БД количества ресурса необходимого для разработки РД
-     * @param vvp Временная вертолетная площадка
-     * @return количество необходимого ресурса
-     */
-    public Integer getResourceForWorkDocVvp(Vvp vvp){
-        if (vvp.isActive()){
-            if (findVvpFromRequest == null){
-                this.findVvpFromRequest = vvpRepository.findFirstBySquareGreaterThanEqualAndHelicopterModel(vvp.getSquare(),
-                        vvp.getHelicopterModel()).orElseThrow(()->
-                        new NoSuchEntityException("Введено некорректное значение площади " + vvp.getSquare() +
-                                " и/или модель вертолета " + vvp.getHelicopterModel()));
-            }
-            return findVvpFromRequest.getResourceForWorkDoc();
-        }
-        return 0;
-    }
-
-    /**
-     * Поиск в БД количества ресурса необходимого для разработки ПД
-     * @param vvp Инженерная подготовка площадки
-     * @return количество необходимого ресурса
-     */
-    public Integer getResourceForProjDocVvp(Vvp vvp){
-        if (vvp.isActive()){
-            return findVvpFromRequest.getResourceForProjDoc();
-        }
-        return 0;
-    }
-
-    /**
-     * Поиск в БД количества ресурса необходимого для разработки СД
-     * @param vvp Инженерная подготовка площадки
-     * @return количество необходимого ресурса
-     */
-    public Integer getResourceForEstDocVvp(Vvp vvp){
-        if (vvp.isActive()){
-            return findVvpFromRequest.getResourceForEstDoc();
-        }
-        return 0;
+        System.out.println(vvpFromRequest);
+        return vvpRepository.findFirstBySquareGreaterThanEqual(vvpFromRequest.getSquare()).orElseThrow(()->
+                new NoSuchEntityException("Введено некорректное значение площади " + vvpFromRequest.getSquare() +
+                        " или модель вертолета " + vvpFromRequest.getHelicopterModel()));
     }
 
     /**

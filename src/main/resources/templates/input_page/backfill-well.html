@@ -164,17 +164,25 @@
                         <input type="checkbox" class="form-check-input" th:field="*{vvp.active}" id="activeVvp"/><br><br>
                     </div>
                     <div class="form-group">
-                        <label for="helicopterModelVvp">Модель вертолета для посадки (МИ-8, МИ-16): </label>
+                        <label for="helicopterModelVvp">Укажите модель вертолета для посадки (МИ-8, МИ-26): </label>
                         <input type="text" class="form-control" th:field="*{vvp.helicopterModel}"
-                               id="helicopterModelVvp"/>
-                        <span class="text-danger" th:if="${#fields.hasErrors('vvp.helicopterModel')}"
-                              th:errors="*{vvp.helicopterModel}">Well error</span><br>
-                    </div>
-                    <div class="form-group">
+                               id="helicopterModelVvp" th:readonly="${#fields.hasErrors('vvp.helicopterModel')}"/>
+<!--                        <span class="text-danger" th:if="${#fields.hasErrors('vvp.helicopterModel')}"-->
+<!--                              th:errors="*{vvp.helicopterModel}">Well error</span><br>-->
+                        <p>или</p>
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
                         <label for="squareVvp">Площадь отсыпки, га (0,1 - 4,0): </label>
-                        <input type="number" step="any" class="form-control" th:field="*{vvp.square}" id="squareVvp"/>
-                        <span class="text-danger" th:if="${#fields.hasErrors('vvp.square')}"
-                              th:errors="*{vvp.square}">Well error</span><br>
+                        <input type="number" step="any" class="form-control" th:field="*{vvp.square}" id="squareVvp"
+                               th:readonly="${!#fields.hasErrors('vvp.helicopterModel')}"
+                               th:classappend="${#fields.hasErrors('vvp.helicopterModel')} ? 'text-danger' : ''"/>
+<!--                        <span class="text-danger" th:if="${#fields.hasErrors('vvp.square')}"-->
+<!--                              th:errors="*{vvp.square}">Well error</span><br>-->
+                        <span th:if="${#fields.hasErrors('vvp.helicopterModel')}"
+                              th:errors="*{vvp.helicopterModel}" class="text-danger">Well error</span>
+
+                        <span th:if="${#fields.hasErrors('vvp.square')}"
+                              th:errors="*{vvp.square}" class="text-danger">Well error</span>
                     </div>
                     <div class="form-group">
                         <label for="activeHallExist">Наличие зала ожидания: </label>
@@ -277,9 +285,21 @@
                 <button type="submit" class="btn btn-outline-dark fw-bolder">Сгенерировать календарь</button>
                 </div>
                 <br><br>
+
             </form>
         </div>
     </div>
     <hr class="my-4">
+<!--    <script th:inline="javascript">-->
+<!--        $(document).ready(function() {-->
+<!--            $('#helicopterModelVvp').on('input', function() {-->
+<!--                if ($(this).val()) {-->
+<!--                    $('#squareVvp').prop('disabled', true);-->
+<!--                } else {-->
+<!--                    $('#squareVvp').prop('disabled', false);-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+<!--    </script>-->
 </th:block>
 </html>

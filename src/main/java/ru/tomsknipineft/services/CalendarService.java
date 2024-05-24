@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,10 +38,6 @@ public class CalendarService {
 
     private final CalendarRepository calendarRepository;
 
-//    private final DateService dateService;
-
-//    private final DataFormProjectService dataFormProjectService;
-
     private static final Logger logger = LogManager.getLogger(BackfillWellGroupCalendarServiceImpl.class);
 
     // Константа с количеством дней необходимых проектному офису для сбора и передачи документации заказчику с учетом всех процедур
@@ -66,7 +63,6 @@ public class CalendarService {
      */
     @Cacheable(key = "#code")
     public List<Calendar> getCalendarByCode(String code) {
-        logger.info("Произошло обращение к методу getCalendarByCode");
         return calendarRepository.findCalendarByCodeContract(code)
                 .orElseThrow(() -> new NoSuchCalendarException("Календарь по указанному шифру " + code + " отсутствует в базе данных"));
     }
@@ -100,6 +96,7 @@ public class CalendarService {
      * @param dataFormProject       исходные данные объекта (проекта)
      * @return список календарных планов по всем этапам строительства
      */
+    @CachePut(key = "#dataFormProject.codeContract")
     @Transactional
     public List<Calendar> createCalendar(List<EntityProject> objects, GroupObjectCalendarService objectCalendarService, DataFormProject dataFormProject) {
         if (dataFormProject.isFieldEngineeringSurvey()) {

@@ -1,6 +1,8 @@
 package ru.tomsknipineft.services.entityService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import ru.tomsknipineft.entities.linearObjects.Line;
 import ru.tomsknipineft.repositories.LineRepository;
@@ -8,97 +10,21 @@ import ru.tomsknipineft.utils.exceptions.NoSuchEntityException;
 
 @Service
 @RequiredArgsConstructor
+@CacheConfig(cacheNames = "lineCache")
 public class LineService implements EntityProjectService {
 
     private final LineRepository lineRepository;
 
-    private Line findLineFromRequest;
-
     /**
-     * Поиск в БД количества ресурса необходимого для выполнения полевых ИИ
-     * @param line Инженерная подготовка площадки
-     * @return количество необходимого ресурса
+     * Поиск сущности в базе данных по введенным параметрам сущности из представления
+     *
+     * @param lineFromRequest сущность с введенными параметрами из представления
+     * @return искомая в базе данных сущность
      */
-    public Integer getResourceForEngSurveyLine(Line line){
-        if (line.isActive()){
-            this.findLineFromRequest = lineRepository.findFirstByPowerAndLengthGreaterThanEqual(line.getPower(), line.getLength()).orElseThrow(()->
-                    new NoSuchEntityException("Введены некорректные значения параметров ВЛ " + line.getPower() + " и " + line.getLength()));
-            return findLineFromRequest.getResourceForEngSurvey();
-        }
-        return 0;
-    }
-
-    /**
-     * Поиск в БД количества ресурса необходимого для выполнения ЛИ
-     * @param line Инженерная подготовка площадки
-     * @return количество необходимого ресурса
-     */
-    public Integer getResourceForLabResearchLine(Line line){
-        if (line.isActive()){
-            if (findLineFromRequest == null){
-                this.findLineFromRequest = lineRepository.findFirstByPowerAndLengthGreaterThanEqual(line.getPower(), line.getLength()).orElseThrow(()->
-                        new NoSuchEntityException("Введены некорректные значения параметров ВЛ " + line.getPower() + " и " + line.getLength()));
-            }
-            return findLineFromRequest.getResourceForLabResearch();
-        }
-        return 0;
-    }
-
-    /**
-     * Поиск в БД количества ресурса необходимого для выполнения отчета ИИ
-     * @param line Инженерная подготовка площадки
-     * @return количество необходимого ресурса
-     */
-    public Integer getResourceForEngSurveyReportLine(Line line){
-        if (line.isActive()){
-            if (findLineFromRequest == null){
-                this.findLineFromRequest = lineRepository.findFirstByPowerAndLengthGreaterThanEqual(line.getPower(), line.getLength()).orElseThrow(()->
-                        new NoSuchEntityException("Введены некорректные значения параметров ВЛ " + line.getPower() + " и " + line.getLength()));
-            }
-            return findLineFromRequest.getResourceForEngSurveyReport();
-        }
-        return 0;
-    }
-
-    /**
-     * Поиск в БД количества ресурса необходимого для разработки РД
-     * @param line ЛЭП
-     * @return количество необходимого ресурса
-     */
-    public Integer getResourceForWorkDocLine(Line line){
-        if (line.isActive()){
-            if (findLineFromRequest == null){
-                this.findLineFromRequest = lineRepository.findFirstByPowerAndLengthGreaterThanEqual(line.getPower(), line.getLength()).orElseThrow(()->
-                        new NoSuchEntityException("Введены некорректные значения параметров ВЛ " + line.getPower() + " и " + line.getLength()));
-            }
-            return findLineFromRequest.getResourceForWorkDoc();
-        }
-
-        return 0;
-    }
-
-    /**
-     * Поиск в БД количества ресурса необходимого для разработки ПД
-     * @param line Инженерная подготовка площадки
-     * @return количество необходимого ресурса
-     */
-    public Integer getResourceForProjDocLine(Line line){
-        if (line.isActive()){
-            return findLineFromRequest.getResourceForProjDoc();
-        }
-        return 0;
-    }
-
-    /**
-     * Поиск в БД количества ресурса необходимого для разработки СД
-     * @param line Инженерная подготовка площадки
-     * @return количество необходимого ресурса
-     */
-    public Integer getResourceForEstDocLine(Line line){
-        if (line.isActive()){
-            return findLineFromRequest.getResourceForEstDoc();
-        }
-        return 0;
+    @Cacheable(key = "new org.springframework.cache.interceptor.SimpleKey(#lineFromRequest.power, #lineFromRequest.length)")
+    public Line getFindLineFromRequest(Line lineFromRequest) {
+        return lineRepository.findFirstByPowerAndLengthGreaterThanEqual(lineFromRequest.getPower(), lineFromRequest.getLength()).orElseThrow(()->
+                new NoSuchEntityException("Введены некорректные значения параметров ВЛ " + lineFromRequest.getPower() + " и " + lineFromRequest.getLength()));
     }
 
     /**

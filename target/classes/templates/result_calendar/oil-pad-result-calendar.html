@@ -34,8 +34,10 @@
                 [[${dataFormOilPad.backfillSites[2].square}]] га - [[${dataFormOilPad.backfillSites[2].stage}]] этап</p>
             <p class="fst-italic" th:if="${dataFormOilPad.backfillSites[3].active}">Площадка под модульную подстанцию
                 площадью [[${dataFormOilPad.backfillSites[3].square}]] га - [[${dataFormOilPad.backfillSites[3].stage}]] этап</p>
-            <span class="fst-italic" th:if="${dataFormOilPad.vvp.active}">Временная вертолетная площадка для
-                [[${dataFormOilPad.vvp.helicopterModel}]] площадью [[${dataFormOilPad.vvp.square}]] га</span>
+            <span class="fst-italic" th:if="${dataFormOilPad.vvp.active and dataFormOilPad.vvp.helicopterModel != ''}">Временная вертолетная площадка для
+                [[${dataFormOilPad.vvp.helicopterModel}]] </span>
+            <span class="fst-italic" th:if="${dataFormOilPad.vvp.active and dataFormOilPad.vvp.helicopterModel == ''}">Временная вертолетная площадка
+                площадью [[${dataFormOilPad.vvp.square}]] га</span>
             <span class="fst-italic" th:if="${dataFormOilPad.vvp.hallExist}"> с залом ожидания</span>
             <span class="fst-italic" th:if="${dataFormOilPad.vvp.active}"> - [[${dataFormOilPad.vvp.stage}]] этап</span><br>
             <hr class="my-4">

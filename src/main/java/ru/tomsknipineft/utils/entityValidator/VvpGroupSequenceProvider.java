@@ -16,6 +16,9 @@ public class VvpGroupSequenceProvider implements DefaultGroupSequenceProvider<Vv
             if (vvp.isActive()) {
                 groups.add(OnActiveCheck.class);
             }
+            if (vvp.isActive() && vvp.getHelicopterModel()==null && vvp.getSquare()==null) {
+                groups.add(VvpModelCheck.class);
+            }
         }
         return groups;
     }

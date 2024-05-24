@@ -151,13 +151,13 @@ INSERT INTO vvps (id, active, object_type, helicopter_model, lighting_equipment,
 VALUES (1, 'true', 'AREA', 'МИ-8', 'false', 'false', 1, 1, 10, 5, 8, 5, 21, 21);
 INSERT INTO vvps (id, active, object_type, helicopter_model, lighting_equipment, hall_exist, square, stage, resource_for_eng_survey,
                   resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
-VALUES (2, 'true', 'AREA', 'МИ-8', 'false', 'false', 2, 1, 10, 7, 8, 7, 21, 21);
+VALUES (2, 'true', 'AREA', 'МИ-26', 'false', 'false', 2, 1, 10, 7, 8, 7, 21, 21);
 INSERT INTO vvps (id, active, object_type, helicopter_model, lighting_equipment, hall_exist, square, stage, resource_for_eng_survey,
                   resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
-VALUES (3, 'true', 'AREA', 'МИ-16', 'false', 'false', 3, 1, 12, 9, 9, 9, 21, 21);
+VALUES (3, 'true', 'AREA', 'МИ-26', 'false', 'false', 3, 1, 12, 9, 9, 9, 21, 21);
 INSERT INTO vvps (id, active, object_type, helicopter_model, lighting_equipment, hall_exist, square, stage, resource_for_eng_survey,
                   resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)
-VALUES (4, 'true', 'AREA', 'МИ-16', 'false', 'false', 4, 1, 14, 11, 9, 11, 21, 21);
+VALUES (4, 'true', 'AREA', 'МИ-26', 'false', 'false', 4, 1, 14, 11, 9, 11, 21, 21);
 
 INSERT INTO cable_rack (id, active, object_type, length, complexity_of_geology, stage, resource_for_eng_survey,
                         resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc)

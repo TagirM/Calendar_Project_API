@@ -10,7 +10,9 @@ import ru.tomsknipineft.entities.EntityProject;
 import ru.tomsknipineft.entities.enumEntities.ObjectType;
 import ru.tomsknipineft.entities.oilPad.OilPad;
 import ru.tomsknipineft.utils.entityValidator.OnActiveCheck;
+import ru.tomsknipineft.utils.entityValidator.VvpGroupModelSequenceProvider;
 import ru.tomsknipineft.utils.entityValidator.VvpGroupSequenceProvider;
+import ru.tomsknipineft.utils.entityValidator.VvpModelCheck;
 
 import java.io.Serializable;
 
@@ -36,8 +38,8 @@ public class Vvp implements OilPad, EntityProject, Serializable {
     private ObjectType objectType;
 
     //    для посадки какого вертолета предназначена ВВП
-    @NotNull(message = "Информация по вертолету не заполнена", groups = OnActiveCheck.class)
-    @Size(min = 3, max = 10, message = "наименование модели находится в интервале 3-10 символов", groups = OnActiveCheck.class)
+    @NotNull(message = "Информация по вертолету не заполнена", groups = VvpModelCheck.class)
+    @Size(min = 3, max = 10, message = "наименование модели находится в интервале 3-10 символов", groups = VvpModelCheck.class)
     private String helicopterModel;
 
     //    необходимость светосигнального оборудования
@@ -49,12 +51,13 @@ public class Vvp implements OilPad, EntityProject, Serializable {
     private boolean hallExist;
 
     //    площадь отсыпки, га
-    @NotNull(message = "Площадь не заполнена", groups = OnActiveCheck.class)
-    @Positive(message = "Площадь не может быть отрицательной", groups = OnActiveCheck.class)
-    @Max(value = 4, message = "Не может быть больше 4", groups = OnActiveCheck.class)
+    @NotNull(message = "Площадь не заполнена", groups = VvpModelCheck.class)
+    @Positive(message = "Площадь не может быть отрицательной", groups = VvpModelCheck.class)
+    @Max(value = 4, message = "Не может быть больше 4", groups = VvpModelCheck.class)
     private Double square;
 
     //    этап строительства
+    @NotNull(message = "стадия строителства не заполнена", groups = OnActiveCheck.class)
     @Min(value = 1, message = "Не может быть меньше 1", groups = OnActiveCheck.class)
     private Integer stage;
 
