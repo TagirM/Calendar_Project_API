@@ -29,14 +29,18 @@
             <p class="fst-italic" th:if="${dataFormLinearObjects.ktplp.active}">КТПЛП вида
                 [[${dataFormLinearObjects.ktplp.ktplpType.title}]], в количестве [[${dataFormLinearObjects.ktplp.count}]] штук
                 - [[${dataFormLinearObjects.ktplp.stage}]] этап</p>
-            <p class="fst-italic" th:if="${dataFormLinearObjects.cableRack.active}">Кабельные эстакады общей протяженностью
-                [[${dataFormLinearObjects.cableRack.length}]] м, [[${dataFormLinearObjects.cableRack.complexityOfGeology.title}]] в
-                месте прокладки кабельных эстакад - [[${dataFormLinearObjects.cableRack.stage}]] этап</p>
             <p class="fst-italic" th:if="${dataFormLinearObjects.sikn.active}">СИКН
                 [[${dataFormLinearObjects.sikn.siknType.title}]] производительностью [[${dataFormLinearObjects.sikn.capacity}]] тонн/час
                 - [[${dataFormLinearObjects.sikn.stage}]] этап</p>
-            <span class="fst-italic" th:if="${dataFormLinearObjects.vvp.active}">Временная вертолетная площадка для
-                [[${dataFormLinearObjects.vvp.helicopterModel}]] площадью [[${dataFormLinearObjects.vvp.square}]] га</span>
+            <p class="fst-italic" th:if="${dataFormLinearObjects.cableRack.active}">Кабельные эстакады общей протяженностью
+                [[${dataFormLinearObjects.cableRack.length}]] м, [[${dataFormLinearObjects.cableRack.complexityOfGeology.title}]] в
+                месте прокладки кабельных эстакад - [[${dataFormLinearObjects.cableRack.stage}]] этап</p>
+            <span class="fst-italic" th:if="${dataFormLinearObjects.vvp.active and dataFormLinearObjects.vvp.helicopterModel != null
+            and dataFormLinearObjects.vvp.helicopterModel != ''}">
+                Временная вертолетная площадка для [[${dataFormLinearObjects.vvp.helicopterModel}]] </span>
+            <span class="fst-italic" th:if="${dataFormLinearObjects.vvp.active and (dataFormLinearObjects.vvp.helicopterModel == ''
+            or dataFormLinearObjects.vvp.helicopterModel == null)}">
+                Временная вертолетная площадка площадью [[${dataFormLinearObjects.vvp.square}]] га</span>
             <span class="fst-italic" th:if="${dataFormLinearObjects.vvp.hallExist}"> с залом ожидания</span>
             <span class="fst-italic" th:if="${dataFormLinearObjects.vvp.active}"> - [[${dataFormLinearObjects.vvp.stage}]] этап</span><br>
             <hr class="my-4">

@@ -1,0 +1,24 @@
+<th:block lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="check-vvp-data-content">
+    <script th:inline="javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            var helicopterModel = document.getElementById('helicopterModelVvp');
+            var squareVvp = document.getElementById('squareVvp');
+
+            helicopterModel.addEventListener('input', function() {
+                if (helicopterModel.value.trim() !== '') {
+                    squareVvp.setAttribute('disabled', 'disabled');
+                } else {
+                    squareVvp.removeAttribute('disabled');
+                }
+            });
+
+            squareVvp.addEventListener('input', function() {
+                if (squareVvp.value.trim() !== '') {
+                    helicopterModel.setAttribute('disabled', 'disabled');
+                } else {
+                    helicopterModel.removeAttribute('disabled');
+                }
+            });
+        });
+    </script>
+</th:block>

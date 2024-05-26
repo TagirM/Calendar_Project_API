@@ -10,7 +10,6 @@ import ru.tomsknipineft.entities.EntityProject;
 import ru.tomsknipineft.entities.enumEntities.ObjectType;
 import ru.tomsknipineft.entities.oilPad.OilPad;
 import ru.tomsknipineft.utils.entityValidator.OnActiveCheck;
-import ru.tomsknipineft.utils.entityValidator.VvpGroupModelSequenceProvider;
 import ru.tomsknipineft.utils.entityValidator.VvpGroupSequenceProvider;
 import ru.tomsknipineft.utils.entityValidator.VvpModelCheck;
 
@@ -39,7 +38,7 @@ public class Vvp implements OilPad, EntityProject, Serializable {
 
     //    для посадки какого вертолета предназначена ВВП
     @NotNull(message = "Информация по вертолету не заполнена", groups = VvpModelCheck.class)
-    @Size(min = 3, max = 10, message = "наименование модели находится в интервале 3-10 символов", groups = VvpModelCheck.class)
+    @Size(min = 4, max = 5, message = "наименование модели находится в интервале 4-5 символов", groups = VvpModelCheck.class)
     private String helicopterModel;
 
     //    необходимость светосигнального оборудования

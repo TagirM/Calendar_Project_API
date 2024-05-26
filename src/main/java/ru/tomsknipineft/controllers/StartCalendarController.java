@@ -7,9 +7,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.tomsknipineft.entities.Calendar;
+import ru.tomsknipineft.entities.DataFormProject;
 import ru.tomsknipineft.entities.linearObjects.DataFormLinearObjects;
 import ru.tomsknipineft.entities.oilPad.DataFormOilPad;
 import ru.tomsknipineft.services.CalendarService;
@@ -66,6 +68,15 @@ public class StartCalendarController {
     }
 
     /**
+     * Страница с выбором объекта проектирования объекта энергетики
+     */
+    @GetMapping("/allProjects")
+    public String allProjects(Model model){
+        model.addAttribute("calendars", calendarService.getAllCalendars());
+        return "all-projects";
+    }
+
+    /**
      * Получение шифра договора из страницы ввода данных для формирования календарного плана и проверка его наличия в БД
      * @param codeContract искомый шифр договора для вывода календаря
      * @return перенаправление на страницу вывода календарного плана договора
@@ -73,18 +84,19 @@ public class StartCalendarController {
     @Transactional
     @GetMapping("/codeContract")
     public String outputCalendar(@RequestParam String codeContract, HttpSession session){
-        long startTime = System.currentTimeMillis();
-        List<Calendar> calendars = calendarService.getCalendarByCode(codeContract);
-        long executionTime = System.currentTimeMillis() - startTime;
-        logger.info("Получение календаря из БД заняло время " + executionTime);
-        if (calendars.size() == 0){
-            throw new  NoSuchCalendarException("Календарь по указанному шифру " + codeContract + " отсутствует в базе данных");
-        }
+//        long startTime = System.currentTimeMillis();
+//        List<Calendar> calendars = calendarService.getCalendarByCode(codeContract);
+//        long executionTime = System.currentTimeMillis() - startTime;
+//        logger.info("Получение календаря из БД заняло время " + executionTime);
+//        if (calendars.size() == 0){
+//            throw new  NoSuchCalendarException("Календарь по указанному шифру " + codeContract + " отсутствует в базе данных");
+//        }
+        DataFormProject dataFormProject = calendarService.getDataFormProject(codeContract);
         session.setAttribute("codeContract", codeContract);
-        if (calendarService.getDataFormProject(calendars).getClass() == DataFormOilPad.class){
+        if (dataFormProject.getClass() == DataFormOilPad.class){
             return "redirect:/oil_pad_object/backfill_well/calendar";
         }
-        else if (calendarService.getDataFormProject(calendars).getClass() == DataFormLinearObjects.class){
+        else if (dataFormProject.getClass() == DataFormLinearObjects.class){
             return "redirect:/linear_object/linear_pipeline/calendar";
         }
         return null;

@@ -24,7 +24,7 @@ import java.io.Serializable;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor 
 @Table(name = "backfill_sites")
 public class BackfillSite implements OilPad, EntityProject, Serializable {
 

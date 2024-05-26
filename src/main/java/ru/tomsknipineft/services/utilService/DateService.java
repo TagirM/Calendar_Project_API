@@ -86,9 +86,12 @@ public class DateService {
      * @return валидный день для актирования
      */
     public LocalDate checkDeadlineForActivation(LocalDate date) {
-        if ((date.getMonth() != Month.DECEMBER && date.getDayOfMonth() > 20) || (date.getMonth() == Month.DECEMBER && date.getDayOfMonth() > 10)) {
-            date = workDay(LocalDate.of(date.getYear(), date.getMonth(), 3).plusMonths(1));
+        if (date != null){
+            if ((date.getMonth() != Month.DECEMBER && date.getDayOfMonth() > 20) || (date.getMonth() == Month.DECEMBER && date.getDayOfMonth() > 10)) {
+                date = workDay(LocalDate.of(date.getYear(), date.getMonth(), 3).plusMonths(1));
+            }
+            return date;
         }
-        return date;
+        return null;
     }
 }

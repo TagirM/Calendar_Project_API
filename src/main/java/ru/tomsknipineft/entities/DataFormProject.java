@@ -9,6 +9,8 @@ public interface DataFormProject {
 
     String getCodeContract();
 
+    String getProjectName();
+
     LocalDate getStartContract();
 
     boolean isFieldEngineeringSurvey();

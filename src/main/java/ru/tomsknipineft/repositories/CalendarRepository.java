@@ -9,12 +9,12 @@ import java.util.Optional;
 
 @Repository
 public interface CalendarRepository extends JpaRepository<Calendar, Long> {
-    /*
+    /**
     Поиск календарного плана по шифру договора
      */
     Optional<List<Calendar>> findCalendarByCodeContract(String codeContract);
 
-    /*
+    /**
     Поиск календарного плана по шифру договора и этапу строительства
      */
     Optional<List<Calendar>> findCalendarByCodeContractAndStage(String codeContract, Integer stage);

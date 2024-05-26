@@ -9,7 +9,8 @@ import java.util.Optional;
 @Repository
 public interface RoadRepository extends JpaRepository<Road, Long> {
     Optional<Road> findByCategoryAndLength(Integer category, Double length);
-    /*
+
+    /**
     Поиск сущности с категорией и протяженностью соответствующих заданным или ближайшими большими
      */
     Optional<Road> findFirstByCategoryAndLengthGreaterThanEqualAndCountGreaterThanEqual(Integer category, Double length, Integer count);

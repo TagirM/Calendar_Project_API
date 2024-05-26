@@ -15,6 +15,8 @@ public class LineService implements EntityProjectService {
 
     private final LineRepository lineRepository;
 
+    private final static long FIRST_ID = 1L;
+
     /**
      * Поиск сущности в базе данных по введенным параметрам сущности из представления
      *
@@ -23,8 +25,13 @@ public class LineService implements EntityProjectService {
      */
     @Cacheable(key = "new org.springframework.cache.interceptor.SimpleKey(#lineFromRequest.power, #lineFromRequest.length)")
     public Line getFindLineFromRequest(Line lineFromRequest) {
-        return lineRepository.findFirstByPowerAndLengthGreaterThanEqual(lineFromRequest.getPower(), lineFromRequest.getLength()).orElseThrow(()->
-                new NoSuchEntityException("Введены некорректные значения параметров ВЛ " + lineFromRequest.getPower() + " и " + lineFromRequest.getLength()));
+        return lineRepository
+                .findFirstByPowerAndLengthGreaterThanEqual(lineFromRequest.getPower(),
+                        lineFromRequest.getLength()).orElseThrow(()->
+                new NoSuchEntityException("Введены некорректные значения параметров ВЛ " +
+                        lineFromRequest.getPower() +
+                        " и " +
+                        lineFromRequest.getLength()));
     }
 
     /**
@@ -32,6 +39,9 @@ public class LineService implements EntityProjectService {
      * @return сущность (ЛЭП)
      */
     public Line getFirst(){
-        return lineRepository.findById(1L).orElseThrow();
+        return lineRepository
+                .findById(FIRST_ID)
+                .orElseThrow(()->
+                new NoSuchEntityException("ВЛ в базе данных отсутствует"));
     }
 }

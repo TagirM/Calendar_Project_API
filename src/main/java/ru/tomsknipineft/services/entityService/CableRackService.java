@@ -15,6 +15,8 @@ public class CableRackService implements EntityProjectService {
 
     private final CableRackRepository cableRackRepository;
 
+    private final static long FIRST_ID = 1L;
+
     /**
      * Поиск сущности в базе данных по введенным параметрам сущности из представления
      *
@@ -23,8 +25,11 @@ public class CableRackService implements EntityProjectService {
      */
     @Cacheable(key = "#cableRackFromRequest.length")
     public CableRack getFindCableRackFromRequest(CableRack cableRackFromRequest) {
-        return cableRackRepository.findFirstByLengthGreaterThanEqual(cableRackFromRequest.getLength()).orElseThrow(() ->
-                new NoSuchEntityException("Введено некорректное значение длины кабельной эстакады " + cableRackFromRequest.getLength()));
+        return cableRackRepository
+                .findFirstByLengthGreaterThanEqual(cableRackFromRequest.getLength())
+                .orElseThrow(() ->
+                new NoSuchEntityException("Введено некорректное значение длины кабельной эстакады " +
+                        cableRackFromRequest.getLength()));
     }
 
     /**
@@ -33,7 +38,9 @@ public class CableRackService implements EntityProjectService {
      * @return сущность (Кабельная эстакада)
      */
     public CableRack getFirst() {
-        return cableRackRepository.findById(1L).orElseThrow(() ->
+        return cableRackRepository
+                .findById(FIRST_ID)
+                .orElseThrow(() ->
                 new NoSuchEntityException("Кабельная эстакада в базе данных отсутствует"));
     }
 }

@@ -166,23 +166,16 @@
                     <div class="form-group">
                         <label for="helicopterModelVvp">Укажите модель вертолета для посадки (МИ-8, МИ-26): </label>
                         <input type="text" class="form-control" th:field="*{vvp.helicopterModel}"
-                               id="helicopterModelVvp" th:readonly="${#fields.hasErrors('vvp.helicopterModel')}"/>
-<!--                        <span class="text-danger" th:if="${#fields.hasErrors('vvp.helicopterModel')}"-->
-<!--                              th:errors="*{vvp.helicopterModel}">Well error</span><br>-->
+                               id="helicopterModelVvp"/>
+                        <span class="text-danger" th:if="${#fields.hasErrors('vvp.helicopterModel')}"
+                              th:errors="*{vvp.helicopterModel}">Well error</span><br>
                         <p>или</p>
-<!--                    </div>-->
-<!--                    <div class="form-group">-->
+                    </div>
+                    <div class="form-group">
                         <label for="squareVvp">Площадь отсыпки, га (0,1 - 4,0): </label>
-                        <input type="number" step="any" class="form-control" th:field="*{vvp.square}" id="squareVvp"
-                               th:readonly="${!#fields.hasErrors('vvp.helicopterModel')}"
-                               th:classappend="${#fields.hasErrors('vvp.helicopterModel')} ? 'text-danger' : ''"/>
-<!--                        <span class="text-danger" th:if="${#fields.hasErrors('vvp.square')}"-->
-<!--                              th:errors="*{vvp.square}">Well error</span><br>-->
-                        <span th:if="${#fields.hasErrors('vvp.helicopterModel')}"
-                              th:errors="*{vvp.helicopterModel}" class="text-danger">Well error</span>
-
-                        <span th:if="${#fields.hasErrors('vvp.square')}"
-                              th:errors="*{vvp.square}" class="text-danger">Well error</span>
+                        <input type="number" step="any" class="form-control" th:field="*{vvp.square}" id="squareVvp"/>
+                        <span class="text-danger" th:if="${#fields.hasErrors('vvp.square')}"
+                              th:errors="*{vvp.square}">Well error</span><br>
                     </div>
                     <div class="form-group">
                         <label for="activeHallExist">Наличие зала ожидания: </label>
@@ -273,13 +266,15 @@
 
                 <div id="humanFactor" class="container">
                     <div class="form-group">
-                        <label for="humanFactorId"  class="fst-italic fw-bolder">Укажите человеческий фактор при формировании сроков календарного
+                        <label for="humanFactorId"  class="fst-italic fw-bolder">Укажите погрешность (человеческий фактор, непредвиденные
+                            обстоятельства, форс-мажор, какие-либо непределенности в выполнении работ) при формировании сроков календарного
                             плана, % (не более 50):</label>
                         <input type="text" class="form-control" th:field="*{humanFactor}" id="humanFactorId"/>
                         <span class="text-danger" th:if="${#fields.hasErrors('humanFactor')}"
                               th:errors="*{humanFactor}">humanFactor error</span><br><br>
                     </div>
                 </div>
+
                 <!--    <input type="hidden" name="_csrf" value="${_csrf.token}">-->
                 <div class="card" align="center">
                 <button type="submit" class="btn btn-outline-dark fw-bolder">Сгенерировать календарь</button>
@@ -290,16 +285,6 @@
         </div>
     </div>
     <hr class="my-4">
-<!--    <script th:inline="javascript">-->
-<!--        $(document).ready(function() {-->
-<!--            $('#helicopterModelVvp').on('input', function() {-->
-<!--                if ($(this).val()) {-->
-<!--                    $('#squareVvp').prop('disabled', true);-->
-<!--                } else {-->
-<!--                    $('#squareVvp').prop('disabled', false);-->
-<!--                }-->
-<!--            });-->
-<!--        });-->
-<!--    </script>-->
+    <div th:insert="~{blocks/check-vvp-data-block.html :: check-vvp-data-content}"></div>
 </th:block>
 </html>

@@ -11,6 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.stereotype.Service;
 import ru.tomsknipineft.entities.Calendar;
+import ru.tomsknipineft.utils.exceptions.NoSuchCalendarException;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,27 +23,53 @@ import java.util.List;
 @Service
 public class ExcelCreatedService {
 
-//    private List<Calendar> calendars;
-
-//    private String filename;
-
     private static final String pathFile = "log-service/downloads_calendar/";
 
-    public String getFileName(List<Calendar> calendars){
+    /**
+     * Метод формирования ExcelFile с параметрами: наименованием файла и потоком байт файла типа ByteArrayResource
+     *
+     * @param calendars исходный список календарей по одному договору (с учетом этапов строительства)
+     * @return ExcelFile с наименованием файла и потоком байт
+     */
+    public ExcelFile createFile(List<Calendar> calendars) {
+        if (calendars.size() != 0) {
+            write(calendars);
+            ExcelFile excelFile = new ExcelFile();
+            String fileName = getFileName(calendars);
+            ByteArrayResource resource;
+            File file = new File(pathFile + fileName);
+            try (FileInputStream fileInputStream = new FileInputStream(file)) {
+                resource = new ByteArrayResource(fileInputStream.readAllBytes());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            excelFile.setFileName(fileName);
+            excelFile.setByteResource(resource);
+            return excelFile;
+        }
+        throw new NoSuchCalendarException("Календарь пуст");
+    }
+
+    private String getFileName(List<Calendar> calendars) {
+//         todo что будет если список календарей пуст - нужна проверка
+//         добавил проверку в новый метод, см.выше, т.к. этот метод и метод write вызываются через него (сделал их private), метод resource
+//         закомментировал, но calendars, который в параметре нового метода, всегда берется из метода getCalendarByCode() класса CalendarService в котором
+//         есть проверка на то, что календарь может оказаться пустым, см. стр. 67 CalendarService. Корректно ли тогда делать дублирование проверки?
+
         return "Calendar_" + cleanedFilename(calendars.get(0).getCodeContract()) + ".xlsx";
     }
 
     /**
-     * Метод создания файла Excel
+     * Метод создания структуры файла Excel
      */
-    public void write(List<Calendar> calendars) {
+    private void write(List<Calendar> calendars) {
         XSSFWorkbook workbook = new XSSFWorkbook();
         Sheet sheet = createSheet(workbook);
         createHeader(workbook, sheet);
         createCells(workbook, sheet, calendars);
         String filename = getFileName(calendars);
 //        try (FileOutputStream outputStream = new FileOutputStream(filename)) {
-      try (FileOutputStream outputStream = new FileOutputStream(pathFile + filename)) {
+        try (FileOutputStream outputStream = new FileOutputStream(pathFile + filename)) {
             workbook.write(outputStream);
             workbook.close();
         } catch (IOException e) {
@@ -52,33 +79,35 @@ public class ExcelCreatedService {
 
     /**
      * Метод, проверяющий недопустимые символы в шифре при наименовании файла и заменящий их на символ нижнего подчеркивания
+     *
      * @param codeContract шифр договора
      * @return шифр с символом нижнего подчеркивания вместо недопустимых символов (если они присутствовали)
      */
-    private String cleanedFilename(String codeContract){
+    private String cleanedFilename(String codeContract) {
         String cleanedCodeContract = codeContract.replaceAll("[\\\\/:*?\"<>|+]", "_");
         cleanedCodeContract = cleanedCodeContract.replaceAll("[\\s.]+$", "_");
         return cleanedCodeContract;
     }
 
-    /**
-     * Метод перевода файла Excel с календарем в поток байтов типа ByteArrayResource
-     * @return поток байтов типа ByteArrayResource
-     */
-    public ByteArrayResource resource(List<Calendar> calendars) {
-        ByteArrayResource resource;
-        File file = new File(pathFile + getFileName(calendars));
-//        File file = new File(filename);
-        try (FileInputStream fileInputStream = new FileInputStream(file)) {
-            resource = new ByteArrayResource(fileInputStream.readAllBytes());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return resource;
-    }
+//    /**
+//     * Метод перевода файла Excel с календарем в поток байтов типа ByteArrayResource
+//     * @return поток байтов типа ByteArrayResource
+//     */
+//    public ByteArrayResource resource(List<Calendar> calendars) {
+//        ByteArrayResource resource;
+//        File file = new File(pathFile + getFileName(calendars));
+////        File file = new File(filename);
+//        try (FileInputStream fileInputStream = new FileInputStream(file)) {
+//            resource = new ByteArrayResource(fileInputStream.readAllBytes());
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//        return resource;
+//    }
 
     /**
      * Создание страницы с параметрами колонок в файле Excel
+     *
      * @param workbook рабочий лист Excel
      * @return настроенная страница в файле Excel
      */
@@ -93,8 +122,9 @@ public class ExcelCreatedService {
 
     /**
      * Создание шапки таблицы с календарными сроками проекта
+     *
      * @param workbook рабочий лист Excel
-     * @param sheet страница в файле Excel
+     * @param sheet    страница в файле Excel
      */
     private void createHeader(XSSFWorkbook workbook, Sheet sheet) {
         Row header = sheet.createRow(1);
@@ -133,8 +163,9 @@ public class ExcelCreatedService {
 
     /**
      * Создание ячеек таблицы с расчетными параметрами
+     *
      * @param workbook рабочий лист Excel
-     * @param sheet страница в файле Excel
+     * @param sheet    страница в файле Excel
      */
     private void createCells(XSSFWorkbook workbook, Sheet sheet, List<Calendar> calendars) {
         XSSFCellStyle style = workbook.createCellStyle();
@@ -177,8 +208,8 @@ public class ExcelCreatedService {
             cell.setCellStyle(stageStyle);
             sheet.addMergedRegion(new CellRangeAddress(y, y, 1, 4));
             // создание ячеек сроков полевых ИИ
-            if (!calendar.getEngineeringSurvey().equals(calendar.getStartContract())) {
-
+//            if (!calendar.getEngineeringSurvey().equals(calendar.getStartContract())) {
+            if (calendar.getEngineeringSurvey() != null) {
                 row = sheet.createRow(++y);
                 cell = row.createCell(1);
                 cell.setCellStyle(styleBorder);
@@ -197,7 +228,8 @@ public class ExcelCreatedService {
                 cell.setCellValue(calendar.getEngineeringSurvey());
             }
             // создание ячеек сроков отчета ИИ
-            if (!calendar.getEngineeringSurveyReport().equals(calendar.getStartContract())) {
+//            if (!calendar.getEngineeringSurveyReport().equals(calendar.getStartContract())) {
+            if (calendar.getEngineeringSurveyReportFinish() != null) {
                 row = sheet.createRow(++y);
                 cell = row.createCell(1);
                 cell.setCellStyle(styleBorder);
@@ -213,7 +245,7 @@ public class ExcelCreatedService {
 
                 cell = row.createCell(4);
                 cell.setCellStyle(style);
-                cell.setCellValue(calendar.getEngineeringSurveyReport());
+                cell.setCellValue(calendar.getEngineeringSurveyReportFinish());
 
                 row = sheet.createRow(++y);
                 cell = row.createCell(1);
@@ -226,7 +258,7 @@ public class ExcelCreatedService {
 
                 cell = row.createCell(3);
                 cell.setCellStyle(style);
-                cell.setCellValue(calendar.getEngineeringSurveyReport());
+                cell.setCellValue(calendar.getEngineeringSurveyReportFinish());
 
                 cell = row.createCell(4);
                 cell.setCellStyle(style);
@@ -234,7 +266,7 @@ public class ExcelCreatedService {
                 rowChapterCalendar = 1;
             }
             // создание ячеек сроков РД и СД
-            if (!calendar.getWorkingStart().equals(calendar.getWorkingFinish())) {
+            if (calendar.getWorkingStart() != null) {
                 row = sheet.createRow(++y);
                 cell = row.createCell(1);
                 cell.setCellStyle(styleBorder);
@@ -305,7 +337,7 @@ public class ExcelCreatedService {
                 rowChapterCalendar = 1;
             }
             // создание ячеек сроков ПД
-            if (!calendar.getProjectFinish().equals(calendar.getWorkingFinish())) {
+            if (calendar.getProjectFinish() != null) {
                 row = sheet.createRow(++y);
                 cell = row.createCell(1);
                 cell.setCellStyle(styleBorder);
@@ -358,8 +390,8 @@ public class ExcelCreatedService {
                 cell.setCellValue(calendar.getExamination());
                 rowChapterCalendar = 1;
             }
-        // создание ячеек срока ЗУР
-            if (!calendar.getProjectFinish().equals(calendar.getLandFinish())) {
+            // создание ячеек срока ЗУР
+            if (calendar.getProjectFinish() != null) {
                 row = sheet.createRow(++y);
                 cell = row.createCell(1);
                 cell.setCellStyle(styleBorder);

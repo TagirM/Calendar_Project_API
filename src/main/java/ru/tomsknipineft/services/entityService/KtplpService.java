@@ -15,6 +15,8 @@ public class KtplpService implements EntityProjectService {
 
     private final KtplpRepository ktplpRepository;
 
+    private final static long FIRST_ID = 1L;
+
     /**
      * Поиск сущности в базе данных по введенным параметрам сущности из представления
      *
@@ -23,8 +25,14 @@ public class KtplpService implements EntityProjectService {
      */
     @Cacheable(key = "new org.springframework.cache.interceptor.SimpleKey(#ktplpFromRequest.ktplpType, #ktplpFromRequest.count)")
     public Ktplp getFindKtplpFromRequest(Ktplp ktplpFromRequest) {
-        return ktplpRepository.findFirstByKtplpTypeAndCount(ktplpFromRequest.getKtplpType(), ktplpFromRequest.getCount()).orElseThrow(()->
-                new NoSuchEntityException("Введены некорректные значения типа " + ktplpFromRequest.getKtplpType() + " или количества " + ktplpFromRequest.getCount()));
+        return ktplpRepository
+                .findFirstByKtplpTypeAndCount(ktplpFromRequest.getKtplpType(),
+                        ktplpFromRequest.getCount())
+                .orElseThrow(()->
+                new NoSuchEntityException("Введены некорректные значения типа " +
+                        ktplpFromRequest.getKtplpType() +
+                        " или количества " +
+                        ktplpFromRequest.getCount()));
     }
 
     /**
@@ -32,7 +40,9 @@ public class KtplpService implements EntityProjectService {
      * @return сущность (КТПЛП)
      */
     public Ktplp getFirst(){
-        return ktplpRepository.findById(1L).orElseThrow(()->
+        return ktplpRepository
+                .findById(FIRST_ID)
+                .orElseThrow(()->
                 new NoSuchEntityException("КТПЛП в базе данных отсутствует"));
     }
 }

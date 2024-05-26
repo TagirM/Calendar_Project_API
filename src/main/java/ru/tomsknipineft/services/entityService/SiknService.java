@@ -15,6 +15,8 @@ public class SiknService implements EntityProjectService {
 
     private final SiknRepository siknRepository;
 
+    private final static long FIRST_ID = 1L;
+
     /**
      * Поиск сущности в базе данных по введенным параметрам сущности из представления
      *
@@ -23,8 +25,17 @@ public class SiknService implements EntityProjectService {
      */
     @Cacheable(key = "new org.springframework.cache.interceptor.SimpleKey(#siknFromRequest.siknType, #siknFromRequest.capacity)")
     public Sikn getFindSiknFromRequest(Sikn siknFromRequest) {
-        return siknRepository.findFirstBySiknTypeAndCapacityGreaterThanEqual(siknFromRequest.getSiknType(), siknFromRequest.getCapacity()).orElseThrow(()->
-                new NoSuchEntityException("Введены некорректные значения типа " + siknFromRequest.getSiknType() + " или производительности " + siknFromRequest.getCapacity()));
+        // как мне кажется такое форматирование лучше, удобнее использовать
+        // ПОПРАВИЛ ВЕЗДЕ
+
+        return siknRepository
+                .findFirstBySiknTypeAndCapacityGreaterThanEqual(siknFromRequest.getSiknType(),
+                        siknFromRequest.getCapacity())
+                .orElseThrow(()->
+                new NoSuchEntityException("Введены некорректные значения типа " +
+                        siknFromRequest.getSiknType() +
+                        " или производительности " +
+                        siknFromRequest.getCapacity()));
     }
 
     /**
@@ -33,7 +44,9 @@ public class SiknService implements EntityProjectService {
      */
     @Override
     public Sikn getFirst() {
-        return siknRepository.findById(1L).orElseThrow(()->
+        return siknRepository
+                .findById(FIRST_ID)
+                .orElseThrow(()->
                 new NoSuchEntityException("СИКН в базе данных отсутствует"));
     }
 }

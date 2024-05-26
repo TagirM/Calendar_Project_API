@@ -7,6 +7,13 @@
             <span class="text-danger" th:if="${#fields.hasErrors('codeContract')}"
                   th:errors="*{codeContract}">CodeContract error</span><br><br>
         </div>
+        <h3>Наименование проекта</h3>
+        <div class="form-group">
+            <label for="code">Наименование проекта (от 10 до 200 символов):</label>
+            <input type="text" class="form-control" th:field="*{projectName}" id="name"/>
+            <span class="text-danger" th:if="${#fields.hasErrors('projectName')}"
+                  th:errors="*{projectName}">Project Name error</span><br><br>
+        </div>
         <h3>Дата работ</h3>
         <div class="form-group">
             <label for="starting">Дата начала выполнения (не позднее текущей даты):</label>

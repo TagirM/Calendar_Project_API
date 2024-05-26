@@ -27,11 +27,19 @@ public class Calendar {
     private Long id;
 
     //    шифр договора
+    @Column(name = "code_contract")
     @NotNull(message = "The code should not be empty")
     @Size(min = 4, max = 10, message = "Code should be between 4 and 10 characters")
     private String codeContract;
 
+    //    наименование проекта
+    @Column(name = "project_name")
+    @NotNull(message = "The name should not be empty")
+    @Size(min = 10, max = 200, message = "Name should be less than 10 characters")
+    private String projectName;
+
     //    начало выполнения работ по договору
+    @Column(name = "start_contract")
     @NotNull(message = "The date should not be empty")
     @FutureOrPresent(message = "The date can not be past")
     private LocalDate startContract;
@@ -41,8 +49,10 @@ public class Calendar {
 
     //    дата окончания полевых ИИ (инженерных изысканий)
     private LocalDate engineeringSurvey;
+    //    дата начала ЛИ и далее начала отчета ИИ
+    private LocalDate engineeringSurveyLabResearchAndReportStart;
     //    дата выдачи отчета ИИ
-    private LocalDate engineeringSurveyReport;
+    private LocalDate engineeringSurveyReportFinish;
     //    дата согласования отчета ИИ
     private LocalDate agreementEngineeringSurvey;
 

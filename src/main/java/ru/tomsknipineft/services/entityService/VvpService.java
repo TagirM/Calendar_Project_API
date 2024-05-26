@@ -16,6 +16,8 @@ public class VvpService implements EntityProjectService {
 
     private final VvpRepository vvpRepository;
 
+    private final static long FIRST_ID = 1L;
+
     /**
      * Поиск сущности в базе данных по введенным параметрам сущности из представления
      *
@@ -24,15 +26,20 @@ public class VvpService implements EntityProjectService {
      */
     @Cacheable(key = "new org.springframework.cache.interceptor.SimpleKey(#vvpFromRequest.square, #vvpFromRequest.helicopterModel)")
     public Vvp getFindVvpFromRequest(Vvp vvpFromRequest) {
-        if (vvpFromRequest.getHelicopterModel().equals("МИ-8")){
-            vvpFromRequest.setSquare(1.0);
-        } else if (vvpFromRequest.getHelicopterModel().equals("МИ-26")) {
-            vvpFromRequest.setSquare(2.0);
+        if (vvpFromRequest.getSquare() == null){
+            if (vvpFromRequest.getHelicopterModel().equals("МИ-8")){
+                vvpFromRequest.setSquare(1.0);
+            } else if (vvpFromRequest.getHelicopterModel().equals("МИ-26")) {
+                vvpFromRequest.setSquare(2.0);
+            }
         }
-        System.out.println(vvpFromRequest);
-        return vvpRepository.findFirstBySquareGreaterThanEqual(vvpFromRequest.getSquare()).orElseThrow(()->
-                new NoSuchEntityException("Введено некорректное значение площади " + vvpFromRequest.getSquare() +
-                        " или модель вертолета " + vvpFromRequest.getHelicopterModel()));
+        return vvpRepository
+                .findFirstBySquareGreaterThanEqual(vvpFromRequest.getSquare())
+                .orElseThrow(()->
+                new NoSuchEntityException("Введено некорректное значение площади " +
+                        vvpFromRequest.getSquare() +
+                        " или модель вертолета " +
+                        vvpFromRequest.getHelicopterModel()));
     }
 
     /**
@@ -40,7 +47,9 @@ public class VvpService implements EntityProjectService {
      * @return сущность (Временная вертолетная площадка)
      */
     public Vvp getFirst(){
-        return vvpRepository.findById(1L).orElseThrow(()->
+        return vvpRepository
+                .findById(FIRST_ID)
+                .orElseThrow(()->
                 new NoSuchEntityException("Временная вертолетная площадка в базе данных отсутствует"));
     }
 }

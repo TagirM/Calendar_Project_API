@@ -15,6 +15,8 @@ public class BackfillWellService implements EntityProjectService {
 
     private final BackfillWellRepository backfillWellRepository;
 
+    private final static long FIRST_ID = 1L;
+
     /**
      * Поиск сущности в базе данных по введенным параметрам сущности из представления
      *
@@ -23,8 +25,11 @@ public class BackfillWellService implements EntityProjectService {
      */
     @Cacheable(key = "#backfillWellFromRequest.well")
     public BackfillWell getFindBackfillWellFromRequest(BackfillWell backfillWellFromRequest) {
-        return backfillWellRepository.findFirstByWellGreaterThanEqual(backfillWellFromRequest.getWell()).orElseThrow(() ->
-                new NoSuchEntityException("Введено некорректное значение количества скважин " + backfillWellFromRequest.getWell()));
+        return backfillWellRepository
+                .findFirstByWellGreaterThanEqual(backfillWellFromRequest.getWell())
+                .orElseThrow(() ->
+                new NoSuchEntityException("Введено некорректное значение количества скважин " +
+                        backfillWellFromRequest.getWell()));
     }
 
     /**
@@ -33,7 +38,9 @@ public class BackfillWellService implements EntityProjectService {
      * @return сущность (Инженерная подготовка куста)
      */
     public BackfillWell getFirst() {
-        return backfillWellRepository.findById(1L).orElseThrow(() ->
+        return backfillWellRepository
+                .findById(FIRST_ID)
+                .orElseThrow(() ->
                 new NoSuchEntityException("Инженерная подготовка куста в базе данных отсутствует"));
     }
 }

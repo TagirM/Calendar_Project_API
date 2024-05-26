@@ -6,7 +6,8 @@ import ru.tomsknipineft.entities.areaObjects.Vvp;
 import java.util.Optional;
 
 public interface VvpRepository  extends JpaRepository<Vvp, Long> {
-    /*
+
+    /**
     Поиск сущности с площадью соответствующей заданной или ближайшей большей
      */
     Optional<Vvp> findFirstBySquareGreaterThanEqual(Double square);

@@ -8,6 +8,7 @@ import java.util.Optional;
 
 @Repository
 public interface VecRepository extends JpaRepository<Vec, Long> {
+
     /**
     Поиск сущности с мощностью и площадью, соответствующих заданным или ближайшими большими
      */
