@@ -12,31 +12,46 @@
         <tbody>
         <th:block th:each="calendar : ${calendars}">
             <tr>
-                <td colspan="4" th:align="center">
+                <td colspan="4" th:align="center" style="padding-top: 35px">
                     <div id="projectStage"><b>Этап строительства
                         &nbsp;[[${calendar.stage}]]</b></div>
                 </td>
             </tr>
             <tr th:if="${fieldEngineeringSurvey}">
-                <td>Полевые инженерные изыскания</td>
-                <td th:align="center" th:text="${calendar.startContract}"></td>
-                <td th:align="center" th:text="${calendar.engineeringSurvey}"></td>
+                <td style="padding-top: 35px">Полевые инженерные изыскания</td>
+                <td style="padding-top: 35px" th:align="center" th:text="${calendar.startContract}"></td>
+                <td style="padding-top: 35px" th:align="center" th:text="${calendar.engineeringSurvey}"></td>
             </tr>
-            <tr th:if="${engineeringSurveyReport}">
+            <tr th:if="${engineeringSurveyReport && fieldEngineeringSurvey}">
                 <td>Отчет по инженерным изысканиям</td>
                 <td th:align="center" th:text="${calendar.engineeringSurveyLabResearchAndReportStart}"></td>
                 <td th:align="center" th:text="${calendar.engineeringSurveyReportFinish}"></td>
             </tr>
+            <tr th:if="${engineeringSurveyReport && !fieldEngineeringSurvey}">
+                <td style="padding-top: 35px">Отчет по инженерным изысканиям</td>
+                <td style="padding-top: 35px" th:align="center" th:text="${calendar.engineeringSurveyLabResearchAndReportStart}"></td>
+                <td style="padding-top: 35px" th:align="center" th:text="${calendar.engineeringSurveyReportFinish}"></td>
+            </tr>
             <tr th:if="${engineeringSurveyReport}">
-                <td style="padding-bottom: 35px">Согласование инженерных изысканий</td>
+                <td >Согласование инженерных изысканий</td>
                 <td th:align="center" th:text="${calendar.engineeringSurveyReportFinish}"></td>
                 <td th:align="center" th:text="${calendar.agreementEngineeringSurvey}"></td>
             </tr>
+            <tr th:if="${fieldEngineeringSurvey}">
+                <td>Инженерно-экологические изыскания</td>
+                <td th:align="center" th:text="${calendar.seasonalEngineeringSurveysStart}"></td>
+                <td th:align="center" th:text="${calendar.engineeringAndEnvironmentalSurveysFinish}"></td>
+            </tr>
+            <tr th:if="${fieldEngineeringSurvey}">
+                <td>Историко-культурные изыскания</td>
+                <td th:align="center" th:text="${calendar.seasonalEngineeringSurveysStart}"></td>
+                <td th:align="center" th:text="${calendar.historicalAndCulturalResearchFinish}"></td>
+            </tr>
             <tr></tr>
             <tr>
-                <td>Рабочая документация</td>
-                <td th:align="center" th:text="${calendar.workingStart}"></td>
-                <td th:align="center" th:text="${calendar.workingFinish}"></td>
+                <td style="padding-top: 35px">Рабочая документация</td>
+                <td style="padding-top: 35px" th:align="center" th:text="${calendar.workingStart}"></td>
+                <td style="padding-top: 35px" th:align="center" th:text="${calendar.workingFinish}"></td>
             </tr>
             <tr>
                 <td>Согласование рабочей документации</td>
@@ -45,19 +60,19 @@
             </tr>
             <tr>
                 <td>Сметная документация</td>
-                <td th:align="center" th:text="${calendar.workingFinish}"></td>
+                <td th:align="center" th:text="${calendar.estimatesStart}"></td>
                 <td th:align="center" th:text="${calendar.estimatesFinish}"></td>
             </tr>
             <tr>
-                <td style="padding-bottom: 35px">Согласование сметной документации</td>
+                <td >Согласование сметной документации</td>
                 <td th:align="center" th:text="${calendar.estimatesFinish}"></td>
                 <td th:align="center" th:text="${calendar.agreementEstimates}"></td>
             </tr>
             <tr></tr>
             <tr>
-                <td>Проектная документация</td>
-                <td th:align="center" th:text="${calendar.workingFinish}"></td>
-                <td th:align="center" th:text="${calendar.projectFinish}"></td>
+                <td style="padding-top: 35px">Проектная документация</td>
+                <td style="padding-top: 35px" th:align="center" th:text="${calendar.projectStart}"></td>
+                <td style="padding-top: 35px" th:align="center" th:text="${calendar.projectFinish}"></td>
             </tr>
             <tr>
                 <td>Согласование проектной документации</td>
@@ -65,15 +80,31 @@
                 <td th:align="center" th:text="${calendar.agreementProject}"></td>
             </tr>
             <tr>
-                <td style="padding-bottom: 35px">Экспертиза проектной документации</td>
+                <td >Экспертиза проектной документации</td>
                 <td th:align="center" th:text="${calendar.agreementProject}"></td>
                 <td th:align="center" th:text="${calendar.examination}"></td>
             </tr>
             <tr></tr>
             <tr>
-                <td style="padding-bottom: 35px">Землеустроительная документация</td>
+                <td style="padding-top: 35px">Землеустроительная документация</td>
+                <td style="padding-top: 35px" th:align="center" th:text="${calendar.projectFinish}"></td>
+                <td style="padding-top: 35px" th:align="center" th:text="${calendar.landFinish}"></td>
+            </tr>
+            <tr></tr>
+            <tr th:if="${calendar.rhrFinish != null}">
+                <td style="padding-top: 35px">Разработка рыбохозяйственного раздела</td>
+                <td style="padding-top: 35px" th:align="center" th:text="${calendar.projectFinish}"></td>
+                <td style="padding-top: 35px" th:align="center" th:text="${calendar.rhrFinish}"></td>
+            </tr>
+            <tr th:if="${calendar.szzFinish != null && calendar.rhrFinish == null}">
+                <td style="padding-top: 35px">Проект санитарно-защитных зон промышленного объекта</td>
+                <td style="padding-top: 35px" th:align="center" th:text="${calendar.projectFinish}"></td>
+                <td style="padding-top: 35px" th:align="center" th:text="${calendar.szzFinish}"></td>
+            </tr>
+            <tr th:if="${calendar.szzFinish != null && calendar.rhrFinish != null}">
+                <td>Проект санитарно-защитных зон промышленного объекта</td>
                 <td th:align="center" th:text="${calendar.projectFinish}"></td>
-                <td th:align="center" th:text="${calendar.landFinish}"></td>
+                <td th:id="szzFinish" th:align="center" th:text="${calendar.szzFinish}"></td>
             </tr>
         </th:block>
         </tbody>

@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,8 +12,6 @@ import ru.tomsknipineft.entities.EntityProject;
 import ru.tomsknipineft.entities.enumEntities.ObjectType;
 import ru.tomsknipineft.entities.enumEntities.SiknType;
 import ru.tomsknipineft.entities.oilPad.OilPad;
-import ru.tomsknipineft.utils.entityValidator.MpsGroupSequenceProvider;
-import ru.tomsknipineft.utils.entityValidator.OnActiveBridgeRoad;
 import ru.tomsknipineft.utils.entityValidator.OnActiveCheck;
 import ru.tomsknipineft.utils.entityValidator.SiknGroupSequenceProvider;
 
@@ -42,10 +39,10 @@ public class Sikn implements OilPad, EntityProject, Serializable {
     private ObjectType objectType;
 
     // тип СИКН
-    @NotNull(message = "Тип не заполнен", groups = OnActiveCheck.class)
+//    @NotNull(message = "Тип не заполнен", groups = OnActiveCheck.class)
     @Column(name = "sikn_type")
     @Enumerated(EnumType.STRING)
-    private SiknType siknType;
+    private SiknType siknType = SiknType.OPERATIONAL;
 
     // производительность СИКН, тонн/час
     @NotNull(message = "Производительность не заполнена", groups = OnActiveCheck.class)
@@ -53,12 +50,17 @@ public class Sikn implements OilPad, EntityProject, Serializable {
     private Double capacity;
 
     //    этап строительства
+    @NotNull(message = "Этап не заполнен", groups = OnActiveCheck.class)
     @Min(value = 1, message = "Не может быть меньше 1", groups = OnActiveCheck.class)
     private Integer stage;
 
-    //    необходимые ресурсы для выполнения полевых ИИ, чел/дней
-    @Column(name = "resource_for_eng_survey")
-    private Integer resourceForEngSurvey;
+    //    необходимые ресурсы для выполнения геодезических полевых ИИ, чел/дней
+    @Column(name = "resource_for_eng_geodetic_survey")
+    private Integer resourceForEngGeodeticSurvey;
+
+    //    необходимые ресурсы для выполнения геологических полевых ИИ, чел/дней
+    @Column(name = "resource_for_eng_geological_survey")
+    private Integer resourceForEngGeologicalSurvey;
 
     //    необходимые ресурсы для выполнения ЛИ, чел/дней
     @Column(name = "resource_for_lab_research")

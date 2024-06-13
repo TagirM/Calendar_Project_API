@@ -70,9 +70,9 @@ public class CalendarServiceTest {
         EntityProject entity = mock(EntityProject.class);
         List<EntityProject> activeObjects = Collections.singletonList(entity);
 
-        when(objectCalendarService.resourceForEngSurveyStage(entity)).thenReturn(5);
+        when(objectCalendarService.resourceForEngGeodeticSurveyStage(entity)).thenReturn(5);
 
-        Map<Integer, Integer> result = service.getResourcesEngSurvey(activeObjects, objectCalendarService);
+        Map<Integer, Integer> result = service.getResourcesEngGeodeticSurvey(activeObjects, objectCalendarService);
 
         assertNotNull(result);
     }

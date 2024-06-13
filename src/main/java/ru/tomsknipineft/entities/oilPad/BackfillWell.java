@@ -42,9 +42,13 @@ public class BackfillWell implements OilPad, EntityProject, Serializable {
     @Min(value = 1, message = "Сan not be less than 1")
     private Integer stage;
 
-    //    необходимые ресурсы для выполнения полевых ИИ, чел/дней
-    @Column(name = "resource_for_eng_survey")
-    private Integer resourceForEngSurvey;
+    //    необходимые ресурсы для выполнения геодезических полевых ИИ, чел/дней
+    @Column(name = "resource_for_eng_geodetic_survey")
+    private Integer resourceForEngGeodeticSurvey;
+
+    //    необходимые ресурсы для выполнения геологических полевых ИИ, чел/дней
+    @Column(name = "resource_for_eng_geological_survey")
+    private Integer resourceForEngGeologicalSurvey;
 
     //    необходимые ресурсы для выполнения ЛИ, чел/дней
     @Column(name = "resource_for_lab_research")

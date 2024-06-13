@@ -1,7 +1,10 @@
 package ru.tomsknipineft.services.entityService;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import ru.tomsknipineft.entities.linearObjects.Ktplp;
@@ -16,6 +19,8 @@ public class KtplpService implements EntityProjectService {
     private final KtplpRepository ktplpRepository;
 
     private final static long FIRST_ID = 1L;
+
+    private static final Logger logger = LogManager.getLogger(KtplpService.class);
 
     /**
      * Поиск сущности в базе данных по введенным параметрам сущности из представления
@@ -44,5 +49,13 @@ public class KtplpService implements EntityProjectService {
                 .findById(FIRST_ID)
                 .orElseThrow(()->
                 new NoSuchEntityException("КТПЛП в базе данных отсутствует"));
+    }
+
+    /**
+     * Метод очистки кэша после отработки данного класса и сохранения ресурсов для последующей проработки календаря проекта
+     */
+    @CacheEvict(allEntries = true)
+    public void evictCacheCalendar(){
+        logger.info("Очищен кэш Ktplp");
     }
 }

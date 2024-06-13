@@ -1,6 +1,5 @@
 package ru.tomsknipineft.controllers;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -9,15 +8,15 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import ru.tomsknipineft.entities.Calendar;
-import ru.tomsknipineft.entities.EntityProject;
 import ru.tomsknipineft.entities.oilPad.DataFormOilPad;
 import ru.tomsknipineft.services.BackfillWellGroupCalendarServiceImpl;
 import ru.tomsknipineft.services.CalendarService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -60,17 +59,8 @@ public class BackfillWellCalendarController {
         // Подсчет времени делал просто для себя, измерял время с кэшем и без, закомментировал.
         // В итоге оставил только команды нужные для контроллера, без бизнес-логики, аналогично сделал в LinearPipelineCalendarController.
 
-//        List<EntityProject> entityProjects = new ArrayList<>(List.of(dataFormOilPad.getBackfillWell(), dataFormOilPad.getRoad(),
-//                dataFormOilPad.getLine(), dataFormOilPad.getVvp(), dataFormOilPad.getCableRack()));
-//        entityProjects.addAll(dataFormOilPad.getBackfillSites());
-
-//        String codeContract = dataFormOilPad.getCodeContract();
         session.setAttribute("codeContract", dataFormOilPad.getCodeContract());
-//        this.dataFormOilPad = dataFormOilPad;
-//        long startTime = System.currentTimeMillis();
         calendarService.createCalendar(dataFormOilPad.getEntityProjects(), backFillWellCalendarServiceImpl, dataFormOilPad);
-//        long executionTime = System.currentTimeMillis() - startTime;
-//        logger.info("Создание календаря заняло время " + executionTime);
         return "redirect:/oil_pad_object/backfill_well/calendar";
     }
 
@@ -91,24 +81,17 @@ public class BackfillWellCalendarController {
         // в представлении уже доставать isFieldEngineeringSurvey и isEngineeringSurveyReport из dataFormOilPad, но это менее удобно,
         // значительно увеличиться код в представлении, т.к. повторяющаяся часть вынесена в блок. Это необходимо?
 
-
         String codeContract = (String) session.getAttribute("codeContract");
-//        logger.info("Календарь по шифру " + codeContract);
-//        if (codeFromRequest != null) {
-//            String codeContract = codeFromRequest;
-//        long startTime = System.currentTimeMillis();
-//        logger.info("Кэшируется получения календаря по шифру");
         List<Calendar> calendars = calendarService.getCalendarByCode(codeContract);
-//        long executionTime = System.currentTimeMillis() - startTime;
-//        logger.info("Получение календаря из БД заняло время " + executionTime);
-        DataFormOilPad dataFormOilPad = (DataFormOilPad) calendarService.getDataFormProject(codeContract);
-//        }
+        DataFormOilPad dataFormOilPad = (DataFormOilPad) calendarService.getDataFormProject(calendars);
         logger.info("Календарь по шифру " + codeContract + " выведен - " + calendars);
         model.addAttribute("calendars", calendars);
         model.addAttribute("codeContract", codeContract);
         model.addAttribute("dataFormOilPad", dataFormOilPad);
         model.addAttribute("fieldEngineeringSurvey", dataFormOilPad.isFieldEngineeringSurvey());
         model.addAttribute("engineeringSurveyReport", dataFormOilPad.isEngineeringSurveyReport());
+        model.addAttribute("notRhrDoc", dataFormOilPad.isNotRhrDoc());
+        model.addAttribute("notSzzDoc", dataFormOilPad.isNotSzzDoc());
         return "result_calendar/oil-pad-result-calendar";
     }
 }

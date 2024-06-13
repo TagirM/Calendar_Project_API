@@ -1,0 +1,42 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{blocks/template.html}">
+
+<th:block layout:fragment="alert-content">
+    <h2 class="text-primary">ДОБРО ПОЖАЛОВАТЬ В СЕРВИС ФОРМИРОВАНИЯ</h2>
+    <h2 class="text-primary">КАЛЕНДАРНЫХ СРОКОВ ДОГОВОРА!</h2>
+    <br>
+    <h3>Весь список проектов из базы данных</h3><br>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col">
+                    <div class="custom-text font-weight-bold text-uppercase">
+                    <h6 th:each="calendar : ${calendarsName}" th:text="${calendar}"></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <form class="mt-4" action="/codeContract" method="GET">
+        <div id="contractClass" class="container">
+            <h4>Найти календарь ПИР по шифру договора</h4>
+            <div class="form-group">
+                <label for="codeContract">Шифр (от 4 до 10 символов):</label>
+                <input type="text" class="form-control" name="codeContract" id="codeContract" required
+                       pattern="[\/_\-\dа-юА-Юa-zA-Z]{4,10}"/>
+            </div>
+        </div>
+        <br>
+        <div class="card text-center">
+            <button type="submit" class="btn btn-outline-dark fw-bolder">Получить календарь</button>
+        </div>
+        <br>
+        <div class="card">
+            <div class="card text-center">
+                <a class="btn btn-outline-dark fw-bolder" href="../index.html" th:href="@{/}">
+                    Вернуться на начальную страницу</a>
+            </div>
+        </div>
+    </form>
+</th:block>
+</html>

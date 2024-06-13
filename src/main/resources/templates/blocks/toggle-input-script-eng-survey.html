@@ -1,0 +1,32 @@
+<th:block lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="toggle-input-eng-survey">
+    <script th:inline="javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            var checkbox = document.getElementById("fieldEngineeringSurvey");
+            toggleInputEngineeringSurvey(checkbox);
+        });
+
+        function toggleInputEngineeringSurvey(checkbox) {
+            var geodeticTeamType1 = document.getElementById("geodeticTeamType1");
+            var geodeticTeam = document.getElementById("geodeticTeam");
+            var drillingRig = document.getElementById("drillingRig");
+
+            if (checkbox.checked) {
+                geodeticTeamType1.disabled = false;
+                geodeticTeam.disabled = false;
+                drillingRig.disabled = false;
+
+                geodeticTeamType1.value = "ENLARGED";
+                geodeticTeam.value = "1";
+                drillingRig.value = "1";
+            } else {
+                geodeticTeamType1.disabled = true;
+                geodeticTeam.disabled = true;
+                drillingRig.disabled = true;
+
+                geodeticTeamType1.value = "";
+                geodeticTeam.value = "";
+                drillingRig.value = "";
+            }
+        }
+    </script>
+</th:block>

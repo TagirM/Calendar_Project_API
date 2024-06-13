@@ -4,7 +4,7 @@ package ru.tomsknipineft.entities.enumEntities;
  * Сложность прокладка линейных коммуникаций: сложная, средняя, легкая
  */
 public enum ComplexityOfGeology {
-    DIFFICULT("сложная геология"), MEDIUM("геология средней сложности"), EASY("простая геология");
+    DIFFICULT("Сложная геология"), MEDIUM("Геология средней сложности"), EASY("Простая геология");
 
     private final String title;
 

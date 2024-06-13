@@ -1,0 +1,110 @@
+<th:block lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="toggle-input">
+    <script th:inline="javascript">
+        var roadChecked = document.getElementById('activeRoad').checked;
+        var lineChecked = document.getElementById('activeLine').checked;
+        var vvpChecked = document.getElementById('activeVvp').checked;
+        var cableRackChecked = document.getElementById('activeCableRack').checked;
+        var mupnChecked = document.getElementById('activeMupn').checked;
+        var vecChecked = document.getElementById('activeVec').checked;
+        var vjkChecked = document.getElementById('activeVjk').checked;
+        var mpsChecked = document.getElementById('activeMps').checked;
+
+        if (roadChecked) {
+            document.getElementById('roadDiv').style.display = 'inline';
+        }
+
+        if (lineChecked) {
+            document.getElementById('lineDiv').style.display = 'inline';
+        }
+
+        if (vvpChecked) {
+            document.getElementById('vvpDiv').style.display = 'inline';
+        }
+
+        if (cableRackChecked) {
+            document.getElementById('cableRackDiv').style.display = 'inline';
+        }
+
+        if (mupnChecked) {
+            document.getElementById('mupnDiv').style.display = 'inline';
+        }
+
+        if (vecChecked) {
+            document.getElementById('vecDiv').style.display = 'inline';
+        }
+
+        if (vjkChecked) {
+            document.getElementById('vjkDiv').style.display = 'inline';
+        }
+
+        if (mpsChecked) {
+            document.getElementById('mpsDiv').style.display = 'inline';
+        }
+
+        function toggleInputRoad(checkbox) {
+            var inputFieldRoad = document.getElementById('roadDiv');
+            if (checkbox.checked) {
+                inputFieldRoad.style.display = 'inline';
+            } else {
+                inputFieldRoad.style.display = 'none';
+            }
+        }
+
+        function toggleInputLine(checkbox) {
+            var inputFieldLine = document.getElementById('lineDiv');
+            if (checkbox.checked) {
+                inputFieldLine.style.display = 'inline';
+            } else {
+                inputFieldLine.style.display = 'none';
+            }
+        }
+        function toggleInputMupn(checkbox) {
+            var inputFieldMupn = document.getElementById('mupnDiv');
+            if (checkbox.checked) {
+                inputFieldMupn.style.display = 'inline';
+            } else {
+                inputFieldMupn.style.display = 'none';
+            }
+        }
+        function toggleInputVec(checkbox) {
+            var inputFieldVec = document.getElementById('vecDiv');
+            if (checkbox.checked) {
+                inputFieldVec.style.display = 'inline';
+            } else {
+                inputFieldVec.style.display = 'none';
+            }
+        }
+        function toggleInputVvp(checkbox) {
+            var inputFieldVvp = document.getElementById('vvpDiv');
+            if (checkbox.checked) {
+                inputFieldVvp.style.display = 'inline';
+            } else {
+                inputFieldVvp.style.display = 'none';
+            }
+        }
+        function toggleInputCableRack(checkbox) {
+            var inputFieldCableRack = document.getElementById('cableRackDiv');
+            if (checkbox.checked) {
+                inputFieldCableRack.style.display = 'inline';
+            } else {
+                inputFieldCableRack.style.display = 'none';
+            }
+        }
+        function toggleInputVjk(checkbox) {
+            var inputFieldVjk = document.getElementById('vjkDiv');
+            if (checkbox.checked) {
+                inputFieldVjk.style.display = 'inline';
+            } else {
+                inputFieldVjk.style.display = 'none';
+            }
+        }
+        function toggleInputMps(checkbox) {
+            var inputFieldMps = document.getElementById('mpsDiv');
+            if (checkbox.checked) {
+                inputFieldMps.style.display = 'inline';
+            } else {
+                inputFieldMps.style.display = 'none';
+            }
+        }
+    </script>
+</th:block>

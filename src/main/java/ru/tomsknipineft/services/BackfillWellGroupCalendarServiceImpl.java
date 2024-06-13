@@ -39,20 +39,39 @@ public class BackfillWellGroupCalendarServiceImpl implements GroupObjectCalendar
     private static final Logger logger = LogManager.getLogger(BackfillWellGroupCalendarServiceImpl.class);
 
     @Override
-    public Integer resourceForEngSurveyStage(EntityProject entityProjectBackfillWell) {
+    public Integer resourceForEngGeodeticSurveyStage(EntityProject entityProjectBackfillWell) {
         int resourceForStage = 0;
         if (entityProjectBackfillWell.getClass() == BackfillWell.class) {
-            resourceForStage += backfillWellService.getFindBackfillWellFromRequest((BackfillWell) entityProjectBackfillWell).getResourceForEngSurvey();
+            resourceForStage += backfillWellService.getFindBackfillWellFromRequest((BackfillWell) entityProjectBackfillWell).getResourceForEngGeodeticSurvey();
         } else if (entityProjectBackfillWell.getClass() == Road.class) {
-            resourceForStage += roadService.getFindRoadFromRequest((Road) entityProjectBackfillWell).getResourceForEngSurvey();
+            resourceForStage += roadService.getFindRoadFromRequest((Road) entityProjectBackfillWell).getResourceForEngGeodeticSurvey();
         } else if (entityProjectBackfillWell.getClass() == Line.class) {
-            resourceForStage += lineService.getFindLineFromRequest((Line) entityProjectBackfillWell).getResourceForEngSurvey();
+            resourceForStage += lineService.getFindLineFromRequest((Line) entityProjectBackfillWell).getResourceForEngGeodeticSurvey();
         } else if (entityProjectBackfillWell.getClass() == BackfillSite.class) {
-            resourceForStage += backfillSiteService.getFindBackfillSiteFromRequest((BackfillSite) entityProjectBackfillWell).getResourceForEngSurvey();
+            resourceForStage += backfillSiteService.getFindBackfillSiteFromRequest((BackfillSite) entityProjectBackfillWell).getResourceForEngGeodeticSurvey();
         } else if (entityProjectBackfillWell.getClass() == Vvp.class) {
-            resourceForStage += vvpService.getFindVvpFromRequest((Vvp) entityProjectBackfillWell).getResourceForEngSurvey();
+            resourceForStage += vvpService.getFindVvpFromRequest((Vvp) entityProjectBackfillWell).getResourceForEngGeodeticSurvey();
         } else if (entityProjectBackfillWell.getClass() == CableRack.class) {
-            resourceForStage += cableRackService.getFindCableRackFromRequest((CableRack) entityProjectBackfillWell).getResourceForEngSurvey();
+            resourceForStage += cableRackService.getFindCableRackFromRequest((CableRack) entityProjectBackfillWell).getResourceForEngGeodeticSurvey();
+        }
+        return resourceForStage;
+    }
+
+    @Override
+    public Integer resourceForEngGeologicalSurveyStage(EntityProject entityProjectBackfillWell) {
+        int resourceForStage = 0;
+        if (entityProjectBackfillWell.getClass() == BackfillWell.class) {
+            resourceForStage += backfillWellService.getFindBackfillWellFromRequest((BackfillWell) entityProjectBackfillWell).getResourceForEngGeologicalSurvey();
+        } else if (entityProjectBackfillWell.getClass() == Road.class) {
+            resourceForStage += roadService.getFindRoadFromRequest((Road) entityProjectBackfillWell).getResourceForEngGeologicalSurvey();
+        } else if (entityProjectBackfillWell.getClass() == Line.class) {
+            resourceForStage += lineService.getFindLineFromRequest((Line) entityProjectBackfillWell).getResourceForEngGeologicalSurvey();
+        } else if (entityProjectBackfillWell.getClass() == BackfillSite.class) {
+            resourceForStage += backfillSiteService.getFindBackfillSiteFromRequest((BackfillSite) entityProjectBackfillWell).getResourceForEngGeologicalSurvey();
+        } else if (entityProjectBackfillWell.getClass() == Vvp.class) {
+            resourceForStage += vvpService.getFindVvpFromRequest((Vvp) entityProjectBackfillWell).getResourceForEngGeologicalSurvey();
+        } else if (entityProjectBackfillWell.getClass() == CableRack.class) {
+            resourceForStage += cableRackService.getFindCableRackFromRequest((CableRack) entityProjectBackfillWell).getResourceForEngGeologicalSurvey();
         }
         return resourceForStage;
     }
@@ -138,16 +157,22 @@ public class BackfillWellGroupCalendarServiceImpl implements GroupObjectCalendar
         int resourceForStage = 0;
         if (entityProjectBackfillWell.getClass() == BackfillWell.class) {
             resourceForStage += backfillWellService.getFindBackfillWellFromRequest((BackfillWell) entityProjectBackfillWell).getResourceForEstDoc();
+            backfillWellService.evictCacheCalendar();
         } else if (entityProjectBackfillWell.getClass() == Road.class) {
             resourceForStage += roadService.getFindRoadFromRequest((Road) entityProjectBackfillWell).getResourceForEstDoc();
+            roadService.evictCacheCalendar();
         } else if (entityProjectBackfillWell.getClass() == Line.class) {
             resourceForStage += lineService.getFindLineFromRequest((Line) entityProjectBackfillWell).getResourceForEstDoc();
+            lineService.evictCacheCalendar();
         } else if (entityProjectBackfillWell.getClass() == BackfillSite.class) {
             resourceForStage += backfillSiteService.getFindBackfillSiteFromRequest((BackfillSite) entityProjectBackfillWell).getResourceForEstDoc();
+            backfillSiteService.evictCacheCalendar();
         } else if (entityProjectBackfillWell.getClass() == Vvp.class) {
             resourceForStage += vvpService.getFindVvpFromRequest((Vvp) entityProjectBackfillWell).getResourceForEstDoc();
+            vvpService.evictCacheCalendar();
         } else if (entityProjectBackfillWell.getClass() == CableRack.class) {
             resourceForStage += cableRackService.getFindCableRackFromRequest((CableRack) entityProjectBackfillWell).getResourceForEstDoc();
+            cableRackService.evictCacheCalendar();
         }
         return resourceForStage;
     }

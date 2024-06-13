@@ -36,7 +36,7 @@ public class BackfillWellGroupCalendarServiceImplTest {
     when(backfillWellService.getResourceForEngSurveyBackfillWell(backfillWell)).thenReturn(10);
 
     int expected = 10;
-    int actual = service.resourceForEngSurveyStage(backfillWell);
+    int actual = service.resourceForEngGeodeticSurveyStage(backfillWell);
 
     assertEquals(expected, actual);
   }

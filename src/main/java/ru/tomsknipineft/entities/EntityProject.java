@@ -1,7 +1,6 @@
 package ru.tomsknipineft.entities;
 
 import ru.tomsknipineft.entities.enumEntities.ObjectType;
-import ru.tomsknipineft.entities.oilPad.BackfillWell;
 
 /**
  * Интерефейс всех объектов проектирования
@@ -18,11 +17,18 @@ public interface EntityProject {
     boolean isActive();
 
     /**
-     * Поиск в БД количества ресурса необходимого для выполнения полевых ИИ
+     * Поиск в БД количества ресурса необходимого для выполнения геодезических полевых ИИ
      *
      * @return количество необходимого ресурса
      */
-    Integer getResourceForEngSurvey();
+    Integer getResourceForEngGeodeticSurvey();
+
+    /**
+     * Поиск в БД количества ресурса необходимого для выполнения геологических полевых ИИ
+     *
+     * @return количество необходимого ресурса
+     */
+    Integer getResourceForEngGeologicalSurvey();
 
     /**
      * Поиск в БД количества ресурса необходимого для выполнения ЛИ

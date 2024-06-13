@@ -35,7 +35,7 @@ public class LinearPipelineGroupCalendarServiceImplTest {
         when(pipelineService.getResourceForEngSurveyPipeline(pipeline)).thenReturn(10);
 
         int expected = 10;
-        int actual = service.resourceForEngSurveyStage(pipeline);
+        int actual = service.resourceForEngGeodeticSurveyStage(pipeline);
 
         assertEquals(expected, actual);
     }

@@ -68,15 +68,6 @@ public class StartCalendarController {
     }
 
     /**
-     * Страница с выбором объекта проектирования объекта энергетики
-     */
-    @GetMapping("/allProjects")
-    public String allProjects(Model model){
-        model.addAttribute("calendars", calendarService.getAllCalendars());
-        return "all-projects";
-    }
-
-    /**
      * Получение шифра договора из страницы ввода данных для формирования календарного плана и проверка его наличия в БД
      * @param codeContract искомый шифр договора для вывода календаря
      * @return перенаправление на страницу вывода календарного плана договора
@@ -91,7 +82,8 @@ public class StartCalendarController {
 //        if (calendars.size() == 0){
 //            throw new  NoSuchCalendarException("Календарь по указанному шифру " + codeContract + " отсутствует в базе данных");
 //        }
-        DataFormProject dataFormProject = calendarService.getDataFormProject(codeContract);
+        List<Calendar> calendars = calendarService.getCalendarByCode(codeContract);
+        DataFormProject dataFormProject = calendarService.getDataFormProject(calendars);
         session.setAttribute("codeContract", codeContract);
         if (dataFormProject.getClass() == DataFormOilPad.class){
             return "redirect:/oil_pad_object/backfill_well/calendar";
@@ -100,5 +92,15 @@ public class StartCalendarController {
             return "redirect:/linear_object/linear_pipeline/calendar";
         }
         return null;
+    }
+
+    /**
+     * Вывод всех проектов из базы данных
+     */
+    @GetMapping("/allProjects")
+    public String allProjects(Model model){
+        logger.info("Выведены все проекты из базы данных");
+        model.addAttribute("calendarsName", calendarService.getAllCalendars());
+        return "all-projects";
     }
 }

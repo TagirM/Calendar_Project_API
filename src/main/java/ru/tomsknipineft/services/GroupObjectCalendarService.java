@@ -10,13 +10,20 @@ import java.util.List;
 public interface GroupObjectCalendarService {
 
     /**
-     * Получение количества ресурса, необходимого для выполнения полевых ИИ сущности (сооружения) объекта проектирования
+     * Получение количества ресурса, необходимого для выполнения полевых геодезических ИИ сущности (сооружения) объекта проектирования
      *
      * @param entityProject сущность объекта кустовой площадки
      * @return количество ресурса, необходимого для проектирования сущности
      */
-    Integer resourceForEngSurveyStage(EntityProject entityProject);
+    Integer resourceForEngGeodeticSurveyStage(EntityProject entityProject);
 
+    /**
+     * Получение количества ресурса, необходимого для выполнения полевых геологических ИИ сущности (сооружения) объекта проектирования
+     *
+     * @param entityProject сущность объекта кустовой площадки
+     * @return количество ресурса, необходимого для проектирования сущности
+     */
+    Integer resourceForEngGeologicalSurveyStage(EntityProject entityProject);
     /**
      * Получение количества ресурса, необходимого для выполнения ЛИ сущности (сооружения) объекта проектирования
      *

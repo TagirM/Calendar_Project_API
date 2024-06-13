@@ -17,7 +17,7 @@
         <h3>Дата работ</h3>
         <div class="form-group">
             <label for="starting">Дата начала выполнения (не позднее текущей даты):</label>
-            <input type="date" class="form-control" th:field="*{startContract}" id="starting"/>
+            <input type="date" class="form-control" th:field="*{startContract}" id="starting" value="${T(java.time.LocalDate).now()}"/>
             <span class="text-danger" th:if="${#fields.hasErrors('startContract')}"
                   th:errors="*{startContract}">StartContract error</span><br><br>
         </div>
@@ -28,18 +28,47 @@
         <div class="form-group">
             <label for="fieldEngineeringSurvey">Выполняются полевые и камеральные инженерные
                 изыскания: </label>
-            <input type="checkbox" class="form-check-input" th:field="*{fieldEngineeringSurvey}"
+            <input type="checkbox" class="form-check-input" th:onclick="'toggleInputEngineeringSurvey(this)'"
+                   th:field="*{fieldEngineeringSurvey}"
                    id="fieldEngineeringSurvey"/><br>
-
-            <label for="drillingRig">Сколько буровых бригад планируется использовать,
-                шт.: </label>
-            <input type="number" class="form-control" step="any" th:field="*{drillingRig}"
-                   id="drillingRig"/>
-            <span class="text-danger" th:if="${#fields.hasErrors('drillingRig')}" th:errors="*{drillingRig}">drillingRig error</span><br>
             <label for="engineeringSurveyReport">Выполняются только камеральные инженерные
                 изыскания: </label>
             <input type="checkbox" class="form-check-input" th:field="*{engineeringSurveyReport}"
                    id="engineeringSurveyReport"/><br><br>
+            <div class="form-group" id="engineeringSurveyDiv">
+                <label>Какого размера геодезическую бригаду планируется привлекать: </label><br>
+                <input type="radio" class="form-check-input me-1" step="any" th:field="*{geodeticTeamType}"
+                       id="geodeticTeamType1" value="STANDARD">
+                <label class="form-check-label" for="geodeticTeamType1">Стандартного</label><br>
+                <input type="radio" class="form-check-input me-1" step="any" th:field="*{geodeticTeamType}"
+                       id="geodeticTeamType2" value="ENLARGED">
+                <label class="form-check-label" for="geodeticTeamType2">Расширенного</label><br>
+                <span class="text-danger" th:if="${#fields.hasErrors('geodeticTeamType')}"
+                      th:errors="*{geodeticTeamType}">geodeticTeamType error</span><br>
+                <label for="geodeticTeam">Сколько геодезических бригад планируется привлекать, шт.: </label>
+                <input type="number" class="form-control" step="any" th:field="*{geodeticTeam}"
+                       id="geodeticTeam"/>
+                <span class="text-danger" th:if="${#fields.hasErrors('geodeticTeam')}" th:errors="*{geodeticTeam}">geodeticTeam error</span><br>
+                <label for="drillingRig">Сколько буровых бригад планируется привлекать, шт.: </label>
+                <input type="number" class="form-control" step="any" th:field="*{drillingRig}"
+                       id="drillingRig"/>
+                <span class="text-danger" th:if="${#fields.hasErrors('drillingRig')}" th:errors="*{drillingRig}">drillingRig error</span><br><br>
+            </div>
+            <label><h5>Сложность геологии в районе выполнения ИИ</h5></label><br>
+            <input type="radio" class="form-check-input me-1" step="any" th:field="*{complexityOfGeology}"
+                   id="complexityOfGeologyLine1" value="EASY" checked>
+            <label class="form-check-label" for="complexityOfGeologyLine1">Простая</label><br>
+            <input type="radio" class="form-check-input me-1" step="any" th:field="*{complexityOfGeology}"
+                   id="complexityOfGeologyLine2" value="MEDIUM">
+            <label class="form-check-label" for="complexityOfGeologyLine2">Средней сложности</label><br>
+            <input type="radio" class="form-check-input me-1" step="any" th:field="*{complexityOfGeology}"
+                   id="complexityOfGeologyLine3" value="DIFFICULT">
+            <label class="form-check-label" for="complexityOfGeologyLine3">Сложная</label><br>
+            <span class="text-danger" th:if="${#fields.hasErrors('complexityOfGeology')}"
+                  th:errors="*{complexityOfGeology}">Error</span><br><br>
+            <label for="notRhrDoc"><h5>Рыбохозяйственный раздел не требуется разрабатывать: </h5></label>
+            <input type="checkbox" class="form-check-input" th:field="*{notRhrDoc}"
+                   id="notRhrDoc"/><br><br>
         </div>
     </div>
 </th:block>

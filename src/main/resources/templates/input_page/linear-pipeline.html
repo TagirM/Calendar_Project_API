@@ -27,42 +27,42 @@
                         <label class="form-check-label" for="pipelineLayingMethodPipeline3">Надземный на эстакаде</label><br>
                         <span class="text-danger" th:if="${#fields.hasErrors('pipeline.pipelineLayingMethod')}"
                               th:errors="*{pipeline.pipelineLayingMethod}">Pipeline error</span><br>
-                    </div>
-                    <div class="form-group">
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
                         <label for="lengthPipeline">Протяженность трубопровода, км: </label>
                         <input type="number" step="any" class="form-control" th:field="*{pipeline.length}" id="lengthPipeline"/>
                         <span class="text-danger" th:if="${#fields.hasErrors('pipeline.length')}"
                               th:errors="*{pipeline.length}">Pipeline error</span><br>
-                    </div>
-                    <div class="form-group">
-                        <label>Сложность геологии в месте прокладки трубопровода</label><br>
-                        <input type="radio" class="form-check-input me-1" step="any" th:field="*{pipeline.complexityOfGeology}"
-                               id="complexityOfGeologyPipeline1" value="EASY" checked>
-                        <label class="form-check-label" for="complexityOfGeologyPipeline1">Простая</label><br>
-                        <input type="radio" class="form-check-input me-1" step="any" th:field="*{pipeline.complexityOfGeology}"
-                               id="complexityOfGeologyPipeline2" value="MEDIUM">
-                        <label class="form-check-label" for="complexityOfGeologyPipeline2">Средней сложности</label><br>
-                        <input type="radio" class="form-check-input me-1" step="any" th:field="*{pipeline.complexityOfGeology}"
-                               id="complexityOfGeologyPipeline3" value="DIFFICULT">
-                        <label class="form-check-label" for="complexityOfGeologyPipeline3">Сложная</label><br>
-                        <span class="text-danger" th:if="${#fields.hasErrors('pipeline.complexityOfGeology')}"
-                              th:errors="*{pipeline.complexityOfGeology}">Pipeline error</span><br>
-                    </div>
-                    <div class="form-group">
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label>Сложность геологии в месте прокладки трубопровода</label><br>-->
+<!--                        <input type="radio" class="form-check-input me-1" step="any" th:field="*{pipeline.complexityOfGeology}"-->
+<!--                               id="complexityOfGeologyPipeline1" value="EASY" checked>-->
+<!--                        <label class="form-check-label" for="complexityOfGeologyPipeline1">Простая</label><br>-->
+<!--                        <input type="radio" class="form-check-input me-1" step="any" th:field="*{pipeline.complexityOfGeology}"-->
+<!--                               id="complexityOfGeologyPipeline2" value="MEDIUM">-->
+<!--                        <label class="form-check-label" for="complexityOfGeologyPipeline2">Средней сложности</label><br>-->
+<!--                        <input type="radio" class="form-check-input me-1" step="any" th:field="*{pipeline.complexityOfGeology}"-->
+<!--                               id="complexityOfGeologyPipeline3" value="DIFFICULT">-->
+<!--                        <label class="form-check-label" for="complexityOfGeologyPipeline3">Сложная</label><br>-->
+<!--                        <span class="text-danger" th:if="${#fields.hasErrors('pipeline.complexityOfGeology')}"-->
+<!--                              th:errors="*{pipeline.complexityOfGeology}">Pipeline error</span><br>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
                         <label for="unitsValve">Количество узлов запорной арматуры, шт:</label>
                         <input type="number" step="any" class="form-control" th:field="*{pipeline.unitsValve}"
                                id="unitsValve">
                         <span class="text-danger" th:if="${#fields.hasErrors('pipeline.unitsValve')}"
                               th:errors="*{pipeline.unitsValve}"></span>
-                    </div>
-                    <div class="form-group">
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
                         <label for="unitsSOD">Количество узлов средств очистки и диагностики, шт:</label>
                         <input type="number" step="any" class="form-control" th:field="*{pipeline.unitsSOD}"
                                id="unitsSOD">
                         <span class="text-danger" th:if="${#fields.hasErrors('pipeline.unitsSOD')}"
                               th:errors="*{pipeline.unitsSOD}"></span>
-                    </div>
-                    <div class="form-group">
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
                         <label for="stagePipeline">Этап строительства: </label>
                         <input type="number" class="form-control" step="any" th:field="*{pipeline.stage}"
                                id="stagePipeline"/>
@@ -71,106 +71,16 @@
                     </div>
                 </div>
 
-                <div id="roadClass" class="container">
-                    <h3>Автомобильные дороги</h3>
-                    <div class="form-group">
-                        <label for="activeRoad">Наличие:</label>
-                        <input type="checkbox" class="form-check-input" th:field="*{road.active}"
-                               id="activeRoad"><br><br>
-                    </div>
-                    <div class="form-group">
-                        <label for="category">Категория дорог (3 или 4):</label>
-                        <input type="number" class="form-control" th:field="*{road.category}" id="category">
-                        <span class="text-danger" th:if="${#fields.hasErrors('road.category')}"
-                              th:errors="*{road.category}"></span><br>
-                    </div>
-                    <div class="form-group">
-                        <label for="lengthRoad">Общая протяженность дорог, км:</label>
-                        <input type="number" step="any" class="form-control" th:field="*{road.length}" id="lengthRoad">
-                        <span class="text-danger" th:if="${#fields.hasErrors('road.length')}"
-                              th:errors="*{road.length}"></span><br>
-                    </div>
-                    <div class="form-group">
-                        <label for="countRoad">Общее количество автодорог, шт:</label>
-                        <input type="number" step="any" class="form-control" th:field="*{road.count}"
-                               id="countRoad">
-                        <span class="text-danger" th:if="${#fields.hasErrors('road.count')}"
-                              th:errors="*{road.count}"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="bridgeExistRoad">Наличие дорожного моста:</label>
-                        <input type="checkbox" class="form-check-input" th:field="*{road.bridgeExist}"
-                               id="bridgeExistRoad">
-                    </div>
-                    <div class="form-group">
-                        <label for="bridgeRoadCount">Количество мостов, шт:</label>
-                        <input type="number" step="any" class="form-control" th:field="*{road.bridgeRoadCount}"
-                               id="bridgeRoadCount">
-                        <span class="text-danger" th:if="${#fields.hasErrors('road.bridgeRoadCount')}"
-                              th:errors="*{road.bridgeRoadCount}"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="bridgeRoadLength">Общая протяженность мостов, м:</label>
-                        <input type="number" step="any" class="form-control" th:field="*{road.bridgeRoadLength}"
-                               id="bridgeRoadLength">
-                        <span class="text-danger" th:if="${#fields.hasErrors('road.bridgeRoadLength')}"
-                              th:errors="*{road.bridgeRoadLength}"></span><br>
-                    </div>
-                    <div class="form-group">
-                        <label for="stageRoad">Этап строительства: </label>
-                        <input type="number" step="any" class="form-control" th:field="*{road.stage}" id="stageRoad">
-                        <span class="text-danger" th:if="${#fields.hasErrors('road.stage')}"
-                              th:errors="*{road.stage}"></span><br><br>
-                    </div>
-                </div>
-                <div id="lineClass" class="container">
-                    <h3> Линии электропередач </h3>
-                    <div class="form-group">
-                        <label for="activeLine">Наличие: </label>
-                        <input type="checkbox" class="form-check-input" th:field="*{line.active}"
-                               id="activeLine"/><br><br>
-                    </div>
-                    <div class="form-group">
-                        <label for="power">Мощность ВЛ, кВ (10, 35, 110): </label>
-                        <input type="number" class="form-control" th:field="*{line.power}" id="power"/>
-                        <span class="text-danger" th:if="${#fields.hasErrors('line.power')}"
-                              th:errors="*{line.power}">Well error</span><br>
-                    </div>
-                    <div class="form-group">
-                        <label for="lengthLine">Протяженность ВЛ, км: </label>
-                        <input type="number" step="any" class="form-control" th:field="*{line.length}" id="lengthLine"/>
-                        <span class="text-danger" th:if="${#fields.hasErrors('line.length')}"
-                              th:errors="*{line.length}">Well error</span><br>
-                    </div>
-                    <div class="form-group">
-                        <label>Сложность геологии в месте прохождения ВЛ</label><br>
-                        <input type="radio" class="form-check-input me-1" step="any" th:field="*{line.complexityOfGeology}"
-                               id="complexityOfGeologyLine1" value="EASY" checked>
-                        <label class="form-check-label" for="complexityOfGeologyLine1">Простая</label><br>
-                        <input type="radio" class="form-check-input me-1" step="any" th:field="*{line.complexityOfGeology}"
-                               id="complexityOfGeologyLine2" value="MEDIUM">
-                        <label class="form-check-label" for="complexityOfGeologyLine2">Средней сложности</label><br>
-                        <input type="radio" class="form-check-input me-1" step="any" th:field="*{line.complexityOfGeology}"
-                               id="complexityOfGeologyLine3" value="DIFFICULT">
-                        <label class="form-check-label" for="complexityOfGeologyLine3">Сложная</label><br>
-                        <span class="text-danger" th:if="${#fields.hasErrors('line.complexityOfGeology')}"
-                              th:errors="*{line.complexityOfGeology}">Line error</span><br>
-                    </div>
-                    <div class="form-group">
-                        <label for="stageLine">Этап строительства: </label>
-                        <input type="number" step="any" class="form-control" th:field="*{line.stage}" id="stageLine"/>
-                        <span class="text-danger" th:if="${#fields.hasErrors('line.stage')}"
-                              th:errors="*{line.stage}">Well error</span><br><br>
-                    </div>
-                </div>
+                <div th:insert="~{blocks/road-and-line-input-block.html :: road-and-line}"></div>
+
                 <div id="ktplpClass" class="container">
                     <h3> Комплектные трасформаторные подстанции линейного типа (КТПЛП)</h3>
                     <div class="form-group">
                         <label for="activeKtplp">Наличие: </label>
-                        <input type="checkbox" class="form-check-input" th:field="*{ktplp.active}"
+                        <input type="checkbox" class="form-check-input" th:onclick="'toggleInputKtplp(this)'" th:field="*{ktplp.active}"
                                id="activeKtplp"/><br><br>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="ktplpDiv" style="display: none;">
                         <label>Вид КТПЛП:</label><br>
                         <input type="radio" class="form-check-input me-1" step="any" th:field="*{ktplp.ktplpType}"
                                id="ktplpType1" value="KTPLP6_04" checked>
@@ -183,15 +93,15 @@
                         <label class="form-check-label" for="ktplpType3">35/0,4 кВ</label><br>
                         <span class="text-danger" th:if="${#fields.hasErrors('ktplp.ktplpType')}"
                               th:errors="*{ktplp.ktplpType3}">Ktplp error</span><br>
-                    </div>
-                    <div class="form-group">
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
                         <label for="ktplpCount">Количество КТПЛП, шт:</label>
                         <input type="number" step="any" class="form-control" th:field="*{ktplp.count}"
                                id="ktplpCount">
                         <span class="text-danger" th:if="${#fields.hasErrors('ktplp.count')}"
                               th:errors="*{ktplp.count}"></span>
-                    </div>
-                    <div class="form-group">
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
                         <label for="stageKtplp">Этап строительства: </label>
                         <input type="number" step="any" class="form-control" th:field="*{ktplp.stage}"
                                id="stageKtplp"/>
@@ -203,10 +113,10 @@
                     <h3> Система измерения количества и качества нефти (СИКН)</h3>
                     <div class="form-group">
                         <label for="activeSikn">Наличие: </label>
-                        <input type="checkbox" class="form-check-input" th:field="*{sikn.active}"
+                        <input type="checkbox" class="form-check-input" th:onclick="'toggleInputSikn(this)'" th:field="*{sikn.active}"
                                id="activeSikn"/><br><br>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="siknDiv" style="display: none;">
                         <label>Тип СИКН:</label><br>
                         <input type="radio" class="form-check-input me-1" step="any" th:field="*{sikn.siknType}"
                                id="siknType1" value="OPERATIONAL" checked>
@@ -216,15 +126,15 @@
                         <label class="form-check-label" for="siknType2">Коммерческого учета</label><br>
                         <span class="text-danger" th:if="${#fields.hasErrors('sikn.siknType')}"
                               th:errors="*{sikn.siknType3}">Sikn error</span><br>
-                    </div>
-                    <div class="form-group">
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
                         <label for="siknСapacity">Производительность СИКН, тонн/час (от 0,1 до 550,0):</label>
                         <input type="number" step="any" class="form-control" th:field="*{sikn.capacity}"
                                id="siknСapacity">
                         <span class="text-danger" th:if="${#fields.hasErrors('sikn.capacity')}"
                               th:errors="*{sikn.capacity}"></span>
-                    </div>
-                    <div class="form-group">
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
                         <label for="stageSikn">Этап строительства: </label>
                         <input type="number" step="any" class="form-control" th:field="*{sikn.stage}"
                                id="stageSikn"/>
@@ -254,75 +164,9 @@
 <!--                              th:errors="*{backfillSites[1].stage}">Well error</span><br><br>-->
 <!--                    </div>-->
 <!--                </div>-->
-                <div id="vvpClass" class="container">
-                    <h3> Временная вертолетная площадка</h3>
-                    <div class="form-group">
-                        <label for="activeVvp">Наличие: </label>
-                        <input type="checkbox" class="form-check-input" th:field="*{vvp.active}"
-                               id="activeVvp"/><br><br>
-                    </div>
-                    <div class="form-group">
-                        <label for="helicopterModelVvp">Модель вертолета для посадки (МИ-8, МИ-26): </label>
-                        <input type="text" class="form-control" th:field="*{vvp.helicopterModel}"
-                               id="helicopterModelVvp"/>
-                        <span class="text-danger" th:if="${#fields.hasErrors('vvp.helicopterModel')}"
-                              th:errors="*{vvp.helicopterModel}">Well error</span><br>
-                        <p>или</p>
-                    </div>
-                    <div class="form-group">
-                        <label for="squareVvp">Площадь отсыпки, га (0,1 - 4,0): </label>
-                        <input type="number" step="any" class="form-control" th:field="*{vvp.square}" id="squareVvp"/>
-                        <span class="text-danger" th:if="${#fields.hasErrors('vvp.square')}"
-                              th:errors="*{vvp.square}">Well error</span><br>
-                    </div>
-                    <div class="form-group">
-                        <label for="activeHallExist">Наличие зала ожидания: </label>
-                        <input type="checkbox" class="form-check-input" th:field="*{vvp.hallExist}"
-                               id="activeHallExist"/><br><br>
-                    </div>
-                    <div class="form-group">
-                        <label for="stageVvp">Этап строительства: </label>
-                        <input type="number" step="any" class="form-control" th:field="*{vvp.stage}" id="stageVvp"/>
-                        <span class="text-danger" th:if="${#fields.hasErrors('vvp.stage')}"
-                              th:errors="*{vvp.stage}">Well error</span><br><br>
-                    </div>
-                </div>
-                <div id="cableRackClass" class="container">
-                    <h3> Кабельные эстакады </h3>
-                    <div class="form-group">
-                        <label for="activeCableRack">Наличие: </label>
-                        <input type="checkbox" class="form-check-input" th:field="*{cableRack.active}"
-                               id="activeCableRack"/><br><br>
-                    </div>
-                    <div class="form-group">
-                        <label for="lengthCableRack">Протяженность кабельной эстакады, м: </label>
-                        <input type="number" step="any" class="form-control" th:field="*{cableRack.length}"
-                               id="lengthCableRack"/>
-                        <span class="text-danger" th:if="${#fields.hasErrors('cableRack.length')}"
-                              th:errors="*{cableRack.length}">Well error</span><br>
-                    </div>
-                    <div class="form-group">
-                        <label>Сложность геологии в месте прохождения кабельной эстакады</label><br>
-                        <input type="radio" class="form-check-input me-1" step="any" th:field="*{cableRack.complexityOfGeology}"
-                               id="complexityOfGeologyСableRack1" value="EASY" checked>
-                        <label class="form-check-label" for="complexityOfGeologyСableRack1">Простая</label><br>
-                        <input type="radio" class="form-check-input me-1" step="any" th:field="*{cableRack.complexityOfGeology}"
-                               id="complexityOfGeologyСableRack2" value="MEDIUM">
-                        <label class="form-check-label" for="complexityOfGeologyСableRack2">Средней сложности</label><br>
-                        <input type="radio" class="form-check-input me-1" step="any" th:field="*{cableRack.complexityOfGeology}"
-                               id="complexityOfGeologyСableRack3" value="DIFFICULT">
-                        <label class="form-check-label" for="complexityOfGeologyСableRack3">Сложная</label><br>
-                        <span class="text-danger" th:if="${#fields.hasErrors('cableRack.complexityOfGeology')}"
-                              th:errors="*{cableRack.complexityOfGeology}">Line error</span><br>
-                    </div>
-                    <div class="form-group">
-                        <label for="stageCableRack">Этап строительства: </label>
-                        <input type="number" step="any" class="form-control" th:field="*{cableRack.stage}"
-                               id="stageCableRack"/>
-                        <span class="text-danger" th:if="${#fields.hasErrors('cableRack.stage')}"
-                              th:errors="*{cableRack.stage}">Well error</span><br><br>
-                    </div>
-                </div>
+
+                <div th:insert="~{blocks/vvp-and-cablerack-input-block.html :: vvp-and-cablerack}"></div>
+
 <!--                <div id="vjkClass" class="container">-->
 <!--                    <h3> Площадка под вахтовый жилой комплекс</h3>-->
 <!--                    <div class="form-group">-->
@@ -371,7 +215,7 @@
                 <div id="humanFactor" class="container">
                     <div class="form-group">
                         <label for="humanFactorId" class="fst-italic fw-bolder">Укажите погрешность (человеческий фактор, непредвиденные
-                            обстоятельства, форс-мажор, какие-либо непределенности в выполнении работ) при формировании сроков календарного
+                            обстоятельства, форс-мажор, какие-либо неопределенности в выполнении работ) при формировании сроков календарного
                             плана, % (не более 50):</label>
                         <input type="text" class="form-control" th:field="*{humanFactor}" id="humanFactorId"/>
                         <span class="text-danger" th:if="${#fields.hasErrors('humanFactor')}"
@@ -387,6 +231,9 @@
         </div>
     </div>
     <hr class="my-4">
-    <div th:insert="~{blocks/check-vvp-data-block.html :: check-vvp-data-content}"></div>
+    <div th:insert="~{blocks/toggle-input-script-linear-pipeline.html :: toggle-input}"></div>
+    <div th:insert="~{blocks/toggle-input-script-eng-survey.html :: toggle-input-eng-survey}"></div>
+    <div th:insert="~{blocks/check-vvp-data-script.html :: check-vvp-data-content}"></div>
+    <div th:insert="~{blocks/current-date-block-script.html :: current-date-block}"></div>
 </th:block>
 </html>

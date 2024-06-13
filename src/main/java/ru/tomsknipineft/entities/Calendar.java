@@ -55,6 +55,12 @@ public class Calendar {
     private LocalDate engineeringSurveyReportFinish;
     //    дата согласования отчета ИИ
     private LocalDate agreementEngineeringSurvey;
+    //    дата начала сезонных ИИ
+    private LocalDate seasonalEngineeringSurveysStart;
+    //    дата закрытия ИЭИ
+    private LocalDate engineeringAndEnvironmentalSurveysFinish;
+    //    дата закрытия ИКИ
+    private LocalDate historicalAndCulturalResearchFinish;
 
     //    дата начала разработки РД (рабочей документации)
     private LocalDate workingStart;
@@ -63,11 +69,15 @@ public class Calendar {
     //    дата согласования РД
     private LocalDate agreementWorking;
 
+    //    дата начала разработки СД (сметной документации)
+    private LocalDate estimatesStart;
     //    дата выдачи СД (сметной документации)
     private LocalDate estimatesFinish;
     //    дата согласования СД
     private LocalDate agreementEstimates;
 
+    //    дата начала разработки ПД (проектной документации)
+    private LocalDate projectStart;
     //    дата выдачи ПД (проектной документации)
     private LocalDate projectFinish;
     //    дата согласования ПД
@@ -77,6 +87,11 @@ public class Calendar {
 
     //    дата выдачи ППиМТ
     private LocalDate landFinish;
+
+    //    дата утверждения РХР
+    private LocalDate rhrFinish;
+    //    дата утверждения СЗЗ
+    private LocalDate szzFinish;
 
     //    дата создания календарного плана
     private LocalDateTime dateOfCreated;

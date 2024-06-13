@@ -1,0 +1,70 @@
+<th:block lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="vvp-and-cablerack">
+    <div id="vvpClass" class="container">
+        <h3> Временная вертолетная площадка</h3>
+        <div class="form-group">
+            <label for="activeVvp">Наличие: </label>
+            <input type="checkbox" class="form-check-input" th:onclick="'toggleInputVvp(this)'" th:field="*{vvp.active}" id="activeVvp"/><br><br>
+        </div>
+        <div class="form-group" id="vvpDiv" style="display: none;">
+            <label for="helicopterModelVvp">Укажите модель вертолета для посадки (МИ-8, МИ-26): </label>
+            <input type="text" class="form-control" th:field="*{vvp.helicopterModel}"
+                   id="helicopterModelVvp"/>
+            <span class="text-danger" th:if="${#fields.hasErrors('vvp.helicopterModel')}"
+                  th:errors="*{vvp.helicopterModel}">Well error</span><br>
+            <p>или</p>
+            <!--                    </div>-->
+            <!--                    <div class="form-group">-->
+            <label for="squareVvp">Площадь отсыпки, га (0,1 - 4,0): </label>
+            <input type="number" step="any" class="form-control" th:field="*{vvp.square}" id="squareVvp"/>
+            <span class="text-danger" th:if="${#fields.hasErrors('vvp.square')}"
+                  th:errors="*{vvp.square}">Well error</span><br>
+            <!--                    </div>-->
+            <!--                    <div class="form-group">-->
+            <label for="activeHallExist">Наличие зала ожидания: </label>
+            <input type="checkbox" class="form-check-input" th:field="*{vvp.hallExist}"
+                   id="activeHallExist"/><br><br>
+            <!--                    </div>-->
+            <!--                    <div class="form-group">-->
+            <label for="stageVvp">Этап строительства: </label>
+            <input type="number" step="any" class="form-control" th:field="*{vvp.stage}" id="stageVvp"/>
+            <span class="text-danger" th:if="${#fields.hasErrors('vvp.stage')}"
+                  th:errors="*{vvp.stage}">Well error</span><br><br>
+        </div>
+    </div>
+    <div id="cableRackClass" class="container">
+        <h3> Кабельные эстакады </h3>
+        <div class="form-group">
+            <label for="activeCableRack">Наличие: </label>
+            <input type="checkbox" class="form-check-input" th:onclick="'toggleInputCableRack(this)'" th:field="*{cableRack.active}"
+                   id="activeCableRack"/><br><br>
+        </div>
+        <div class="form-group" id="cableRackDiv" style="display: none;">
+            <label for="lengthCableRack">Протяженность кабельной эстакады, м: </label>
+            <input type="number" step="any" class="form-control" th:field="*{cableRack.length}"
+                   id="lengthCableRack"/>
+            <span class="text-danger" th:if="${#fields.hasErrors('cableRack.length')}"
+                  th:errors="*{cableRack.length}">Well error</span><br>
+            <!--                    </div>-->
+            <!--                    <div class="form-group">-->
+<!--            <label>Сложность геологии в месте прохождения кабельной эстакады</label><br>-->
+<!--            <input type="radio" class="form-check-input me-1" step="any" th:field="*{cableRack.complexityOfGeology}"-->
+<!--                   id="complexityOfGeologyСableRack1" value="EASY" checked>-->
+<!--            <label class="form-check-label" for="complexityOfGeologyСableRack1">Простая</label><br>-->
+<!--            <input type="radio" class="form-check-input me-1" step="any" th:field="*{cableRack.complexityOfGeology}"-->
+<!--                   id="complexityOfGeologyСableRack2" value="MEDIUM">-->
+<!--            <label class="form-check-label" for="complexityOfGeologyСableRack2">Средней сложности</label><br>-->
+<!--            <input type="radio" class="form-check-input me-1" step="any" th:field="*{cableRack.complexityOfGeology}"-->
+<!--                   id="complexityOfGeologyСableRack3" value="DIFFICULT">-->
+<!--            <label class="form-check-label" for="complexityOfGeologyСableRack3">Сложная</label><br>-->
+<!--            <span class="text-danger" th:if="${#fields.hasErrors('cableRack.complexityOfGeology')}"-->
+<!--                  th:errors="*{cableRack.complexityOfGeology}">Line error</span><br>-->
+            <!--                    </div>-->
+            <!--                    <div class="form-group">-->
+            <label for="stageCableRack">Этап строительства: </label>
+            <input type="number" step="any" class="form-control" th:field="*{cableRack.stage}"
+                   id="stageCableRack"/>
+            <span class="text-danger" th:if="${#fields.hasErrors('cableRack.stage')}"
+                  th:errors="*{cableRack.stage}">Well error</span><br><br>
+        </div>
+    </div>
+</th:block>

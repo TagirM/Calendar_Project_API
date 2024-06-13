@@ -1,6 +1,5 @@
 package ru.tomsknipineft.controllers;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.tomsknipineft.entities.Calendar;
-import ru.tomsknipineft.entities.EntityProject;
 import ru.tomsknipineft.entities.linearObjects.DataFormLinearObjects;
 import ru.tomsknipineft.services.CalendarService;
 import ru.tomsknipineft.services.LinearPipelineGroupCalendarServiceImpl;
@@ -51,18 +49,8 @@ public class LinearPipelineCalendarController {
         if (bindingResult.hasErrors()){
             return "input_page/linear-pipeline";
         }
-//        List<EntityProject> entityProjects = List.of(dataFormLinearObjects.getPipeline(),
-//                dataFormLinearObjects.getRoad(), dataFormLinearObjects.getBridge(), dataFormLinearObjects.getLine(),
-//                dataFormLinearObjects.getSikn(), dataFormLinearObjects.getMps(), dataFormLinearObjects.getKtplp(),
-//                dataFormLinearObjects.getVvp(), dataFormLinearObjects.getCableRack());
-
-//        String codeContract = dataFormLinearObjects.getCodeContract();
         session.setAttribute("codeContract", dataFormLinearObjects.getCodeContract());
-
-//        this.dataFormLinearObjects = dataFormLinearObjects;
-
         calendarService.createCalendar(dataFormLinearObjects.getEntityProjects(), linearObjectGroupCalendarService, dataFormLinearObjects);
-
         return "redirect:/linear_object/linear_pipeline/calendar";
     }
 
@@ -72,18 +60,16 @@ public class LinearPipelineCalendarController {
     @GetMapping("/calendar")
     public String resultCalendar(Model model, HttpSession session){
         String codeContract = (String) session.getAttribute("codeContract");
-//        if (codeFromRequest != null){
-//            codeContract = codeFromRequest;
-//        logger.info("Кэшируется получения календаря по шифру");
         List<Calendar> calendars = calendarService.getCalendarByCode(codeContract);
-        DataFormLinearObjects dataFormLinearObjects = (DataFormLinearObjects) calendarService.getDataFormProject(codeContract);
-//        }
+        DataFormLinearObjects dataFormLinearObjects = (DataFormLinearObjects) calendarService.getDataFormProject(calendars);
         logger.info("Календарь по шифру " + codeContract + " выведен - " + calendars);
         model.addAttribute("calendars", calendars);
         model.addAttribute("codeContract", codeContract);
         model.addAttribute("dataFormLinearObjects", dataFormLinearObjects);
         model.addAttribute("fieldEngineeringSurvey", dataFormLinearObjects.isFieldEngineeringSurvey());
         model.addAttribute("engineeringSurveyReport", dataFormLinearObjects.isEngineeringSurveyReport());
+        model.addAttribute("notRhrDoc", dataFormLinearObjects.isNotRhrDoc());
+        model.addAttribute("notSzzDoc", dataFormLinearObjects.isNotSzzDoc());
         return "result_calendar/linear-object-result-calendar";
     }
 }

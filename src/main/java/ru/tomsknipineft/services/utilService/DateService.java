@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /**
@@ -91,6 +92,19 @@ public class DateService {
                 date = workDay(LocalDate.of(date.getYear(), date.getMonth(), 3).plusMonths(1));
             }
             return date;
+        }
+        return null;
+    }
+
+    /**
+     * Метод, возвращающий дату типа LocalDate в формате "dd.MM.yyyy" типа String
+     * @param localDate дата
+     * @return дата в формате "dd.MM.yyyy" типа String
+     */
+    public String dateFormatter(LocalDate localDate){
+        if (localDate != null){
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+            return localDate.format(dateTimeFormatter);
         }
         return null;
     }

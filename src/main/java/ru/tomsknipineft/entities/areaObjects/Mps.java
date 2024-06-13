@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -56,12 +55,17 @@ public class Mps implements OilPad, EntityProject, Serializable {
     private Double square;
 
     //    этап строительства
+    @NotNull(message = "Этап не заполнен", groups = OnActiveCheck.class)
     @Min(value = 1, message = "Не может быть меньше 1", groups = OnActiveCheck.class)
     private Integer stage;
 
-    //    необходимые ресурсы для выполнения полевых ИИ, чел/дней
-    @Column(name = "resource_for_eng_survey")
-    private Integer resourceForEngSurvey;
+    //    необходимые ресурсы для выполнения геодезических полевых ИИ, чел/дней
+    @Column(name = "resource_for_eng_geodetic_survey")
+    private Integer resourceForEngGeodeticSurvey;
+
+    //    необходимые ресурсы для выполнения геологических полевых ИИ, чел/дней
+    @Column(name = "resource_for_eng_geological_survey")
+    private Integer resourceForEngGeologicalSurvey;
 
     //    необходимые ресурсы для выполнения ЛИ, чел/дней
     @Column(name = "resource_for_lab_research")

@@ -5,62 +5,96 @@
     <hr class="my-4">
     <div class="card">
         <div class="card-body">
-            <h2 class="text-center">КАЛЕНДАРНЫЕ СРОКИ ПРОЕКТА</h2><br>
+            <h3 class="text-center">КАЛЕНДАРНЫЕ СРОКИ ПРОЕКТА</h3><br>
             <h5 class="fst-italic">Шифр договора: [[${codeContract}]]</h5>
-            <h5 class="fst-italic">Основные характеристики проекта</h5>
-            <p class="fst-italic" th:if="${fieldEngineeringSurvey}">Полевые инженерные изыскания: Да</p>
-            <p class="fst-italic" th:if="${!fieldEngineeringSurvey}">Полевые инженерные изыскания: Нет</p>
-            <p class="fst-italic" th:if="${engineeringSurveyReport}">Камеральные инженерные изыскания: Да</p>
-            <p class="fst-italic" th:if="${!engineeringSurveyReport}">Камеральные инженерные изыскания: Нет</p>
-            <p class="fst-italic">Линейный трубопровод:
+            <h5 class="fst-italic" style="margin-bottom: 20px;">Основные характеристики проекта</h5>
+            <p class="fst-italic lh-1" th:if="${fieldEngineeringSurvey}">Полевые инженерные изыскания: Да</p>
+            <p class="fst-italic lh-1" th:if="${!fieldEngineeringSurvey}">Полевые инженерные изыскания: Нет</p>
+            <p class="fst-italic lh-1" th:if="${fieldEngineeringSurvey}">К полевым ИИ привлечена
+                [[${dataFormLinearObjects.geodeticTeamType.title}]] размера геодезическая бригада</p>
+            <p class="fst-italic lh-1" th:if="${fieldEngineeringSurvey}">Количество геодезических бригад:
+                [[${dataFormLinearObjects.geodeticTeam}]]</p>
+            <p class="fst-italic lh-1" th:if="${fieldEngineeringSurvey}">Количество геологических бригад:
+                [[${dataFormLinearObjects.drillingRig}]]</p>
+            <p class="fst-italic lh-1" th:if="${engineeringSurveyReport}">Камеральные инженерные изыскания: Да</p>
+            <p class="fst-italic lh-1" th:if="${engineeringSurveyReport}">
+                [[${dataFormLinearObjects.complexityOfGeology.title}]] в месте выполнения ИИ</p>
+            <p class="fst-italic lh-1" th:if="${!engineeringSurveyReport}">Камеральные инженерные изыскания: Нет</p>
+            <p class="fst-italic lh-1">Человеческий фактор, непредвиденные обстоятельства, форс-мажор, какие-либо
+                неопределенности в выполнении работ - [[${dataFormLinearObjects.humanFactor}]] %</p>
+            <p class="fst-italic lh-1">Линейный трубопровод:
                 способ прокладки - [[${dataFormLinearObjects.pipeline.pipelineLayingMethod.title}]], протяженность -
-                [[${dataFormLinearObjects.pipeline.length}]] км, [[${dataFormLinearObjects.pipeline.complexityOfGeology.title}]]
-                в месте прокладки трубопровода, количество УЗА - [[${dataFormLinearObjects.pipeline.unitsValve}]] шт.,
-                количество узлов СОД - [[${dataFormLinearObjects.pipeline.unitsSOD}]] шт. - [[${dataFormLinearObjects.pipeline.stage}]] этап</p>
-            <p class="fst-italic" th:if="${dataFormLinearObjects.road.active}">Автомобильные дороги категории
-                [[${dataFormLinearObjects.road.category}]] общей протяженностью [[${dataFormLinearObjects.road.length}]] км
-                в количестве [[${dataFormLinearObjects.road.count}]] шт. - [[${dataFormLinearObjects.road.stage}]] этап</p>
-            <p class="fst-italic" th:if="${dataFormLinearObjects.road.bridgeExist}">Дорожные мосты в количестве:
+                [[${dataFormLinearObjects.pipeline.length}]] км,
+                количество УЗА - [[${dataFormLinearObjects.pipeline.unitsValve}]] шт.,
+                количество узлов СОД - [[${dataFormLinearObjects.pipeline.unitsSOD}]] шт. -
+                [[${dataFormLinearObjects.pipeline.stage}]] этап</p>
+            <p class="fst-italic lh-1" th:if="${dataFormLinearObjects.road.active}">Автомобильные дороги категории
+                [[${dataFormLinearObjects.road.category}]] общей протяженностью [[${dataFormLinearObjects.road.length}]]
+                км
+                в количестве [[${dataFormLinearObjects.road.count}]] шт. - [[${dataFormLinearObjects.road.stage}]]
+                этап</p>
+            <p class="fst-italic lh-1" th:if="${dataFormLinearObjects.road.bridgeExist}">Дорожные мосты в количестве:
                 [[${dataFormLinearObjects.road.bridgeRoadCount}]] шт.,
-                общей протяженностью [[${dataFormLinearObjects.road.bridgeRoadLength}]] м  - [[${dataFormLinearObjects.road.stage}]] этап</p>
-            <p class="fst-italic" th:if="${dataFormLinearObjects.line.active}">ВЛ напряжением [[${dataFormLinearObjects.line.power}]]
-                кВ протяженностью [[${dataFormLinearObjects.line.length}]] км, [[${dataFormLinearObjects.line.complexityOfGeology.title}]]
-                в месте прокладки ВЛ - [[${dataFormLinearObjects.line.stage}]] этап</p>
-            <p class="fst-italic" th:if="${dataFormLinearObjects.ktplp.active}">КТПЛП вида
-                [[${dataFormLinearObjects.ktplp.ktplpType.title}]], в количестве [[${dataFormLinearObjects.ktplp.count}]] штук
+                общей протяженностью [[${dataFormLinearObjects.road.bridgeRoadLength}]] м -
+                [[${dataFormLinearObjects.road.stage}]] этап</p>
+            <p class="fst-italic lh-1" th:if="${dataFormLinearObjects.line.active}">ВЛ напряжением
+                [[${dataFormLinearObjects.line.power}]]
+                кВ протяженностью [[${dataFormLinearObjects.line.length}]] км
+                - [[${dataFormLinearObjects.line.stage}]] этап</p>
+            <p class="fst-italic lh-1" th:if="${dataFormLinearObjects.ktplp.active}">КТПЛП вида
+                [[${dataFormLinearObjects.ktplp.ktplpType.title}]], в количестве
+                [[${dataFormLinearObjects.ktplp.count}]] штук
                 - [[${dataFormLinearObjects.ktplp.stage}]] этап</p>
-            <p class="fst-italic" th:if="${dataFormLinearObjects.sikn.active}">СИКН
-                [[${dataFormLinearObjects.sikn.siknType.title}]] производительностью [[${dataFormLinearObjects.sikn.capacity}]] тонн/час
+            <p class="fst-italic lh-1" th:if="${dataFormLinearObjects.sikn.active}">СИКН
+                [[${dataFormLinearObjects.sikn.siknType.title}]] производительностью
+                [[${dataFormLinearObjects.sikn.capacity}]] тонн/час
                 - [[${dataFormLinearObjects.sikn.stage}]] этап</p>
-            <p class="fst-italic" th:if="${dataFormLinearObjects.cableRack.active}">Кабельные эстакады общей протяженностью
-                [[${dataFormLinearObjects.cableRack.length}]] м, [[${dataFormLinearObjects.cableRack.complexityOfGeology.title}]] в
-                месте прокладки кабельных эстакад - [[${dataFormLinearObjects.cableRack.stage}]] этап</p>
-            <span class="fst-italic" th:if="${dataFormLinearObjects.vvp.active and dataFormLinearObjects.vvp.helicopterModel != null
+            <p class="fst-italic lh-1" th:if="${dataFormLinearObjects.cableRack.active}">Кабельные эстакады общей
+                протяженностью
+                [[${dataFormLinearObjects.cableRack.length}]] м
+                - [[${dataFormLinearObjects.cableRack.stage}]] этап</p>
+            <span class="fst-italic lh-1" th:if="${dataFormLinearObjects.vvp.active and dataFormLinearObjects.vvp.helicopterModel != null
             and dataFormLinearObjects.vvp.helicopterModel != ''}">
                 Временная вертолетная площадка для [[${dataFormLinearObjects.vvp.helicopterModel}]] </span>
-            <span class="fst-italic" th:if="${dataFormLinearObjects.vvp.active and (dataFormLinearObjects.vvp.helicopterModel == ''
+            <span class="fst-italic lh-1" th:if="${dataFormLinearObjects.vvp.active and (dataFormLinearObjects.vvp.helicopterModel == ''
             or dataFormLinearObjects.vvp.helicopterModel == null)}">
                 Временная вертолетная площадка площадью [[${dataFormLinearObjects.vvp.square}]] га</span>
-            <span class="fst-italic" th:if="${dataFormLinearObjects.vvp.hallExist}"> с залом ожидания</span>
-            <span class="fst-italic" th:if="${dataFormLinearObjects.vvp.active}"> - [[${dataFormLinearObjects.vvp.stage}]] этап</span><br>
+            <span class="fst-italic lh-1" th:if="${dataFormLinearObjects.vvp.hallExist}"> с залом ожидания</span>
+            <span class="fst-italic lh-1" th:if="${dataFormLinearObjects.vvp.active}"> - [[${dataFormLinearObjects.vvp.stage}]] этап</span><br><br>
             <hr class="my-4">
             <div th:insert="~{blocks/calendar-block.html :: calendar-content}"></div>
         </div>
     </div>
     <br>
     <div class="card text-center">
-        <form class="card" id="goToLinearPipeline1" method="GET" th:action="@{/calendar/to_desktop}">
+        <form class="card" id="calendarExcel" method="GET" th:action="@{/calendar/to_desktop}">
             <div class="card text-center">
                 <input type="hidden" name="codeContract" th:value="${codeContract}"/>
-                <button type="submit" class="btn btn-outline-secondary fw-bolder">Выгрузить в Excel</button>
+                <button type="submit" class="btn btn-outline-secondary fw-bolder">Выгрузить календарный план в Excel
+                </button>
             </div>
         </form>
-        <br>
-        <a class="btn btn-outline-secondary fw-bolder " href="../index.html" th:href="@{/}">
-            Вернуться на начальную страницу</a><br>
-        <a id="goToLinearPipeline" class="btn btn-outline-secondary fw-bolder" href="../input_page/linear-pipeline.html"
-           th:href="@{/linear_object/linear_pipeline}">Перейти
-            на страницу ввода данных нового проекта</a>
+        <form class="card" id="scheduleExcel" method="GET" th:action="@{/schedule/to_desktop}">
+            <div class="card text-center">
+                <input type="hidden" name="codeContract" th:value="${codeContract}"/>
+                <button type="submit" class="btn btn-outline-secondary fw-bolder">Выгрузить график 1го уровня в Excel
+                </button>
+            </div>
+        </form>
+        <div class="card">
+            <div class="card text-center">
+                <a class="btn btn-outline-secondary fw-bolder " href="../index.html" th:href="@{/}">
+                    Вернуться на начальную страницу</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card text-center">
+                <a id="goToLinearPipeline" class="btn btn-outline-secondary fw-bolder"
+                   href="../input_page/linear-pipeline.html"
+                   th:href="@{/linear_object/linear_pipeline}">Перейти
+                    на страницу ввода данных нового проекта</a>
+            </div>
+        </div>
     </div>
     <script>
         // Проверка, откуда пришел пользователь для формирования кнопок
@@ -72,7 +106,7 @@
             document.getElementById('goToLinearPipeline').style.display = 'none';
         }
     </script>
-    <div th:insert="~{blocks/stage-calendar-block.html :: stage-calendar-content}"></div>
+    <div th:insert="~{blocks/stage-calendar-script.html :: stage-calendar-content}"></div>
     <hr class="my-4">
 </th:block>
 </html>

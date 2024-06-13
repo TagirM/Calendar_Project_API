@@ -17,6 +17,6 @@ public interface CalendarRepository extends JpaRepository<Calendar, Long> {
     /**
     Поиск календарного плана по шифру договора и этапу строительства
      */
-    Optional<List<Calendar>> findCalendarByCodeContractAndStage(String codeContract, Integer stage);
+    Optional<Calendar> findCalendarByCodeContractAndStage(String codeContract, Integer stage);
 
 }

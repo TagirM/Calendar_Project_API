@@ -1,5 +1,8 @@
 package ru.tomsknipineft.entities;
 
+import ru.tomsknipineft.entities.enumEntities.ComplexityOfGeology;
+import ru.tomsknipineft.entities.enumEntities.GeodeticTeamType;
+
 import java.time.LocalDate;
 
 /**
@@ -17,9 +20,21 @@ public interface DataFormProject {
 
     boolean isEngineeringSurveyReport();
 
+    boolean isNotRhrDoc();
+
+    void setNotSzzDoc(boolean notSzzDoc);
+
+    boolean isNotSzzDoc();
+
     void setEngineeringSurveyReport(boolean flag);
+
+    GeodeticTeamType getGeodeticTeamType();
+
+    Integer getGeodeticTeam();
 
     Integer getDrillingRig();
 
     Integer getHumanFactor();
+
+    ComplexityOfGeology getComplexityOfGeology();
 }

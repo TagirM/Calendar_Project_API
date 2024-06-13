@@ -1,5 +1,8 @@
 package ru.tomsknipineft.entities.linearObjects;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.Data;
@@ -9,7 +12,10 @@ import ru.tomsknipineft.entities.EntityProject;
 import ru.tomsknipineft.entities.areaObjects.Mps;
 import ru.tomsknipineft.entities.areaObjects.Sikn;
 import ru.tomsknipineft.entities.areaObjects.Vvp;
+import ru.tomsknipineft.entities.enumEntities.ComplexityOfGeology;
+import ru.tomsknipineft.entities.enumEntities.GeodeticTeamType;
 import ru.tomsknipineft.utils.entityValidator.EngineeringSurveyLinearObjectsGroupSequenceProvider;
+import ru.tomsknipineft.utils.entityValidator.OnActiveCheck;
 import ru.tomsknipineft.utils.entityValidator.OnActiveEngineeringSurvey;
 
 import java.io.Serial;
@@ -73,17 +79,39 @@ public class DataFormLinearObjects implements DataFormProject, Serializable {
     // есть ли камеральные ИИ
     private boolean engineeringSurveyReport;
 
+    // размер геодезической бригады
+    @NotNull(message = "Размер не заполнен", groups = OnActiveEngineeringSurvey.class)
+    @Enumerated(EnumType.STRING)
+    private GeodeticTeamType geodeticTeamType = GeodeticTeamType.STANDARD;;
+
+    // количество геодезических бригад для выполнения ИИ
+    @NotNull(message = "Заполните количество геодезических бригад", groups = OnActiveEngineeringSurvey.class)
+    @Min(value = 1, message = "Количество геодезических бригад не может быть меньше 1", groups = OnActiveEngineeringSurvey.class)
+    @Max(value = 5, message = "Количество геодезических бригад не должно быть больше 5", groups = OnActiveEngineeringSurvey.class)
+    private Integer geodeticTeam = 1;
+
     // количество буровых бригад для выполнения ИИ
     @NotNull(message = "Заполните количество буровых бригад", groups = OnActiveEngineeringSurvey.class)
     @Min(value = 1, message = "Количество буровых бригад не может быть меньше 1", groups = OnActiveEngineeringSurvey.class)
-    @Max(value = 10, message = "Количество буровых бригад не должно быть больше 10", groups = OnActiveEngineeringSurvey.class)
-    private Integer drillingRig;
+    @Max(value = 5, message = "Количество буровых бригад не должно быть больше 5", groups = OnActiveEngineeringSurvey.class)
+    private Integer drillingRig = 1;
 
-    // человеческий фактор, непредвиденные обстоятельства, форс-мажор, какие-либо непределенности в выполнении работ
+    //    сложность геологии
+//    @NotNull(message = "Сложность геологии не указана", groups = OnActiveEngineeringSurvey.class)
+    @Enumerated(EnumType.STRING)
+    private ComplexityOfGeology complexityOfGeology = ComplexityOfGeology.EASY;;
+
+    // не нужен РХР
+    private boolean notRhrDoc;
+
+    // не нужен СЗЗ
+    private boolean notSzzDoc;
+
+    // человеческий фактор, непредвиденные обстоятельства, форс-мажор, какие-либо неопределенности в выполнении работ
     @NotNull(message = "Заполните человеческий фактор")
     @Min(value = 0, message = "Человеческий фактор не может быть меньше 0")
     @Max(value = 50, message = "Человеческий фактор не должен быть больше 50")
-    private Integer humanFactor;
+    private Integer humanFactor = 0;
 
     /**
      * Метод получения всех сущностей (сооружений) из DataFormOilPad

@@ -10,7 +10,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.group.GroupSequenceProvider;
 import ru.tomsknipineft.entities.EntityProject;
-import ru.tomsknipineft.entities.enumEntities.ComplexityOfGeology;
 import ru.tomsknipineft.entities.enumEntities.ObjectType;
 import ru.tomsknipineft.entities.oilPad.OilPad;
 import ru.tomsknipineft.utils.entityValidator.LineGroupSequenceProvider;
@@ -50,19 +49,18 @@ public class Line implements OilPad, EntityProject, Serializable {
     @Max(value = 20, message = "Не может быть больше 20", groups = OnActiveCheck.class)
     private Double length;
 
-    //    сложность геологии
-    @NotNull(message = "Сложность геологии не указана", groups = OnActiveCheck.class)
-    @Column(name = "complexity_of_geology")
-    @Enumerated(EnumType.STRING)
-    private ComplexityOfGeology complexityOfGeology;
-
     //    этап строительства
+    @NotNull(message = "Этап не заполнен", groups = OnActiveCheck.class)
     @Min(value = 1, message = "Сan not be less than 1", groups = OnActiveCheck.class)
     private Integer stage;
 
-    //    необходимые ресурсы для выполнения полевых ИИ, чел/дней
-    @Column(name = "resource_for_eng_survey")
-    private Integer resourceForEngSurvey;
+    //    необходимые ресурсы для выполнения геодезических полевых ИИ, чел/дней
+    @Column(name = "resource_for_eng_geodetic_survey")
+    private Integer resourceForEngGeodeticSurvey;
+
+    //    необходимые ресурсы для выполнения геологических полевых ИИ, чел/дней
+    @Column(name = "resource_for_eng_geological_survey")
+    private Integer resourceForEngGeologicalSurvey;
 
     //    необходимые ресурсы для выполнения ЛИ, чел/дней
     @Column(name = "resource_for_lab_research")
