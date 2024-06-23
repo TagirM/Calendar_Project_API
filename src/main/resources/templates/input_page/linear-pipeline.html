@@ -216,7 +216,7 @@
                     <div class="form-group">
                         <label for="humanFactorId" class="fst-italic fw-bolder">Укажите погрешность (человеческий фактор, непредвиденные
                             обстоятельства, форс-мажор, какие-либо неопределенности в выполнении работ) при формировании сроков календарного
-                            плана, % (не более 50):</label>
+                            плана, % (не более 20):</label>
                         <input type="text" class="form-control" th:field="*{humanFactor}" id="humanFactorId"/>
                         <span class="text-danger" th:if="${#fields.hasErrors('humanFactor')}"
                               th:errors="*{humanFactor}">humanFactor error</span><br><br>

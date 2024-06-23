@@ -64,21 +64,25 @@ public class Calendar {
 
     //    дата начала разработки РД (рабочей документации)
     private LocalDate workingStart;
-    //    дата выдачи РД (рабочей документации)
+    //    реальная дата выдачи РД (рабочей документации)
+    private LocalDate realWorkingFinish;
+    //    дата актирования РД (рабочей документации)
     private LocalDate workingFinish;
     //    дата согласования РД
     private LocalDate agreementWorking;
 
     //    дата начала разработки СД (сметной документации)
     private LocalDate estimatesStart;
-    //    дата выдачи СД (сметной документации)
+    //    дата актирования СД (сметной документации)
     private LocalDate estimatesFinish;
     //    дата согласования СД
     private LocalDate agreementEstimates;
 
     //    дата начала разработки ПД (проектной документации)
     private LocalDate projectStart;
-    //    дата выдачи ПД (проектной документации)
+    //   реальная дата выдачи ПД (проектной документации)
+    private LocalDate realProjectFinish;
+    //    дата актирования ПД (проектной документации)
     private LocalDate projectFinish;
     //    дата согласования ПД
     private LocalDate agreementProject;

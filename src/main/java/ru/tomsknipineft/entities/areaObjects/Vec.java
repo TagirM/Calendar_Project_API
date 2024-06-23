@@ -37,6 +37,10 @@ public class Vec  implements OilPad, EntityProject, Serializable {
     @Enumerated(EnumType.STRING)
     private ObjectType objectType;
 
+    //    проектируется ли обустройство ВЭЦ
+    @Column(name = "arrangement_vec")
+    private boolean arrangementVec;
+
     //    мощность площадки ВЭЦ, МВт
     @Column(columnDefinition = "integer default 0")
     private Integer power;

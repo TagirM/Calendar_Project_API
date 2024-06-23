@@ -18,7 +18,7 @@
                   th:errors="*{road.length}"></span><br>
             <!--                    </div>-->
             <!--                    <div class="form-group">-->
-            <label for="countRoad">Общее количество автодорог, шт:</label>
+            <label for="countRoad">Общее количество автодорог, шт (не более 5):</label>
             <input type="number" step="any" class="form-control" th:field="*{road.count}"
                    id="countRoad">
             <span class="text-danger" th:if="${#fields.hasErrors('road.count')}"
@@ -30,14 +30,14 @@
                    id="bridgeExistRoad"><br>
             <!--                    </div>-->
             <!--                    <div class="form-group">-->
-            <label for="bridgeRoadCount">Количество мостов, шт:</label>
+            <label for="bridgeRoadCount">Количество мостов, шт (не более 5):</label>
             <input type="number" step="any" class="form-control" th:field="*{road.bridgeRoadCount}"
                    id="bridgeRoadCount">
             <span class="text-danger" th:if="${#fields.hasErrors('road.bridgeRoadCount')}"
                   th:errors="*{road.bridgeRoadCount}"></span><br>
             <!--                    </div>-->
             <!--                    <div class="form-group">-->
-            <label for="bridgeRoadLength">Общая протяженность мостов, м:</label>
+            <label for="bridgeRoadLength">Общая протяженность мостов, м (не более 1000):</label>
             <input type="number" step="any" class="form-control" th:field="*{road.bridgeRoadLength}"
                    id="bridgeRoadLength">
             <span class="text-danger" th:if="${#fields.hasErrors('road.bridgeRoadLength')}"
@@ -57,10 +57,25 @@
             <input type="checkbox" class="form-check-input" th:onclick="'toggleInputLine(this)'" th:field="*{line.active}" id="activeLine"/><br><br>
         </div>
         <div class="form-group" id="lineDiv" style="display: none;">
-            <label for="power">Мощность ВЛ, кВ (10, 35, 110): </label>
-            <input type="number" class="form-control" th:field="*{line.power}" id="power"/>
+<!--            <label for="power">Мощность ВЛ, кВ (6, 10, 35, 110): </label>-->
+            <label>Мощность ВЛ, кВ (6, 10, 35, 110): </label><br>
+<!--            <input type="number" class="form-control" th:field="*{line.power}" id="power"/>-->
+<!--            <span class="text-danger" th:if="${#fields.hasErrors('line.power')}"-->
+<!--                  th:errors="*{line.power}">Well error</span><br>-->
+            <input type="radio" class="form-check-input me-1" step="any" th:field="*{line.power}"
+                   id="power1" value="LINE6">
+            <label class="form-check-label" for="power1">6 кВ</label><br>
+            <input type="radio" class="form-check-input me-1" step="any" th:field="*{line.power}"
+                   id="power2" value="LINE10">
+            <label class="form-check-label" for="power2">10 кВ</label><br>
+            <input type="radio" class="form-check-input me-1" step="any" th:field="*{line.power}"
+                   id="power3" value="LINE35">
+            <label class="form-check-label" for="power3">35 кВ</label><br>
+            <input type="radio" class="form-check-input me-1" step="any" th:field="*{line.power}"
+                   id="power4" value="LINE110">
+            <label class="form-check-label" for="power4">110 кВ</label><br>
             <span class="text-danger" th:if="${#fields.hasErrors('line.power')}"
-                  th:errors="*{line.power}">Well error</span><br>
+                  th:errors="*{line.power}">Line error</span><br>
             <!--                    </div>-->
             <!--                    <div class="form-group">-->
             <label for="lengthLine">Протяженность ВЛ, км (не более 20): </label>

@@ -110,7 +110,7 @@ public class DataFormOilPad implements DataFormProject, Serializable {
     // человеческий фактор, непредвиденные обстоятельства, форс-мажор, какие-либо неопределенности в выполнении работ
     @NotNull(message = "Заполните человеческий фактор")
     @Min(value = 0, message = "Человеческий фактор не может быть меньше 0")
-    @Max(value = 50, message = "Человеческий фактор не должен быть больше 50")
+    @Max(value = 20, message = "Человеческий фактор не должен быть больше 20")
     private Integer humanFactor = 0;
 
     /**

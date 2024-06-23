@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface VecRepository extends JpaRepository<Vec, Long> {
 
     /**
-    Поиск сущности с мощностью и площадью, соответствующих заданным или ближайшими большими
+    Поиск сущности с площадью, наличием обустройства, мощностью и наличием склада, соответствующих заданным или ближайшими большими параметрами (если не boolean)
      */
-    Optional<Vec> findFirstByPowerAndSquareGreaterThanEqual(Integer power, Double square);
+    Optional<Vec> findFirstBySquareGreaterThanEqualAndArrangementVecAndPowerGreaterThanEqualAndStockExist(Double square, boolean arrangement, Integer power, boolean stock);
 }

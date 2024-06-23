@@ -44,12 +44,14 @@ public class Road implements OilPad, EntityProject, Serializable {
     @Column(name = "bridge_road_count")
     @NotNull(message = "Количество не заполнено", groups = OnActiveBridgeRoad.class)
     @Positive(message = "Количество не может быть 0 или отрицательным", groups = OnActiveBridgeRoad.class)
+    @Max(value = 5, message = "Не может быть больше 5", groups = OnActiveBridgeRoad.class)
     private Integer bridgeRoadCount;
 
     // общая длина мостов, м
     @Column(name = "bridge_road_length")
     @NotNull(message = "Длина моста не заполнена", groups = OnActiveBridgeRoad.class)
     @Positive(message = "Длина моста не может быть 0 или отрицательной", groups = OnActiveBridgeRoad.class)
+    @Max(value = 1000, message = "Не может быть больше 1000", groups = OnActiveBridgeRoad.class)
     private Integer bridgeRoadLength;
 
     //    категория дорог
@@ -67,7 +69,7 @@ public class Road implements OilPad, EntityProject, Serializable {
     //    общее количество дорог, км
     @NotNull(message = "Количество не заполнено", groups = OnActiveCheck.class)
     @Positive(message = "Количество не может быть 0 или отрицательным", groups = OnActiveCheck.class)
-    @Max(value = 10, message = "Не может быть больше 10", groups = OnActiveCheck.class)
+    @Max(value = 5, message = "Не может быть больше 5", groups = OnActiveCheck.class)
     private Integer count;
 
     //    этап строительства

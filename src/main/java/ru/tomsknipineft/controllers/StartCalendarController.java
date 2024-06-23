@@ -52,6 +52,14 @@ public class StartCalendarController {
     }
 
     /**
+     * Страница с выбором объекта проектирования инфраструктурного объекта
+     */
+    @GetMapping("/areaObject")
+    public String areaObject(){
+        return "area-object";
+    }
+
+    /**
      * Страница с выбором объекта проектирования линейного объекта
      */
     @GetMapping("/linear_object")

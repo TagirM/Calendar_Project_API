@@ -7,6 +7,7 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import ru.tomsknipineft.entities.enumEntities.LinePower;
 import ru.tomsknipineft.entities.linearObjects.Line;
 import ru.tomsknipineft.repositories.LineRepository;
 import ru.tomsknipineft.utils.exceptions.NoSuchEntityException;
@@ -30,6 +31,9 @@ public class LineService implements EntityProjectService {
      */
     @Cacheable(key = "new org.springframework.cache.interceptor.SimpleKey(#lineFromRequest.power, #lineFromRequest.length)")
     public Line getFindLineFromRequest(Line lineFromRequest) {
+        if (lineFromRequest.getPower() == LinePower.LINE6){
+            lineFromRequest.setPower(LinePower.LINE10);
+        }
         return lineRepository
                 .findFirstByPowerAndLengthGreaterThanEqual(lineFromRequest.getPower(),
                         lineFromRequest.getLength()).orElseThrow(()->

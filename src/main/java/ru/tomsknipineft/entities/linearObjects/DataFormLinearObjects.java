@@ -11,6 +11,7 @@ import ru.tomsknipineft.entities.DataFormProject;
 import ru.tomsknipineft.entities.EntityProject;
 import ru.tomsknipineft.entities.areaObjects.Mps;
 import ru.tomsknipineft.entities.areaObjects.Sikn;
+import ru.tomsknipineft.entities.areaObjects.Vec;
 import ru.tomsknipineft.entities.areaObjects.Vvp;
 import ru.tomsknipineft.entities.enumEntities.ComplexityOfGeology;
 import ru.tomsknipineft.entities.enumEntities.GeodeticTeamType;
@@ -65,6 +66,9 @@ public class DataFormLinearObjects implements DataFormProject, Serializable {
     private Mps mps = new Mps();
 
     @Valid
+    private Vec vec = new Vec();
+
+    @Valid
     private Ktplp ktplp = new Ktplp();
 
     @Valid
@@ -110,7 +114,7 @@ public class DataFormLinearObjects implements DataFormProject, Serializable {
     // человеческий фактор, непредвиденные обстоятельства, форс-мажор, какие-либо неопределенности в выполнении работ
     @NotNull(message = "Заполните человеческий фактор")
     @Min(value = 0, message = "Человеческий фактор не может быть меньше 0")
-    @Max(value = 50, message = "Человеческий фактор не должен быть больше 50")
+    @Max(value = 20, message = "Человеческий фактор не должен быть больше 20")
     private Integer humanFactor = 0;
 
     /**

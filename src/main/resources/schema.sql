@@ -56,7 +56,7 @@ create table lines (
     id SERIAL PRIMARY KEY,
     active boolean,
     object_type VARCHAR(255),
-    power integer,
+    power VARCHAR(255),
     length double precision,
 --     complexity_of_geology VARCHAR(255),
     stage integer,

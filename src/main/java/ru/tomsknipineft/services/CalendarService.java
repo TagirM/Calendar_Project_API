@@ -48,6 +48,18 @@ public class CalendarService {
     final static int ENGINEERING_SURVEY_CONSTANTS_DAYS = 15;
     // Константа с количеством дней необходимых проектному офису для сбора и передачи документации заказчику с учетом всех процедур
     final static int PROJECT_OFFICE_DAYS = 2;
+    // Константа с количеством дней, необходимых 2м проектным отделам для обмена заданиями в рамках РД
+    final static int EXCHANGE_OF_TASKS_RD = 2;
+    // Константа с количеством дней, необходимых 2м проектным отделам для обмена заданиями в рамках ПД
+    final static int EXCHANGE_OF_TASKS_PD = 3;
+    // Дата начала летнего сезона на Байкаловском НГКМ
+    final static LocalDate BEGINNING_SUMMER_SEASON_BAIKAL = LocalDate.of(LocalDate.now().getYear(), Month.JUNE, 20);
+    // Дата окончания летнего сезона на Байкаловском НГКМ
+    final static LocalDate END_SUMMER_SEASON_BAIKAL = LocalDate.of(LocalDate.now().getYear(), Month.SEPTEMBER, 1);
+    // Константа с количеством календарных дней необходимых для выдачи и согласования отчета ИЭИ
+    final static int ENGINEERING_ENVIRONMENTAL_REPORT_DURATION = 120;
+    // Константа с количеством календарных дней необходимых для выдачи и согласования ИКИ
+    final static int HISTORICAL_CULTURAL_RESEARCH_DURATION = 120;
     // Константа с количеством календарных дней необходимых для согласования отчета ИИ
     final static int AGREEMENT_ENGINEERING_SURVEY_REPORT_DURATION = 60;
     // Константа с количеством календарных дней необходимых для согласования РД
@@ -60,8 +72,10 @@ public class CalendarService {
     final static int EXAMINATION_PROJECT_DOC_DURATION = 120;
     // Константа с количеством календарных дней необходимых для разработки ЗУР
     final static int LAND_DURATION = 150;
-    // Константа с количеством календарных дней необходимых для разработки и утверждения РХР
-    final static int RHR_DURATION = 120;
+    // Константа с количеством рабочих дней/ресурсов, необходимых для разработки и утверждения РХР
+    final static int RHR_DURATION = 90;
+    // Константа с количеством рабочих дней/ресурсов, необходимых для получения материалов заказчиком и подготовки и согласования исполнительныхъ смет для актирования
+    final static int PREPARING_MATERIALS_FOR_ACTIVATION = 7;
 
     /**
      * Получение всего списка календарных планов (различных этапов строительства) по шифру договора
@@ -273,34 +287,33 @@ public class CalendarService {
             int resourcesForLabResearchWithHumanFactor;
             int resourcesForEngSurveyReportWithHumanFactor;
             if (resourcesEngGeodeticSurvey != null && resourcesEngGeologicalSurvey != null && resourcesLabResearch != null) {
-                // Определение дат окончания ИЭИ и ИКИ
-                if (startContract.isBefore(LocalDate.of(startContract.getYear(), Month.JULY, 20))) {
-                    seasonalEngineeringSurveysStart = dateService.workDay(LocalDate.of(startContract.getYear(), Month.JULY, 20));
-                    engineeringAndEnvironmentalSurveysFinish = dateService.workDay(LocalDate.of(startContract.getYear(), Month.DECEMBER, 10));
-                    historicalAndCulturalResearchFinish = dateService.workDay(LocalDate.of(startContract.getYear(), Month.DECEMBER, 10));
-                } else if (startContract.isBefore(LocalDate.of(startContract.getYear(), Month.AUGUST, 20))) {
+                // Определение дат начала и окончания ИЭИ и ИКИ
+                if (startContract.isBefore(LocalDate.of(startContract.getYear(),
+                        BEGINNING_SUMMER_SEASON_BAIKAL.getMonth(),
+                        BEGINNING_SUMMER_SEASON_BAIKAL.getDayOfMonth()))) {
+                    seasonalEngineeringSurveysStart = dateService.workDay(LocalDate.of(startContract.getYear(),
+                            BEGINNING_SUMMER_SEASON_BAIKAL.getMonth(),
+                            BEGINNING_SUMMER_SEASON_BAIKAL.getDayOfMonth()));
+                } else if (startContract.isBefore(LocalDate.of(startContract.getYear(), END_SUMMER_SEASON_BAIKAL.getMonth(), END_SUMMER_SEASON_BAIKAL.getDayOfMonth()))) {
                     seasonalEngineeringSurveysStart = startContract;
-                    engineeringAndEnvironmentalSurveysFinish = dateService.workDay(LocalDate.of(startContract.plusYears(1).getYear(), Month.JANUARY, 20));
-                    historicalAndCulturalResearchFinish = dateService.workDay(LocalDate.of(startContract.plusYears(1).getYear(), Month.JANUARY, 20));
-                } else if (startContract.isBefore(LocalDate.of(startContract.getYear(), Month.SEPTEMBER, 15))) {
-                    seasonalEngineeringSurveysStart = startContract;
-                    engineeringAndEnvironmentalSurveysFinish = dateService.workDay(LocalDate.of(startContract.plusYears(1).getYear(), Month.FEBRUARY, 20));
-                    historicalAndCulturalResearchFinish = dateService.workDay(LocalDate.of(startContract.plusYears(1).getYear(), Month.FEBRUARY, 20));
                 } else {
-                    seasonalEngineeringSurveysStart = dateService.workDay(LocalDate.of(startContract.plusYears(1).getYear(), Month.JULY, 20));
-                    engineeringAndEnvironmentalSurveysFinish = dateService.workDay(LocalDate.of(startContract.plusYears(1).getYear(), Month.DECEMBER, 20));
-                    historicalAndCulturalResearchFinish = dateService.workDay(LocalDate.of(startContract.plusYears(1).getYear(), Month.DECEMBER, 20));
+                    seasonalEngineeringSurveysStart = dateService.workDay(LocalDate.of(startContract.plusYears(1).getYear(),
+                            BEGINNING_SUMMER_SEASON_BAIKAL.getMonth(),
+                            BEGINNING_SUMMER_SEASON_BAIKAL.getDayOfMonth()));
                 }
-                // При расчете ресурсов для полевых ИИ учитывается ресурсы геодезических и геологических ИИ с поправкой на размер геодезической
-                // бригады (getGeodeticTeamType().getValue()), количество геодезических (getGeodeticTeam) и гелогических бригад (getDrillingRig), а также
-                // попракой на коэффициент человеческого фактора, форс-мажора, непредвиденных (humanFactor)
+                engineeringAndEnvironmentalSurveysFinish = dateService.recalculationResourcesInCalendarDate(ENGINEERING_ENVIRONMENTAL_REPORT_DURATION, seasonalEngineeringSurveysStart);
+                historicalAndCulturalResearchFinish = dateService.recalculationResourcesInCalendarDate(HISTORICAL_CULTURAL_RESEARCH_DURATION, seasonalEngineeringSurveysStart);
+
+                // При расчете ресурсов для полевых ИИ учитываются ресурсы геодезических и геологических ИИ с поправкой на размер геодезической
+                // бригады (getGeodeticTeamType().getValue()), количество геодезических (getGeodeticTeam) и гелогических (getDrillingRig) бригад, а также
+                // с попракой на коэффициент человеческого фактора, форс-мажор, непредвиденных (humanFactor)
                 resourcesForTotalEngSurveyWithCorrectionsFactors = ((int) ((resourcesEngGeodeticSurvey.get(stageNumber) /
                         dataFormProject.getGeodeticTeamType().getValue() /
                         dataFormProject.getGeodeticTeam()) +
                         resourcesEngGeologicalSurvey.get(stageNumber) /
                                 dataFormProject.getDrillingRig()) *
                         (humanFactor + 100)) / 100 + ENGINEERING_SURVEY_CONSTANTS_DAYS;
-                // Расчет ЛИ с попракой на коэффициент человеческого фактора, форс-мажора, непредвиденных (humanFactor)
+                // Расчет ЛИ с попракой на коэффициент человеческого фактора, форс-мажор, непредвиденных (humanFactor)
                 resourcesForLabResearchWithHumanFactor = (resourcesLabResearch.get(stageNumber) * (humanFactor + 100)) / 100;
 
                 // Расчет дат окончания этапов работ договора, с учетом пересчета ресурса в календарные дни в каждом этапе строительства с учетом праздничных и
@@ -362,27 +375,28 @@ public class CalendarService {
 
             // алгоритм проверки условия пересечения выполнения РД текущего этапа строительства с предыдущими РД
             // мэп с разбивкой типов объектов по стадиям строительства
-            Map<Integer, ObjectType> activeObjectTypeByStage = objectTypeByStage(activeObjects);
+            Map<Integer, List<ObjectType>> activeObjectTypeByStage = objectTypeByStage(activeObjects);
             // переменная, указывающая на необходимость (или отсуствие таковой) смещения ПСД
             boolean isStageOffsetPSD = false;
-            // календарь предыдущих этапов строительтсва
+            // календарь предыдущих этапов строительства
             Calendar previousCalendar = null;
             int stageBack = 1;
             if (i > 0) {
                 // проверяем, тип объекта AREA ли в текущем и предыдущих этапах
                 // если типы объектов разные, то смещать не требуется, если встретились одинаковые - смещение возможно, если есть пересечение
                 while (stageNumber - stageBack > 0) {
-                    if (activeObjectTypeByStage.get(stageNumber - stageBack).equals(ObjectType.AREA) && activeObjectTypeByStage.get(stageNumber).equals(ObjectType.AREA)) {
+                    if (activeObjectTypeByStage.get(stageNumber - stageBack).contains(ObjectType.AREA) && activeObjectTypeByStage.get(stageNumber).contains(ObjectType.AREA)) {
                         // получаем календарь найденного этапа с типом объекта AREA
                         previousCalendar = calendarRepository.findCalendarByCodeContractAndStage(dataFormProject.getCodeContract(), stageNumber - stageBack).orElseThrow();
                         isStageOffsetPSD = true;
                     }
 
                     // если пересечение одинаковых типов есть, то начало выполнения РД текущего этапа строительства сместить после окончания РД
-                    // предыдущего (или предпред...идущего) этапа
-                    if (isStageOffsetPSD && calendarDayStartWorkDoc.isBefore(previousCalendar.getWorkingFinish())) {
+                    // предыдущего (или предпред...идущего) этапа (дата очищена от приведения сроков к дате актирования, а также ресурсов необходимых
+                    // для актирования)
+                    if (isStageOffsetPSD && calendarDayStartWorkDoc.isBefore(previousCalendar.getRealWorkingFinish())) {
                         // количество дней смещения выполнения РД текущего этапа
-                        stageOffsetRD = (int) DAYS.between(calendarDayStartWorkDoc, previousCalendar.getWorkingFinish());
+                        stageOffsetRD = (int) DAYS.between(calendarDayStartWorkDoc, previousCalendar.getRealWorkingFinish());
                     }
                     // завершаем цикл, если нашелся этап с типом объекта AREA
                     if (isStageOffsetPSD) break;
@@ -397,16 +411,16 @@ public class CalendarService {
                     recalculationResourcesInCalendarDate(resourcesForWorkDocWithHumanFactor +
                                     correctByComplexityOfGeology(activeObjects, stageNumber, dataFormProject.getComplexityOfGeology()),
                             calendarDayStartWorkDoc);
-
             // дата окончания согласования РД текущего этапа строительства
             LocalDate agreementWorkingFinish = dateService.workDay(calendarDayFinishWorkDoc.plusDays(AGREEMENT_WORK_DOC_DURATION));
 
             // дата окончания РД текущего этапа строительства = дате начала разработки смет и дате начала проектной документации текущего этапа
             // если пересечение одинаковых типов есть, то начало выполнения ПД текущего этапа строительства сместить после окончания ПД
-            // предыдущего (или предпред..идущего) этапа
-            if (isStageOffsetPSD && calendarDayFinishWorkDoc.isBefore(previousCalendar.getProjectFinish())) {
+            // предыдущего (или предпред..идущего) этапа (дата очищена от приведения сроков к дате актирования, а также ресурсов необходимывх
+            // для актирования)
+            if (isStageOffsetPSD && calendarDayFinishWorkDoc.isBefore(previousCalendar.getRealProjectFinish())) {
                 // количество дней смещения выполнения ПД текущего этапа
-                stageOffsetPD = (int) DAYS.between(calendarDayFinishWorkDoc, previousCalendar.getProjectFinish());
+                stageOffsetPD = (int) DAYS.between(calendarDayFinishWorkDoc, previousCalendar.getRealProjectFinish());
             }
             // дата начала разработки ПД текущего этапа строительства с учетом смещения (если разработка ПД предыдущего этапа не успела закончиться)
             calendarDayStartProjDoc = dateService.workDay(calendarDayFinishWorkDoc.plusDays(stageOffsetPD));
@@ -414,7 +428,7 @@ public class CalendarService {
             calendarDayFinishProjDoc = dateService.recalculationResourcesInCalendarDate(resourcesForProjDocWithHumanFactor,
                     calendarDayStartProjDoc);
             // проверка что ИЭИ на момент выдачи ПД уже есть, иначе смещение срока выдачи ПД после ИЭИ
-            if (engineeringAndEnvironmentalSurveysFinish != null && calendarDayFinishProjDoc.isBefore(engineeringAndEnvironmentalSurveysFinish)){
+            if (engineeringAndEnvironmentalSurveysFinish != null && calendarDayFinishProjDoc.isBefore(engineeringAndEnvironmentalSurveysFinish)) {
                 int shiftProjDoc = (int) DAYS.between(calendarDayFinishProjDoc, engineeringAndEnvironmentalSurveysFinish);
                 calendarDayFinishProjDoc = dateService.workDay(calendarDayFinishProjDoc.plusDays(shiftProjDoc + 5));
             }
@@ -442,7 +456,7 @@ public class CalendarService {
 
             // дата окончания разработки РХР текущего этапа строительства
             if (!dataFormProject.isNotRhrDoc()) {
-                rhrFinish = dateService.workDay(calendarDayFinishProjDoc.plusDays(RHR_DURATION));
+                rhrFinish = dateService.recalculationResourcesInCalendarDate(RHR_DURATION, calendarDayFinishProjDoc);
             }
 
             // дата окончания разработки СЗЗ текущего этапа строительства
@@ -465,7 +479,6 @@ public class CalendarService {
                     }
                 }
             }
-
             // дата окончания ГГЭ ПД текущего этапа строительства
             LocalDate examinationProjectFinish = dateService.workDay(agreementProjectFinish.plusDays(EXAMINATION_PROJECT_DOC_DURATION));
 
@@ -478,32 +491,43 @@ public class CalendarService {
                         .setProjectName(dataFormProject.getProjectName())
                         .setStartContract(startStage)
                         .setStage(stageNumber)
-                        .setEngineeringSurvey(dateService.checkDeadlineForActivation(calendarDayFinishEngSurvey))
+                        .setEngineeringSurvey(dateService.checkDeadlineForActivation(dateService.
+                                recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, calendarDayFinishEngSurvey)))
                         .setEngineeringSurveyLabResearchAndReportStart(calendarDayStartLabResearch)
-                        .setEngineeringSurveyReportFinish(dateService.checkDeadlineForActivation(calendarDayFinishEngSurveyReport))
+                        .setEngineeringSurveyReportFinish(dateService.checkDeadlineForActivation(dateService.
+                                        recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, calendarDayFinishEngSurveyReport)))
                         .setAgreementEngineeringSurvey(dateService.checkDeadlineForActivation(finishAgreementEngineeringSurveyReport))
                         .setSeasonalEngineeringSurveysStart(seasonalEngineeringSurveysStart)
-                        .setEngineeringAndEnvironmentalSurveysFinish(dateService.checkDeadlineForActivation(engineeringAndEnvironmentalSurveysFinish))
-                        .setHistoricalAndCulturalResearchFinish(dateService.checkDeadlineForActivation(historicalAndCulturalResearchFinish))
+                        .setEngineeringAndEnvironmentalSurveysFinish(dateService.checkDeadlineForActivation(dateService.
+                                        recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, engineeringAndEnvironmentalSurveysFinish)))
+                        .setHistoricalAndCulturalResearchFinish(dateService.checkDeadlineForActivation(dateService.
+                                        recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, historicalAndCulturalResearchFinish)))
                         .setWorkingStart(calendarDayStartWorkDoc)
-                        .setWorkingFinish(dateService.checkDeadlineForActivation(calendarDayFinishWorkDoc))
+                        .setRealWorkingFinish(calendarDayFinishWorkDoc)
+                        .setWorkingFinish(dateService.checkDeadlineForActivation(dateService.
+                                        recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, calendarDayFinishWorkDoc)))
                         .setAgreementWorking(dateService.checkDeadlineForActivation(agreementWorkingFinish))
                         .setEstimatesStart(calendarDayStartEstDoc)
-                        .setEstimatesFinish(dateService.checkDeadlineForActivation(calendarDayFinishEstDoc))
+                        .setEstimatesFinish(dateService.checkDeadlineForActivation(dateService.
+                                        recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, calendarDayFinishEstDoc)))
                         .setAgreementEstimates(dateService.checkDeadlineForActivation(agreementEstimatesFinish))
                         .setProjectStart(calendarDayStartProjDoc)
-                        .setProjectFinish(dateService.checkDeadlineForActivation(calendarDayFinishProjDoc))
+                        .setRealProjectFinish(calendarDayFinishProjDoc)
+                        .setProjectFinish(dateService.checkDeadlineForActivation(dateService.
+                                        recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, calendarDayFinishProjDoc)))
                         .setAgreementProject(dateService.checkDeadlineForActivation(agreementProjectFinish))
                         .setExamination(dateService.checkDeadlineForActivation(examinationProjectFinish))
-                        .setLandFinish(dateService.checkDeadlineForActivation(landFinish))
-                        .setRhrFinish(dateService.checkDeadlineForActivation(rhrFinish))
-                        .setSzzFinish(dateService.checkDeadlineForActivation(szzFinish))
+                        .setLandFinish(dateService.checkDeadlineForActivation(dateService.
+                                        recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, landFinish)))
+                        .setRhrFinish(dateService.checkDeadlineForActivation(dateService.
+                                        recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, rhrFinish)))
+                        .setSzzFinish(dateService.checkDeadlineForActivation(dateService.
+                                        recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, szzFinish)))
                         .setHumanFactor(dataFormProject.getHumanFactor())
                         .setBytesDataProject(Files.readAllBytes(Paths.get(dataFormProjectService.getFilePathSave())));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
             // проверка наличия в базе предыдущих календарей по данному шифру (на 1м этапе строительства), если есть, то удалить, чтобы не возникало конфликта календарей
             if (i == 0 && calendarRepository.findCalendarByCodeContract(dataFormProject.getCodeContract()).isPresent()) {
                 calendarRepository.deleteAll(getCalendarByCode(dataFormProject.getCodeContract()));
@@ -525,7 +549,7 @@ public class CalendarService {
                     // если типы объектов разные, то смещать начало работ не требуется, если одинаковые - смещение необходимо
                     stageBack = 0;
                     while (stageNumber - stageBack > 0) {
-                        if (activeObjectTypeByStage.get(stageNumber - stageBack).equals(ObjectType.AREA) && activeObjectTypeByStage.get(stageNumber + 1).equals(ObjectType.AREA)) {
+                        if (activeObjectTypeByStage.get(stageNumber - stageBack).contains(ObjectType.AREA) && activeObjectTypeByStage.get(stageNumber + 1).contains(ObjectType.AREA)) {
                             isStageOffsetStartContract = true;
                             break;
                         }
@@ -579,11 +603,17 @@ public class CalendarService {
      * @param entityProjects сооружения проекта
      * @return мэп с разбивкой типов объектов о стадиям строительства
      */
-    private Map<Integer, ObjectType> objectTypeByStage(List<EntityProject> entityProjects) {
-        Map<Integer, ObjectType> objectTypeByStage = new HashMap<>();
+    private Map<Integer, List<ObjectType>> objectTypeByStage(List<EntityProject> entityProjects) {
+        Map<Integer, List<ObjectType>> objectTypeByStage = new HashMap<>();
         for (EntityProject entity :
                 entityProjects) {
-            objectTypeByStage.put(entity.getStage(), entity.getObjectType());
+            if (objectTypeByStage.get(entity.getStage()) == null) {
+                List<ObjectType> objectTypes = new ArrayList<>();
+                objectTypes.add(entity.getObjectType());
+                objectTypeByStage.put(entity.getStage(), objectTypes);
+            } else {
+                objectTypeByStage.get(entity.getStage()).add(entity.getObjectType());
+            }
         }
         return objectTypeByStage;
     }
@@ -732,8 +762,26 @@ public class CalendarService {
                 }
             }
         }
+        // мэп с разбивкой типов объектов по стадиям строительства
+        Map<Integer, List<ObjectType>> activeObjectTypeByStage = objectTypeByStage(activeObjects);
+        for (Integer stage :
+                activeObjectTypeByStage.keySet()) {
+            int addResource = 0;
+            int countObjectType = 0;
+            if (activeObjectTypeByStage.get(stage).size() > 1 && activeObjectTypeByStage.get(stage).contains(ObjectType.LINEAR)) {
+                for (ObjectType objectType :
+                        activeObjectTypeByStage.get(stage)) {
+                    if (objectType == ObjectType.LINEAR) {
+                        countObjectType++;
+                        addResource = addResource + EXCHANGE_OF_TASKS_RD * countObjectType;
+                    }
+                }
+            }
+            divisionResourcesWorkDocByStage.put(stage, divisionResourcesWorkDocByStage.get(stage) + addResource);
+        }
         return divisionResourcesWorkDocByStage;
     }
+
 
     /**
      * Получение map с ресурсами необходиммыми для ПД по каждому этапу строительства (ключ - этап строительства, значение - необходимый ресурс в ч/дн)
@@ -753,6 +801,23 @@ public class CalendarService {
                     divisionResourcesProjDocByStage.put(entity.getStage(), objectCalendarService.resourceForProjDocStage(entity));
                 }
             }
+        }
+        // мэп с разбивкой типов объектов по стадиям строительства
+        Map<Integer, List<ObjectType>> activeObjectTypeByStage = objectTypeByStage(activeObjects);
+        for (Integer stage :
+                activeObjectTypeByStage.keySet()) {
+            int addResource = 0;
+            int countObjectType = 0;
+            if (activeObjectTypeByStage.get(stage).size() > 1 && activeObjectTypeByStage.get(stage).contains(ObjectType.LINEAR)) {
+                for (ObjectType objectType :
+                        activeObjectTypeByStage.get(stage)) {
+                    if (objectType == ObjectType.LINEAR) {
+                        countObjectType++;
+                        addResource = addResource + EXCHANGE_OF_TASKS_PD * countObjectType;
+                    }
+                }
+            }
+            divisionResourcesProjDocByStage.put(stage, divisionResourcesProjDocByStage.get(stage) + addResource);
         }
         return divisionResourcesProjDocByStage;
     }

@@ -51,10 +51,13 @@ public class DateService {
      * @return будний день
      */
     public LocalDate workDay(LocalDate date) {
-        while (weekends.contains(date.getDayOfWeek()) || isHolidays(date)) {
-            date = date.plusDays(1);
+        if (date != null){
+            while (weekends.contains(date.getDayOfWeek()) || isHolidays(date)) {
+                date = date.plusDays(1);
+            }
+            return date;
         }
-        return date;
+        return null;
     }
 
     /**
@@ -66,17 +69,39 @@ public class DateService {
      * @return календарная дата окончания работ
      */
     public LocalDate recalculationResourcesInCalendarDate(int resources, LocalDate startResource) {
-        LocalDate result = startResource;
-        int addedDays = 0;
-        while (addedDays < resources) {
-            result = result.plusDays(1);
-            if (!(weekends.contains(result.getDayOfWeek()) || isHolidays(result))) {
-                ++addedDays;
+        if (startResource != null){
+            LocalDate result = startResource;
+            while (resources > 0) {
+                result = result.plusDays(1);
+                if (!(weekends.contains(result.getDayOfWeek()) || isHolidays(result))) {
+                    --resources;
+                }
             }
+            result = workDay(result);
+            return result;
         }
-        result = workDay(result);
-        return result;
+        return null;
     }
+//
+//    /**
+//     * Метод, пересчитывающий календарные дни с вычетом ненужных ресурсов с учетом выходных и праздничных дней. При попадании крайней даты ресурса
+//     * на выходной или праздничный день, производится перенос на будний день
+//     *
+//     * @param resources     лишние ресурсы, ч/дн
+//     * @param startResource дата начала работ с учетом лишних ресурсов
+//     * @return календарная дата окончания работ, очищенная от лишних ресурсов
+//     */
+//    public LocalDate reRecalculationResourcesInCalendarDate(int resources, LocalDate startResource) {
+//        LocalDate result = startResource;
+//        while (resources > 0) {
+//            result = result.minusDays(1);
+//            if (!(weekends.contains(result.getDayOfWeek()) || isHolidays(result))) {
+//                --resources;
+//            }
+//        }
+//        result = workDay(result);
+//        return result;
+//    }
 
     /**
      * Метод, учитывающий крайний день календаря 10е число в декабре и 20е число в остальных месяцах для актирования.

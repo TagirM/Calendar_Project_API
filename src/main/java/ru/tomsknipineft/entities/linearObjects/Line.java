@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.group.GroupSequenceProvider;
 import ru.tomsknipineft.entities.EntityProject;
+import ru.tomsknipineft.entities.enumEntities.LinePower;
 import ru.tomsknipineft.entities.enumEntities.ObjectType;
 import ru.tomsknipineft.entities.oilPad.OilPad;
 import ru.tomsknipineft.utils.entityValidator.LineGroupSequenceProvider;
@@ -39,9 +40,10 @@ public class Line implements OilPad, EntityProject, Serializable {
     private ObjectType objectType;
 
     //    мощность ВЛ (или габариты ВЛ)
-    @NotNull(message = "Мощность не заполнена", groups = OnActiveCheck.class)
-    @Positive(message = "Сan not be 0 or less than 0", groups = OnActiveCheck.class)
-    private Integer power;
+//    @NotNull(message = "Мощность не выбрана", groups = OnActiveCheck.class)
+    @Column(name = "power")
+    @Enumerated(EnumType.STRING)
+    private LinePower power = LinePower.LINE10;
 
     //    протяженность ЛЭП, км
     @NotNull(message = "Длина не заполнена", groups = OnActiveCheck.class)
