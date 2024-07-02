@@ -13,7 +13,7 @@ public interface PipelineRepository  extends JpaRepository<Pipeline, Long> {
     /**
      Поиск сущности со способом прокладки, узлами и протяженностью, соответствующих заданным или ближайшими большими
      */
-    Optional<Pipeline> findFirstByPipelineLayingMethodAndUnitsValveGreaterThanEqualAndUnitsSODGreaterThanEqualAndLengthGreaterThanEqual
-    (PipelineLayingMethod pipelineLayingMethod, Integer unitsValve, Integer unitsSOD, Double length);
+    Optional<Pipeline> findFirstByPipelineLayingMethodAndUnitExistAndLengthGreaterThanEqual
+    (PipelineLayingMethod pipelineLayingMethod, boolean unitExist, Double length);
 
 }

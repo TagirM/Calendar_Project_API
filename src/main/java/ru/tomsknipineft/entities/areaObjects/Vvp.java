@@ -55,6 +55,12 @@ public class Vvp implements OilPad, EntityProject, Serializable {
     @Max(value = 4, message = "Не может быть больше 4", groups = VvpModelCheck.class)
     private Double square;
 
+    //    общее количество вертолетных площадок, шт.
+    @NotNull(message = "Количество не заполнено", groups = OnActiveCheck.class)
+    @Positive(message = "Количество не может быть 0 или отрицательным", groups = OnActiveCheck.class)
+    @Max(value = 20, message = "Не может быть больше 20", groups = OnActiveCheck.class)
+    private Integer count = 1;
+
     //    этап строительства
     @NotNull(message = "Этап не заполнен", groups = OnActiveCheck.class)
     @Min(value = 1, message = "Не может быть меньше 1", groups = OnActiveCheck.class)

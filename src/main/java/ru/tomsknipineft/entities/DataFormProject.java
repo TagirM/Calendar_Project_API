@@ -20,7 +20,9 @@ public interface DataFormProject {
 
     boolean isEngineeringSurveyReport();
 
-    boolean isNotRhrDoc();
+    boolean isMmg();
+
+    boolean isRhrDoc();
 
     void setNotSzzDoc(boolean notSzzDoc);
 

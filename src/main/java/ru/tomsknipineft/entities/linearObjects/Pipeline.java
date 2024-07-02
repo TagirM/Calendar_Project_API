@@ -1,6 +1,7 @@
 package ru.tomsknipineft.entities.linearObjects;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -48,23 +49,24 @@ public class Pipeline  implements OilPad, EntityProject, Serializable {
     //    протяженность трубпровода, км
     @NotNull(message = "Длина не заполнена", groups = OnActiveCheck.class)
     @Positive(message = "Длина не может быть 0 или отрицательной", groups = OnActiveCheck.class)
+    @Max(value = 60, message = "Не может быть больше 60 км", groups = OnActiveCheck.class)
     private Double length;
 
-    //    сложность геологии
-//    @NotNull(message = "Сложность прокладки не указана", groups = OnActiveCheck.class)
-//    @Column(name = "complexity_of_geology")
-//    @Enumerated(EnumType.STRING)
-//    private ComplexityOfGeology complexityOfGeology;
+    // Наличие узлов
+    @Column(name = "unit_exist")
+    private boolean unitExist;
 
     // Количество узлов запорной арматуры
     @Min(value = 0, message = "Не может быть меньше 0", groups = OnActiveCheck.class)
     @NotNull(message = "Количество узлов запорной арматуры не указано", groups = OnActiveCheck.class)
+    @Max(value = 20, message = "Не может быть больше 20", groups = OnActiveCheck.class)
     @Column(name = "units_valve")
     private Integer unitsValve = 0;
 
     // Количество узлов средств очистки и диагностики (СОД)
     @Min(value = 0, message = "Не может быть меньше 0", groups = OnActiveCheck.class)
     @NotNull(message = "Количество узлов средств очистки и диагностики не указано", groups = OnActiveCheck.class)
+    @Max(value = 10, message = "Не может быть больше 10", groups = OnActiveCheck.class)
     @Column(name = "units_SOD")
     private Integer unitsSOD = 0;
 

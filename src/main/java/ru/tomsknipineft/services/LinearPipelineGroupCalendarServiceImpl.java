@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.tomsknipineft.entities.EntityProject;
 import ru.tomsknipineft.entities.areaObjects.Sikn;
 import ru.tomsknipineft.entities.areaObjects.Vvp;
+import ru.tomsknipineft.entities.enumEntities.PipelineLayingMethod;
 import ru.tomsknipineft.entities.linearObjects.*;
 import ru.tomsknipineft.services.entityService.*;
 
@@ -35,9 +36,13 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
     public Integer resourceForEngGeodeticSurveyStage(EntityProject entityProjectLinearPipeline) {
         int resourceForStage = 0;
         if (entityProjectLinearPipeline.getClass() == Pipeline.class) {
+            if (((Pipeline) entityProjectLinearPipeline).getUnitsSOD() > 0 || ((Pipeline) entityProjectLinearPipeline).getUnitsValve() > 0) {
+                ((Pipeline) entityProjectLinearPipeline).setUnitExist(true);
+            }
             resourceForStage += pipelineService.getFindPipelineFromRequest((Pipeline) entityProjectLinearPipeline).getResourceForEngGeodeticSurvey();
         } else if (entityProjectLinearPipeline.getClass() == Road.class) {
-            resourceForStage += roadService.getFindRoadFromRequest((Road) entityProjectLinearPipeline).getResourceForEngGeodeticSurvey();
+            resourceForStage += roadService.getFindRoadFromRequest((Road) entityProjectLinearPipeline).getResourceForEngGeodeticSurvey() +
+                    (((Road) entityProjectLinearPipeline).getCount() - 1) / 2;
         } else if (entityProjectLinearPipeline.getClass() == Line.class) {
             resourceForStage += lineService.getFindLineFromRequest((Line) entityProjectLinearPipeline).getResourceForEngGeodeticSurvey();
         } else if (entityProjectLinearPipeline.getClass() == Vvp.class) {
@@ -45,7 +50,8 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
         } else if (entityProjectLinearPipeline.getClass() == CableRack.class) {
             resourceForStage += cableRackService.getFindCableRackFromRequest((CableRack) entityProjectLinearPipeline).getResourceForEngGeodeticSurvey();
         } else if (entityProjectLinearPipeline.getClass() == Ktplp.class) {
-            resourceForStage += ktplpService.getFindKtplpFromRequest((Ktplp) entityProjectLinearPipeline).getResourceForEngGeodeticSurvey();
+            resourceForStage += ktplpService.getFindKtplpFromRequest((Ktplp) entityProjectLinearPipeline).getResourceForEngGeodeticSurvey() *
+                    ((Ktplp) entityProjectLinearPipeline).getCount();
         } else if (entityProjectLinearPipeline.getClass() == Sikn.class) {
             resourceForStage += siknService.getFindSiknFromRequest((Sikn) entityProjectLinearPipeline).getResourceForEngGeodeticSurvey();
         }
@@ -56,9 +62,18 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
     public Integer resourceForEngGeologicalSurveyStage(EntityProject entityProjectLinearPipeline) {
         int resourceForStage = 0;
         if (entityProjectLinearPipeline.getClass() == Pipeline.class) {
+            if (((Pipeline) entityProjectLinearPipeline).getUnitsSOD() > 0 || ((Pipeline) entityProjectLinearPipeline).getUnitsValve() > 0) {
+                ((Pipeline) entityProjectLinearPipeline).setUnitExist(true);
+                if (((Pipeline) entityProjectLinearPipeline).getPipelineLayingMethod() == PipelineLayingMethod.UNDERGROUND ||
+                        ((Pipeline) entityProjectLinearPipeline).getPipelineLayingMethod() == PipelineLayingMethod.GROUND){
+                    resourceForStage += (((Pipeline) entityProjectLinearPipeline).getUnitsValve()  - 1) +
+                            ((Pipeline) entityProjectLinearPipeline).getUnitsSOD();
+                }
+            }
             resourceForStage += pipelineService.getFindPipelineFromRequest((Pipeline) entityProjectLinearPipeline).getResourceForEngGeologicalSurvey();
         } else if (entityProjectLinearPipeline.getClass() == Road.class) {
-            resourceForStage += roadService.getFindRoadFromRequest((Road) entityProjectLinearPipeline).getResourceForEngGeologicalSurvey();
+            resourceForStage += roadService.getFindRoadFromRequest((Road) entityProjectLinearPipeline).getResourceForEngGeologicalSurvey() +
+                    (((Road) entityProjectLinearPipeline).getCount() - 1) / 2;
         } else if (entityProjectLinearPipeline.getClass() == Line.class) {
             resourceForStage += lineService.getFindLineFromRequest((Line) entityProjectLinearPipeline).getResourceForEngGeologicalSurvey();
         } else if (entityProjectLinearPipeline.getClass() == Vvp.class) {
@@ -66,7 +81,8 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
         } else if (entityProjectLinearPipeline.getClass() == CableRack.class) {
             resourceForStage += cableRackService.getFindCableRackFromRequest((CableRack) entityProjectLinearPipeline).getResourceForEngGeologicalSurvey();
         } else if (entityProjectLinearPipeline.getClass() == Ktplp.class) {
-            resourceForStage += ktplpService.getFindKtplpFromRequest((Ktplp) entityProjectLinearPipeline).getResourceForEngGeologicalSurvey();
+            resourceForStage += ktplpService.getFindKtplpFromRequest((Ktplp) entityProjectLinearPipeline).getResourceForEngGeologicalSurvey() *
+                    ((Ktplp) entityProjectLinearPipeline).getCount();
         } else if (entityProjectLinearPipeline.getClass() == Sikn.class) {
             resourceForStage += siknService.getFindSiknFromRequest((Sikn) entityProjectLinearPipeline).getResourceForEngGeologicalSurvey();
         }
@@ -77,6 +93,14 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
     public Integer resourceForLabResearchStage(EntityProject entityProjectLinearPipeline) {
         int resourceForStage = 0;
         if (entityProjectLinearPipeline.getClass() == Pipeline.class) {
+            if (((Pipeline) entityProjectLinearPipeline).getUnitsSOD() > 0 || ((Pipeline) entityProjectLinearPipeline).getUnitsValve() > 0) {
+                ((Pipeline) entityProjectLinearPipeline).setUnitExist(true);
+                if (((Pipeline) entityProjectLinearPipeline).getPipelineLayingMethod() == PipelineLayingMethod.UNDERGROUND ||
+                        ((Pipeline) entityProjectLinearPipeline).getPipelineLayingMethod() == PipelineLayingMethod.GROUND) {
+                    resourceForStage += (((Pipeline) entityProjectLinearPipeline).getUnitsValve() - 1) / 4 +
+                            ((Pipeline) entityProjectLinearPipeline).getUnitsSOD() / 4;
+                }
+            }
             resourceForStage += pipelineService.getFindPipelineFromRequest((Pipeline) entityProjectLinearPipeline).getResourceForLabResearch();
         } else if (entityProjectLinearPipeline.getClass() == Road.class) {
             resourceForStage += roadService.getFindRoadFromRequest((Road) entityProjectLinearPipeline).getResourceForLabResearch();
@@ -87,7 +111,8 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
         } else if (entityProjectLinearPipeline.getClass() == CableRack.class) {
             resourceForStage += cableRackService.getFindCableRackFromRequest((CableRack) entityProjectLinearPipeline).getResourceForLabResearch();
         } else if (entityProjectLinearPipeline.getClass() == Ktplp.class) {
-            resourceForStage += ktplpService.getFindKtplpFromRequest((Ktplp) entityProjectLinearPipeline).getResourceForLabResearch();
+            resourceForStage += ktplpService.getFindKtplpFromRequest((Ktplp) entityProjectLinearPipeline).getResourceForLabResearch() +
+                    ((Ktplp) entityProjectLinearPipeline).getCount() / 4;
         } else if (entityProjectLinearPipeline.getClass() == Sikn.class) {
             resourceForStage += siknService.getFindSiknFromRequest((Sikn) entityProjectLinearPipeline).getResourceForLabResearch();
         }
@@ -98,6 +123,9 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
     public Integer resourceForEngSurveyReportStage(EntityProject entityProjectLinearPipeline) {
         int resourceForStage = 0;
         if (entityProjectLinearPipeline.getClass() == Pipeline.class) {
+            if (((Pipeline) entityProjectLinearPipeline).getUnitsSOD() > 0 || ((Pipeline) entityProjectLinearPipeline).getUnitsValve() > 0) {
+                ((Pipeline) entityProjectLinearPipeline).setUnitExist(true);
+            }
             resourceForStage += pipelineService.getFindPipelineFromRequest((Pipeline) entityProjectLinearPipeline).getResourceForEngSurveyReport();
         } else if (entityProjectLinearPipeline.getClass() == Road.class) {
             resourceForStage += roadService.getFindRoadFromRequest((Road) entityProjectLinearPipeline).getResourceForEngSurveyReport();
@@ -108,7 +136,8 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
         } else if (entityProjectLinearPipeline.getClass() == CableRack.class) {
             resourceForStage += cableRackService.getFindCableRackFromRequest((CableRack) entityProjectLinearPipeline).getResourceForEngSurveyReport();
         } else if (entityProjectLinearPipeline.getClass() == Ktplp.class) {
-            resourceForStage += ktplpService.getFindKtplpFromRequest((Ktplp) entityProjectLinearPipeline).getResourceForEngSurveyReport();
+            resourceForStage += ktplpService.getFindKtplpFromRequest((Ktplp) entityProjectLinearPipeline).getResourceForEngSurveyReport() +
+                    ((Ktplp) entityProjectLinearPipeline).getCount() / 2;
         } else if (entityProjectLinearPipeline.getClass() == Sikn.class) {
             resourceForStage += siknService.getFindSiknFromRequest((Sikn) entityProjectLinearPipeline).getResourceForEngSurveyReport();
         }
@@ -119,9 +148,21 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
     public Integer resourceForWorkDocStage(EntityProject entityProjectLinearPipeline) {
         int resourceForStage = 0;
         if (entityProjectLinearPipeline.getClass() == Pipeline.class) {
+            if (((Pipeline) entityProjectLinearPipeline).getUnitsSOD() > 0 || ((Pipeline) entityProjectLinearPipeline).getUnitsValve() > 0) {
+                ((Pipeline) entityProjectLinearPipeline).setUnitExist(true);
+                if (((Pipeline) entityProjectLinearPipeline).getPipelineLayingMethod() == PipelineLayingMethod.UNDERGROUND ||
+                        ((Pipeline) entityProjectLinearPipeline).getPipelineLayingMethod() == PipelineLayingMethod.GROUND) {
+                    resourceForStage += (((Pipeline) entityProjectLinearPipeline).getUnitsValve() - 1) +
+                            ((Pipeline) entityProjectLinearPipeline).getUnitsSOD() * 2;
+                } else {
+                    resourceForStage += (((Pipeline) entityProjectLinearPipeline).getUnitsValve() - 1) +
+                            ((Pipeline) entityProjectLinearPipeline).getUnitsSOD() * 3;
+                }
+            }
             resourceForStage += pipelineService.getFindPipelineFromRequest((Pipeline) entityProjectLinearPipeline).getResourceForWorkDoc();
         } else if (entityProjectLinearPipeline.getClass() == Road.class) {
-            resourceForStage += roadService.getFindRoadFromRequest((Road) entityProjectLinearPipeline).getResourceForWorkDoc();
+            resourceForStage += roadService.getFindRoadFromRequest((Road) entityProjectLinearPipeline).getResourceForWorkDoc() +
+                    (((Road) entityProjectLinearPipeline).getCount() - 1);
         } else if (entityProjectLinearPipeline.getClass() == Line.class) {
             resourceForStage += lineService.getFindLineFromRequest((Line) entityProjectLinearPipeline).getResourceForWorkDoc();
         } else if (entityProjectLinearPipeline.getClass() == Vvp.class) {
@@ -129,7 +170,8 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
         } else if (entityProjectLinearPipeline.getClass() == CableRack.class) {
             resourceForStage += cableRackService.getFindCableRackFromRequest((CableRack) entityProjectLinearPipeline).getResourceForWorkDoc();
         } else if (entityProjectLinearPipeline.getClass() == Ktplp.class) {
-            resourceForStage += ktplpService.getFindKtplpFromRequest((Ktplp) entityProjectLinearPipeline).getResourceForWorkDoc();
+            resourceForStage += ktplpService.getFindKtplpFromRequest((Ktplp) entityProjectLinearPipeline).getResourceForWorkDoc() +
+                    ((Ktplp) entityProjectLinearPipeline).getCount() * 2;
         } else if (entityProjectLinearPipeline.getClass() == Sikn.class) {
             resourceForStage += siknService.getFindSiknFromRequest((Sikn) entityProjectLinearPipeline).getResourceForWorkDoc();
         }
@@ -140,7 +182,11 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
     public Integer resourceForProjDocStage(EntityProject entityProjectLinearPipeline) {
         int resourceForStage = 0;
         if (entityProjectLinearPipeline.getClass() == Pipeline.class) {
+            if (((Pipeline) entityProjectLinearPipeline).getUnitsSOD() > 0 || ((Pipeline) entityProjectLinearPipeline).getUnitsValve() > 0) {
+                ((Pipeline) entityProjectLinearPipeline).setUnitExist(true);
+            }
             resourceForStage += pipelineService.getFindPipelineFromRequest((Pipeline) entityProjectLinearPipeline).getResourceForProjDoc();
+
         } else if (entityProjectLinearPipeline.getClass() == Road.class) {
             resourceForStage += roadService.getFindRoadFromRequest((Road) entityProjectLinearPipeline).getResourceForProjDoc();
         } else if (entityProjectLinearPipeline.getClass() == Line.class) {
@@ -161,10 +207,22 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
     public Integer resourceForEstDocStage(EntityProject entityProjectLinearPipeline) {
         int resourceForStage = 0;
         if (entityProjectLinearPipeline.getClass() == Pipeline.class) {
+            if (((Pipeline) entityProjectLinearPipeline).getUnitsSOD() > 0 || ((Pipeline) entityProjectLinearPipeline).getUnitsValve() > 0) {
+                ((Pipeline) entityProjectLinearPipeline).setUnitExist(true);
+                if (((Pipeline) entityProjectLinearPipeline).getPipelineLayingMethod() == PipelineLayingMethod.UNDERGROUND ||
+                        ((Pipeline) entityProjectLinearPipeline).getPipelineLayingMethod() == PipelineLayingMethod.GROUND) {
+                    resourceForStage += (((Pipeline) entityProjectLinearPipeline).getUnitsValve() - 1) +
+                            ((Pipeline) entityProjectLinearPipeline).getUnitsSOD() * 2;
+                } else {
+                    resourceForStage += (((Pipeline) entityProjectLinearPipeline).getUnitsValve() - 1) +
+                            ((Pipeline) entityProjectLinearPipeline).getUnitsSOD();
+                }
+            }
             resourceForStage += pipelineService.getFindPipelineFromRequest((Pipeline) entityProjectLinearPipeline).getResourceForEstDoc();
             pipelineService.evictCacheCalendar();
         } else if (entityProjectLinearPipeline.getClass() == Road.class) {
-            resourceForStage += roadService.getFindRoadFromRequest((Road) entityProjectLinearPipeline).getResourceForEstDoc();
+            resourceForStage += roadService.getFindRoadFromRequest((Road) entityProjectLinearPipeline).getResourceForEstDoc() +
+                    (((Road) entityProjectLinearPipeline).getCount() - 1) / 2;
             roadService.evictCacheCalendar();
         } else if (entityProjectLinearPipeline.getClass() == Line.class) {
             resourceForStage += lineService.getFindLineFromRequest((Line) entityProjectLinearPipeline).getResourceForEstDoc();
@@ -176,7 +234,8 @@ public class LinearPipelineGroupCalendarServiceImpl implements GroupObjectCalend
             resourceForStage += cableRackService.getFindCableRackFromRequest((CableRack) entityProjectLinearPipeline).getResourceForEstDoc();
             cableRackService.evictCacheCalendar();
         } else if (entityProjectLinearPipeline.getClass() == Ktplp.class) {
-            resourceForStage += ktplpService.getFindKtplpFromRequest((Ktplp) entityProjectLinearPipeline).getResourceForEstDoc();
+            resourceForStage += ktplpService.getFindKtplpFromRequest((Ktplp) entityProjectLinearPipeline).getResourceForEstDoc() +
+                    ((Ktplp) entityProjectLinearPipeline).getCount();
             ktplpService.evictCacheCalendar();
         } else if (entityProjectLinearPipeline.getClass() == Sikn.class) {
             resourceForStage += siknService.getFindSiknFromRequest((Sikn) entityProjectLinearPipeline).getResourceForEstDoc();

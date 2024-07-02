@@ -31,8 +31,7 @@ public class KtplpService implements EntityProjectService {
     @Cacheable(key = "new org.springframework.cache.interceptor.SimpleKey(#ktplpFromRequest.ktplpType, #ktplpFromRequest.count)")
     public Ktplp getFindKtplpFromRequest(Ktplp ktplpFromRequest) {
         return ktplpRepository
-                .findFirstByKtplpTypeAndCount(ktplpFromRequest.getKtplpType(),
-                        ktplpFromRequest.getCount())
+                .findFirstByKtplpType(ktplpFromRequest.getKtplpType())
                 .orElseThrow(()->
                 new NoSuchEntityException("Введены некорректные значения типа " +
                         ktplpFromRequest.getKtplpType() +

@@ -21,7 +21,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/linear_object/linear_pipeline")
+@RequestMapping("/linear_object/field_pipeline")
 public class LinearPipelineCalendarController {
 
     private final LinearPipelineGroupCalendarServiceImpl linearObjectGroupCalendarService;
@@ -35,7 +35,7 @@ public class LinearPipelineCalendarController {
     @GetMapping
     public String linearPipelinePage(Model model){
         model.addAttribute("dataFormLinearObjects", new DataFormLinearObjects());
-        return "input_page/linear-pipeline";
+        return "input_page/field-pipeline";
     }
 
     /**
@@ -47,11 +47,11 @@ public class LinearPipelineCalendarController {
     public String createCalendar(@Valid @ModelAttribute("dataFormLinearObjects") DataFormLinearObjects dataFormLinearObjects,
                                  BindingResult bindingResult, HttpSession session){
         if (bindingResult.hasErrors()){
-            return "input_page/linear-pipeline";
+            return "input_page/field-pipeline";
         }
         session.setAttribute("codeContract", dataFormLinearObjects.getCodeContract());
         calendarService.createCalendar(dataFormLinearObjects.getEntityProjects(), linearObjectGroupCalendarService, dataFormLinearObjects);
-        return "redirect:/linear_object/linear_pipeline/calendar";
+        return "redirect:/linear_object/field_pipeline/calendar";
     }
 
     /**
@@ -68,8 +68,9 @@ public class LinearPipelineCalendarController {
         model.addAttribute("dataFormLinearObjects", dataFormLinearObjects);
         model.addAttribute("fieldEngineeringSurvey", dataFormLinearObjects.isFieldEngineeringSurvey());
         model.addAttribute("engineeringSurveyReport", dataFormLinearObjects.isEngineeringSurveyReport());
-        model.addAttribute("notRhrDoc", dataFormLinearObjects.isNotRhrDoc());
-        model.addAttribute("notSzzDoc", dataFormLinearObjects.isNotSzzDoc());
+        model.addAttribute("mmg", dataFormLinearObjects.isMmg());
+//        model.addAttribute("notRhrDoc", dataFormLinearObjects.isRhrDoc());
+//        model.addAttribute("notSzzDoc", dataFormLinearObjects.isNotSzzDoc());
         return "result_calendar/linear-object-result-calendar";
     }
 }

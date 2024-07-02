@@ -48,7 +48,7 @@ public class Line implements OilPad, EntityProject, Serializable {
     //    протяженность ЛЭП, км
     @NotNull(message = "Длина не заполнена", groups = OnActiveCheck.class)
     @Positive(message = "Не может быть меньше 0", groups = OnActiveCheck.class)
-    @Max(value = 20, message = "Не может быть больше 20", groups = OnActiveCheck.class)
+    @Max(value = 60, message = "Не может быть больше 60 км", groups = OnActiveCheck.class)
     private Double length;
 
     //    этап строительства

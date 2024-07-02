@@ -17,6 +17,8 @@
             <p class="fst-italic lh-1" th:if="${fieldEngineeringSurvey}">Количество геологических бригад:
                 [[${dataFormLinearObjects.drillingRig}]]</p>
             <p class="fst-italic lh-1" th:if="${engineeringSurveyReport}">Камеральные инженерные изыскания: Да</p>
+            <p class="fst-italic lh-1" th:if="${mmg and fieldEngineeringSurvey}">Территория распространения многолетнемерзлых грунтов: Да</p>
+            <p class="fst-italic lh-1" th:if="${!mmg and fieldEngineeringSurvey}">Территория распространения многолетнемерзлых грунтов: Нет</p>
             <p class="fst-italic lh-1" th:if="${engineeringSurveyReport}">
                 [[${dataFormLinearObjects.complexityOfGeology.title}]] в месте выполнения ИИ</p>
             <p class="fst-italic lh-1" th:if="${!engineeringSurveyReport}">Камеральные инженерные изыскания: Нет</p>
@@ -54,10 +56,10 @@
                 - [[${dataFormLinearObjects.cableRack.stage}]] этап</p>
             <span class="fst-italic lh-1" th:if="${dataFormLinearObjects.vvp.active and dataFormLinearObjects.vvp.helicopterModel != null
             and dataFormLinearObjects.vvp.helicopterModel != ''}">
-                Временная вертолетная площадка для [[${dataFormLinearObjects.vvp.helicopterModel}]] </span>
+                Временная вертолетная площадка для [[${dataFormLinearObjects.vvp.helicopterModel}]] в количестве [[${dataFormLinearObjects.vvp.count}]] шт.</span>
             <span class="fst-italic lh-1" th:if="${dataFormLinearObjects.vvp.active and (dataFormLinearObjects.vvp.helicopterModel == ''
             or dataFormLinearObjects.vvp.helicopterModel == null)}">
-                Временная вертолетная площадка площадью [[${dataFormLinearObjects.vvp.square}]] га</span>
+                Временная вертолетная площадка площадью [[${dataFormLinearObjects.vvp.square}]] га в количестве [[${dataFormLinearObjects.vvp.count}]] шт.</span>
             <span class="fst-italic lh-1" th:if="${dataFormLinearObjects.vvp.hallExist}"> с залом ожидания</span>
             <span class="fst-italic lh-1" th:if="${dataFormLinearObjects.vvp.active}"> - [[${dataFormLinearObjects.vvp.stage}]] этап</span><br><br>
             <hr class="my-4">
@@ -89,17 +91,17 @@
         <div class="card">
             <div class="card text-center">
                 <a id="goToLinearPipeline" class="btn btn-outline-secondary fw-bolder"
-                   href="../input_page/linear-pipeline.html"
-                   th:href="@{/linear_object/linear_pipeline}">Перейти
+                   href="../input_page/field-pipeline.html"
+                   th:href="@{/linear_object/field_pipeline}">Перейти
                     на страницу ввода данных нового проекта</a>
             </div>
         </div>
     </div>
     <script>
         // Проверка, откуда пришел пользователь для формирования кнопок
-        if (document.referrer && document.referrer.endsWith('/linear_object/linear_pipeline') ||
-            document.referrer && document.referrer.endsWith('/linear_object/linear_pipeline/calendar') ||
-            document.referrer && document.referrer.endsWith('/linear_object/linear_pipeline/create')) {
+        if (document.referrer && document.referrer.endsWith('/linear_object/field_pipeline') ||
+            document.referrer && document.referrer.endsWith('/linear_object/field_pipeline/calendar') ||
+            document.referrer && document.referrer.endsWith('/linear_object/field_pipeline/create')) {
             document.getElementById('goToLinearPipeline').style.display = 'block';
         } else {
             document.getElementById('goToLinearPipeline').style.display = 'none';

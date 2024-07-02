@@ -45,16 +45,19 @@
                 <label class="form-check-label" for="geodeticTeamType2">Расширенного</label><br>
                 <span class="text-danger" th:if="${#fields.hasErrors('geodeticTeamType')}"
                       th:errors="*{geodeticTeamType}">geodeticTeamType error</span><br>
-                <label for="geodeticTeam">Сколько геодезических бригад планируется привлекать, шт.: </label>
+                <label for="geodeticTeam">Сколько геодезических бригад планируется привлекать, шт. (не более 10): </label>
                 <input type="number" class="form-control" step="any" th:field="*{geodeticTeam}"
                        id="geodeticTeam"/>
                 <span class="text-danger" th:if="${#fields.hasErrors('geodeticTeam')}" th:errors="*{geodeticTeam}">geodeticTeam error</span><br>
-                <label for="drillingRig">Сколько буровых бригад планируется привлекать, шт.: </label>
+                <label for="drillingRig">Сколько буровых бригад планируется привлекать, шт. (не более 10): </label>
                 <input type="number" class="form-control" step="any" th:field="*{drillingRig}"
                        id="drillingRig"/>
                 <span class="text-danger" th:if="${#fields.hasErrors('drillingRig')}" th:errors="*{drillingRig}">drillingRig error</span><br><br>
             </div>
-            <label><h5>Сложность геологии в районе выполнения ИИ</h5></label><br>
+            <label for="mmgII"><h6>Территория распространения многолетнемерзлых грунтов: </h6></label>
+            <input type="checkbox" class="form-check-input" th:field="*{mmg}"
+                   id="mmgII"/><br><br>
+            <label><h6>Сложность геологии в районе выполнения ИИ</h6></label><br>
             <input type="radio" class="form-check-input me-1" step="any" th:field="*{complexityOfGeology}"
                    id="complexityOfGeologyLine1" value="EASY" checked>
             <label class="form-check-label" for="complexityOfGeologyLine1">Простая</label><br>
@@ -66,9 +69,9 @@
             <label class="form-check-label" for="complexityOfGeologyLine3">Сложная</label><br>
             <span class="text-danger" th:if="${#fields.hasErrors('complexityOfGeology')}"
                   th:errors="*{complexityOfGeology}">Error</span><br><br>
-            <label for="notRhrDoc"><h5>Рыбохозяйственный раздел не требуется разрабатывать: </h5></label>
-            <input type="checkbox" class="form-check-input" th:field="*{notRhrDoc}"
-                   id="notRhrDoc"/><br><br>
+            <label for="rhrDoc"><h5>Рыбохозяйственный раздел требуется разрабатывать: </h5></label>
+            <input type="checkbox" class="form-check-input" th:field="*{rhrDoc}"
+                   id="rhrDoc"/><br><br>
         </div>
     </div>
 </th:block>

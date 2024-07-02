@@ -1,6 +1,7 @@
 package ru.tomsknipineft.entities.linearObjects;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -44,12 +45,13 @@ public class Ktplp  implements OilPad, EntityProject, Serializable {
 //    @NotNull(message = "Вид КТПЛП не выбран", groups = OnActiveCheck.class)
     @Column(name = "ktplp_type")
     @Enumerated(EnumType.STRING)
-    private KtplpType ktplpType = KtplpType.KTPLP6_04;
+    private KtplpType ktplpType = KtplpType.KTPLP10_04;
 
     //    Количество КТПЛП, км
     @NotNull(message = "Количество не заполнено", groups = OnActiveCheck.class)
     @Positive(message = "Не может быть меньше 0", groups = OnActiveCheck.class)
-    private Integer count;
+    @Max(value = 10, message = "Не может быть больше 10", groups = OnActiveCheck.class)
+    private Integer count = 1;
 
     //    этап строительства
     @NotNull(message = "Этап не заполнен", groups = OnActiveCheck.class)

@@ -12,6 +12,6 @@ public interface KtplpRepository extends JpaRepository<Ktplp, Long> {
     /**
      Поиск сущности с указанным типом и количеством, соответствующим заданному или ближайшим большим
      */
-    Optional<Ktplp> findFirstByKtplpTypeAndCount(KtplpType ktplpType, Integer count);
+    Optional<Ktplp> findFirstByKtplpType(KtplpType ktplpType);
 
 }

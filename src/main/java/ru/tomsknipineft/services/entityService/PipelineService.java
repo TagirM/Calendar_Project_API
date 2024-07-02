@@ -28,14 +28,13 @@ public class PipelineService implements EntityProjectService {
      * @param pipelineFromRequest сущность с введенными параметрами из представления
      * @return искомая в базе данных сущность
      */
-    @Cacheable(key = "new org.springframework.cache.interceptor.SimpleKey(#pipelineFromRequest.pipelineLayingMethod,#pipelineFromRequest.unitsValve, " +
-            "#pipelineFromRequest.unitsSOD, #pipelineFromRequest.length)")
+    @Cacheable(key = "new org.springframework.cache.interceptor.SimpleKey(#pipelineFromRequest.pipelineLayingMethod, #pipelineFromRequest.unitExist, " +
+            "#pipelineFromRequest.unitsValve, #pipelineFromRequest.unitsSOD, #pipelineFromRequest.length)")
     public Pipeline getFindPipelineFromRequest(Pipeline pipelineFromRequest) {
         return pipelineRepository
-                .findFirstByPipelineLayingMethodAndUnitsValveGreaterThanEqualAndUnitsSODGreaterThanEqualAndLengthGreaterThanEqual
+                .findFirstByPipelineLayingMethodAndUnitExistAndLengthGreaterThanEqual
                         (pipelineFromRequest.getPipelineLayingMethod(),
-                                pipelineFromRequest.getUnitsValve(),
-                                pipelineFromRequest.getUnitsSOD(),
+                                pipelineFromRequest.isUnitExist(),
                                 pipelineFromRequest.getLength())
                 .orElseThrow(()->
                 new NoSuchEntityException("Введены некорректные значения параметров линейного трубопровода: количество УЗА - " +

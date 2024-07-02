@@ -1,6 +1,7 @@
 package ru.tomsknipineft.entities.areaObjects;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -46,7 +47,8 @@ public class Sikn implements OilPad, EntityProject, Serializable {
 
     // производительность СИКН, тонн/час
     @NotNull(message = "Производительность не заполнена", groups = OnActiveCheck.class)
-    @Positive(message = "Длина не может быть 0 или отрицательной", groups = OnActiveCheck.class)
+    @Min(value = 1, message = "Производительность не может быть меньше 1", groups = OnActiveCheck.class)
+    @Max(value = 550, message = "Производительность не может быть больше 550", groups = OnActiveCheck.class)
     private Double capacity;
 
     //    этап строительства

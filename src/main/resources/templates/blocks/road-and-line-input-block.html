@@ -12,13 +12,13 @@
                   th:errors="*{road.category}"></span><br>
             <!--                    </div>-->
             <!--                    <div class="form-group">-->
-            <label for="lengthRoad">Общая протяженность автодорог, км (не более 20):</label>
+            <label for="lengthRoad">Общая протяженность автодорог, км (не более 60 км):</label>
             <input type="number" step="any" class="form-control" th:field="*{road.length}" id="lengthRoad">
             <span class="text-danger" th:if="${#fields.hasErrors('road.length')}"
                   th:errors="*{road.length}"></span><br>
             <!--                    </div>-->
             <!--                    <div class="form-group">-->
-            <label for="countRoad">Общее количество автодорог, шт (не более 5):</label>
+            <label for="countRoad">Общее количество автодорог, шт (не более 20):</label>
             <input type="number" step="any" class="form-control" th:field="*{road.count}"
                    id="countRoad">
             <span class="text-danger" th:if="${#fields.hasErrors('road.count')}"
@@ -78,7 +78,7 @@
                   th:errors="*{line.power}">Line error</span><br>
             <!--                    </div>-->
             <!--                    <div class="form-group">-->
-            <label for="lengthLine">Протяженность ВЛ, км (не более 20): </label>
+            <label for="lengthLine">Протяженность ВЛ, км (не более 60 км): </label>
             <input type="number" step="any" class="form-control" th:field="*{line.length}" id="lengthLine"/>
             <span class="text-danger" th:if="${#fields.hasErrors('line.length')}"
                   th:errors="*{line.length}">Well error</span><br>

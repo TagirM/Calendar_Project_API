@@ -28,13 +28,14 @@ public class RoadService implements EntityProjectService {
      * @param roadFromRequest сущность с введенными параметрами из представления
      * @return искомая в базе данных сущность
      */
+//    @Cacheable(key = "new org.springframework.cache.interceptor.SimpleKey(#roadFromRequest.category, " +
+//            "#roadFromRequest.length, #roadFromRequest.count)")
     @Cacheable(key = "new org.springframework.cache.interceptor.SimpleKey(#roadFromRequest.category, " +
-            "#roadFromRequest.length, #roadFromRequest.count)")
+            "#roadFromRequest.length)")
     public Road getFindRoadFromRequest(Road roadFromRequest) {
         return roadRepository
-                .findFirstByCategoryAndLengthGreaterThanEqualAndCountGreaterThanEqual(roadFromRequest.getCategory(),
-                roadFromRequest.getLength(),
-                        roadFromRequest.getCount())
+                .findFirstByCategoryAndLengthGreaterThanEqual(roadFromRequest.getCategory(),
+                roadFromRequest.getLength())
                 .orElseThrow(()->
                         new NoSuchEntityException("Введены некорректные значения параметров автодороги: категория " +
                                 roadFromRequest.getCategory() +

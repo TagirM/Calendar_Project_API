@@ -1,6 +1,5 @@
 package ru.tomsknipineft.entities.linearObjects;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.Valid;
@@ -16,7 +15,6 @@ import ru.tomsknipineft.entities.areaObjects.Vvp;
 import ru.tomsknipineft.entities.enumEntities.ComplexityOfGeology;
 import ru.tomsknipineft.entities.enumEntities.GeodeticTeamType;
 import ru.tomsknipineft.utils.entityValidator.EngineeringSurveyLinearObjectsGroupSequenceProvider;
-import ru.tomsknipineft.utils.entityValidator.OnActiveCheck;
 import ru.tomsknipineft.utils.entityValidator.OnActiveEngineeringSurvey;
 
 import java.io.Serial;
@@ -91,22 +89,24 @@ public class DataFormLinearObjects implements DataFormProject, Serializable {
     // количество геодезических бригад для выполнения ИИ
     @NotNull(message = "Заполните количество геодезических бригад", groups = OnActiveEngineeringSurvey.class)
     @Min(value = 1, message = "Количество геодезических бригад не может быть меньше 1", groups = OnActiveEngineeringSurvey.class)
-    @Max(value = 5, message = "Количество геодезических бригад не должно быть больше 5", groups = OnActiveEngineeringSurvey.class)
+    @Max(value = 10, message = "Количество геодезических бригад не должно быть больше 10", groups = OnActiveEngineeringSurvey.class)
     private Integer geodeticTeam = 1;
 
     // количество буровых бригад для выполнения ИИ
     @NotNull(message = "Заполните количество буровых бригад", groups = OnActiveEngineeringSurvey.class)
     @Min(value = 1, message = "Количество буровых бригад не может быть меньше 1", groups = OnActiveEngineeringSurvey.class)
-    @Max(value = 5, message = "Количество буровых бригад не должно быть больше 5", groups = OnActiveEngineeringSurvey.class)
+    @Max(value = 10, message = "Количество буровых бригад не должно быть больше 10", groups = OnActiveEngineeringSurvey.class)
     private Integer drillingRig = 1;
 
+    // местность распространения ММГ
+    private boolean mmg = true;
+
     //    сложность геологии
-//    @NotNull(message = "Сложность геологии не указана", groups = OnActiveEngineeringSurvey.class)
     @Enumerated(EnumType.STRING)
     private ComplexityOfGeology complexityOfGeology = ComplexityOfGeology.EASY;;
 
     // не нужен РХР
-    private boolean notRhrDoc;
+    private boolean rhrDoc = true;
 
     // не нужен СЗЗ
     private boolean notSzzDoc;
@@ -115,7 +115,7 @@ public class DataFormLinearObjects implements DataFormProject, Serializable {
     @NotNull(message = "Заполните человеческий фактор")
     @Min(value = 0, message = "Человеческий фактор не может быть меньше 0")
     @Max(value = 20, message = "Человеческий фактор не должен быть больше 20")
-    private Integer humanFactor = 0;
+    private Integer humanFactor = 5;
 
     /**
      * Метод получения всех сущностей (сооружений) из DataFormOilPad

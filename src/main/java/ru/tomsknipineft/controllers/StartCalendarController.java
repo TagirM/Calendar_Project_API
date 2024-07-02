@@ -97,7 +97,7 @@ public class StartCalendarController {
             return "redirect:/oil_pad_object/backfill_well/calendar";
         }
         else if (dataFormProject.getClass() == DataFormLinearObjects.class){
-            return "redirect:/linear_object/linear_pipeline/calendar";
+            return "redirect:/linear_object/field_pipeline/calendar";
         }
         return null;
     }

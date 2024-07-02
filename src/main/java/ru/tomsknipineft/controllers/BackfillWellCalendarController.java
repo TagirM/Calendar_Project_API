@@ -90,8 +90,9 @@ public class BackfillWellCalendarController {
         model.addAttribute("dataFormOilPad", dataFormOilPad);
         model.addAttribute("fieldEngineeringSurvey", dataFormOilPad.isFieldEngineeringSurvey());
         model.addAttribute("engineeringSurveyReport", dataFormOilPad.isEngineeringSurveyReport());
-        model.addAttribute("notRhrDoc", dataFormOilPad.isNotRhrDoc());
-        model.addAttribute("notSzzDoc", dataFormOilPad.isNotSzzDoc());
+        model.addAttribute("mmg", dataFormOilPad.isMmg());
+//        model.addAttribute("notRhrDoc", dataFormOilPad.isRhrDoc());
+//        model.addAttribute("notSzzDoc", dataFormOilPad.isNotSzzDoc());
         return "result_calendar/oil-pad-result-calendar";
     }
 }

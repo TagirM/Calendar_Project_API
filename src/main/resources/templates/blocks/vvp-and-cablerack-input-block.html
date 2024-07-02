@@ -23,6 +23,10 @@
             <label for="activeHallExist">Наличие зала ожидания: </label>
             <input type="checkbox" class="form-check-input" th:field="*{vvp.hallExist}"
                    id="activeHallExist"/><br><br>
+            <label for="countVvp">Количество вертолетных площадок, шт. (не более 20 шт.): </label>
+            <input type="number" step="any" class="form-control" th:field="*{vvp.count}" id="countVvp"/>
+            <span class="text-danger" th:if="${#fields.hasErrors('vvp.count')}"
+                  th:errors="*{vvp.count}">Сount error</span><br>
             <!--                    </div>-->
             <!--                    <div class="form-group">-->
             <label for="stageVvp">Этап строительства: </label>
@@ -39,7 +43,7 @@
                    id="activeCableRack"/><br><br>
         </div>
         <div class="form-group" id="cableRackDiv" style="display: none;">
-            <label for="lengthCableRack">Протяженность кабельной эстакады, м (не более 2000): </label>
+            <label for="lengthCableRack">Протяженность кабельной эстакады, м (не более 15000 м): </label>
             <input type="number" step="any" class="form-control" th:field="*{cableRack.length}"
                    id="lengthCableRack"/>
             <span class="text-danger" th:if="${#fields.hasErrors('cableRack.length')}"

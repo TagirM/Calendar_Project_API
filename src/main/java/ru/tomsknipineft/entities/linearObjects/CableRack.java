@@ -41,7 +41,7 @@ public class CableRack implements OilPad, EntityProject, Serializable {
     //    протяженность эстакады, м
     @NotNull(message = "Длина не заполнена", groups = OnActiveCheck.class)
     @Positive(message = "Длина не может быть 0 или отрицательной", groups = OnActiveCheck.class)
-    @Max(value = 2000, message = "Не может быть больше 2000", groups = OnActiveCheck.class)
+    @Max(value = 15000, message = "Не может быть больше 15000 м", groups = OnActiveCheck.class)
     private Integer length;
 
     //    сложность геологии

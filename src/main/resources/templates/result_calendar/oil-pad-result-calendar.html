@@ -17,6 +17,8 @@
             <p class="fst-italic lh-1" th:if="${fieldEngineeringSurvey}">Количество геологических бригад:
                 [[${dataFormOilPad.drillingRig}]]</p>
             <p class="fst-italic lh-1" th:if="${engineeringSurveyReport}">Камеральные инженерные изыскания: Да</p>
+            <p class="fst-italic lh-1" th:if="${mmg and fieldEngineeringSurvey}">Территория распространения многолетнемерзлых грунтов: Да</p>
+            <p class="fst-italic lh-1" th:if="${!mmg and fieldEngineeringSurvey}">Территория распространения многолетнемерзлых грунтов: Нет</p>
             <p class="fst-italic lh-1" th:if="${engineeringSurveyReport}">
                 [[${dataFormOilPad.complexityOfGeology.title}]] в месте выполнения ИИ</p>
             <p class="fst-italic lh-1" th:if="${!engineeringSurveyReport}">Камеральные инженерные изыскания: Нет</p>
@@ -50,10 +52,10 @@
                 этап</p>
             <span class="fst-italic lh-1"
                   th:if="${dataFormOilPad.vvp.active and dataFormOilPad.vvp.helicopterModel != null and dataFormOilPad.vvp.helicopterModel != ''}">
-                Временная вертолетная площадка для [[${dataFormOilPad.vvp.helicopterModel}]] </span>
+                Временная вертолетная площадка для [[${dataFormOilPad.vvp.helicopterModel}]] в количестве [[${dataFormOilPad.vvp.count}]] шт.</span>
             <span class="fst-italic lh-1"
                   th:if="${dataFormOilPad.vvp.active and (dataFormOilPad.vvp.helicopterModel == '' or dataFormOilPad.vvp.helicopterModel == null)}">
-                Временная вертолетная площадка площадью [[${dataFormOilPad.vvp.square}]] га</span>
+                Временная вертолетная площадка площадью [[${dataFormOilPad.vvp.square}]] га в количестве [[${dataFormOilPad.vvp.count}]] шт.</span>
             <span class="fst-italic lh-1" th:if="${dataFormOilPad.vvp.hallExist}"> с залом ожидания</span>
             <span class="fst-italic lh-1"
                   th:if="${dataFormOilPad.vvp.active}"> - [[${dataFormOilPad.vvp.stage}]] этап</span><br><br>

@@ -1,0 +1,111 @@
+2024-06-28T22:51:06.054+0700 INFO info message
+2024-06-28T22:51:06.054+0700 ERROR info message
+2024-06-28T22:51:06.154+0700 INFO info message
+2024-06-28T22:51:06.154+0700 ERROR info message
+2024-06-28T22:51:06.410+0700 INFO HV000001: Hibernate Validator 8.0.1.Final
+2024-06-28T22:51:06.437+0700 INFO Starting Main using Java 19.0.1 with PID 13040 (E:\MyJob\calendar_api\target\classes started by Тагир in E:\MyJob\calendar_api)
+2024-06-28T22:51:06.441+0700 INFO No active profile set, falling back to 1 default profile: "default"
+2024-06-28T22:51:06.632+0700 INFO Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-06-28T22:51:06.632+0700 INFO For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-06-28T22:51:07.181+0700 INFO Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-28T22:51:07.246+0700 INFO Finished Spring Data repository scanning in 60 ms. Found 12 JPA repository interfaces.
+2024-06-28T22:51:07.671+0700 INFO Tomcat initialized with port 8080 (http)
+2024-06-28T22:51:07.679+0700 INFO Initializing ProtocolHandler ["http-nio-8080"]
+2024-06-28T22:51:07.682+0700 INFO Starting service [Tomcat]
+2024-06-28T22:51:07.682+0700 INFO Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-06-28T22:51:07.716+0700 INFO Initializing Spring embedded WebApplicationContext
+2024-06-28T22:51:07.716+0700 INFO Root WebApplicationContext: initialization completed in 1084 ms
+2024-06-28T22:51:07.754+0700 INFO HikariPool-1 - Starting...
+2024-06-28T22:51:07.837+0700 INFO HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-06-28T22:51:07.838+0700 INFO HikariPool-1 - Start completed.
+2024-06-28T22:51:07.847+0700 INFO H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-06-28T22:51:07.921+0700 INFO HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-28T22:51:07.976+0700 INFO HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-06-28T22:51:07.987+0700 INFO HHH000026: Second-level cache disabled
+2024-06-28T22:51:08.121+0700 INFO No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-28T22:51:08.154+0700 WARN HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-28T22:51:09.254+0700 INFO HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-28T22:51:09.308+0700 INFO Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-28T22:51:09.977+0700 WARN spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-28T22:51:09.987+0700 INFO Adding welcome page template: index
+2024-06-28T22:51:10.354+0700 WARN Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #76 of file [E:\MyJob\calendar_api\target\classes\data.sql]: INSERT INTO vvps (id, active, object_type, helicopter_model, lighting_equipment, hall_exist, square, count, stage, resource_for_eng_geodetic_survey, resource_for_eng_geological_survey, resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc) VALUES (1, 'true', 'AREA', 'МИ-8', 'false', 'false', 1, 1, 1, 3, 2, 10, 7, 14, 26, 10)
+2024-06-28T22:51:10.354+0700 INFO Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-28T22:51:10.354+0700 WARN Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже закрыта (чтобы отключить автоматическое закрытие базы данных при останове JVM, добавьте ";DB_CLOSE_ON_EXIT=FALSE" в URL)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-06-28T22:51:10.354+0700 INFO HikariPool-1 - Shutdown initiated...
+2024-06-28T22:51:10.369+0700 INFO HikariPool-1 - Shutdown completed.
+2024-06-28T22:51:10.372+0700 INFO Stopping service [Tomcat]
+2024-06-28T22:51:10.383+0700 INFO 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-06-28T22:51:10.387+0700 ERROR Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Failed to execute SQL script statement #76 of file [E:\MyJob\calendar_api\target\classes\data.sql]: INSERT INTO vvps (id, active, object_type, helicopter_model, lighting_equipment, hall_exist, square, count, stage, resource_for_eng_geodetic_survey, resource_for_eng_geological_survey, resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc) VALUES (1, 'true', 'AREA', 'МИ-8', 'false', 'false', 1, 1, 1, 3, 2, 10, 7, 14, 26, 10)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1773) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:312) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:959) ~[spring-context-6.1.3.jar:6.1.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.3.jar:6.1.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) [spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) [spring-boot-3.2.2.jar:3.2.2]
+	at ru.tomsknipineft.Main.main(Main.java:20) [classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.2.2.jar:3.2.2]
+Caused by: org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #76 of file [E:\MyJob\calendar_api\target\classes\data.sql]: INSERT INTO vvps (id, active, object_type, helicopter_model, lighting_equipment, hall_exist, square, count, stage, resource_for_eng_geodetic_survey, resource_for_eng_geological_survey, resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc) VALUES (1, 'true', 'AREA', 'МИ-8', 'false', 'false', 1, 1, 1, 3, 2, 10, 7, 14, 26, 10)
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:282) ~[spring-jdbc-6.1.3.jar:6.1.3]
+	at org.springframework.jdbc.datasource.init.ResourceDatabasePopulator.populate(ResourceDatabasePopulator.java:254) ~[spring-jdbc-6.1.3.jar:6.1.3]
+	at org.springframework.jdbc.datasource.init.DatabasePopulatorUtils.execute(DatabasePopulatorUtils.java:54) ~[spring-jdbc-6.1.3.jar:6.1.3]
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.runScripts(DataSourceScriptDatabaseInitializer.java:87) ~[spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.runScripts(AbstractScriptDatabaseInitializer.java:146) ~[spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:108) ~[spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyDataScripts(AbstractScriptDatabaseInitializer.java:102) ~[spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:77) ~[spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:66) ~[spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1820) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1769) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 21 more
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "COUNT" не найден
+Column "COUNT" not found; SQL statement:
+INSERT INTO vvps (id, active, object_type, helicopter_model, lighting_equipment, hall_exist, square, count, stage, resource_for_eng_geodetic_survey, resource_for_eng_geological_survey, resource_for_lab_research, resource_for_eng_survey_report, resource_for_work_doc, resource_for_proj_doc, resource_for_est_doc) VALUES (1, 'true', 'AREA', 'МИ-8', 'false', 'false', 1, 1, 1, 3, 2, 10, 7, 14, 26, 10) [42122-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.table.Table.getColumn(Table.java:759) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parseColumn(Parser.java:1190) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parseColumnList(Parser.java:1175) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parseInsert(Parser.java:1549) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parsePrepared(Parser.java:719) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parse(Parser.java:592) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parse(Parser.java:564) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.prepareCommand(Parser.java:483) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.2.224.jar:2.2.224]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:?]
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:261) ~[spring-jdbc-6.1.3.jar:6.1.3]
+	at org.springframework.jdbc.datasource.init.ResourceDatabasePopulator.populate(ResourceDatabasePopulator.java:254) ~[spring-jdbc-6.1.3.jar:6.1.3]
+	at org.springframework.jdbc.datasource.init.DatabasePopulatorUtils.execute(DatabasePopulatorUtils.java:54) ~[spring-jdbc-6.1.3.jar:6.1.3]
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.runScripts(DataSourceScriptDatabaseInitializer.java:87) ~[spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.runScripts(AbstractScriptDatabaseInitializer.java:146) ~[spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:108) ~[spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyDataScripts(AbstractScriptDatabaseInitializer.java:102) ~[spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:77) ~[spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:66) ~[spring-boot-3.2.2.jar:3.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1820) ~[spring-beans-6.1.3.jar:6.1.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1769) ~[spring-beans-6.1.3.jar:6.1.3]
+	... 21 more

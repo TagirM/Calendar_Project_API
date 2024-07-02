@@ -46,6 +46,8 @@ public class CalendarService {
     // Константа с количеством дней необходимых изыскателям в поле на дорогу, составление и согласование актов полевых ИИ,
     // а также согласования топографии объекта проеткирования с проектировщиками и изыскателями
     final static int ENGINEERING_SURVEY_CONSTANTS_DAYS = 15;
+    // коэффициент уменьшения ресурсов ИГИ если на территории нет ММГ
+    final static int WITHOUT_MMG = 2;
     // Константа с количеством дней необходимых проектному офису для сбора и передачи документации заказчику с учетом всех процедур
     final static int PROJECT_OFFICE_DAYS = 2;
     // Константа с количеством дней, необходимых 2м проектным отделам для обмена заданиями в рамках РД
@@ -304,14 +306,19 @@ public class CalendarService {
                 engineeringAndEnvironmentalSurveysFinish = dateService.recalculationResourcesInCalendarDate(ENGINEERING_ENVIRONMENTAL_REPORT_DURATION, seasonalEngineeringSurveysStart);
                 historicalAndCulturalResearchFinish = dateService.recalculationResourcesInCalendarDate(HISTORICAL_CULTURAL_RESEARCH_DURATION, seasonalEngineeringSurveysStart);
 
-                // При расчете ресурсов для полевых ИИ учитываются ресурсы геодезических и геологических ИИ с поправкой на размер геодезической
-                // бригады (getGeodeticTeamType().getValue()), количество геодезических (getGeodeticTeam) и гелогических (getDrillingRig) бригад, а также
-                // с попракой на коэффициент человеческого фактора, форс-мажор, непредвиденных (humanFactor)
+                // При расчете ресурсов для полевых ИИ учитываются ресурсы геодезических и геологических ИИ с поправкой на размер
+                // геодезической бригады (getGeodeticTeamType().getValue()), количество геодезических (getGeodeticTeam) и
+                //  гелогических (getDrillingRig) бригад, а также с учетом наличия на территории зон с/без ММГ и
+                //  с попракой на коэффициент человеческого фактора, форс-мажор, непредвиденных (humanFactor)
+                int correctionFactorsForMMG = 1;
+                if (!dataFormProject.isMmg()){
+                    correctionFactorsForMMG = WITHOUT_MMG;
+                }
                 resourcesForTotalEngSurveyWithCorrectionsFactors = ((int) ((resourcesEngGeodeticSurvey.get(stageNumber) /
                         dataFormProject.getGeodeticTeamType().getValue() /
                         dataFormProject.getGeodeticTeam()) +
-                        resourcesEngGeologicalSurvey.get(stageNumber) /
-                                dataFormProject.getDrillingRig()) *
+                        (resourcesEngGeologicalSurvey.get(stageNumber) /
+                                dataFormProject.getDrillingRig())/correctionFactorsForMMG) *
                         (humanFactor + 100)) / 100 + ENGINEERING_SURVEY_CONSTANTS_DAYS;
                 // Расчет ЛИ с попракой на коэффициент человеческого фактора, форс-мажор, непредвиденных (humanFactor)
                 resourcesForLabResearchWithHumanFactor = (resourcesLabResearch.get(stageNumber) * (humanFactor + 100)) / 100;
@@ -455,7 +462,7 @@ public class CalendarService {
             LocalDate landFinish = dateService.workDay(calendarDayFinishProjDoc.plusDays(LAND_DURATION));
 
             // дата окончания разработки РХР текущего этапа строительства
-            if (!dataFormProject.isNotRhrDoc()) {
+            if (dataFormProject.isRhrDoc()) {
                 rhrFinish = dateService.recalculationResourcesInCalendarDate(RHR_DURATION, calendarDayFinishProjDoc);
             }
 
