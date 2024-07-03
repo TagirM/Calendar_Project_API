@@ -392,21 +392,22 @@ public class CalendarService {
                 // проверяем, тип объекта AREA ли в текущем и предыдущих этапах
                 // если типы объектов разные, то смещать не требуется, если встретились одинаковые - смещение возможно, если есть пересечение
                 while (stageNumber - stageBack > 0) {
-                    if (activeObjectTypeByStage.get(stageNumber - stageBack).contains(ObjectType.AREA) && activeObjectTypeByStage.get(stageNumber).contains(ObjectType.AREA)) {
-                        // получаем календарь найденного этапа с типом объекта AREA
-                        previousCalendar = calendarRepository.findCalendarByCodeContractAndStage(dataFormProject.getCodeContract(), stageNumber - stageBack).orElseThrow();
-                        isStageOffsetPSD = true;
+                    if (resourcesWorkDoc.containsKey(stageNumber - stageBack)){
+                        if (activeObjectTypeByStage.get(stageNumber - stageBack).contains(ObjectType.AREA) && activeObjectTypeByStage.get(stageNumber).contains(ObjectType.AREA)) {
+                            // получаем календарь найденного этапа с типом объекта AREA
+                            previousCalendar = calendarRepository.findCalendarByCodeContractAndStage(dataFormProject.getCodeContract(), stageNumber - stageBack).orElseThrow();
+                            isStageOffsetPSD = true;
+                        }
+                        // если пересечение одинаковых типов есть, то начало выполнения РД текущего этапа строительства сместить после окончания РД
+                        // предыдущего (или предпред...идущего) этапа (дата очищена от приведения сроков к дате актирования, а также ресурсов необходимых
+                        // для актирования)
+                        if (isStageOffsetPSD && calendarDayStartWorkDoc.isBefore(previousCalendar.getRealWorkingFinish())) {
+                            // количество дней смещения выполнения РД текущего этапа
+                            stageOffsetRD = (int) DAYS.between(calendarDayStartWorkDoc, previousCalendar.getRealWorkingFinish());
+                        }
+                        // завершаем цикл, если нашелся этап с типом объекта AREA
+                        if (isStageOffsetPSD) break;
                     }
-
-                    // если пересечение одинаковых типов есть, то начало выполнения РД текущего этапа строительства сместить после окончания РД
-                    // предыдущего (или предпред...идущего) этапа (дата очищена от приведения сроков к дате актирования, а также ресурсов необходимых
-                    // для актирования)
-                    if (isStageOffsetPSD && calendarDayStartWorkDoc.isBefore(previousCalendar.getRealWorkingFinish())) {
-                        // количество дней смещения выполнения РД текущего этапа
-                        stageOffsetRD = (int) DAYS.between(calendarDayStartWorkDoc, previousCalendar.getRealWorkingFinish());
-                    }
-                    // завершаем цикл, если нашелся этап с типом объекта AREA
-                    if (isStageOffsetPSD) break;
                     stageBack++;
                 }
             }
@@ -503,7 +504,8 @@ public class CalendarService {
                         .setEngineeringSurveyLabResearchAndReportStart(calendarDayStartLabResearch)
                         .setEngineeringSurveyReportFinish(dateService.checkDeadlineForActivation(dateService.
                                         recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, calendarDayFinishEngSurveyReport)))
-                        .setAgreementEngineeringSurvey(dateService.checkDeadlineForActivation(finishAgreementEngineeringSurveyReport))
+                        .setAgreementEngineeringSurvey(dateService.checkDeadlineForActivation(dateService.
+                                        recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, finishAgreementEngineeringSurveyReport)))
                         .setSeasonalEngineeringSurveysStart(seasonalEngineeringSurveysStart)
                         .setEngineeringAndEnvironmentalSurveysFinish(dateService.checkDeadlineForActivation(dateService.
                                         recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, engineeringAndEnvironmentalSurveysFinish)))
@@ -513,17 +515,21 @@ public class CalendarService {
                         .setRealWorkingFinish(calendarDayFinishWorkDoc)
                         .setWorkingFinish(dateService.checkDeadlineForActivation(dateService.
                                         recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, calendarDayFinishWorkDoc)))
-                        .setAgreementWorking(dateService.checkDeadlineForActivation(agreementWorkingFinish))
+                        .setAgreementWorking(dateService.checkDeadlineForActivation(dateService.
+                                        recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, agreementWorkingFinish)))
                         .setEstimatesStart(calendarDayStartEstDoc)
                         .setEstimatesFinish(dateService.checkDeadlineForActivation(dateService.
                                         recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, calendarDayFinishEstDoc)))
-                        .setAgreementEstimates(dateService.checkDeadlineForActivation(agreementEstimatesFinish))
+                        .setAgreementEstimates(dateService.checkDeadlineForActivation(dateService.
+                                        recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, agreementEstimatesFinish)))
                         .setProjectStart(calendarDayStartProjDoc)
                         .setRealProjectFinish(calendarDayFinishProjDoc)
                         .setProjectFinish(dateService.checkDeadlineForActivation(dateService.
                                         recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, calendarDayFinishProjDoc)))
-                        .setAgreementProject(dateService.checkDeadlineForActivation(agreementProjectFinish))
-                        .setExamination(dateService.checkDeadlineForActivation(examinationProjectFinish))
+                        .setAgreementProject(dateService.checkDeadlineForActivation(dateService.
+                                        recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, agreementProjectFinish)))
+                        .setExamination(dateService.checkDeadlineForActivation(dateService.
+                                        recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, examinationProjectFinish)))
                         .setLandFinish(dateService.checkDeadlineForActivation(dateService.
                                         recalculationResourcesInCalendarDate(PREPARING_MATERIALS_FOR_ACTIVATION, landFinish)))
                         .setRhrFinish(dateService.checkDeadlineForActivation(dateService.

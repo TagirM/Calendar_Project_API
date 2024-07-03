@@ -214,7 +214,7 @@ public class ExcelTemplateCreateCalendarImpl implements ExcelTemplateCreate {
                             {null, "Рабочая документация  (5%, выдача сметной документации ОГ)",
                                     dateService.dateFormatter(calendar.getEstimatesStart()), dateService.dateFormatter(calendar.getEstimatesFinish())},
                             {null, "Рабочая документация  (5%, согласование сметной документации с ОГ и УВЭ)",
-                                    dateService.dateFormatter(calendar.getEngineeringSurveyReportFinish()), dateService.dateFormatter(calendar.getAgreementEstimates())}};
+                                    dateService.dateFormatter(calendar.getEstimatesFinish()), dateService.dateFormatter(calendar.getAgreementEstimates())}};
             String[][] valuesCellsPD =
                     {{null, "Проектная документация", dateService.dateFormatter(calendar.getWorkingFinish()), dateService.dateFormatter(calendar.getExamination())},
                             {null, "Проектная документация (60%, выдача документации ОГ)",

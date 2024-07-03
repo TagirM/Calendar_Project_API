@@ -282,7 +282,7 @@ public class ExcelTemplateCreateFirstLevelScheduleImpl implements ExcelTemplateC
                                     dateService.dateFormatter(calendar.getEstimatesStart()), null,
                                     dateService.dateFormatter(calendar.getEstimatesFinish()), null, null, null, null},
                             {null, null, "Рабочая документация  (5%, согласование сметной документации с ОГ и УВЭ)", null, null, null, null,
-                                    dateService.dateFormatter(calendar.getEngineeringSurveyReportFinish()), null,
+                                    dateService.dateFormatter(calendar.getEstimatesFinish()), null,
                                     dateService.dateFormatter(calendar.getAgreementEstimates()), null, null, null, null}};
             String[][] valuesCellsPD =
                     {{"Проектная документация", null, null, null, null, null, null, null, null, null, null, null, null, null},

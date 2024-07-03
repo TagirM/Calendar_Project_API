@@ -2,7 +2,13 @@
     <script th:inline="javascript">
         document.addEventListener("DOMContentLoaded", function() {
             var checkbox = document.getElementById("fieldEngineeringSurvey");
+            checkbox.checked = localStorage.getItem("fieldEngineeringSurveyChecked") === "true";
+
             toggleInputEngineeringSurvey(checkbox);
+
+            checkbox.addEventListener("change", function() {
+                localStorage.setItem("fieldEngineeringSurveyChecked", checkbox.checked);
+            });
         });
 
         function toggleInputEngineeringSurvey(checkbox) {
