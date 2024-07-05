@@ -33,7 +33,8 @@
                    id="fieldEngineeringSurvey"/><br>
             <label for="engineeringSurveyReport">Выполняются только камеральные инженерные
                 изыскания: </label>
-            <input type="checkbox" class="form-check-input" th:field="*{engineeringSurveyReport}"
+            <input type="checkbox" class="form-check-input" th:onclick="'toggleInputEngineeringReport(this)'"
+                   th:field="*{engineeringSurveyReport}"
                    id="engineeringSurveyReport"/><br><br>
             <div class="form-group" id="engineeringSurveyDiv">
                 <label>Какого размера геодезическую бригаду планируется привлекать: </label><br>
@@ -57,9 +58,11 @@
             <label for="mmgII"><h6>Территория распространения многолетнемерзлых грунтов: </h6></label>
             <input type="checkbox" class="form-check-input" th:field="*{mmg}"
                    id="mmgII"/><br><br>
+        </div>
+        <div class="form-group">
             <label><h6>Сложность геологии в районе выполнения ИИ</h6></label><br>
             <input type="radio" class="form-check-input me-1" step="any" th:field="*{complexityOfGeology}"
-                   id="complexityOfGeologyLine1" value="EASY" checked>
+                   id="complexityOfGeologyLine1" value="EASY">
             <label class="form-check-label" for="complexityOfGeologyLine1">Простая</label><br>
             <input type="radio" class="form-check-input me-1" step="any" th:field="*{complexityOfGeology}"
                    id="complexityOfGeologyLine2" value="MEDIUM">

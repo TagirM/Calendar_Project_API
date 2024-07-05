@@ -106,8 +106,8 @@ public class Calendar {
 
     // сохранение в виде файла данных о проекте
     @Lob
-//    @Column(name = "bytes_data_project", columnDefinition = "LONGBLOB") // Для БД H2
-    @Column(name = "bytes_data_project") // Для БД PostgresSQL
+    @Column(name = "bytes_data_project", columnDefinition = "LONGBLOB") // Для БД H2
+//    @Column(name = "bytes_data_project") // Для БД PostgresSQL
     private byte[] bytesDataProject;
 
     @PrePersist

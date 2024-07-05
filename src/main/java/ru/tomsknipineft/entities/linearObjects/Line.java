@@ -39,8 +39,6 @@ public class Line implements OilPad, EntityProject, Serializable {
     @Enumerated(EnumType.STRING)
     private ObjectType objectType;
 
-    //    мощность ВЛ (или габариты ВЛ)
-//    @NotNull(message = "Мощность не выбрана", groups = OnActiveCheck.class)
     @Column(name = "power")
     @Enumerated(EnumType.STRING)
     private LinePower power = LinePower.LINE10;
@@ -53,7 +51,7 @@ public class Line implements OilPad, EntityProject, Serializable {
 
     //    этап строительства
     @NotNull(message = "Этап не заполнен", groups = OnActiveCheck.class)
-    @Min(value = 1, message = "Сan not be less than 1", groups = OnActiveCheck.class)
+    @Min(value = 1, message = "Не может быть меньше 1", groups = OnActiveCheck.class)
     private Integer stage;
 
     //    необходимые ресурсы для выполнения геодезических полевых ИИ, чел/дней

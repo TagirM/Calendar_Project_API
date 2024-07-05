@@ -1,46 +1,58 @@
 <th:block lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="toggle-input">
     <script th:inline="javascript">
-        var roadChecked = document.getElementById('activeRoad').checked;
-        var lineChecked = document.getElementById('activeLine').checked;
-        var vvpChecked = document.getElementById('activeVvp').checked;
-        var cableRackChecked = document.getElementById('activeCableRack').checked;
-        var mupnChecked = document.getElementById('activeMupn').checked;
-        var vecChecked = document.getElementById('activeVec').checked;
-        var vjkChecked = document.getElementById('activeVjk').checked;
-        var mpsChecked = document.getElementById('activeMps').checked;
+        document.addEventListener("DOMContentLoaded", function() {
+            var roadChecked = document.getElementById('activeRoad');
+            var lineChecked = document.getElementById('activeLine');
+            var vvpChecked = document.getElementById('activeVvp');
+            var cableRackChecked = document.getElementById('activeCableRack');
+            var mupnChecked = document.getElementById('activeMupn');
+            var vecChecked = document.getElementById('activeVec');
+            var vjkChecked = document.getElementById('activeVjk');
+            var mpsChecked = document.getElementById('activeMps');
 
-        if (roadChecked) {
-            document.getElementById('roadDiv').style.display = 'inline';
-        }
+            // roadChecked.checked = localStorage.getItem("activeRoadChecked") === "true";
+            // lineChecked.checked = localStorage.getItem("activeLineChecked") === "true";
+            // vvpChecked.checked = localStorage.getItem("activeVvpChecked") === "true";
+            // cableRackChecked.checked = localStorage.getItem("activeCableRackChecked") === "true";
+            // mupnChecked.checked = localStorage.getItem("activeMupnChecked") === "true";
+            // vecChecked.checked = localStorage.getItem("activeVecChecked") === "true";
+            // vjkChecked.checked = localStorage.getItem("activeVjkChecked") === "true";
+            // mpsChecked.checked = localStorage.getItem("activeMpsChecked") === "true";
 
-        if (lineChecked) {
-            document.getElementById('lineDiv').style.display = 'inline';
-        }
+            toggleInputRoad(roadChecked);
+            toggleInputLine(lineChecked);
+            toggleInputMupn(mupnChecked);
+            toggleInputVec(vecChecked);
+            toggleInputVvp(vvpChecked);
+            toggleInputCableRack(cableRackChecked);
+            toggleInputVjk(vjkChecked);
+            toggleInputMps(mpsChecked);
 
-        if (vvpChecked) {
-            document.getElementById('vvpDiv').style.display = 'inline';
-        }
-
-        if (cableRackChecked) {
-            document.getElementById('cableRackDiv').style.display = 'inline';
-        }
-
-        if (mupnChecked) {
-            document.getElementById('mupnDiv').style.display = 'inline';
-        }
-
-        if (vecChecked) {
-            document.getElementById('vecDiv').style.display = 'inline';
-        }
-
-        if (vjkChecked) {
-            document.getElementById('vjkDiv').style.display = 'inline';
-        }
-
-        if (mpsChecked) {
-            document.getElementById('mpsDiv').style.display = 'inline';
-        }
-
+            // roadChecked.addEventListener("change", function() {
+            //     localStorage.setItem("activeRoadChecked", roadChecked.checked);
+            // });
+            // lineChecked.addEventListener("change", function() {
+            //     localStorage.setItem("activeLineChecked", lineChecked.checked);
+            // });
+            // vvpChecked.addEventListener("change", function() {
+            //     localStorage.setItem("activeVvpChecked", vvpChecked.checked);
+            // });
+            // cableRackChecked.addEventListener("change", function() {
+            //     localStorage.setItem("activeCableRackChecked", cableRackChecked.checked);
+            // });
+            // mupnChecked.addEventListener("change", function() {
+            //     localStorage.setItem("activeMupnChecked", mupnChecked.checked);
+            // });
+            // vecChecked.addEventListener("change", function() {
+            //     localStorage.setItem("activeVecChecked", vecChecked.checked);
+            // });
+            // vjkChecked.addEventListener("change", function() {
+            //     localStorage.setItem("activeVjkChecked", vjkChecked.checked);
+            // });
+            // mpsChecked.addEventListener("change", function() {
+            //     localStorage.setItem("activeMpsChecked", mpsChecked.checked);
+            // });
+        });
         function toggleInputRoad(checkbox) {
             var inputFieldRoad = document.getElementById('roadDiv');
             if (checkbox.checked) {
@@ -58,6 +70,7 @@
                 inputFieldLine.style.display = 'none';
             }
         }
+
         function toggleInputMupn(checkbox) {
             var inputFieldMupn = document.getElementById('mupnDiv');
             if (checkbox.checked) {
@@ -66,6 +79,7 @@
                 inputFieldMupn.style.display = 'none';
             }
         }
+
         function toggleInputVec(checkbox) {
             var inputFieldVec = document.getElementById('vecDiv');
             if (checkbox.checked) {
@@ -74,6 +88,7 @@
                 inputFieldVec.style.display = 'none';
             }
         }
+
         function toggleInputVvp(checkbox) {
             var inputFieldVvp = document.getElementById('vvpDiv');
             if (checkbox.checked) {
@@ -82,6 +97,7 @@
                 inputFieldVvp.style.display = 'none';
             }
         }
+
         function toggleInputCableRack(checkbox) {
             var inputFieldCableRack = document.getElementById('cableRackDiv');
             if (checkbox.checked) {
@@ -90,6 +106,7 @@
                 inputFieldCableRack.style.display = 'none';
             }
         }
+
         function toggleInputVjk(checkbox) {
             var inputFieldVjk = document.getElementById('vjkDiv');
             if (checkbox.checked) {
@@ -98,6 +115,7 @@
                 inputFieldVjk.style.display = 'none';
             }
         }
+
         function toggleInputMps(checkbox) {
             var inputFieldMps = document.getElementById('mpsDiv');
             if (checkbox.checked) {

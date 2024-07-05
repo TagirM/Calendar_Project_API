@@ -41,7 +41,6 @@ public class Pipeline  implements OilPad, EntityProject, Serializable {
     private ObjectType objectType;
 
     // способ прокладки трубопровода
-//    @NotNull(message = "Способ прокладки не указан", groups = OnActiveCheck.class)
     @Column(name = "pipeline_laying_method")
     @Enumerated(EnumType.STRING)
     private PipelineLayingMethod pipelineLayingMethod = PipelineLayingMethod.ABOVEGROUND;
@@ -71,8 +70,9 @@ public class Pipeline  implements OilPad, EntityProject, Serializable {
     private Integer unitsSOD = 0;
 
     //    этап строительства
+    @NotNull(message = "Данное поле не может быть пустым")
     @Min(value = 1, message = "Не может быть меньше 1", groups = OnActiveCheck.class)
-    private Integer stage;
+    private Integer stage = 1;
 
     //    необходимые ресурсы для выполнения геодезических полевых ИИ, чел/дней
     @Column(name = "resource_for_eng_geodetic_survey")

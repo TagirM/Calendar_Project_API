@@ -71,7 +71,7 @@ public class DataFormOilPad implements DataFormProject, Serializable {
     private CableRack cableRack = new CableRack();
 
     // есть ли полевые ИИ
-    private boolean fieldEngineeringSurvey;
+    private boolean fieldEngineeringSurvey = true;
 
     // есть ли камеральные ИИ
     private boolean engineeringSurveyReport;

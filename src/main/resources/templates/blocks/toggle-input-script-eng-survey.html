@@ -2,24 +2,33 @@
     <script th:inline="javascript">
         document.addEventListener("DOMContentLoaded", function() {
             var checkbox = document.getElementById("fieldEngineeringSurvey");
-            checkbox.checked = localStorage.getItem("fieldEngineeringSurveyChecked") === "true";
+            var checkboxReport = document.getElementById("engineeringSurveyReport");
+
+            // checkbox.checked = localStorage.getItem("fieldEngineeringSurveyChecked") === "true";
+            // checkboxReport.checked = localStorage.getItem("engineeringSurveyReportChecked") === "true";
 
             toggleInputEngineeringSurvey(checkbox);
+            toggleInputEngineeringReport(checkboxReport);
 
-            checkbox.addEventListener("change", function() {
-                localStorage.setItem("fieldEngineeringSurveyChecked", checkbox.checked);
-            });
+            // checkbox.addEventListener("change", function() {
+            //     localStorage.setItem("fieldEngineeringSurveyChecked", checkbox.checked);
+            // });
+            // checkboxReport.addEventListener("change", function() {
+            //     localStorage.setItem("engineeringSurveyReportChecked", checkboxReport.checked);
+            // });
         });
 
         function toggleInputEngineeringSurvey(checkbox) {
             var geodeticTeamType1 = document.getElementById("geodeticTeamType1");
             var geodeticTeam = document.getElementById("geodeticTeam");
             var drillingRig = document.getElementById("drillingRig");
+            var engineeringSurveyReport = document.getElementById("engineeringSurveyReport");
 
             if (checkbox.checked) {
                 geodeticTeamType1.disabled = false;
                 geodeticTeam.disabled = false;
                 drillingRig.disabled = false;
+                engineeringSurveyReport.disabled = true;
 
                 geodeticTeamType1.value = "ENLARGED";
                 geodeticTeam.value = "1";
@@ -28,11 +37,17 @@
                 geodeticTeamType1.disabled = true;
                 geodeticTeam.disabled = true;
                 drillingRig.disabled = true;
+                engineeringSurveyReport.disabled = false;
 
                 geodeticTeamType1.value = "";
                 geodeticTeam.value = "";
                 drillingRig.value = "";
             }
+        }
+
+        function toggleInputEngineeringReport(checkboxReport) {
+            var fieldEngineeringSurvey = document.getElementById("fieldEngineeringSurvey");
+            fieldEngineeringSurvey.disabled = !!checkboxReport.checked;
         }
     </script>
 </th:block>

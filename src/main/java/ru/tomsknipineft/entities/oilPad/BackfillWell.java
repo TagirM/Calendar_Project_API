@@ -33,14 +33,15 @@ public class BackfillWell implements OilPad, EntityProject, Serializable {
     private ObjectType objectType;
 
     //    количество скважин
-    @NotNull(message = "The well should not be empty")
-    @Min(value = 1, message = "Сan not be less than 1")
-    @Max(value = 24, message = "Сan not be more than 24")
+    @NotNull(message = "Данное поле не может быть пустым")
+    @Min(value = 1, message = "Не может быть меньше 1")
+    @Max(value = 24, message = "Не может быть больше 24")
     private Integer well;
 
     //    этап строительства
-    @Min(value = 1, message = "Сan not be less than 1")
-    private Integer stage;
+    @NotNull(message = "Данное поле не может быть пустым")
+    @Min(value = 1, message = "Не может быть меньше 1")
+    private Integer stage = 1;
 
     //    необходимые ресурсы для выполнения геодезических полевых ИИ, чел/дней
     @Column(name = "resource_for_eng_geodetic_survey")

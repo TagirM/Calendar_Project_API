@@ -18,8 +18,8 @@ import java.util.List;
 @Service
 public class ExcelFileCreateService {
 
-//    private static final String pathFile = "log-service/downloads_calendar/";// для запуска с IDE на компьютере
-    private static final String pathFile = "/log-service/downloads_calendar/";// для запуска приложения на сервере
+    private static final String pathFile = "log-service/downloads_calendar/";// для запуска с IDE на компьютере
+//    private static final String pathFile = "/log-service/downloads_calendar/";// для запуска приложения на сервере
 
     /**
      * Метод формирования ExcelFile с параметрами: наименованием файла и потоком байт файла типа ByteArrayResource
