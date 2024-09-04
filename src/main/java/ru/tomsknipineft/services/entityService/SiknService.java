@@ -30,9 +30,6 @@ public class SiknService implements EntityProjectService {
      */
     @Cacheable(key = "new org.springframework.cache.interceptor.SimpleKey(#siknFromRequest.siknType, #siknFromRequest.capacity)")
     public Sikn getFindSiknFromRequest(Sikn siknFromRequest) {
-        // как мне кажется такое форматирование лучше, удобнее использовать
-        // ПОПРАВИЛ ВЕЗДЕ
-
         return siknRepository
                 .findFirstBySiknTypeAndCapacityGreaterThanEqual(siknFromRequest.getSiknType(),
                         siknFromRequest.getCapacity())

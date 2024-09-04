@@ -1,6 +1,5 @@
 package ru.tomsknipineft.controllers;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
@@ -15,7 +14,6 @@ import ru.tomsknipineft.entities.DataFormProject;
 import ru.tomsknipineft.entities.linearObjects.DataFormLinearObjects;
 import ru.tomsknipineft.entities.oilPad.DataFormOilPad;
 import ru.tomsknipineft.services.CalendarService;
-import ru.tomsknipineft.utils.exceptions.NoSuchCalendarException;
 
 import java.util.List;
 
@@ -83,13 +81,6 @@ public class StartCalendarController {
     @Transactional
     @GetMapping("/codeContract")
     public String outputCalendar(@RequestParam String codeContract, HttpSession session){
-//        long startTime = System.currentTimeMillis();
-//        List<Calendar> calendars = calendarService.getCalendarByCode(codeContract);
-//        long executionTime = System.currentTimeMillis() - startTime;
-//        logger.info("Получение календаря из БД заняло время " + executionTime);
-//        if (calendars.size() == 0){
-//            throw new  NoSuchCalendarException("Календарь по указанному шифру " + codeContract + " отсутствует в базе данных");
-//        }
         List<Calendar> calendars = calendarService.getCalendarByCode(codeContract);
         DataFormProject dataFormProject = calendarService.getDataFormProject(calendars);
         session.setAttribute("codeContract", codeContract);

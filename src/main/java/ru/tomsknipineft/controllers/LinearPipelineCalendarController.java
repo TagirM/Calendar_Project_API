@@ -69,8 +69,6 @@ public class LinearPipelineCalendarController {
         model.addAttribute("fieldEngineeringSurvey", dataFormLinearObjects.isFieldEngineeringSurvey());
         model.addAttribute("engineeringSurveyReport", dataFormLinearObjects.isEngineeringSurveyReport());
         model.addAttribute("mmg", dataFormLinearObjects.isMmg());
-//        model.addAttribute("notRhrDoc", dataFormLinearObjects.isRhrDoc());
-//        model.addAttribute("notSzzDoc", dataFormLinearObjects.isNotSzzDoc());
         return "result_calendar/linear-object-result-calendar";
     }
 }

@@ -33,26 +33,10 @@ public class CalendarRestController {
     @Transactional
     @GetMapping("/calendar/to_desktop")
     public ResponseEntity<Resource> uploadingCalendar(@RequestParam("codeContract") String codeContract){
-        // todo обычно строки от 40 до 46 это метод сервиса
-        // подсчет времени делал просто для себя, измерял время с кэшем и без, закомментировал
-        // код перенес в calendarService, оставил только excelFile и логи
-
-//        long startTime = System.currentTimeMillis();
-//        List<Calendar> calendars = calendarService.getCalendarByCode(codeContract);
-//        long executionTime = System.currentTimeMillis() - startTime;
-//        logger.info("Получение календаря из БД заняло время " + executionTime);
         List<Calendar> calendars = calendarService.getCalendarByCode(codeContract);
         ExcelFile excelFile = calendarService.createFileCalendarExcel(calendars);
         logger.info("Скачан календарь по шифру " + codeContract);
         calendarService.evictCacheCalendar();
-        // todo правильнее объединить методы excelCreatedService.getFileName(calendars) excelCreatedService.resource(calendars)
-        // с тем чтоб результатом был объект состоящий из двух полей строка и ByteArrayResource
-        // грубо говоря public ExcelFile getExcelFile(calendars){
-        // ExcelFile fileResult = new ExcelFile(excelCreatedService.getFileName(calendars), excelCreatedService.resource(calendars))
-        // return fileResult;
-        // }
-        // СУТЬ ИДЕИ ПОНЯЛ, СДЕЛАЛ НОВЫЙ КЛАСС И МЕТОД, КОТОРЫЙ ОБЪЕДИНЯЕТ ПЕРЕДАВАЕМЫЕ СВОЙСТВА ФАЙЛА. МЕТОД resource ЗАКОММЕНТИРОВАЛ
-        // А МЕТОД getFileName СДЕЛАЛ private, Т.К. ИСПОЛЬЗУЕТСЯ НЕСКОЛЬКО РАЗ В САМОМ КЛАССЕ. ЗДЕСЬ ПОПРАВИЛ
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + excelFile.getFileName())
                 .contentLength(excelFile.getByteResource().contentLength())

@@ -100,7 +100,8 @@ public class ExcelTemplateCreateCalendarImpl implements ExcelTemplateCreate {
             sheet.addMergedRegion(new CellRangeAddress(startRowTextHeader, startRowTextHeader, 0, 3));
             textHeader = sheet.createRow(++startRowTextHeader);
             textHeader.setHeightInPoints(28);
-            createCellCalendar(0, orderTextStyle, "Наименование Подрядчика                                             АО \"ТомскНИПИнефть\"", textHeader);
+            createCellCalendar(0, orderTextStyle, "Наименование Подрядчика                                             " +
+                    "АО \"ТомскНИПИнефть\"", textHeader);
             sheet.addMergedRegion(new CellRangeAddress(startRowTextHeader, startRowTextHeader, 0, 3));
         }
         // создание шапки таблицы

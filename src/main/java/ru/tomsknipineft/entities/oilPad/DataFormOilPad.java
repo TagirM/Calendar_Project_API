@@ -77,7 +77,6 @@ public class DataFormOilPad implements DataFormProject, Serializable {
     private boolean engineeringSurveyReport;
 
     // размер геодезической бригады
-//    @NotNull(message = "Размер не заполнен", groups = OnActiveEngineeringSurvey.class)
     @Enumerated(EnumType.STRING)
     private GeodeticTeamType geodeticTeamType = GeodeticTeamType.STANDARD;
 

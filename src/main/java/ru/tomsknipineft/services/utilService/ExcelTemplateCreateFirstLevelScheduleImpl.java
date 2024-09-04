@@ -141,7 +141,8 @@ public class ExcelTemplateCreateFirstLevelScheduleImpl implements ExcelTemplateC
 
             startRowHeaderInfo--;
             for (int i = 0; i < valuesCellsHeaderInfo.length; i++) {
-                startRowHeaderInfo = createRowCalendar(sheet, valuesCellsHeaderInfo[i][0], stylesHeaderInfo, valuesCellsHeaderInfo[i], startRowHeaderInfo, 30, 1);
+                startRowHeaderInfo = createRowCalendar(sheet, valuesCellsHeaderInfo[i][0], stylesHeaderInfo, valuesCellsHeaderInfo[i],
+                        startRowHeaderInfo, 30, 1);
                 if (i < 3 || i > 4) {
                     sheet.addMergedRegion(new CellRangeAddress(startRowHeaderInfo, startRowHeaderInfo, 1, 2));
                 }
@@ -325,61 +326,76 @@ public class ExcelTemplateCreateFirstLevelScheduleImpl implements ExcelTemplateC
 
             if (calendar.getEngineeringSurvey() != null || calendar.getEngineeringSurveyReportFinish() != null) {
                 // создание заголовка ИИ
-                numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + ". " + valuesCells[1][0], stylesChapter, valuesCells[1], numberRowCalendarStage, 25, 1);
+                numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + ". " + valuesCells[1][0], stylesChapter, valuesCells[1],
+                        numberRowCalendarStage, 25, 1);
                 sheet.addMergedRegion(new CellRangeAddress(numberRowCalendarStage, numberRowCalendarStage, 1, 14));
                 // создание ячеек сроков полевых ИИ
                 if (calendar.getEngineeringSurvey() != null) {
-                    numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + "." + rowChapterCalendar++, stylesCells, valuesCells[2], numberRowCalendarStage, 45, 2);
+                    numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + "." + rowChapterCalendar++, stylesCells, valuesCells[2],
+                            numberRowCalendarStage, 45, 2);
                 }
                 // создание ячеек сроков отчета ИИ
                 if (calendar.getEngineeringSurveyReportFinish() != null) {
-                    numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + "." + rowChapterCalendar++, stylesCells, valuesCells[3], numberRowCalendarStage, 45, 2);
-                    numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + "." + rowChapterCalendar++, stylesCells, valuesCells[4], numberRowCalendarStage, 45, 2);
+                    numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + "." + rowChapterCalendar++, stylesCells, valuesCells[3],
+                            numberRowCalendarStage, 45, 2);
+                    numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + "." + rowChapterCalendar++, stylesCells, valuesCells[4],
+                            numberRowCalendarStage, 45, 2);
                 }
                 // создание ячеек сроков ИЭИ и ИКИ
                 if (calendar.getEngineeringAndEnvironmentalSurveysFinish() != null) {
-                    numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + "." + rowChapterCalendar++, stylesCells, valuesCells[5], numberRowCalendarStage, 45, 2);
-                    numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + "." + rowChapterCalendar, stylesCells, valuesCells[6], numberRowCalendarStage, 45, 2);
+                    numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + "." + rowChapterCalendar++, stylesCells, valuesCells[5],
+                            numberRowCalendarStage, 45, 2);
+                    numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + "." + rowChapterCalendar, stylesCells, valuesCells[6],
+                            numberRowCalendarStage, 45, 2);
                 }
                 chapterCalendar++;
                 rowChapterCalendar = 1;
             }
             // создание ячеек сроков РД и СД
             if (calendar.getWorkingStart() != null) {
-                numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + ". " + valuesCellsRD[0][0], stylesChapter, valuesCellsRD[0], numberRowCalendarStage, 25, 1);
+                numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + ". " + valuesCellsRD[0][0], stylesChapter, valuesCellsRD[0],
+                        numberRowCalendarStage, 25, 1);
                 sheet.addMergedRegion(new CellRangeAddress(numberRowCalendarStage, numberRowCalendarStage, 1, 14));
                 for (int i = 2; i < valuesCellsRD.length + 1; i++) {
-                    numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + "." + rowChapterCalendar++, stylesCells, valuesCellsRD[i - 1], numberRowCalendarStage, 50, 2);
+                    numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + "." + rowChapterCalendar++, stylesCells, valuesCellsRD[i - 1],
+                            numberRowCalendarStage, 50, 2);
                 }
                 chapterCalendar++;
                 rowChapterCalendar = 1;
             }
             // создание ячеек сроков ПД
             if (calendar.getProjectFinish() != null) {
-                numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + ". " + valuesCellsPD[0][0], stylesChapter, valuesCellsPD[0], numberRowCalendarStage, 25, 1);
+                numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + ". " + valuesCellsPD[0][0], stylesChapter, valuesCellsPD[0],
+                        numberRowCalendarStage, 25, 1);
                 sheet.addMergedRegion(new CellRangeAddress(numberRowCalendarStage, numberRowCalendarStage, 1, 14));
                 for (int i = 2; i < valuesCellsPD.length + 1; i++) {
-                    numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + "." + rowChapterCalendar++, stylesCells, valuesCellsPD[i - 1], numberRowCalendarStage, 50, 2);
+                    numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + "." + rowChapterCalendar++, stylesCells, valuesCellsPD[i - 1],
+                            numberRowCalendarStage, 50, 2);
                 }
                 chapterCalendar++;
                 rowChapterCalendar = 1;
             }
             // создание ячеек срока ЗУР
             if (calendar.getProjectFinish() != null) {
-                numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + ". " + valuesCellsLand[0][0], stylesChapter, valuesCellsLand[0], numberRowCalendarStage, 25, 1);
+                numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + ". " + valuesCellsLand[0][0], stylesChapter, valuesCellsLand[0],
+                        numberRowCalendarStage, 25, 1);
                 sheet.addMergedRegion(new CellRangeAddress(numberRowCalendarStage, numberRowCalendarStage, 1, 14));
-                numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + "." + rowChapterCalendar, stylesCells, valuesCellsLand[1], numberRowCalendarStage, 45, 2);
+                numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + "." + rowChapterCalendar, stylesCells, valuesCellsLand[1],
+                        numberRowCalendarStage, 45, 2);
                 chapterCalendar++;
             }
             // создание ячеек срока прочих работ
             if (calendar.getRhrFinish() != null || calendar.getSzzFinish() != null) {
-                numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + ". " + valuesCellsOtherWork[0][0], stylesChapter, valuesCellsOtherWork[0], numberRowCalendarStage, 25, 1);
+                numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + ". " + valuesCellsOtherWork[0][0], stylesChapter, valuesCellsOtherWork[0],
+                        numberRowCalendarStage, 25, 1);
                 sheet.addMergedRegion(new CellRangeAddress(numberRowCalendarStage, numberRowCalendarStage, 1, 14));
                 if (calendar.getSzzFinish() != null) {
-                    numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + "." + rowChapterCalendar++, stylesCells, valuesCellsOtherWork[1], numberRowCalendarStage, 45, 2);
+                    numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + "." + rowChapterCalendar++, stylesCells, valuesCellsOtherWork[1],
+                            numberRowCalendarStage, 45, 2);
                 }
                 if (calendar.getRhrFinish() != null) {
-                    numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + "." + rowChapterCalendar, stylesCells, valuesCellsOtherWork[2], numberRowCalendarStage, 45, 2);
+                    numberRowCalendarStage = createRowCalendar(sheet, chapterCalendar + "." + rowChapterCalendar, stylesCells, valuesCellsOtherWork[2],
+                            numberRowCalendarStage, 45, 2);
                 }
                 chapterCalendar++;
             }

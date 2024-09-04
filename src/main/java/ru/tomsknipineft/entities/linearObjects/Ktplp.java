@@ -42,7 +42,6 @@ public class Ktplp  implements OilPad, EntityProject, Serializable {
     private ObjectType objectType;
 
     //    Параметры КТПЛП
-//    @NotNull(message = "Вид КТПЛП не выбран", groups = OnActiveCheck.class)
     @Column(name = "ktplp_type")
     @Enumerated(EnumType.STRING)
     private KtplpType ktplpType = KtplpType.KTPLP10_04;

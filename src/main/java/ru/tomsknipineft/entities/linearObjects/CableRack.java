@@ -44,12 +44,6 @@ public class CableRack implements OilPad, EntityProject, Serializable {
     @Max(value = 15000, message = "Не может быть больше 15000 м", groups = OnActiveCheck.class)
     private Integer length;
 
-    //    сложность геологии
-//    @NotNull(message = "Сложность прокладки не указана", groups = OnActiveCheck.class)
-//    @Column(name = "complexity_of_geology")
-//    @Enumerated(EnumType.STRING)
-//    private ComplexityOfGeology complexityOfGeology;
-
     //    этап строительства
     @NotNull(message = "Этап не заполнен", groups = OnActiveCheck.class)
     @Min(value = 1, message = "Не может быть меньше 1", groups = OnActiveCheck.class)

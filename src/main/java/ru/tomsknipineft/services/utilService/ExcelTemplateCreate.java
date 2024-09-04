@@ -16,5 +16,4 @@ public interface ExcelTemplateCreate {
 
     String getNameForFile();
 
-//    String getFileName(List<Calendar> calendars);
 }

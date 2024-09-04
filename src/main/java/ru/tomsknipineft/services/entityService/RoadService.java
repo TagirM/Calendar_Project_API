@@ -28,8 +28,6 @@ public class RoadService implements EntityProjectService {
      * @param roadFromRequest сущность с введенными параметрами из представления
      * @return искомая в базе данных сущность
      */
-//    @Cacheable(key = "new org.springframework.cache.interceptor.SimpleKey(#roadFromRequest.category, " +
-//            "#roadFromRequest.length, #roadFromRequest.count)")
     @Cacheable(key = "new org.springframework.cache.interceptor.SimpleKey(#roadFromRequest.category, " +
             "#roadFromRequest.length)")
     public Road getFindRoadFromRequest(Road roadFromRequest) {

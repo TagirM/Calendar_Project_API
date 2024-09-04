@@ -44,10 +44,6 @@ public class BackfillSiteService implements EntityProjectService {
      * @return сущность (Инженерная подготовка площадки)
      */
     public BackfillSite getFirst() {
-        // константы вроде 1L лучше выносить в final static long FIRST_ID и везде его использовать
-        // есть даже такой термин - магические константы
-        // ПОПРАВИЛ ВЕЗДЕ
-
         return backfillSiteRepository
                 .findById(FIRST_ID)
                 .orElseThrow(() ->

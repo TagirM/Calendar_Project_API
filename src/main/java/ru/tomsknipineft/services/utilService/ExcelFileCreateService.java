@@ -55,7 +55,6 @@ public class ExcelFileCreateService {
         excelCreated.createHeader(workbook, sheet, calendars);
         excelCreated.createCells(workbook, sheet, calendars);
         String filename = getFileName(calendars, excelCreated);
-//        try (FileOutputStream outputStream = new FileOutputStream(filename)) {
         try (FileOutputStream outputStream = new FileOutputStream(pathFile + filename)) {
             workbook.write(outputStream);
             workbook.close();

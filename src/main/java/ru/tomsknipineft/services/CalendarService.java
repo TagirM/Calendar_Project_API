@@ -147,11 +147,6 @@ public class CalendarService {
         DataFormProject dataFormProject;
         try {
             FileOutputStream f = new FileOutputStream(dataFormProjectService.getFilePathRecover());
-            // todo нужно добавить проверку что список не пуст
-            // поменял параметр на шифр проекта, добавил проверку calendars, который получаем, хотя calendars берется из метода
-            // getCalendarByCode() класса CalendarService, в котором есть проверка на то, что календарь может оказаться пустым,
-            // см. стр. 68 CalendarService и по идее там должна отрабатывать проверка, но она, что странно почему то, не отработывает... Хлотя должна же...
-
             f.write(calendars.get(0).getBytesDataProject());
             f.close();
             dataFormProject = dataFormProjectService.dataFormProjectRecover();
@@ -395,7 +390,8 @@ public class CalendarService {
                     if (resourcesWorkDoc.containsKey(stageNumber - stageBack)){
                         if (activeObjectTypeByStage.get(stageNumber - stageBack).contains(ObjectType.AREA) && activeObjectTypeByStage.get(stageNumber).contains(ObjectType.AREA)) {
                             // получаем календарь найденного этапа с типом объекта AREA
-                            previousCalendar = calendarRepository.findCalendarByCodeContractAndStage(dataFormProject.getCodeContract(), stageNumber - stageBack).orElseThrow();
+                            previousCalendar = calendarRepository.findCalendarByCodeContractAndStage(dataFormProject.getCodeContract(),
+                                    stageNumber - stageBack).orElseThrow();
                             isStageOffsetPSD = true;
                         }
                         // если пересечение одинаковых типов есть, то начало выполнения РД текущего этапа строительства сместить после окончания РД
@@ -562,7 +558,8 @@ public class CalendarService {
                     // если типы объектов разные, то смещать начало работ не требуется, если одинаковые - смещение необходимо
                     stageBack = 0;
                     while (stageNumber - stageBack > 0) {
-                        if (activeObjectTypeByStage.get(stageNumber - stageBack).contains(ObjectType.AREA) && activeObjectTypeByStage.get(stageNumber + 1).contains(ObjectType.AREA)) {
+                        if (activeObjectTypeByStage.get(stageNumber - stageBack).contains(ObjectType.AREA) && activeObjectTypeByStage.get(stageNumber + 1)
+                                .contains(ObjectType.AREA)) {
                             isStageOffsetStartContract = true;
                             break;
                         }

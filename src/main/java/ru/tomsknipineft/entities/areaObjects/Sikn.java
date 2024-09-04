@@ -40,7 +40,6 @@ public class Sikn implements OilPad, EntityProject, Serializable {
     private ObjectType objectType;
 
     // тип СИКН
-//    @NotNull(message = "Тип не заполнен", groups = OnActiveCheck.class)
     @Column(name = "sikn_type")
     @Enumerated(EnumType.STRING)
     private SiknType siknType = SiknType.OPERATIONAL;
